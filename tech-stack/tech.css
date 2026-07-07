@@ -1,0 +1,218 @@
+
+  :root{
+    
+    --panel: #FFFFFF;
+    --border: #E2E8F0;
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --muted: #64748B;
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --blue-soft: #EFF4FF;
+    --shadow: 0 20px 40px -18px rgba(15, 23, 42, 0.16);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+  }
+
+  .tech-section{
+    padding: 96px 24px 120px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .tech-head{
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 64px;
+  }
+
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 17.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: inline-block;
+  }
+
+  .tech-head h2{
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+
+  .tech-head p{
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .tech-layout{
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* ---------- Left: vertical pills ---------- */
+  .pill-rail{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 10px;
+    position: sticky;
+    top: 32px;
+  }
+
+  .pill{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .pill .ico{
+    font-size: 17px;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .pill:hover{
+    background: #F1F5F9;
+    color: var(--ink);
+  }
+
+  .pill.active{
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.5);
+  }
+
+  .pill.active:hover{
+    background: var(--blue-dark);
+  }
+
+  /* ---------- Right: content ---------- */
+  .tech-content h3{
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 4px 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .tech-content .desc{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 0 32px;
+    max-width: 560px;
+  }
+
+  .card-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-grid.is-animating{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .tech-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 12px;
+    text-align: center;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  .tech-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: var(--shadow);
+  }
+
+  .tech-card .glyph{
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .tech-card .name{
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  @media (max-width: 880px){
+    .tech-layout{ grid-template-columns: 1fr; }
+    .pill-rail{
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill{ width: auto; }
+    .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px){
+    .card-grid{ grid-template-columns: repeat(2, 1fr); }
+    .tech-section{ padding: 64px 16px 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tech-card, .card-grid, .pill{ transition: none !important; }
+  }

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technologies We Build With — NEXSHAM</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F8FAFC;
+    --panel: #FFFFFF;
+    --border: #E2E8F0;
+    --ink: #0F172A;
+    --ink-soft: #475569;
+    --muted: #64748B;
+    --blue: #2563EB;
+    --blue-dark: #1D4ED8;
+    --blue-soft: #EFF4FF;
+    --shadow: 0 20px 40px -18px rgba(15, 23, 42, 0.16);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+  }
+
+  .tech-section{
+    padding: 96px 24px 120px;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .tech-head{
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 64px;
+  }
+
+  .eyebrow{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    background: var(--blue-soft);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow::before{
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    display: inline-block;
+  }
+
+  .tech-head h2{
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: var(--ink);
+  }
+
+  .tech-head p{
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .tech-layout{
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  /* ---------- Left: vertical pills ---------- */
+  .pill-rail{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 10px;
+    position: sticky;
+    top: 32px;
+  }
+
+  .pill{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    border: none;
+    background: transparent;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    position: relative;
+  }
+
+  .pill .ico{
+    font-size: 17px;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .pill:hover{
+    background: #F1F5F9;
+    color: var(--ink);
+  }
+
+  .pill.active{
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 0 10px 20px -8px rgba(37, 99, 235, 0.5);
+  }
+
+  .pill.active:hover{
+    background: var(--blue-dark);
+  }
+
+  /* ---------- Right: content ---------- */
+  .tech-content h3{
+    font-family: 'Sora', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 4px 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .tech-content .desc{
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted);
+    margin: 0 0 32px;
+    max-width: 560px;
+  }
+
+  .card-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-grid.is-animating{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .tech-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 26px 12px;
+    text-align: center;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+
+  .tech-card:hover{
+    transform: translateY(-6px);
+    border-color: var(--blue);
+    box-shadow: var(--shadow);
+  }
+
+  .tech-card .glyph{
+    font-size: 26px;
+    line-height: 1;
+  }
+
+  .tech-card .name{
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  @media (max-width: 880px){
+    .tech-layout{ grid-template-columns: 1fr; }
+    .pill-rail{
+      position: static;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill{ width: auto; }
+    .card-grid{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px){
+    .card-grid{ grid-template-columns: repeat(2, 1fr); }
+    .tech-section{ padding: 64px 16px 80px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tech-card, .card-grid, .pill{ transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<section class="tech-section">
+  <div class="tech-head">
+    <span class="eyebrow">Our Stack</span>
+    <h3>Technologies We Build With</h3>
+    <p>From modern frontend frameworks to cloud-native infrastructure, we use industry-standard technologies to build secure, scalable, and future-ready software solutions.</p>
+  </div>
+
+  <div class="tech-layout">
+    <nav class="pill-rail" id="pillRail"></nav>
+
+    <div class="tech-content">
+      <h3 id="catTitle"></h3>
+      <p class="desc" id="catDesc"></p>
+      <div class="card-grid" id="cardGrid"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const categories = [
+    {
+      id: "uiux", label: "UI/UX", icon: "🎨",
+      title: "UI/UX Design Tools",
+      desc: "Design tools we use to craft intuitive interfaces and pixel-perfect user experiences before a single line of code is written.",
+      items: [
+        { name: "Figma", icon: "🎨" },
+        { name: "Adobe XD", icon: "◈" },
+        { name: "Photoshop", icon: "🖌" },
+        { name: "Illustrator", icon: "✏️" },
+      ]
+    },
+    {
+      id: "frontend", label: "Frontend", icon: "💻",
+      title: "Frontend Technologies",
+      desc: "Modern frontend frameworks and libraries for building responsive, fast and scalable web applications.",
+      items: [
+        { name: "HTML5", icon: "🌐" },
+        { name: "CSS3", icon: "🎨" },
+        { name: "JavaScript", icon: "JS" },
+        { name: "TypeScript", icon: "TS" },
+        { name: "React", icon: "⚛" },
+        { name: "Next.js", icon: "▲" },
+        { name: "Bootstrap", icon: "🅱" },
+        { name: "Tailwind CSS", icon: "〰" },
+      ]
+    },
+    {
+      id: "backend", label: "Backend", icon: "⚙",
+      title: "Backend Technologies",
+      desc: "Robust server-side frameworks and languages that power reliable APIs and business logic.",
+      items: [
+        { name: "Node.js", icon: "🟢" },
+        { name: "Express.js", icon: "🚂" },
+        { name: "Python", icon: "🐍" },
+        { name: "Java", icon: "☕" },
+        { name: "Spring Boot", icon: "🌱" },
+        { name: "PHP", icon: "🐘" },
+        { name: "FastAPI", icon: "⚡" },
+      ]
+    },
+    {
+      id: "mobile", label: "Mobile", icon: "📱",
+      title: "Mobile Development",
+      desc: "Cross-platform and native tools we use to ship polished mobile apps on iOS and Android.",
+      items: [
+        { name: "Flutter", icon: "🦋" },
+        { name: "React Native", icon: "⚛" },
+        { name: "Android", icon: "🤖" },
+        { name: "Kotlin", icon: "🎯" },
+        { name: "Swift", icon: "🐦" },
+      ]
+    },
+    {
+      id: "database", label: "Database", icon: "🗄",
+      title: "Database Technologies",
+      desc: "Relational and NoSQL databases chosen to fit the shape and scale of your data.",
+      items: [
+        { name: "MySQL", icon: "🐬" },
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "MongoDB", icon: "🍃" },
+        { name: "Firebase", icon: "🔥" },
+        { name: "Redis", icon: "🔴" },
+      ]
+    },
+    {
+      id: "cloud", label: "Cloud", icon: "☁",
+      title: "Cloud Infrastructure",
+      desc: "Cloud platforms and hosting services we rely on for scalable, always-on deployments.",
+      items: [
+        { name: "AWS", icon: "☁" },
+        { name: "Azure", icon: "🔷" },
+        { name: "Google Cloud", icon: "☁" },
+        { name: "Vercel", icon: "▲" },
+        { name: "Render", icon: "🅁" },
+        { name: "Netlify", icon: "🌐" },
+      ]
+    },
+    {
+      id: "devops", label: "DevOps", icon: "🚀",
+      title: "DevOps & Deployment",
+      desc: "Tools that automate builds, deployments, and infrastructure so releases stay fast and reliable.",
+      items: [
+        { name: "Docker", icon: "🐳" },
+        { name: "Kubernetes", icon: "☸" },
+        { name: "GitHub Actions", icon: "🐙" },
+        { name: "Jenkins", icon: "🎩" },
+        { name: "Nginx", icon: "🌐" },
+      ]
+    },
+    {
+      id: "aiml", label: "AI / ML", icon: "🤖",
+      title: "AI & Machine Learning",
+      desc: "Frameworks and platforms we use to build intelligent features, from chatbots to predictive models.",
+      items: [
+        { name: "OpenAI", icon: "🧠" },
+        { name: "Python", icon: "🐍" },
+        { name: "TensorFlow", icon: "🔶" },
+        { name: "PyTorch", icon: "🔥" },
+        { name: "LangChain", icon: "🔗" },
+        { name: "Hugging Face", icon: "🤗" },
+      ]
+    },
+    {
+      id: "security", label: "Security", icon: "🔒",
+      title: "Security & Compliance",
+      desc: "Standards and tools we build in from day one to keep applications and data protected.",
+      items: [
+        { name: "JWT", icon: "🔑" },
+        { name: "OAuth", icon: "🔐" },
+        { name: "SSL", icon: "🔒" },
+        { name: "Cloudflare", icon: "☁" },
+        { name: "OWASP", icon: "🛡" },
+      ]
+    },
+    {
+      id: "crmerp", label: "CRM/ERP", icon: "🏢",
+      title: "CRM & ERP Systems",
+      desc: "Business platforms we integrate with to connect your software to sales, ops, and finance.",
+      items: [
+        { name: "Salesforce", icon: "☁" },
+        { name: "Zoho", icon: "📊" },
+        { name: "Odoo", icon: "🟣" },
+        { name: "SAP", icon: "🔷" },
+      ]
+    },
+    {
+      id: "automation", label: "Automation", icon: "⚡",
+      title: "Automation Tools",
+      desc: "Workflow automation platforms that connect your tools and remove repetitive manual work.",
+      items: [
+        { name: "n8n", icon: "🔀" },
+        { name: "Zapier", icon: "⚡" },
+        { name: "Power Automate", icon: "🔄" },
+        { name: "Make", icon: "⚙" },
+        { name: "Apache Airflow", icon: "🌬" },
+      ]
+    },
+  ];
+
+  const pillRail = document.getElementById("pillRail");
+  const catTitle = document.getElementById("catTitle");
+  const catDesc = document.getElementById("catDesc");
+  const cardGrid = document.getElementById("cardGrid");
+
+  let activeId = categories[1].id; // default to Frontend, matches spec's default example
+
+  function renderPills(){
+    pillRail.innerHTML = categories.map(cat => `
+      <button class="pill ${cat.id === activeId ? 'active' : ''}" data-id="${cat.id}">
+        <span class="ico">${cat.icon}</span>
+        <span>${cat.label}</span>
+      </button>
+    `).join("");
+
+    pillRail.querySelectorAll(".pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        if (id === activeId) return;
+        switchCategory(id);
+      });
+    });
+  }
+
+  function renderContent(cat){
+    catTitle.textContent = cat.title;
+    catDesc.textContent = cat.desc;
+    cardGrid.innerHTML = cat.items.map(item => `
+      <div class="tech-card">
+        <span class="glyph">${item.icon}</span>
+        <span class="name">${item.name}</span>
+      </div>
+    `).join("");
+  }
+
+  function switchCategory(id){
+    activeId = id;
+    renderPills();
+    cardGrid.classList.add("is-animating");
+    setTimeout(() => {
+      const cat = categories.find(c => c.id === id);
+      renderContent(cat);
+      cardGrid.classList.remove("is-animating");
+    }, 300);
+  }
+
+  renderPills();
+  renderContent(categories.find(c => c.id === activeId));
+</script>
+
+</body>
+</html>

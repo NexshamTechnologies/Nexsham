@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham Technologies — FAQ &amp; Development Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b1a2b;
+    --bg-raised: #0f2138;
+    --grid-line: #16324f;
+    --cyan: #4cd6c4;
+    --amber: #f2a93b;
+    --ink: #e8eef4;
+    --muted: #7e93a8;
+    --hairline: #234563;
+    --radius: 2px;
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:
+      linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0/48px 48px,
+      var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+  }
+
+  .wrap{ max-width: 1040px; margin: 0 auto; padding: 0 28px; }
+
+  /* corner registration marks, echo blueprint drafting sheets */
+  .reg-mark{ position: fixed; width: 22px; height: 22px; pointer-events:none; opacity:.5; z-index: 5;}
+  .reg-mark::before, .reg-mark::after{ content:''; position:absolute; background: var(--cyan); }
+  .reg-mark::before{ top:50%; left:0; right:0; height:1px; transform:translateY(-50%); }
+  .reg-mark::after{ left:50%; top:0; bottom:0; width:1px; transform:translateX(-50%); }
+  .reg-tl{ top:20px; left:20px; }
+  .reg-tr{ top:20px; right:20px; }
+  .reg-bl{ bottom:20px; left:20px; }
+  .reg-br{ bottom:20px; right:20px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    padding: 108px 0 96px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:'';
+    position:absolute; inset:0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(76,214,196,.14), transparent 60%);
+    pointer-events:none;
+  }
+  .eyebrow-tag{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color: var(--cyan);
+    border:1px solid var(--hairline);
+    padding:6px 14px;
+    border-radius: 100px;
+    margin-bottom:28px;
+  }
+  .eyebrow-tag .dot{ width:6px; height:6px; border-radius:50%; background: var(--cyan); box-shadow:0 0 8px var(--cyan); }
+  h1.headline{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size: clamp(2.2rem, 5.4vw, 3.6rem);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin: 0 0 22px;
+  }
+  h1.headline .accent{ color: var(--cyan); }
+  .sub{
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: var(--muted);
+    max-width: 560px;
+    margin: 0 auto;
+    line-height:1.6;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding: 88px 0; position:relative; }
+  .section + .section{ border-top: 1px solid var(--hairline); }
+  .section-head{ margin-bottom: 56px; }
+  .section-tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color: var(--amber);
+    display:flex; align-items:center; gap:10px;
+    margin-bottom:14px;
+  }
+  .section-tag::before{ content:''; width:26px; height:1px; background: var(--amber); }
+  .section-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+    margin:0 0 12px;
+    letter-spacing:-.01em;
+  }
+  .section-desc{ color: var(--muted); max-width: 560px; line-height:1.6; font-size:1rem; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list{ display:flex; flex-direction:column; gap:0; }
+  .faq-item{
+    border-bottom: 1px solid var(--hairline);
+  }
+  .faq-item:first-child{ border-top: 1px solid var(--hairline); }
+  .faq-q{
+    width:100%;
+    background:none; border:none; cursor:pointer;
+    display:flex; align-items:center; gap:20px;
+    padding: 24px 4px;
+    text-align:left;
+    color: var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+  }
+  .faq-index{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color: var(--muted);
+    min-width: 34px;
+    padding-top:2px;
+  }
+  .faq-q-text{ flex:1; font-size:1.05rem; font-weight:500; line-height:1.4; }
+  .faq-toggle{
+    position:relative; width:18px; height:18px; flex-shrink:0;
+  }
+  .faq-toggle::before, .faq-toggle::after{
+    content:''; position:absolute; background: var(--cyan);
+    top:50%; left:50%;
+  }
+  .faq-toggle::before{ width:14px; height:1.5px; transform:translate(-50%,-50%); }
+  .faq-toggle::after{ width:1.5px; height:14px; transform:translate(-50%,-50%); transition: transform .25s ease; }
+  .faq-item.open .faq-toggle::after{ transform:translate(-50%,-50%) rotate(90deg); opacity:0; }
+
+  .faq-a-wrap{ display:grid; grid-template-rows: 0fr; transition: grid-template-rows .3s ease; }
+  .faq-item.open .faq-a-wrap{ grid-template-rows: 1fr; }
+  .faq-a-inner{ overflow:hidden; }
+  .faq-a{
+    padding: 0 4px 28px 54px;
+    color: var(--muted);
+    font-size:.98rem;
+    line-height:1.7;
+    max-width: 640px;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .path{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .path::before{
+    content:'';
+    position:absolute;
+    left: 27px;
+    top: 10px;
+    bottom: 10px;
+    width:1px;
+    background: repeating-linear-gradient(to bottom, var(--hairline) 0 6px, transparent 6px 12px);
+  }
+  .path-line-fill{
+    position:absolute;
+    left:27px; top:10px; width:1px;
+    background: var(--cyan);
+    box-shadow: 0 0 8px var(--cyan);
+    height:0%;
+    transition: height 1.4s ease;
+  }
+
+  .step{
+    position:relative;
+    display:grid;
+    grid-template-columns: 56px 1fr;
+    gap: 22px;
+    padding: 30px 0;
+  }
+  .step-node{
+    position:relative;
+    width:56px; height:56px;
+    border-radius:50%;
+    background: var(--bg-raised);
+    border: 1px solid var(--hairline);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:1.1rem; font-weight:600;
+    color: var(--muted);
+    z-index:2;
+    transition: border-color .4s ease, color .4s ease, box-shadow .4s ease;
+  }
+  .step.active .step-node{
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 0 4px rgba(76,214,196,.08), 0 0 18px rgba(76,214,196,.25);
+  }
+  .step-body{ padding-top: 6px; }
+  .step-kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color: var(--amber);
+    margin-bottom:6px;
+  }
+  .step-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.2rem; font-weight:600;
+    margin:0 0 8px;
+  }
+  .step-desc{ color: var(--muted); font-size:.96rem; line-height:1.6; max-width:520px; }
+
+  /* ---------- CTA ---------- */
+  .cta{
+    text-align:center;
+    padding: 90px 0 110px;
+  }
+  .cta-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:600;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0 0 14px;
+  }
+  .cta-sub{ color: var(--muted); margin-bottom: 34px; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:14px; letter-spacing:.06em; text-transform:uppercase;
+    display:inline-flex; align-items:center; gap:10px;
+    background: var(--cyan);
+    color: #06171e;
+    border:none;
+    padding: 15px 30px;
+    border-radius: 100px;
+    cursor:pointer;
+    font-weight:600;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(76,214,196,.25); }
+  .btn:focus-visible, .faq-q:focus-visible{ outline: 2px solid var(--cyan); outline-offset:3px; }
+
+  footer{
+    border-top: 1px solid var(--hairline);
+    text-align:center;
+    padding: 28px 0;
+    color: var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing:.04em;
+  }
+
+  @media (max-width: 640px){
+    .hero{ padding: 84px 0 64px; }
+    .section{ padding: 64px 0; }
+    .step{ grid-template-columns: 44px 1fr; gap:16px; }
+    .step-node{ width:44px; height:44px; font-size:.95rem; }
+    .path::before, .path-line-fill{ left:21px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="reg-mark reg-tl"></div>
+<div class="reg-mark reg-tr"></div>
+<div class="reg-mark reg-bl"></div>
+<div class="reg-mark reg-br"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow-tag"><span class="dot"></span>NEXSHAM TECHNOLOGIES</span>
+    <h1 class="headline">From idea to deployment —<br>we build software that solves <span class="accent">real business problems.</span></h1>
+    <p class="sub">Custom web apps, automation, and AI-powered systems for cafés, retailers, clinics, schools, and growing companies. Here's how we work, and answers to what people ask us most.</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Spec sheet</div>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <p class="section-desc">Everything clients usually want to know before their first call with us.</p>
+    </div>
+
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="section" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-tag">Build route</div>
+      <h2 class="section-title">Our development process</h2>
+      <p class="section-desc">Six steps, no jargon. You'll know exactly what's happening at every stage of your project.</p>
+    </div>
+
+    <div class="path" id="pathContainer">
+      <div class="path-line-fill" id="pathFill"></div>
+      <div class="step" data-step="1">
+        <div class="step-node">01</div>
+        <div class="step-body">
+          <div class="step-kicker">Let's talk</div>
+          <h3 class="step-title">Discovery &amp; consultation</h3>
+          <p class="step-desc">Tell us about your business and your idea. We ask questions, listen closely, and understand your goals before proposing anything.</p>
+        </div>
+      </div>
+      <div class="step" data-step="2">
+        <div class="step-node">02</div>
+        <div class="step-body">
+          <div class="step-kicker">Planning</div>
+          <h3 class="step-title">Solution design &amp; roadmap</h3>
+          <p class="step-desc">We map your workflow, define the project scope, choose the right technology, and lay out a clear roadmap and timeline.</p>
+        </div>
+      </div>
+      <div class="step" data-step="3">
+        <div class="step-node">03</div>
+        <div class="step-body">
+          <div class="step-kicker">Design</div>
+          <h3 class="step-title">UI/UX design</h3>
+          <p class="step-desc">We design clean, intuitive interfaces built around how your staff and customers actually use software day to day.</p>
+        </div>
+      </div>
+      <div class="step" data-step="4">
+        <div class="step-node">04</div>
+        <div class="step-body">
+          <div class="step-kicker">Build</div>
+          <h3 class="step-title">Development</h3>
+          <p class="step-desc">Our team writes secure, scalable code using modern tools and practices, turning the design into working software.</p>
+        </div>
+      </div>
+      <div class="step" data-step="5">
+        <div class="step-node">05</div>
+        <div class="step-body">
+          <div class="step-kicker">Verify</div>
+          <h3 class="step-title">Testing &amp; quality assurance</h3>
+          <p class="step-desc">Every feature is tested for reliability, security, and performance so nothing breaks once it's in your hands.</p>
+        </div>
+      </div>
+      <div class="step" data-step="6">
+        <div class="step-node">06</div>
+        <div class="step-body">
+          <div class="step-kicker">Ship</div>
+          <h3 class="step-title">Deployment &amp; ongoing support</h3>
+          <p class="step-desc">We launch your software and stay on: maintenance, updates, and technical support whenever your business needs it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <h2 class="cta-title">Have a project in mind?</h2>
+    <p class="cta-sub">Fill out the contact form and we'll schedule a free consultation — confidential, no obligation, NDA available on request.</p>
+    <button class="btn" onclick="if(window.sendPrompt){sendPrompt('I want to start a project with Nexsham Technologies. Can you tell me how to get in touch?')}">Start a conversation →</button>
+  </div>
+</section>
+
+<footer>© NEXSHAM TECHNOLOGIES — BUILT FOR BUSINESSES THAT BUILD THINGS</footer>
+
+<script>
+  const faqData = [
+    { q: "What services does Nexsham Technologies provide?", a: "We build custom software solutions that help businesses automate operations, improve efficiency, and grow digitally. Our services include web applications, business automation systems, AI-powered solutions, and enterprise software development." },
+    { q: "Which industries do you work with?", a: "We work with startups, cafés, restaurants, retail stores, educational institutions, healthcare providers, logistics companies, and businesses looking for custom software solutions." },
+    { q: "How much does custom software development cost?", a: "Every project is unique. The cost depends on your requirements, features, and timeline. Contact us for a free consultation and a customized quotation." },
+    { q: "How long does it take to develop a project?", a: "Project timelines vary depending on complexity. Small business solutions may take a few weeks, while larger enterprise applications may require several months. We provide a timeline after understanding your requirements." },
+    { q: "Do you provide maintenance and support after delivery?", a: "Yes. We offer post-launch support, maintenance, bug fixes, feature enhancements, and technical assistance to ensure your software continues to perform smoothly." },
+    { q: "Can you build software according to my business requirements?", a: "Absolutely. Every solution we build is customized to your business workflow, goals, and operational needs instead of using one-size-fits-all templates." },
+    { q: "Is my project idea kept confidential?", a: "Yes. We treat every client discussion as confidential. If required, we can also work under a Non-Disclosure Agreement (NDA) before starting the project." },
+    { q: "How do we get started?", a: "Simply fill out the contact form on our website. We'll review your requirements, schedule a discussion, understand your business goals, and recommend the best software solution for your needs." }
+  ];
+
+  const faqList = document.getElementById('faqList');
+  faqData.forEach((item, i) => {
+    const el = document.createElement('div');
+    el.className = 'faq-item';
+    el.innerHTML = `
+      <button class="faq-q" aria-expanded="false">
+        <span class="faq-index">${String(i+1).padStart(2,'0')}</span>
+        <span class="faq-q-text">${item.q}</span>
+        <span class="faq-toggle"></span>
+      </button>
+      <div class="faq-a-wrap"><div class="faq-a-inner"><p class="faq-a">${item.a}</p></div></div>
+    `;
+    const btn = el.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => { if(o!==el){ o.classList.remove('open'); o.querySelector('.faq-q').setAttribute('aria-expanded','false'); } });
+      el.classList.toggle('open', !isOpen);
+      btn.setAttribute('aria-expanded', String(!isOpen));
+    });
+    faqList.appendChild(el);
+  });
+  // open first item by default
+  faqList.firstElementChild.classList.add('open');
+  faqList.firstElementChild.querySelector('.faq-q').setAttribute('aria-expanded','true');
+
+  // scroll-driven fill + active state for the build path
+  const steps = document.querySelectorAll('.step');
+  const pathFill = document.getElementById('pathFill');
+  const pathContainer = document.getElementById('pathContainer');
+
+  function updatePath(){
+    const rect = pathContainer.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const total = rect.height;
+    const progressPx = Math.min(Math.max(vh*0.65 - rect.top, 0), total);
+    pathFill.style.height = (progressPx/total*100) + '%';
+
+    steps.forEach(step => {
+      const r = step.getBoundingClientRect();
+      if (r.top < vh*0.7) step.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', updatePath, { passive:true });
+  window.addEventListener('resize', updatePath);
+  updatePath();
+</script>
+
+</body>
+</html>
