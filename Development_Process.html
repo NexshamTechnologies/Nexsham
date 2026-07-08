@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Development Process</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F8FC;
+    --card:#FFFFFF;
+    --ink:#0F172A;
+    --muted:#64748B;
+    --border:#E7EAF0;
+
+    --blue:#2F6FED;
+    --blue-tint:#E9F0FE;
+    --green:#16A870;
+    --green-tint:#E4F7EF;
+    --purple:#8151E8;
+    --purple-tint:#F0EAFD;
+    --orange:#F1873F;
+    --orange-tint:#FDEEE2;
+    --teal:#14B8A6;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:80px 24px 60px;
+  }
+
+  /* ---------- Header ---------- */
+  .header{ text-align:center; margin-bottom:56px; }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--blue-tint);
+    color:var(--blue);
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    letter-spacing:0.12em;
+    padding:9px 20px;
+    border-radius:999px;
+    margin-bottom:24px;
+  }
+  .eyebrow svg{ width:14px; height:14px; }
+
+  h1{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:clamp(32px, 5vw, 50px);
+    line-height:1.1;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  h1 .grad{
+    background:linear-gradient(90deg, var(--blue), var(--teal));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .sub{
+    max-width:600px;
+    margin:0 auto 18px;
+    color:var(--muted);
+    font-size:16.5px;
+    line-height:1.65;
+  }
+
+  .underline{
+    width:56px;
+    height:3px;
+    background:var(--teal);
+    border-radius:2px;
+    margin:0 auto;
+  }
+
+  /* ---------- Connector + rows ---------- */
+  .process{ position:relative; }
+
+  .connector-svg{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:visible;
+    z-index:0;
+  }
+
+  .row-wrap{ position:relative; z-index:1; margin-bottom:36px; }
+  .row-wrap:last-child{ margin-bottom:0; }
+
+  .rail{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-bottom:22px;
+  }
+
+  .rail-node{ display:flex; flex-direction:column; align-items:center; gap:8px; }
+
+  .num-circle{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--card);
+    border:1.5px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:17px;
+    box-shadow:0 4px 14px rgba(15,23,42,0.06);
+  }
+  .num-circle.blue{ color:var(--blue); }
+  .num-circle.green{ color:var(--green); }
+  .num-circle.purple{ color:var(--purple); }
+  .num-circle.orange{ color:var(--orange); }
+
+  .dot{ width:9px; height:9px; border-radius:50%; }
+  .dot.blue{ background:var(--blue); }
+  .dot.green{ background:var(--green); }
+  .dot.purple{ background:var(--purple); }
+  .dot.orange{ background:var(--orange); }
+
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:30px 26px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transition:transform .28s ease, box-shadow .28s ease;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 40px -14px rgba(15,23,42,0.14);
+  }
+
+  .icon-box{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .icon-box svg{ width:26px; height:26px; }
+  .icon-box.blue{ background:var(--blue-tint); color:var(--blue); }
+  .icon-box.green{ background:var(--green-tint); color:var(--green); }
+  .icon-box.purple{ background:var(--purple-tint); color:var(--purple); }
+  .icon-box.orange{ background:var(--orange-tint); color:var(--orange); }
+
+  .card h3{
+    font-family:'Poppins',sans-serif;
+    font-size:18.5px;
+    font-weight:700;
+    margin:0;
+    line-height:1.3;
+  }
+
+  .mini-underline{ width:34px; height:3px; border-radius:2px; margin-top:-8px; }
+  .mini-underline.blue{ background:var(--blue); }
+  .mini-underline.green{ background:var(--green); }
+  .mini-underline.purple{ background:var(--purple); }
+  .mini-underline.orange{ background:var(--orange); }
+
+  .card p{
+    color:var(--muted);
+    font-size:14.5px;
+    line-height:1.7;
+    margin:0;
+  }
+
+  /* ---------- Benefits ---------- */
+  .benefits{
+    margin-top:56px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:34px 30px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:24px;
+  }
+
+  .benefit{ display:flex; align-items:flex-start; gap:14px; }
+
+  .b-icon{
+    width:46px;
+    height:46px;
+    min-width:46px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .b-icon svg{ width:21px; height:21px; }
+  .b-icon.blue{ background:var(--blue-tint); color:var(--blue); }
+  .b-icon.green{ background:var(--green-tint); color:var(--green); }
+  .b-icon.purple{ background:var(--purple-tint); color:var(--purple); }
+  .b-icon.orange{ background:var(--orange-tint); color:var(--orange); }
+  .b-icon.teal{ background:#E1F7F4; color:var(--teal); }
+
+  .benefit-text h4{
+    font-family:'Poppins',sans-serif;
+    font-size:14.5px;
+    font-weight:700;
+    margin:0 0 4px;
+  }
+  .benefit-text p{
+    font-size:13px;
+    color:var(--muted);
+    margin:0;
+    line-height:1.5;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1000px){
+    .connector-svg{ display:none; }
+    .cards{ grid-template-columns:repeat(2,1fr); }
+    .rail{ grid-template-columns:repeat(2,1fr); }
+    .benefits{ grid-template-columns:repeat(2,1fr); }
+  }
+
+  @media (max-width:640px){
+    .wrap{ padding:56px 18px 40px; }
+    .header{ margin-bottom:40px; }
+    .cards{ grid-template-columns:1fr; }
+    .rail{ display:none; }
+    .row-wrap{ margin-bottom:20px; }
+    .card{ position:relative; padding-left:80px; }
+    .card .tag{
+      position:absolute;
+      left:22px; top:30px;
+      width:44px; height:44px;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Poppins',sans-serif; font-weight:700; font-size:14px;
+      border:1.5px solid var(--border);
+      background:var(--card);
+    }
+    .tag.blue{ color:var(--blue); }
+    .tag.green{ color:var(--green); }
+    .tag.purple{ color:var(--purple); }
+    .tag.orange{ color:var(--orange); }
+    .icon-box{ margin-left:0; }
+    .benefits{ grid-template-columns:1fr; padding:26px 22px; }
+  }
+
+  @media (min-width:641px){ .tag{ display:none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      OUR DEVELOPMENT PROCESS
+    </div>
+    <h1>Our Development <span class="grad">Process</span></h1>
+    <p class="sub">From idea to deployment, we follow a structured development process to ensure quality, transparency, and timely delivery.</p>
+    <div class="underline"></div>
+  </div>
+
+  <div class="process">
+
+    <!-- Row 1 -->
+    <div class="row-wrap">
+      <div class="rail">
+        <div class="rail-node"><div class="num-circle blue">01</div><div class="dot blue"></div></div>
+        <div class="rail-node"><div class="num-circle green">02</div><div class="dot green"></div></div>
+        <div class="rail-node"><div class="num-circle purple">03</div><div class="dot purple"></div></div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="tag blue">01</span>
+          <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Discovery &amp; Consultation</h3>
+          <div class="mini-underline blue"></div>
+          <p>We understand your business, challenges, and goals to define the right solution.</p>
+        </div>
+        <div class="card">
+          <span class="tag green">02</span>
+          <div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3>Solution Design &amp; Roadmap</h3>
+          <div class="mini-underline green"></div>
+          <p>We analyze requirements, design the solution architecture, and create a clear project roadmap.</p>
+        </div>
+        <div class="card">
+          <span class="tag purple">03</span>
+          <div class="icon-box purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3>UI / UX Design</h3>
+          <div class="mini-underline purple"></div>
+          <p>We craft intuitive, modern, and user-friendly interfaces that deliver great experiences.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row-wrap">
+      <div class="rail">
+        <div class="rail-node"><div class="num-circle orange">04</div><div class="dot orange"></div></div>
+        <div class="rail-node"><div class="num-circle blue">05</div><div class="dot blue"></div></div>
+        <div class="rail-node"><div class="num-circle green">06</div><div class="dot green"></div></div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="tag orange">04</span>
+          <div class="icon-box orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Development</h3>
+          <div class="mini-underline orange"></div>
+          <p>Our developers build secure, scalable, and reliable solutions using best coding practices.</p>
+        </div>
+        <div class="card">
+          <span class="tag blue">05</span>
+          <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Quality Assurance</h3>
+          <div class="mini-underline blue"></div>
+          <p>We test every feature rigorously to ensure performance, security, and a bug-free experience.</p>
+        </div>
+        <div class="card">
+          <span class="tag green">06</span>
+          <div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <h3>Deployment &amp; Support</h3>
+          <div class="mini-underline green"></div>
+          <p>We deploy your solution and provide ongoing support, maintenance &amp; improvements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefits -->
+  <div class="benefits">
+    <div class="benefit">
+      <div class="b-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg></div>
+      <div class="benefit-text"><h4>Transparent Process</h4><p>You stay informed at every step.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="benefit-text"><h4>Client Collaboration</h4><p>We work closely with you throughout the journey.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="benefit-text"><h4>On-Time Delivery</h4><p>We value your time and deadlines.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 8 5-3 5 3-2-8"/></svg></div>
+      <div class="benefit-text"><h4>Quality Assurance</h4><p>Quality is our promise, not just a phase.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <div class="benefit-text"><h4>Long-Term Support</h4><p>We grow with your business.</p></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
