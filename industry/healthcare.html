@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSham — Healthcare Software Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-900:#0B3B2E;
+    --green-800:#0F4A38;
+    --green-700:#12603F;
+    --green-600:#158A52;
+    --green-500:#1AA25F;
+    --green-100:#E4F4EA;
+    --green-50:#F1FAF4;
+    --ink:#152420;
+    --slate:#5B6B66;
+    --line:#E3ECE7;
+    --white:#ffffff;
+    --amber:#B98900;
+    --red:#C0442C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.brand{font-family:'Sora', sans-serif;}
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  ul{list-style:none;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    color:var(--green-700);
+  }
+
+  /* ---------- NAV ---------- */
+ header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:11px 20px; border-radius:9px;
+    font-size:14px; font-weight:600; cursor:pointer; border:1.5px solid transparent; white-space:nowrap;
+  }
+  .btn-primary{background:var(--green-700); color:#fff;}
+  .btn-primary:hover{background:var(--green-800);}
+  .btn-outline{border-color:var(--line); color:var(--ink); background:#fff;}
+  .btn-outline:hover{border-color:var(--green-600); color:var(--green-700);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:56px 32px 40px;}
+  .crumbs{max-width:1200px; margin:0 auto 26px; font-size:13px; color:var(--slate); display:flex; gap:8px; align-items:center;}
+  .crumbs b{color:var(--ink);}
+  .hero-grid{
+    max-width:1200px; margin:0 auto; display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
+  }
+  .badge-pill{
+    display:inline-block; background:var(--green-100); color:var(--green-700); font-weight:700; font-size:11.5px;
+    letter-spacing:1px; text-transform:uppercase; padding:7px 14px; border-radius:20px; margin-bottom:18px;
+  }
+  .hero-copy h1{font-size:38px; line-height:1.16; font-weight:800; letter-spacing:-0.5px;}
+  .hero-copy h1 .accent{color:var(--green-600);}
+  .hero-copy p.lead{margin-top:18px; font-size:15.5px; color:var(--slate); line-height:1.65; max-width:430px;}
+  .check-row{display:flex; flex-wrap:wrap; gap:18px; margin-top:22px;}
+  .check-item{display:flex; align-items:center; gap:7px; font-size:13.5px; font-weight:500; color:var(--ink);}
+  .check-item svg{width:16px; height:16px; flex:none;}
+  .hero-cta{display:flex; gap:14px; margin-top:30px;}
+
+  /* dashboard mock */
+  .mock-stage{position:relative;}
+  .dash{
+    display:grid; grid-template-columns:170px 1fr; background:#fff; border-radius:16px;
+    box-shadow:0 30px 60px -25px rgba(11,59,46,.35), 0 0 0 1px var(--line);
+    overflow:hidden; min-height:420px;
+  }
+  .dash-side{background:var(--green-800); color:#fff; padding:22px 14px;}
+  .dash-side .logo{color:#fff; font-size:14px; margin-bottom:26px;}
+  .dash-side .logo-mark{background:#fff; color:var(--green-800); width:28px; height:28px; font-size:14px;}
+  .side-item{
+    display:flex; align-items:center; gap:9px; font-size:12px; font-weight:500; padding:9px 10px; border-radius:8px;
+    color:rgba(255,255,255,.75); margin-bottom:2px;
+  }
+  .side-item svg{width:14px; height:14px; flex:none; opacity:.85;}
+  .side-item.active{background:var(--green-600); color:#fff;}
+  .dash-main{padding:20px 22px; background:#FAFDFB;}
+  .dash-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+  .dash-top h3{font-size:16.5px; font-weight:700;}
+  .dash-searchbar{flex:1; margin:0 22px; background:#fff; border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:11.5px; color:#9AA6A1;}
+  .dash-user{display:flex; align-items:center; gap:8px; font-size:11px; font-weight:600; white-space:nowrap;}
+  .avatar{width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#1AA25F,#0B3B2E);}
+  .bell{width:16px; height:16px; opacity:.6;}
+  .stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px;}
+  .stat-card{background:#fff; border:1px solid var(--line); border-radius:10px; padding:12px 14px;}
+  .stat-card .lbl{font-size:10px; color:var(--slate); font-weight:600;}
+  .stat-card .val{font-size:16px; font-weight:800; margin-top:4px;}
+  .stat-card .delta{font-size:10px; color:var(--green-600); font-weight:700; margin-top:3px;}
+  .panel-row{display:grid; grid-template-columns:1.4fr 1fr; gap:12px; margin-bottom:16px;}
+  .panel{background:#fff; border:1px solid var(--line); border-radius:10px; padding:14px;}
+  .panel .p-head{display:flex; justify-content:space-between; align-items:center; font-size:11px; font-weight:700; margin-bottom:8px;}
+  .panel .p-head span.link{color:var(--green-600); font-weight:600; font-size:9.5px;}
+  .sparkline{width:100%; height:70px;}
+  .donut{display:flex; align-items:center; gap:10px;}
+  .donut-legend{font-size:9px; color:var(--slate); display:flex; flex-direction:column; gap:5px;}
+  .dot{width:6px; height:6px; border-radius:50%; display:inline-block; margin-right:5px;}
+  table.mini{width:100%; border-collapse:collapse; font-size:10px;}
+  table.mini td{padding:6px 4px; border-top:1px solid var(--line); color:var(--ink); vertical-align:middle;}
+  table.mini tr:first-child td{border-top:none;}
+  .person{display:flex; align-items:center; gap:6px;}
+  .person .av{width:20px; height:20px; border-radius:50%; background:linear-gradient(135deg,#1AA25F,#0B3B2E); flex:none;}
+  .tag{font-size:9px; font-weight:700; padding:3px 8px; border-radius:20px;}
+  .tag.success{background:#E3F6EA; color:var(--green-600);}
+  .tag.pending{background:#FCF1D9; color:var(--amber);}
+  .tag.new{background:#E4F4EA; color:var(--green-700);}
+  .tag.alert{background:#FBE7E2; color:var(--red);}
+  .tag.updated{background:#EEF1F5; color:var(--slate);}
+
+  .phone{
+    position:absolute; right:-46px; bottom:-30px; width:190px; background:#0B1613; border-radius:30px; padding:8px;
+    box-shadow:0 30px 50px -20px rgba(0,0,0,.5); border:2px solid #1c2a26;
+  }
+  .phone-screen{background:#fff; border-radius:22px; padding:16px 14px; color:var(--ink); min-height:350px;}
+  .phone-top{display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:700;}
+  .phone-top .bell2{width:14px;height:14px;opacity:.5;}
+  .greet2{font-size:10px; color:var(--slate); margin-top:10px;}
+  .greet2 b{display:block; font-size:12.5px; color:var(--ink); margin-top:2px;}
+  .portal-card{background:var(--green-100); border-radius:12px; padding:12px; margin-top:10px;}
+  .portal-card .q{font-size:10px; font-weight:600; line-height:1.4;}
+  .portal-card button{margin-top:10px; width:100%; background:var(--green-600); color:#fff; border:none; border-radius:7px; padding:8px; font-size:9.5px; font-weight:700;}
+  .qa-title2{font-size:9.5px; color:var(--slate); margin-top:14px; margin-bottom:8px;}
+  .qa-grid2{display:grid; grid-template-columns:repeat(3,1fr); gap:6px;}
+  .qa-item2{background:var(--green-50); border:1px solid var(--line); border-radius:8px; padding:8px 4px; text-align:center; font-size:7.5px; color:var(--ink);}
+  .qa-item2 svg{width:13px; height:13px; margin:0 auto 4px; color:var(--green-700);}
+  .upc-title{font-size:9.5px; color:var(--slate); margin-top:14px; margin-bottom:8px;}
+  .upc-card{display:flex; gap:8px; align-items:center; background:var(--green-50); border-radius:10px; padding:8px;}
+  .upc-card .av{width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#1AA25F,#0B3B2E); flex:none;}
+  .upc-card .t{font-size:9px;}
+  .upc-card .t b{display:block; font-size:9.5px;}
+  .see{font-size:8.5px; color:var(--green-700); font-weight:700;}
+
+  /* ---------- LOGOS ---------- */
+  .logos-sec{padding:52px 32px 10px; text-align:center;}
+  .logos-sec .lbl{font-size:12.5px; color:var(--slate); letter-spacing:.5px; margin-bottom:28px;}
+  .logos-row{display:flex; justify-content:center; align-items:center; gap:52px; flex-wrap:wrap; max-width:1100px; margin:0 auto; opacity:.85;}
+  .logos-row .l-item{display:flex; align-items:center; gap:7px; font-weight:700; font-size:15px; color:#333;}
+  .logos-row svg{width:20px; height:20px;}
+
+  /* ---------- SOLUTIONS ---------- */
+  .section{padding:80px 32px;}
+  .sec-head{text-align:center; max-width:640px; margin:0 auto 48px;}
+  .sec-head h2{font-size:31px; font-weight:800; margin-top:12px; letter-spacing:-0.4px;}
+  .sec-head p{margin-top:12px; color:var(--slate); font-size:15px;}
+
+  .card-grid3{max-width:1160px; margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .sol-card{
+    border:1px solid var(--line); border-radius:16px; padding:30px 26px; background:#fff;
+    transition:box-shadow .2s, transform .2s;
+  }
+  .sol-card:hover{box-shadow:0 20px 40px -25px rgba(11,59,46,.25); transform:translateY(-3px);}
+  .sol-icon{
+    width:46px; height:46px; border-radius:12px; background:var(--green-100); color:var(--green-700);
+    display:flex; align-items:center; justify-content:center; margin-bottom:18px;
+  }
+  .sol-icon svg{width:22px; height:22px;}
+  .sol-card h3{font-size:18px; font-weight:700;}
+  .sol-card .sub{font-size:12.5px; color:var(--green-700); font-weight:700; margin-top:2px;}
+  .sol-card p{font-size:13.5px; color:var(--slate); margin-top:8px; line-height:1.6;}
+  .sol-list{margin-top:16px; display:flex; flex-direction:column; gap:8px;}
+  .sol-list li{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:500;}
+  .sol-list svg{width:14px; height:14px; color:var(--green-600); flex:none;}
+  .sol-link{display:inline-flex; align-items:center; gap:6px; margin-top:20px; font-size:13.5px; font-weight:700; color:var(--green-700);}
+
+  /* ---------- FEATURES ---------- */
+  .features-sec{background:var(--green-50); padding:70px 32px;}
+  .feat-grid{max-width:1160px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .feat-card{background:#fff; border-radius:14px; padding:22px 12px; text-align:center; border:1px solid var(--line);}
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; background:var(--green-100); color:var(--green-700); margin:0 auto 12px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .feat-icon svg{width:20px; height:20px;}
+  .feat-card span{font-size:12px; font-weight:600; line-height:1.4;}
+
+  /* ---------- PROCESS ---------- */
+  .process-track{max-width:1160px; margin:56px auto 0; position:relative;}
+  .process-line{position:absolute; top:26px; left:5%; right:5%; height:1.5px; background-image:linear-gradient(to right, var(--line) 60%, transparent 40%); background-size:10px 2px; background-repeat:repeat-x;}
+  .process-steps{display:grid; grid-template-columns:repeat(6,1fr); position:relative;}
+  .p-step{text-align:center; padding:0 8px;}
+  .p-circle{
+    width:52px; height:52px; border-radius:50%; background:#fff; border:1.5px solid #CDEBD9;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 16px; position:relative; z-index:2;
+    color:var(--green-700); box-shadow:0 4px 14px -6px rgba(11,59,46,.25);
+  }
+  .p-circle svg{width:20px; height:20px;}
+  .p-num{font-size:12px; font-weight:800; color:var(--green-600); margin-bottom:6px;}
+  .p-step h4{font-size:14.5px; font-weight:700; margin-bottom:6px;}
+  .p-step p{font-size:12px; color:var(--slate); line-height:1.5;}
+
+  /* ---------- BENEFITS STRIP ---------- */
+  .benefits-strip{max-width:1160px; margin:64px auto 0; background:var(--green-50); border-radius:16px; padding:30px 32px; display:grid; grid-template-columns:repeat(5,1fr); gap:18px;}
+  .benefit-item{display:flex; gap:10px; align-items:flex-start;}
+  .benefit-item .ic{width:32px; height:32px; border-radius:9px; background:#fff; border:1px solid var(--line); display:flex; align-items:center; justify-content:center; flex:none;}
+  .benefit-item svg{width:16px; height:16px; color:var(--green-600);}
+  .benefit-item h5{font-size:12.5px; font-weight:700; margin-bottom:3px;}
+  .benefit-item p{font-size:11px; color:var(--slate); line-height:1.5;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    max-width:1160px; margin:80px auto; background:linear-gradient(120deg,var(--green-800),var(--green-600));
+    border-radius:22px; padding:52px 48px; display:grid; grid-template-columns:0.65fr 1fr 0.9fr; gap:30px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-banner::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 85% 20%, rgba(255,255,255,.08), transparent 60%);}
+  .cta-illus{display:flex; align-items:center; justify-content:center; position:relative; z-index:1;}
+  .cta-illus svg{width:150px; height:150px;}
+  .cta-mid{position:relative; z-index:1;}
+  .cta-mid .eyebrow{color:#BFE9D2;}
+  .cta-mid h2{font-size:25px; font-weight:800; margin-top:10px; line-height:1.3;}
+  .cta-mid p{margin-top:12px; font-size:13.5px; color:rgba(255,255,255,.85); line-height:1.6; max-width:340px;}
+  .cta-mid .hero-cta{margin-top:22px;}
+  .cta-banner .btn-primary{background:#fff; color:var(--green-800);}
+  .cta-banner .btn-outline{border-color:rgba(255,255,255,.4); color:#fff; background:transparent;}
+  .cta-feats{display:flex; flex-direction:column; gap:16px; position:relative; z-index:1;}
+  .cta-feat{display:flex; gap:10px; align-items:flex-start;}
+  .cta-feat svg{width:17px; height:17px; margin-top:2px; flex:none;}
+  .cta-feat h5{font-size:12.5px; font-weight:700;}
+  .cta-feat p{font-size:11px; color:rgba(255,255,255,.75); margin-top:2px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-sec{padding:20px 32px 90px;}
+  .faq-grid{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:14px 20px;}
+  .faq-item{border:1px solid var(--line); border-radius:10px; padding:16px 18px; cursor:pointer;}
+  .faq-item summary{list-style:none; display:flex; justify-content:space-between; align-items:center; font-size:14px; font-weight:600;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item .plus{width:20px; height:20px; border-radius:50%; background:var(--green-100); color:var(--green-700); display:flex; align-items:center; justify-content:center; flex:none; font-size:14px; font-weight:700;}
+  .faq-item[open] .plus{background:var(--green-700); color:#fff;}
+  .faq-item p{margin-top:10px; font-size:13px; color:var(--slate); line-height:1.6;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--green-900); color:rgba(255,255,255,.7); padding:56px 32px 26px;}
+  .foot-grid{max-width:1160px; margin:0 auto; display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px;}
+  .foot-brand .logo{color:#fff;}
+  .foot-brand p{font-size:13px; margin-top:14px; line-height:1.7; max-width:280px; color:rgba(255,255,255,.55);}
+  footer h5{color:#fff; font-size:13.5px; font-weight:700; margin-bottom:16px;}
+  footer ul li{margin-bottom:10px; font-size:13px;}
+  footer ul li a:hover{color:#fff;}
+  .foot-bottom{max-width:1160px; margin:40px auto 0; padding-top:22px; border-top:1px solid rgba(255,255,255,.1); font-size:12.5px; display:flex; justify-content:space-between;}
+
+  @media (max-width:1000px){
+    nav.links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .mock-stage{max-width:560px;}
+    .card-grid3{grid-template-columns:1fr;}
+    .feat-grid{grid-template-columns:repeat(2,1fr);}
+    .process-steps{grid-template-columns:repeat(3,1fr); row-gap:30px;}
+    .process-line{display:none;}
+    .benefits-strip{grid-template-columns:repeat(2,1fr);}
+    .cta-banner{grid-template-columns:1fr; text-align:left;}
+    .cta-illus{display:none;}
+    .faq-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <span class="badge-pill">Healthcare Solutions</span>
+      <h1>Digital Healthcare Solutions for Better<br><span class="accent">Care and Outcomes</span></h1>
+      <p class="lead">We build secure, scalable and intelligent healthcare platforms that simplify hospital operations, enhance patient care and improve overall efficiency.</p>
+      <div class="check-row">
+        <div class="check-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1AA25F"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Better Patient Care</div>
+        <div class="check-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1AA25F"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Streamlined Operations</div>
+        <div class="check-item"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#1AA25F"/><path d="M8 12l2.5 2.5L16 9" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Data-Driven Decisions</div>
+      </div>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">Get a Free Demo →</a>
+        <a href="#" class="btn btn-outline">💬 Talk to Our Experts</a>
+      </div>
+    </div>
+
+    <div class="mock-stage">
+      <div class="dash">
+        <div class="dash-side">
+          <div class="logo">N<small style="display:inline;font-size:11px;font-weight:700;margin-left:4px;">EXSHAM<br><span style="font-size:7px;letter-spacing:2px;opacity:.6;">HMS</span></small></div>
+          <div class="side-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Dashboard</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Patients</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>Appointments</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg>Doctors</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Departments</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>Billing</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l1 5-4 3 4 3-1 5H9l-1-5 4-3-4-3z"/></svg>Pharmacy</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>Reports</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Messages</div>
+          <div class="side-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9c.2.63.77 1.09 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>Settings</div>
+        </div>
+        <div class="dash-main">
+          <div class="dash-top">
+            <h3>Dashboard</h3>
+            <div class="dash-searchbar">Search patients, doctors...</div>
+            <div class="dash-user">
+              <svg class="bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <div class="avatar"></div>
+              Dr. Sarah Johnson<br>Administrator
+            </div>
+          </div>
+
+          <div class="stat-row">
+            <div class="stat-card"><div class="lbl">Total Patients</div><div class="val">12,545</div><div class="delta">↑ 12.3%</div></div>
+            <div class="stat-card"><div class="lbl">Appointments Today</div><div class="val">256</div><div class="delta">↑ 8.2%</div></div>
+            <div class="stat-card"><div class="lbl">Total Doctors</div><div class="val">78</div><div class="delta">↑ 5.4%</div></div>
+            <div class="stat-card"><div class="lbl">Revenue (This Month)</div><div class="val">$48,256</div><div class="delta">↑ 15.3%</div></div>
+          </div>
+
+          <div class="panel-row">
+            <div class="panel">
+              <div class="p-head">Patient Overview <span class="link">This Month ▾</span></div>
+              <svg class="sparkline" viewBox="0 0 300 80" preserveAspectRatio="none">
+                <polyline points="0,45 30,55 60,30 90,48 120,20 150,42 180,25 210,50 240,18 270,38 300,15" fill="none" stroke="#1AA25F" stroke-width="2.5"/>
+                <polygon points="0,45 30,55 60,30 90,48 120,20 150,42 180,25 210,50 240,18 270,38 300,15 300,80 0,80" fill="url(#g1)" opacity="0.15"/>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1AA25F"/><stop offset="100%" stop-color="#fff" stop-opacity="0"/></linearGradient></defs>
+              </svg>
+            </div>
+            <div class="panel">
+              <div class="p-head">Department Overview</div>
+              <div class="donut">
+                <svg width="70" height="70" viewBox="0 0 42 42">
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#0B3B2E" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="25"/>
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#1AA25F" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="0"/>
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#7CCB9C" stroke-width="6" stroke-dasharray="18 82" stroke-dashoffset="-20"/>
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#CDEBD9" stroke-width="6" stroke-dasharray="15 85" stroke-dashoffset="-38"/>
+                  <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#E4F4EA" stroke-width="6" stroke-dasharray="22 78" stroke-dashoffset="-53"/>
+                  <text x="21" y="20" text-anchor="middle" font-size="5" font-weight="800" fill="#152420">12,545</text>
+                  <text x="21" y="25" text-anchor="middle" font-size="3" fill="#5B6B66">Total</text>
+                </svg>
+                <div class="donut-legend">
+                  <span><i class="dot" style="background:#0B3B2E"></i>Cardiology 20%</span>
+                  <span><i class="dot" style="background:#1AA25F"></i>Neurology 20%</span>
+                  <span><i class="dot" style="background:#7CCB9C"></i>Orthopedics 18%</span>
+                  <span><i class="dot" style="background:#CDEBD9"></i>Pediatrics 15%</span>
+                  <span><i class="dot" style="background:#9AA6A1"></i>Others 22%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-row">
+            <div class="panel">
+              <div class="p-head">Upcoming Appointments <span class="link">View All</span></div>
+              <table class="mini">
+                <tr><td><div class="person"><span class="av"></span>Michael Brown</div></td><td>Cardiology</td><td>10:00 AM</td></tr>
+                <tr><td><div class="person"><span class="av"></span>Emily Davis</div></td><td>Neurology</td><td>11:30 AM</td></tr>
+                <tr><td><div class="person"><span class="av"></span>David Wilson</div></td><td>Orthopedics</td><td>02:00 PM</td></tr>
+                <tr><td><div class="person"><span class="av"></span>Sarah Miller</div></td><td>Pediatrics</td><td>04:30 PM</td></tr>
+              </table>
+            </div>
+            <div class="panel">
+              <div class="p-head">Recent Patients <span class="link">View All</span></div>
+              <table class="mini">
+                <tr><td><div class="person"><span class="av"></span>John Doe</div></td><td>OPD</td><td>2 mins ago</td></tr>
+                <tr><td><div class="person"><span class="av"></span>Lisa Anderson</div></td><td>OPD</td><td>15 mins ago</td></tr>
+                <tr><td><div class="person"><span class="av"></span>Robert Taylor</div></td><td>IPD</td><td>1 hour ago</td></tr>
+                <tr><td><div class="person"><span class="av"></span>Jessica White</div></td><td>OPD</td><td>2 hours ago</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-top">Patient Portal <svg class="bell2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/></svg></div>
+          <div class="greet2">Hello, John Doe 👋<b>How are you feeling today?</b></div>
+          <div class="portal-card">
+            <div class="q">Need to see a doctor? Book an appointment now.</div>
+            <button>Book Appointment</button>
+          </div>
+          <div class="qa-title2">Quick Actions</div>
+          <div class="qa-grid2">
+            <div class="qa-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/></svg>Visit History</div>
+            <div class="qa-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2h6l1 5-4 3 4 3-1 5H9l-1-5 4-3-4-3z"/></svg>Prescriptions</div>
+            <div class="qa-item2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/></svg>Reports</div>
+          </div>
+          <div class="upc-title" style="display:flex; justify-content:space-between;"><span>Upcoming Appointment</span><span class="see">View All</span></div>
+          <div class="upc-card">
+            <span class="av"></span>
+            <div class="t"><b>Dr. Sarah Johnson</b>Cardiologist<br>May 21, 2024 · 10:00 AM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- SOLUTIONS -->
+<section class="section">
+  <div class="sec-head">
+    <span class="eyebrow">Complete Healthcare Solutions</span>
+    <h2>Smart Solutions for Every Healthcare Need</h2>
+    <p>Our comprehensive healthcare software solutions are designed to improve efficiency, reduce costs and enhance patient experiences.</p>
+  </div>
+  <div class="card-grid3">
+    <div class="sol-card">
+      <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></div>
+      <h3>HMS</h3>
+      <div class="sub">Hospital Management System</div>
+      <p>Automate and manage hospital operations efficiently with our all-in-one HMS.</p>
+      <ul class="sol-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>OPD Management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>IPD Management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Billing & Invoicing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Department Management</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Pharmacy Management</li>
+      </ul>
+      <a href="#" class="sol-link">Explore HMS →</a>
+    </div>
+
+    <div class="sol-card">
+      <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+      <h3>Patient Portal</h3>
+      <div class="sub">Empower Patients</div>
+      <p>Give patients easy access to their health information and services.</p>
+      <ul class="sol-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Online Appointments</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Medical Records</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Prescriptions</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Lab Reports</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Secure Messaging</li>
+      </ul>
+      <a href="#" class="sol-link">Explore Patient Portal →</a>
+    </div>
+
+    <div class="sol-card">
+      <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+      <h3>Appointment System</h3>
+      <div class="sub">Smart Scheduling</div>
+      <p>Intelligent appointment scheduling system to reduce wait times and improve flow.</p>
+      <ul class="sol-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Online Booking</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Doctor Availability</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Appointment Reminders</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Calendar Integration</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>Queue Management</li>
+      </ul>
+      <a href="#" class="sol-link">Explore Appointment System →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-sec">
+  <div class="sec-head" style="margin-bottom:40px;">
+    <span class="eyebrow">Powerful Features</span>
+    <h2>Everything You Need in One Platform</h2>
+  </div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div><span>Electronic Health Records (EHR)</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><span>Telemedicine Integration</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v6L4 18a2 2 0 002 3h12a2 2 0 002-3l-5-10V2"/><path d="M8.5 2h7"/></svg></div><span>Lab & Radiology Management</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><span>Pharmacy Management</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span>Insurance Management</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><span>Analytics & Reporting</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><span>Role-based Access</span></div>
+    <div class="feat-card"><div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg></div><span>Secure & Compliant (HIPAA Ready)</span></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" style="padding-bottom:20px;">
+  <div class="sec-head">
+    <span class="eyebrow">Our Process</span>
+    <h2>Building Better Healthcare Experiences</h2>
+  </div>
+  <div class="process-track">
+    <div class="process-line"></div>
+    <div class="process-steps">
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <div class="p-num">01</div>
+        <h4>Understand Needs</h4>
+        <p>We analyze your requirements</p>
+      </div>
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg></div>
+        <div class="p-num">02</div>
+        <h4>Plan & Design</h4>
+        <p>We create the best solution for you</p>
+      </div>
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></div>
+        <div class="p-num">03</div>
+        <h4>Develop</h4>
+        <p>We build with security and scalability</p>
+      </div>
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="3" y="4" width="18" height="17" rx="2"/></svg></div>
+        <div class="p-num">04</div>
+        <h4>Test & Verify</h4>
+        <p>We ensure quality and performance</p>
+      </div>
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
+        <div class="p-num">05</div>
+        <h4>Deploy</h4>
+        <p>We deploy seamlessly with zero downtime</p>
+      </div>
+      <div class="p-step">
+        <div class="p-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/><path d="M9.5 12l2 2 3.5-3.5"/></svg></div>
+        <div class="p-num">06</div>
+        <h4>Support</h4>
+        <p>We provide continuous support & updates</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="benefits-strip">
+    <div class="benefit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><h5>Industry Expertise</h5><p>Deep understanding of healthcare workflows</p></div></div>
+    <div class="benefit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div><div><h5>Secure & Compliant</h5><p>Built with global standards & data security</p></div></div>
+    <div class="benefit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><h5>Scalable Solutions</h5><p>Grow your system as your organization grows</p></div></div>
+    <div class="benefit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 10-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></div><div><h5>Better Patient Outcomes</h5><p>Improve care quality and patient satisfaction</p></div></div>
+    <div class="benefit-item"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.11"/></svg></div><div><h5>Cost Effective</h5><p>Reduce operational costs and improve ROI</p></div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section>
+  <div class="cta-banner">
+    <div class="cta-illus">
+      <svg viewBox="0 0 200 200" fill="none">
+        <circle cx="100" cy="70" r="26" fill="#F2C9A0"/>
+        <path d="M74 68a26 26 0 0152 0v-6a26 26 0 00-52 0z" fill="#2E2A26"/>
+        <rect x="60" y="95" width="80" height="90" rx="14" fill="#fff"/>
+        <circle cx="100" cy="120" r="10" fill="rgba(15,74,56,.15)"/>
+        <rect x="70" y="140" width="60" height="34" rx="6" fill="rgba(15,74,56,.1)"/>
+        <rect x="76" y="146" width="20" height="6" rx="2" fill="rgba(15,74,56,.35)"/>
+        <rect x="76" y="156" width="34" height="6" rx="2" fill="rgba(15,74,56,.25)"/>
+        <circle cx="145" cy="150" r="20" fill="rgba(255,255,255,.15)"/>
+        <path d="M137 150h16M145 142v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="cta-mid">
+      <span class="eyebrow">Ready to Transform Your Healthcare Operations?</span>
+      <h2>Let's Build a Healthier Tomorrow Together</h2>
+      <p>Partner with NexSham to deliver better care, streamline operations and drive innovation.</p>
+      <div class="hero-cta">
+        <a href="#" class="btn btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn btn-outline">💬 Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-feats">
+      <div class="cta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/></svg><div><h5>Expert Consultation</h5><p>Get advice from our healthcare experts</p></div></div>
+      <div class="cta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg><div><h5>Custom Solution</h5><p>Tailored to your hospital's needs</p></div></div>
+      <div class="cta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h7v8l10-12h-7z"/></svg><div><h5>Quick Implementation</h5><p>Go live in weeks, not months</p></div></div>
+      <div class="cta-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg><div><h5>24/7 Support</h5><p>Always here when you need us</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>

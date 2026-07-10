@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSham — Enterprise Software Built for Scale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#060b18;
+    --navy-900:#0a1128;
+    --navy-800:#111a35;
+    --navy-700:#182448;
+    --blue-600:#2f5bff;
+    --blue-500:#4d74ff;
+    --blue-400:#7996ff;
+    --ink:#0c1330;
+    --slate-600:#5b6478;
+    --slate-500:#7c8598;
+    --slate-200:#e4e7ef;
+    --slate-100:#eef0f6;
+    --paper:#ffffff;
+    --bg-soft:#f6f7fb;
+    --green:#1fb37a;
+    --purple:#7c5cff;
+    --pink:#ff6f9c;
+    --amber:#ffab40;
+    --teal:#26c2c2;
+    --radius:14px;
+    --shadow-lg:0 24px 60px -20px rgba(10,17,40,0.35);
+    --shadow-sm:0 8px 24px -12px rgba(10,17,40,0.18);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Sora',sans-serif;margin:0;color:var(--ink);}
+  p{margin:0;color:var(--slate-600);}
+  a{text-decoration:none;color:inherit;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;}
+  .container{max-width:1200px;margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:600;letter-spacing:.02em;
+    color:var(--blue-500);
+    background:rgba(77,116,255,0.08);
+    border:1px solid rgba(77,116,255,0.18);
+    padding:6px 14px;border-radius:100px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 24px;border-radius:10px;
+    font-weight:600;font-size:15px;border:1px solid transparent;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-primary{background:var(--blue-600);color:#fff;box-shadow:0 12px 24px -10px rgba(47,91,255,0.55);}
+  .btn-primary:hover{background:#2149e0;}
+  .btn-primary-dark{background:#fff;color:var(--navy-900);}
+  .btn-primary-dark:hover{background:#eef1ff;}
+  .btn-outline{background:transparent;border-color:rgba(255,255,255,0.25);color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,0.08);}
+  .btn-outline-dark{background:transparent;border-color:var(--slate-200);color:var(--ink);}
+  .btn-outline-dark:hover{background:var(--slate-100);}
+  .btn svg{width:16px;height:16px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+  /* HERO */
+  .hero{
+    background:radial-gradient(1200px 500px at 15% -10%, #16224a 0%, transparent 55%),
+               radial-gradient(900px 500px at 100% 10%, #12224f 0%, transparent 60%),
+               var(--navy-950);
+    padding:76px 0 64px;
+    position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+    background-size:26px 26px;
+    mask-image:linear-gradient(to bottom, black, transparent 75%);
+    opacity:.5;pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .hero h1{
+    font-size:46px;line-height:1.12;font-weight:800;color:#fff;letter-spacing:-.01em;margin-top:20px;
+  }
+  .hero h1 .grad{
+    background:linear-gradient(90deg,var(--blue-400),#9db4ff);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.lead{
+    margin-top:18px;color:rgba(226,231,245,0.75);font-size:16.5px;line-height:1.65;max-width:480px;
+  }
+  .hero-badges{display:flex;flex-wrap:wrap;gap:22px;margin-top:26px;}
+  .hero-badge{display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,0.85);font-weight:500;}
+  .hero-badge .tick{
+    width:18px;height:18px;border-radius:50%;background:rgba(47,91,255,0.22);
+    display:flex;align-items:center;justify-content:center;color:var(--blue-400);flex-shrink:0;
+  }
+  .hero-actions{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+
+  /* Hero visual */
+  .hero-visual{position:relative;}
+  .laptop{
+    background:#e9edf6;border-radius:14px 14px 4px 4px;padding:10px 10px 0;
+    box-shadow:var(--shadow-lg);
+    position:relative;
+  }
+  .laptop-bar{display:flex;gap:6px;padding:6px 8px 10px;}
+  .laptop-bar span{width:9px;height:9px;border-radius:50%;background:#d3d9e6;}
+  .laptop-screen{
+    background:#f5f7fb;border-radius:8px 8px 0 0;overflow:hidden;
+    border:1px solid #e1e5f0;
+  }
+  .app-topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 18px;background:#fff;border-bottom:1px solid #edf0f7;
+  }
+  .app-logo{display:flex;align-items:center;gap:8px;font-family:'Sora';font-weight:700;font-size:14px;color:var(--navy-900);}
+  .app-logo .mark{width:20px;height:20px;border-radius:5px;background:linear-gradient(135deg,var(--blue-500),var(--blue-600));}
+  .search-pill{
+    display:flex;align-items:center;gap:6px;background:#f2f4f9;border-radius:100px;
+    padding:6px 12px;font-size:11px;color:var(--slate-500);
+  }
+  .app-body{display:flex;padding:14px;gap:14px;}
+  .app-sidebar{width:110px;flex-shrink:0;display:flex;flex-direction:column;gap:3px;}
+  .app-sidebar .side-item{
+    font-size:10.5px;color:var(--slate-500);padding:7px 9px;border-radius:6px;font-weight:500;
+    display:flex;align-items:center;gap:6px;
+  }
+  .app-sidebar .side-item.active{background:var(--blue-600);color:#fff;}
+  .app-sidebar .side-item .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.7;}
+  .app-main{flex:1;display:flex;flex-direction:column;gap:10px;min-width:0;}
+  .app-title{font-size:13px;font-weight:700;color:var(--navy-900);font-family:'Sora';}
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .stat-card{background:#fff;border:1px solid #eef0f7;border-radius:8px;padding:8px 9px;}
+  .stat-card .label{font-size:8.5px;color:var(--slate-500);font-weight:600;}
+  .stat-card .value{font-size:13px;font-weight:700;color:var(--navy-900);margin-top:3px;font-family:'Sora';}
+  .stat-card .delta{font-size:8px;color:var(--green);font-weight:600;margin-top:2px;}
+  .chart-row{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;}
+  .panel{background:#fff;border:1px solid #eef0f7;border-radius:8px;padding:10px;}
+  .panel .ptitle{font-size:9.5px;font-weight:700;color:var(--navy-900);font-family:'Sora';}
+  .panel .pval{font-size:12px;font-weight:700;color:var(--navy-900);margin-top:2px;}
+  .sparkline{margin-top:8px;}
+  .donut-wrap{display:flex;align-items:center;gap:10px;}
+  .donut-legend{display:flex;flex-direction:column;gap:3px;font-size:7.5px;color:var(--slate-500);}
+  .donut-legend span.k{display:inline-flex;align-items:center;gap:4px;}
+  .donut-legend .sw{width:6px;height:6px;border-radius:50%;}
+  .activity-panel .arow{display:flex;justify-content:space-between;align-items:center;font-size:9px;padding:5px 0;border-bottom:1px dashed #eef0f7;color:var(--slate-500);}
+  .activity-panel .arow:last-child{border:none;}
+  .activity-panel .arow b{color:var(--navy-900);font-weight:600;}
+
+  .phone{
+    position:absolute;right:-34px;bottom:-30px;width:150px;
+    background:#0c1330;border-radius:22px;padding:8px;box-shadow:var(--shadow-lg);
+    border:3px solid #1b2445;
+  }
+  .phone-screen{background:#fff;border-radius:15px;padding:10px 10px 14px;}
+  .phone-screen .ptop{font-size:8px;color:var(--slate-500);font-weight:600;margin-bottom:6px;}
+  .phone-screen .pmain{font-size:14px;font-weight:800;font-family:'Sora';color:var(--navy-900);}
+  .phone-screen .pdelta{font-size:8px;color:var(--green);font-weight:700;margin-top:2px;}
+  .phone-stats{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  .phone-stats .row{display:flex;justify-content:space-between;font-size:8px;color:var(--slate-500);border-top:1px solid #f1f2f7;padding-top:6px;}
+  .phone-stats .row b{color:var(--navy-900);font-size:9.5px;display:block;}
+
+  /* LOGOS */
+  .logos{background:var(--bg-soft);padding:34px 0;border-bottom:1px solid var(--slate-200);}
+  .logos .caption{text-align:center;font-size:12.5px;color:var(--slate-500);font-weight:600;letter-spacing:.03em;text-transform:uppercase;margin-bottom:20px;}
+  .logo-row{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:28px;opacity:.55;}
+  .logo-row span{font-weight:700;font-size:18px;color:#333;display:flex;align-items:center;gap:6px;font-family:'Sora';}
+
+  /* SECTIONS */
+  section{padding:96px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{font-size:34px;font-weight:800;letter-spacing:-.01em;}
+  .section-head p{margin-top:14px;font-size:16px;line-height:1.6;}
+
+  /* Solution cards */
+  .solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .solution-card{
+    background:#fff;border:1px solid var(--slate-200);border-radius:var(--radius);
+    padding:32px 28px;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .solution-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-sm);border-color:transparent;}
+  .icon-tile{
+    width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .icon-tile svg{width:24px;height:24px;}
+  .solution-card h3{font-size:19px;font-weight:700;margin-bottom:8px;}
+  .solution-card>p{font-size:14.5px;line-height:1.6;margin-bottom:18px;}
+  .solution-card .feat-list{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+  .solution-card .feat-list li{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--ink);font-weight:500;}
+  .solution-card .feat-list svg{width:15px;height:15px;color:var(--blue-500);flex-shrink:0;}
+  .explore-link{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px;color:var(--blue-600);}
+  .explore-link svg{width:15px;height:15px;transition:transform .15s;}
+  .solution-card:hover .explore-link svg{transform:translateX(3px);}
+
+  /* Why choose */
+  .why-section{background:var(--bg-soft);}
+  .why-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px;}
+  .why-item{text-align:center;}
+  .why-icon{
+    width:60px;height:60px;border-radius:50%;background:#fff;border:1px solid var(--slate-200);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--blue-600);
+    box-shadow:var(--shadow-sm);
+  }
+  .why-icon svg{width:26px;height:26px;}
+  .why-item h4{font-size:15px;font-weight:700;margin-bottom:6px;}
+  .why-item p{font-size:13px;line-height:1.5;}
+
+  /* One platform */
+  .platform-section .grid2{display:grid;grid-template-columns:0.85fr 1.15fr;gap:60px;align-items:center;}
+  .platform-section .eyebrow{margin-bottom:18px;}
+  .platform-section h2{font-size:32px;font-weight:800;line-height:1.2;letter-spacing:-.01em;}
+  .platform-section .lead{margin-top:16px;font-size:15.5px;line-height:1.7;}
+  .platform-section .feat-list{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+  .platform-section .feat-list li{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:500;}
+  .platform-section .feat-list svg{width:16px;height:16px;color:var(--blue-500);flex-shrink:0;}
+  .platform-section .btn-primary{margin-top:28px;}
+  .module-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .module-card{
+    background:#fff;border:1px solid var(--slate-200);border-radius:12px;padding:20px;
+    transition:box-shadow .2s ease, transform .2s ease;
+  }
+  .module-card:hover{box-shadow:var(--shadow-sm);transform:translateY(-3px);}
+  .module-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .module-icon svg{width:19px;height:19px;}
+  .module-card h4{font-size:14.5px;font-weight:700;margin-bottom:6px;}
+  .module-card p{font-size:12.5px;line-height:1.5;margin-bottom:12px;}
+  .module-card a{font-size:12.5px;font-weight:700;color:var(--blue-600);display:inline-flex;align-items:center;gap:5px;}
+  .module-card a svg{width:12px;height:12px;}
+
+  /* Process */
+  .process-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;position:relative;}
+  .process-grid::before{
+    content:'';position:absolute;top:29px;left:8%;right:8%;height:1px;
+    background:repeating-linear-gradient(to right,var(--slate-200) 0 8px, transparent 8px 14px);
+    z-index:0;
+  }
+  .process-item{text-align:center;position:relative;z-index:1;}
+  .process-num{
+    width:58px;height:58px;border-radius:50%;background:#fff;border:2px solid var(--blue-600);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--blue-600);
+  }
+  .process-num svg{width:24px;height:24px;}
+  .process-item .step-no{font-size:13px;font-weight:800;color:var(--blue-600);font-family:'Sora';margin-bottom:6px;}
+  .process-item h4{font-size:14.5px;font-weight:700;margin-bottom:6px;}
+  .process-item p{font-size:12.5px;line-height:1.5;}
+
+  /* CTA banner */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--navy-950) 0%, #0d1638 55%, #10184a 100%);
+    border-radius:22px;padding:56px;position:relative;overflow:hidden;
+    display:grid;grid-template-columns:1fr 1fr 0.9fr;gap:40px;align-items:center;
+  }
+  .cta-banner::before{
+    content:'';position:absolute;width:340px;height:340px;border-radius:50%;
+    background:radial-gradient(circle, rgba(77,116,255,0.35), transparent 70%);
+    top:-140px;right:-80px;
+  }
+  .cta-illustration{
+    background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;
+    height:190px;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;
+  }
+  .cta-illustration svg{width:70%;height:70%;}
+  .cta-text .eyebrow{background:rgba(124,92,255,0.16);border-color:rgba(124,92,255,0.3);color:#b9a8ff;}
+  .cta-text h3{color:#fff;font-size:27px;font-weight:800;margin-top:14px;line-height:1.25;}
+  .cta-text p{color:rgba(226,231,245,0.72);margin-top:12px;font-size:14.5px;line-height:1.6;}
+  .cta-text .hero-actions{margin-top:22px;}
+  .cta-features{display:flex;flex-direction:column;gap:20px;position:relative;z-index:1;}
+  .cta-feature{display:flex;gap:14px;align-items:flex-start;}
+  .cta-feature .fi{
+    width:38px;height:38px;border-radius:10px;background:rgba(77,116,255,0.15);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-400);
+  }
+  .cta-feature .fi svg{width:18px;height:18px;}
+  .cta-feature h5{color:#fff;font-size:14.5px;font-weight:700;margin-bottom:3px;}
+  .cta-feature p{color:rgba(226,231,245,0.6);font-size:12.5px;}
+
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 20px;}
+  .faq-item{
+    border:1px solid var(--slate-200);border-radius:12px;padding:20px 22px;background:#fff;
+    cursor:pointer;transition:border-color .15s ease;
+  }
+  .faq-item:hover{border-color:var(--blue-400);}
+  .faq-q{display:flex;justify-content:space-between;align-items:center;gap:12px;font-weight:600;font-size:15px;}
+  .faq-toggle{
+    width:26px;height:26px;border-radius:50%;background:var(--slate-100);flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;transition:transform .2s ease, background .2s ease;
+  }
+  .faq-toggle svg{width:12px;height:12px;color:var(--ink);}
+  .faq-item.open .faq-toggle{background:var(--blue-600);transform:rotate(45deg);}
+  .faq-item.open .faq-toggle svg{color:#fff;}
+  .faq-a{
+    max-height:0;overflow:hidden;transition:max-height .25s ease, margin-top .25s ease;
+    font-size:14px;line-height:1.6;
+  }
+  .faq-item.open .faq-a{max-height:200px;margin-top:14px;}
+
+  /* Footer */
+  footer{background:var(--navy-950);color:rgba(226,231,245,0.65);padding:64px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:36px;}
+  .footer-logo{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:700;font-size:19px;color:#fff;margin-bottom:14px;}
+  .footer-logo .mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--blue-500),var(--blue-600));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;}
+  .footer-col h5{color:#fff;font-size:14px;font-weight:700;margin-bottom:16px;}
+  .footer-col ul{display:flex;flex-direction:column;gap:11px;}
+  .footer-col a{font-size:14px;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    margin-top:56px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.08);font-size:13px;
+  }
+  .socials{display:flex;gap:10px;}
+  .socials a{
+    width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,0.06);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .socials a svg{width:16px;height:16px;}
+  .socials a:hover{background:rgba(255,255,255,0.12);}
+
+  @media (max-width:1080px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{max-width:560px;margin:0 auto;}
+    .solutions-grid{grid-template-columns:1fr 1fr;}
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .platform-section .grid2{grid-template-columns:1fr;}
+    .module-grid{grid-template-columns:1fr 1fr;}
+    .process-grid{grid-template-columns:repeat(3,1fr);row-gap:36px;}
+    .process-grid::before{display:none;}
+    .cta-banner{grid-template-columns:1fr;}
+    .cta-illustration{order:3;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .container{padding:0 20px;}
+    .hero{padding:48px 0;}
+    .hero h1{font-size:32px;}
+    .solutions-grid{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr 1fr;}
+    .module-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr 1fr;}
+    .faq-grid{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    .section-head h2{font-size:26px;}
+    .phone{display:none;}
+    .footer-grid{grid-template-columns:1fr;gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+<!-- HERO -->
+<section class="hero" style="padding-top:76px;padding-bottom:0;">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 11L14.5 13.5L12 20L9.5 13.5L3 11L9.5 8.5L12 2Z" fill="currentColor"/></svg>
+          Enterprise Software Solutions
+        </span>
+        <h1>Enterprise Software<br><span class="grad">Built for Scale.</span><br><span class="grad">Designed for Growth.</span></h1>
+        <p class="lead">Our enterprise software solutions streamline operations, integrate business processes, and empower your organization to achieve more.</p>
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scalable Architecture</div>
+          <div class="hero-badge"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Secure &amp; Reliable</div>
+          <div class="hero-badge"><span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Customizable Modules</div>
+        </div>
+        <div class="hero-actions">
+          <a href="#demo" class="btn btn-primary">Request a Demo
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Talk to Our Experts
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="laptop">
+          <div class="laptop-bar"><span></span><span></span><span></span></div>
+          <div class="laptop-screen">
+            <div class="app-topbar">
+              <div class="app-logo"><span class="mark"></span>NEXSHAM</div>
+              <div class="search-pill">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Search
+              </div>
+            </div>
+            <div class="app-body">
+              <div class="app-sidebar">
+                <div class="side-item active"><span class="dot"></span>Dashboard</div>
+                <div class="side-item"><span class="dot"></span>Users</div>
+                <div class="side-item"><span class="dot"></span>Finance</div>
+                <div class="side-item"><span class="dot"></span>HR Management</div>
+                <div class="side-item"><span class="dot"></span>Sales</div>
+                <div class="side-item"><span class="dot"></span>Inventory</div>
+                <div class="side-item"><span class="dot"></span>Reports</div>
+                <div class="side-item"><span class="dot"></span>Settings</div>
+              </div>
+              <div class="app-main">
+                <div class="app-title">Dashboard</div>
+                <div class="stat-row">
+                  <div class="stat-card"><div class="label">Total Revenue</div><div class="value">$48,673</div><div class="delta">+12.5%</div></div>
+                  <div class="stat-card"><div class="label">Total Users</div><div class="value">1,245</div><div class="delta">+6.2%</div></div>
+                  <div class="stat-card"><div class="label">Total Orders</div><div class="value">3,576</div><div class="delta">+15.3%</div></div>
+                  <div class="stat-card"><div class="label">Tasks Completed</div><div class="value">92%</div><div class="delta">+6.1%</div></div>
+                </div>
+                <div class="chart-row">
+                  <div class="panel">
+                    <div class="ptitle">Revenue Overview</div>
+                    <div class="pval">$48,673 <span style="color:var(--slate-500);font-weight:400;">This Month</span></div>
+                    <svg class="sparkline" width="100%" height="46" viewBox="0 0 220 46" preserveAspectRatio="none">
+                      <polyline points="0,38 25,30 50,34 75,20 100,26 125,14 150,18 175,8 200,12 220,4" fill="none" stroke="#2f5bff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <div class="panel">
+                    <div class="ptitle">Department Performance</div>
+                    <div class="donut-wrap">
+                      <svg width="52" height="52" viewBox="0 0 36 36">
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="#eef0f6" stroke-width="5"/>
+                        <circle cx="18" cy="18" r="15.5" fill="none" stroke="#2f5bff" stroke-width="5" stroke-dasharray="73 100" stroke-dashoffset="25" stroke-linecap="round"/>
+                      </svg>
+                      <div class="donut-legend">
+                        <span class="k"><span class="sw" style="background:#2f5bff"></span>Operations</span>
+                        <span class="k"><span class="sw" style="background:#7c9bff"></span>Marketing</span>
+                        <span class="k"><span class="sw" style="background:#c7d3ff"></span>Finance</span>
+                        <span class="k"><span class="sw" style="background:#eef0f6"></span>HR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel activity-panel">
+                  <div class="ptitle">Recent Activities</div>
+                  <div class="arow"><span><b>New user registered</b></span><span>2 mins ago</span></div>
+                  <div class="arow"><span><b>Order #1256 confirmed</b></span><span>15 mins ago</span></div>
+                  <div class="arow"><span><b>Payment received</b></span><span>1 hour ago</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="ptop">Dashboard</div>
+            <div class="pmain">$48,673</div>
+            <div class="pdelta">+12.5%</div>
+            <div class="phone-stats">
+              <div class="row"><span>Total Orders<b>3,576</b></span><span style="color:var(--green)">+15.2%</span></div>
+              <div class="row"><span>Tasks Completed<b>92%</b></span><span style="color:var(--green)">+6.1%</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><br>
+  </div><br>
+<br></section>
+
+
+
+<!-- SOLUTIONS -->
+<section id="featured">
+  <div class="container">
+    <div class="section-head">
+      <h2>Everything You Need to Run Your Business</h2>
+      <p>Our enterprise solutions cover all critical business functions in one unified platform.</p>
+    </div>
+    <div class="solutions-grid">
+      <div class="solution-card">
+        <div class="icon-tile" style="background:rgba(47,91,255,0.1);color:var(--blue-600);">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M7 21h10M12 18v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7 9h10M7 13h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>ERP Solutions</h3>
+        <p>Manage all core business processes in one integrated system.</p>
+        <ul class="feat-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Finance &amp; Accounting</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Supply Chain Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Production Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Project Management</li>
+        </ul>
+        <a href="#" class="explore-link">Explore ERP <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="solution-card">
+        <div class="icon-tile" style="background:rgba(124,92,255,0.1);color:var(--purple);">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 9.5c1.4 0 2.5 1.2 2.5 2.7 0 .9-.4 1.6-1 2.1 1.6.6 2.7 2 2.7 3.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>CRM Solutions</h3>
+        <p>Build stronger relationships and grow your business.</p>
+        <ul class="feat-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Lead Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Sales Automation</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Customer Support</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Analytics &amp; Reports</li>
+        </ul>
+        <a href="#" class="explore-link">Explore CRM <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="solution-card">
+        <div class="icon-tile" style="background:rgba(31,179,122,0.1);color:var(--green);">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="16" r="2.4" stroke="currentColor" stroke-width="1.8"/><path d="M9 8.7L11 14.3M15 8.7L13 14.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>HRMS Solutions</h3>
+        <p>Streamline HR operations and empower your workforce.</p>
+        <ul class="feat-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Employee Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Payroll Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Attendance Tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Performance Management</li>
+        </ul>
+        <a href="#" class="explore-link">Explore HRMS <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Why Businesses Choose Our Enterprise Solutions</h2>
+      <p>Powerful features that drive efficiency, productivity and growth.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.6" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="2.6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="17" r="2.6" stroke="currentColor" stroke-width="1.8"/><path d="M9 9l2 5.5M15 9l-2 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h4>End-to-End Integration</h4><p>Integrate all departments and processes seamlessly.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V9M9 18V4M14 18v-7M19 18V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h4>Real-time Insights</h4><p>Get real-time data and analysis for better decisions.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Enhanced Security</h4><p>Enterprise-grade security to protect your data.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="5" cy="6" r="1.6" stroke="currentColor" stroke-width="1.6"/><circle cx="19" cy="6" r="1.6" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="18" r="1.6" stroke="currentColor" stroke-width="1.6"/><circle cx="19" cy="18" r="1.6" stroke="currentColor" stroke-width="1.6"/><path d="M9.6 10.4L6.2 7.2M14.4 10.4l3.4-3.2M9.6 13.6l-3.4 3.2M14.4 13.6l3.4 3.2" stroke="currentColor" stroke-width="1.6"/></svg></div>
+        <h4>Scalable Solutions</h4><p>Built to scale with your business growth.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h4>Custom Workflows</h4><p>Configure workflows that match your business.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>24/7 Support</h4><p>Dedicated support team whenever you need us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONE PLATFORM -->
+<section class="platform-section" id="technologies">
+  <div class="container">
+    <div class="grid2">
+      <div>
+        <span class="eyebrow">Complete Business Management</span>
+        <h2>One Platform.<br>Unlimited Possibilities.</h2>
+        <p class="lead">Our enterprise software brings all your business operations together in a single, powerful platform.</p>
+        <ul class="feat-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Centralized Data Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated Business Processes</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Advanced Reporting &amp; Analytics</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12L9 17L20 6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Mobile Access Anytime, Anywhere</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Explore All Modules
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="module-grid">
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(47,91,255,0.1);color:var(--blue-600);"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V9M9 18V4M14 18v-7M19 18V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Finance Management</h4><p>Track income, expenses, budgets and financial reports.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(31,179,122,0.1);color:var(--green);"><svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-5 9 5-9 5-9-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 9v6l9 5 9-5V9" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h4>Inventory Management</h4><p>Manage stock, orders, warehouses and suppliers.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(124,92,255,0.1);color:var(--purple);"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18V9M9 18V4M14 18v-7M19 18V7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Sales Management</h4><p>Manage leads, opportunities and customer interactions.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(255,111,156,0.1);color:var(--pink);"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 8h5M18.5 5.5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h4>Project Management</h4><p>Plan, track and deliver projects on time and budget.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(38,194,194,0.12);color:var(--teal);"><svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="16" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h4>HR Management</h4><p>Manage employees, payroll, attendance and performance.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="module-card">
+          <div class="module-icon" style="background:rgba(255,171,64,0.14);color:var(--amber);"><svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5M4 19h16M8 15l3-4 3 3 4-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h4>Reports &amp; Analytics</h4><p>Generate insights and reports to grow your business.</p>
+          <a href="#">View Module <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="why-section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Our Proven Implementation Process</h2>
+      <p>A structured approach to deliver successful enterprise solutions.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="1.8"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="step-no">01</div>
+        <h4>Requirement Analysis</h4><p>We understand your business and requirements.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M4 9h16" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="step-no">02</div>
+        <h4>Planning &amp; Strategy</h4><p>We plan the solution architecture and strategy.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="step-no">03</div>
+        <h4>Design &amp; Development</h4><p>We design and develop customized solutions.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="step-no">04</div>
+        <h4>Testing &amp; Quality</h4><p>We test thoroughly to ensure quality and security.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="step-no">05</div>
+        <h4>Deployment</h4><p>We deploy and migrate your data seamlessly.</p>
+      </div>
+      <div class="process-item">
+        <div class="process-num"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="step-no">06</div>
+        <h4>Support &amp; Maintenance</h4><p>We provide continuous support and improvements.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="demo">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="cta-illustration">
+        <svg viewBox="0 0 200 140" fill="none">
+          <rect x="20" y="20" width="70" height="90" rx="6" fill="#16224a" stroke="#2f3f78"/>
+          <rect x="30" y="34" width="50" height="6" rx="3" fill="#3a4d8f"/>
+          <rect x="30" y="48" width="34" height="6" rx="3" fill="#3a4d8f"/>
+          <polyline points="30,90 45,72 58,82 78,58" fill="none" stroke="#4d74ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="140" cy="55" r="26" fill="#16224a" stroke="#2f3f78"/>
+          <circle cx="140" cy="45" r="8" fill="#4d74ff"/>
+          <path d="M126 66c2-9 8-13 14-13s12 4 14 13" stroke="#4d74ff" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="100" cy="115" r="18" fill="#16224a" stroke="#2f3f78"/>
+          <path d="M93 115l5 5 10-10" stroke="#7c5cff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cta-text">
+        <span class="eyebrow">Ready to Transform Your Business?</span>
+        <h3>Let's Build Your Enterprise Solution</h3>
+        <p>Tell us about your requirements and our experts will help you find the perfect solution for your business.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary-dark">Get a Free Demo
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="btn btn-outline">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Talk to Our Experts
+          </a>
+        </div>
+      </div>
+      <div class="cta-features">
+        <div class="cta-feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M16 8h5M18.5 5.5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <div><h5>Free Consultation</h5><p>No obligation, just expert advice.</p></div>
+        </div>
+        <div class="cta-feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <div><h5>Custom Solution</h5><p>Tailored to your business needs.</p></div>
+        </div>
+        <div class="cta-feature">
+          <div class="fi"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <div><h5>Quick Implementation</h5><p>Get started in days, not months.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

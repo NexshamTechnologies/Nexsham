@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham BI — Turn Data Into Decisions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14142B;
+    --ink-soft:#585C72;
+    --ink-faint:#9497AA;
+    --indigo:#4F46E5;
+    --indigo-dark:#3E36C8;
+    --indigo-pale:#EEEFFD;
+    --navy:#100F26;
+    --navy-soft:#1B1A38;
+    --bg-alt:#F7F7FC;
+    --border:#E7E7F2;
+    --green:#17A672;
+    --white:#FFFFFF;
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --shadow-card: 0 1px 2px rgba(20,20,43,.04), 0 12px 32px -16px rgba(20,20,43,.12);
+    --shadow-float: 0 24px 60px -20px rgba(20,20,43,.28);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit; cursor:pointer;}
+  h1,h2,h3,h4{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:var(--ink);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  .wrap{
+    width:100%;
+    max-width:1280px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    font-weight:500;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--indigo);
+  }
+  .eyebrow::before{
+    content:'';
+    width:16px; height:1px;
+    background:var(--indigo);
+  }
+  .section-head{ max-width:640px; margin:0 auto 44px; text-align:center; }
+  .section-head h2{ font-size:clamp(26px,3.2vw,38px); margin-top:12px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:13px 24px;
+    border-radius:10px;
+    font-weight:600;
+    font-size:14.5px;
+    border:1px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{ background:var(--indigo); color:#fff; box-shadow:0 10px 24px -10px rgba(79,70,229,.55);}
+  .btn-primary:hover{ background:var(--indigo-dark); transform:translateY(-1px); }
+  .btn-ghost{ background:transparent; color:var(--ink); border-color:var(--border); }
+  .btn-ghost:hover{ border-color:var(--indigo); color:var(--indigo); }
+  .btn-ghost-invert{ background:transparent; color:#fff; border-color:rgba(255,255,255,.35); }
+  .btn-ghost-invert:hover{ border-color:#fff; }
+  .btn-white{ background:#fff; color:var(--indigo); }
+  .btn-white:hover{ transform:translateY(-1px); box-shadow:0 14px 30px -12px rgba(0,0,0,.35); }
+  .btn svg{ width:16px; height:16px; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:36px 0 60px; }
+  .hero-grid{ display:grid; grid-template-columns:1fr; gap:44px; align-items:center; }
+  .hero-copy h1{ font-size:clamp(34px,5.6vw,52px); margin-top:16px; }
+  .hero-copy h1 .accent{ color:var(--indigo); }
+  .hero-copy p.lede{ margin-top:18px; font-size:16.5px; color:var(--ink-soft); line-height:1.65; max-width:520px; }
+  .hero-checks{ display:flex; flex-wrap:wrap; gap:20px; margin-top:24px; }
+  .hero-checks li{ display:flex; align-items:center; gap:8px; font-size:13.5px; font-weight:600; color:var(--ink); }
+  .check-dot{
+    width:19px; height:19px; border-radius:50%; background:var(--indigo-pale); color:var(--indigo);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .check-dot svg{ width:11px; height:11px; }
+  .hero-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:30px; }
+
+  /* dashboard mockup */
+  .mock-stage{ position:relative; }
+  .mock-panel{
+    background:var(--navy);
+    border-radius:var(--radius-lg);
+    box-shadow:var(--shadow-float);
+    display:grid;
+    grid-template-columns:56px 1fr;
+    overflow:hidden;
+    min-height:420px;
+  }
+  .mock-sidebar{
+    background:var(--navy-soft);
+    padding:16px 0;
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+  .mock-sidebar .dot{ width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.16); }
+  .mock-sidebar .dot.active{ background:var(--indigo); box-shadow:0 0 0 5px rgba(79,70,229,.25); }
+  .mock-body{ background:#fff; padding:16px 18px 18px; display:flex; flex-direction:column; gap:12px; }
+  .mock-topbar{ display:flex; align-items:center; justify-content:space-between; }
+  .mock-topbar .title{ font-weight:700; font-size:14px; font-family:'Plus Jakarta Sans',sans-serif; }
+  .mock-topbar .range{ font-size:10.5px; color:var(--ink-faint); font-family:'JetBrains Mono',monospace;}
+  .mock-avatar{ width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,#7B74F2,var(--indigo)); }
+  .mock-stats{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
+  .stat-card{ background:var(--bg-alt); border-radius:10px; padding:10px 12px; }
+  .stat-card .label{ font-size:9.5px; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.06em; font-weight:600;}
+  .stat-card .value{ font-size:17px; font-weight:800; font-family:'Plus Jakarta Sans',sans-serif; margin-top:3px;}
+  .stat-card .delta{ font-size:10px; color:var(--green); font-weight:700; margin-top:2px; }
+  .mock-row{ display:grid; grid-template-columns:1.4fr 1fr; gap:10px; flex:1; }
+  .mock-box{ background:var(--bg-alt); border-radius:10px; padding:10px 12px; display:flex; flex-direction:column; }
+  .mock-box .box-title{ font-size:10px; font-weight:700; color:var(--ink-soft); }
+  .chart-svg{ margin-top:6px; flex:1; }
+  .donut-wrap{ display:flex; align-items:center; gap:10px; margin-top:6px; }
+  .donut{
+    width:56px; height:56px; border-radius:50%; flex-shrink:0;
+    background:conic-gradient(var(--indigo) 0 46%, #A9A4F5 46% 68%, #D8D6FB 68% 86%, #EFEEFD 86% 100%);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .donut::after{ content:''; width:30px; height:30px; border-radius:50%; background:#fff; }
+  .legend{ font-size:9px; color:var(--ink-soft); display:flex; flex-direction:column; gap:3px; }
+  .legend span{ display:flex; align-items:center; gap:5px; }
+  .legend i{ width:6px; height:6px; border-radius:50%; display:inline-block; }
+
+  .mock-phone{
+    position:absolute; right:-14px; bottom:-34px; width:120px;
+    background:var(--navy); border-radius:20px; padding:7px;
+    box-shadow:var(--shadow-float);
+    display:none;
+  }
+  .mock-phone .screen{ background:#fff; border-radius:14px; padding:12px 10px; }
+  .mock-phone .p-title{ font-size:8px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; }
+  .mock-phone .p-val{ font-size:14px; font-weight:800; margin-top:6px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .mock-phone .p-delta{ font-size:8px; color:var(--green); font-weight:700; }
+  .mock-phone .p-bars{ margin-top:10px; display:flex; gap:3px; align-items:flex-end; height:28px; }
+  .mock-phone .p-bars i{ flex:1; background:var(--indigo-pale); border-radius:2px; }
+  .mock-phone .p-bars i:nth-child(1){height:40%;}
+  .mock-phone .p-bars i:nth-child(2){height:70%; background:var(--indigo);}
+  .mock-phone .p-bars i:nth-child(3){height:55%;}
+  .mock-phone .p-bars i:nth-child(4){height:90%; background:var(--indigo);}
+  .mock-phone .p-bars i:nth-child(5){height:35%;}
+
+  /* ---------- Trust strip ---------- */
+  .trust{ padding:30px 0; background:var(--bg-alt); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+  .trust p{ text-align:center; font-size:11.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:18px; }
+  .trust-logos{ display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:34px 46px; }
+  .trust-logos span{ font-weight:700; font-size:16px; color:var(--ink-faint); font-family:'Plus Jakarta Sans',sans-serif; opacity:.75; letter-spacing:-.01em;}
+
+  /* ---------- Feature cards ---------- */
+  .features{ padding:80px 0; }
+  .feature-grid{ display:grid; grid-template-columns:1fr; gap:20px; }
+  .feature-card{
+    border:1px solid var(--border); border-radius:var(--radius-md); padding:28px;
+    background:#fff; transition:box-shadow .2s, transform .2s, border-color .2s;
+  }
+  .feature-card:hover{ box-shadow:var(--shadow-card); transform:translateY(-3px); border-color:transparent;}
+  .feature-icon{
+    width:44px; height:44px; border-radius:11px; display:flex; align-items:center; justify-content:center; color:#fff;
+    margin-bottom:16px;
+  }
+  .feature-icon svg{ width:22px; height:22px; }
+  .feature-card h3{ font-size:18px; }
+  .feature-card > p{ color:var(--ink-soft); font-size:14px; margin-top:8px; line-height:1.55; }
+  .feature-list{ margin-top:16px; display:flex; flex-direction:column; gap:9px; }
+  .feature-list li{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink); }
+  .feature-list svg{ width:14px; height:14px; color:var(--green); flex-shrink:0; }
+  .feature-card .link{ display:inline-flex; align-items:center; gap:6px; margin-top:20px; font-weight:600; font-size:13.5px; color:var(--indigo); }
+  .feature-card .link svg{ width:14px; height:14px; transition:transform .15s; }
+  .feature-card:hover .link svg{ transform:translateX(3px); }
+
+  /* ---------- Capabilities ---------- */
+  .capabilities{ padding:70px 0 80px; background:var(--bg-alt); }
+  .cap-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .cap-card{ background:#fff; border:1px solid var(--border); border-radius:var(--radius-md); padding:22px 18px; text-align:left; transition:border-color .2s, transform .2s;}
+  .cap-card:hover{ border-color:var(--indigo); transform:translateY(-2px); }
+  .cap-icon{ width:38px; height:38px; border-radius:10px; background:var(--indigo-pale); color:var(--indigo); display:flex; align-items:center; justify-content:center; margin-bottom:14px;}
+  .cap-icon svg{ width:19px; height:19px; }
+  .cap-card h4{ font-size:14.5px; }
+  .cap-card p{ font-size:12.5px; color:var(--ink-soft); margin-top:5px; line-height:1.5; }
+
+  /* ---------- Process ---------- */
+  .process{ padding:80px 0; }
+  .process-track{ position:relative; display:grid; grid-template-columns:1fr; gap:0; }
+  .process-track::before{
+    content:''; position:absolute; left:27px; top:8px; bottom:8px; width:2px;
+    background:repeating-linear-gradient(to bottom, var(--border) 0 6px, transparent 6px 12px);
+  }
+  .process-step{ display:grid; grid-template-columns:56px 1fr; gap:18px; padding:18px 0; position:relative; }
+  .step-num{
+    width:56px; height:56px; border-radius:50%; background:#fff; border:2px solid var(--border);
+    display:flex; align-items:center; justify-content:center; font-family:'JetBrains Mono',monospace;
+    font-weight:600; font-size:13px; color:var(--ink-soft); z-index:1; flex-shrink:0;
+  }
+  .process-step.is-active .step-num{ border-color:var(--indigo); color:var(--indigo); background:var(--indigo-pale); }
+  .process-step h4{ font-size:16px; padding-top:10px;}
+  .process-step p{ font-size:13.5px; color:var(--ink-soft); margin-top:4px; line-height:1.5; }
+
+  /* ---------- Why us ---------- */
+  .why{ padding:0 0 80px; }
+  .why-strip{ border:1px solid var(--border); border-radius:var(--radius-lg); padding:36px 26px; display:grid; grid-template-columns:1fr; gap:26px; background:var(--bg-alt); }
+  .why-item{ display:flex; gap:13px; align-items:flex-start; }
+  .why-icon{ width:38px; height:38px; border-radius:10px; background:#fff; border:1px solid var(--border); color:var(--indigo); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .why-icon svg{ width:18px; height:18px; }
+  .why-item h4{ font-size:14.5px; }
+  .why-item p{ font-size:12.5px; color:var(--ink-soft); margin-top:3px; line-height:1.5;}
+
+  /* ---------- CTA banner ---------- */
+  .cta{ padding:0 0 80px; }
+  .cta-inner{
+    background:linear-gradient(120deg, var(--indigo) 0%, #6D63EE 55%, #8A7CFB 100%);
+    border-radius:var(--radius-lg);
+    padding:44px 26px;
+    display:grid; grid-template-columns:1fr; gap:32px;
+    color:#fff;
+    position:relative; overflow:hidden;
+  }
+  .cta-inner::before{
+    content:''; position:absolute; width:420px; height:420px; border-radius:50%;
+    background:rgba(255,255,255,.06); right:-140px; top:-160px;
+  }
+  .cta-visual{ display:flex; align-items:center; justify-content:center; }
+  .cta-visual svg{ width:150px; height:150px; }
+  .cta-eyebrow{ font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.75); font-weight:600;}
+  .cta-body h2{ color:#fff; font-size:clamp(24px,3vw,32px); margin-top:10px; }
+  .cta-body p{ color:rgba(255,255,255,.82); margin-top:10px; font-size:14.5px; max-width:440px; line-height:1.55;}
+  .cta-ctas{ display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+  .cta-perks{ display:flex; flex-direction:column; gap:16px; position:relative; z-index:1; }
+  .cta-perk{ display:flex; gap:12px; align-items:flex-start; }
+  .cta-perk .ic{ width:34px; height:34px; border-radius:9px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; flex-shrink:0;}
+  .cta-perk .ic svg{ width:16px; height:16px; }
+  .cta-perk h5{ font-size:13.5px; color:#fff; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif;}
+  .cta-perk p{ font-size:12px; color:rgba(255,255,255,.75); margin-top:2px; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:0 0 90px; }
+  .faq-grid{ display:grid; grid-template-columns:1fr; gap:12px; max-width:900px; margin:0 auto; }
+  .faq-item{ border:1px solid var(--border); border-radius:var(--radius-md); overflow:hidden; background:#fff; }
+  .faq-q{
+    width:100%; display:flex; align-items:center; justify-content:space-between; gap:14px;
+    padding:18px 20px; background:none; border:none; text-align:left; font-size:14.5px; font-weight:600; color:var(--ink);
+  }
+  .faq-q .plus{
+    width:24px; height:24px; border-radius:50%; border:1px solid var(--border); flex-shrink:0; position:relative;
+    transition:transform .2s, border-color .2s, background .2s;
+  }
+  .faq-q .plus::before, .faq-q .plus::after{
+    content:''; position:absolute; background:var(--ink-soft); left:50%; top:50%; transform:translate(-50%,-50%);
+  }
+  .faq-q .plus::before{ width:9px; height:1.4px; }
+  .faq-q .plus::after{ width:1.4px; height:9px; transition:opacity .2s; }
+  .faq-item.open .faq-q .plus{ background:var(--indigo); border-color:var(--indigo); }
+  .faq-item.open .faq-q .plus::before, .faq-item.open .faq-q .plus::after{ background:#fff; }
+  .faq-item.open .faq-q .plus::after{ opacity:0; }
+  .faq-a{ max-height:0; overflow:hidden; transition:max-height .25s ease; }
+  .faq-a p{ padding:0 20px 18px; font-size:13.5px; color:var(--ink-soft); line-height:1.6; }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--navy); color:rgba(255,255,255,.7); padding:56px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1fr; gap:34px; padding-bottom:34px; border-bottom:1px solid rgba(255,255,255,.1); }
+  .foot-brand .brand{ color:#fff; }
+  .foot-brand p{ font-size:13.5px; margin-top:14px; max-width:280px; line-height:1.6; }
+  .foot-col h5{ font-size:12.5px; text-transform:uppercase; letter-spacing:.08em; color:#fff; font-weight:700; margin-bottom:14px; }
+  .foot-col ul{ display:flex; flex-direction:column; gap:10px; }
+  .foot-col a{ font-size:13.5px; transition:color .15s; }
+  .foot-col a:hover{ color:#fff; }
+  .foot-bottom{ display:flex; flex-direction:column; gap:14px; padding-top:22px; font-size:12.5px; }
+
+  /* =========================================================
+     BREAKPOINT 2 — TABLET  (>=640px)
+  ==========================================================*/
+  @media (min-width:640px){
+    .wrap{ padding:0 32px; }
+    .hero-copy p.lede{ font-size:17.5px; }
+    .feature-grid{ grid-template-columns:repeat(2,1fr); }
+    .cap-grid{ grid-template-columns:repeat(3,1fr); }
+    .why-strip{ grid-template-columns:repeat(2,1fr); padding:40px; }
+    .trust-logos span{ font-size:18px; }
+    .cta-inner{ padding:52px 44px; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .foot-grid{ grid-template-columns:1.3fr 1fr 1fr; }
+    .foot-bottom{ flex-direction:row; justify-content:space-between; align-items:center; }
+    .mock-phone{ display:block; }
+  }
+
+  /* =========================================================
+     BREAKPOINT 3 — LAPTOP (>=1024px)
+  ==========================================================*/
+  @media (min-width:1024px){
+    .nav-links{ display:flex; }
+    .burger{ display:none; }
+    .mobile-menu{ display:none !important; }
+
+    .hero-grid{ grid-template-columns:1.05fr 1fr; gap:54px; }
+    .hero-checks{ gap:26px; }
+    .hero-copy p.lede{ max-width:480px; }
+
+    .feature-grid{ grid-template-columns:repeat(3,1fr); }
+    .cap-grid{ grid-template-columns:repeat(4,1fr); }
+
+    .process-track{ display:grid; grid-template-columns:repeat(6,1fr); gap:14px; }
+    .process-track::before{ left:8px; right:8px; top:27px; bottom:auto; height:2px; width:auto;
+      background:repeating-linear-gradient(to right, var(--border) 0 6px, transparent 6px 12px); }
+    .process-step{ grid-template-columns:1fr; text-align:center; padding:0; }
+    .step-num{ margin:0 auto; }
+    .process-step h4{ padding-top:16px; }
+
+    .why-strip{ grid-template-columns:repeat(3,1fr); }
+
+    .cta-inner{ grid-template-columns:1.3fr .9fr; align-items:center; }
+    .cta-visual{ order:2; }
+
+    .faq-grid{ grid-template-columns:repeat(2,1fr); }
+
+    .foot-grid{ grid-template-columns:1.6fr 1fr 1fr 1fr; }
+  }
+
+  /* =========================================================
+     BREAKPOINT 4 — DESKTOP (>=1280px)
+  ==========================================================*/
+  @media (min-width:1280px){
+    .hero{ padding:56px 0 84px; }
+    .hero-grid{ gap:72px; }
+    .hero-copy h1{ font-size:56px; }
+    .mock-panel{ min-height:460px; }
+    .features, .capabilities, .process, .why, .cta, .faq{ padding-top:96px; padding-bottom:96px; }
+    .cta, .why{ padding-top:0; }
+    .section-head{ margin-bottom:56px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; scroll-behavior:auto !important; }
+  }
+
+  .reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy reveal">
+      <span class="eyebrow">Business Intelligence</span>
+      <h1>Transform Data.<br>Drive Decisions.<br><span class="accent">Grow Your Business.</span></h1>
+      <p class="lede">Turn raw, scattered data into insight you can act on — with interactive dashboards, automated reports, and KPIs built around how your business actually runs.</p>
+      <ul class="hero-checks">
+        <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Real-time Analytics</li>
+        <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Data-Driven Decisions</li>
+        <li><span class="check-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></span>Actionable Insights</li>
+      </ul>
+      <div class="hero-ctas">
+        <a href="#cta" class="btn btn-primary">Request a Demo
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#faq" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          Talk to Our Experts</a>
+      </div>
+    </div>
+
+    <div class="mock-stage reveal">
+      <div class="mock-panel">
+        <div class="mock-sidebar">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-topbar">
+            <span class="title">Overview</span>
+            <span class="range">MAY 1 – MAY 31</span>
+            <span class="mock-avatar"></span>
+          </div>
+          <div class="mock-stats">
+            <div class="stat-card"><div class="label">Total Revenue</div><div class="value" id="statRevenue">$0</div><div class="delta">↑ 12.5%</div></div>
+            <div class="stat-card"><div class="label">Total Orders</div><div class="value" id="statOrders">0</div><div class="delta">↑ 8.3%</div></div>
+            <div class="stat-card"><div class="label">New Customers</div><div class="value" id="statCustomers">0</div><div class="delta">↑ 15.8%</div></div>
+            <div class="stat-card"><div class="label">Profit Margin</div><div class="value" id="statMargin">0%</div><div class="delta">↑ 6.7%</div></div>
+          </div>
+          <div class="mock-row">
+            <div class="mock-box">
+              <span class="box-title">SALES OVERVIEW</span>
+              <svg class="chart-svg" viewBox="0 0 220 70" preserveAspectRatio="none">
+                <polyline points="0,55 30,45 60,50 90,30 120,38 150,15 180,25 220,8" fill="none" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" id="linePath" pathLength="100" style="stroke-dasharray:100; stroke-dashoffset:100;"/>
+              </svg>
+            </div>
+            <div class="mock-box">
+              <span class="box-title">REVENUE BY CHANNEL</span>
+              <div class="donut-wrap">
+                <div class="donut"></div>
+                <div class="legend">
+                  <span><i style="background:#4F46E5"></i>Online</span>
+                  <span><i style="background:#A9A4F5"></i>Retail</span>
+                  <span><i style="background:#D8D6FB"></i>Market</span>
+                  <span><i style="background:#EFEEFD"></i>Other</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mock-phone">
+        <div class="screen">
+          <div class="p-title">Dashboard</div>
+          <div class="p-val">$2.45M</div>
+          <div class="p-delta">↑ 12.9%</div>
+          <div class="p-bars"><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="justify-content:center;">Complete BI Solution</span>
+      <h2>Everything You Need to Turn Data into Insights</h2>
+      <p>Comprehensive services to help you analyze, visualize, and act on your data — without stitching tools together yourself.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#4F46E5,#6C64F2);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M8 17V9m5 8V5m5 12v-6"/></svg>
+        </div>
+        <h3>Analytics</h3>
+        <p>Advanced analytics that surface trends, patterns, and opportunities hiding in your data.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Data Analysis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Trend Analysis</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Forecasting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Predictive Analytics</li>
+        </ul>
+        <a href="#" class="link">Explore Analytics <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#8B5CF6,#A855F7);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 3h7l5 5v13H7zM14 3v5h5M9 13h6M9 17h6"/></svg>
+        </div>
+        <h3>Reports</h3>
+        <p>Custom, automated reports that track performance and measure success on your schedule.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Custom Reports</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Automated Reporting</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Scheduled Reports</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Drill-down Analysis</li>
+        </ul>
+        <a href="#" class="link">Explore Reports <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#2563EB,#4F46E5);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>KPIs &amp; Metrics</h3>
+        <p>Track the key performance indicators that actually matter to your business, in one place.</p>
+        <ul class="feature-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>KPI Dashboards</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Performance Tracking</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Goal Management</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg>Benchmarking</li>
+        </ul>
+        <a href="#" class="link">Explore KPIs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="capabilities">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="justify-content:center;">Powerful BI Capabilities</span>
+      <h2>Built for how modern teams actually work</h2>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M8.2 7.3L11 16M15.8 7.3L13 16"/></svg></div>
+        <h4>Data Integration</h4><p>Connect data from every source seamlessly.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 8h6M7 12h10"/></svg></div>
+        <h4>Real-time Dashboards</h4><p>Monitor your business as it happens.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg></div>
+        <h4>Interactive Visuals</h4><p>Engaging charts you can explore, not just view.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <h4>Custom KPIs</h4><p>Track metrics that drive your specific goals.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+        <h4>Data Security</h4><p>Enterprise-grade protection for your data.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h4>Mobile Access</h4><p>Get insights wherever work takes you.</p>
+      </div>
+      <div class="cap-card reveal">
+        <div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 00-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg></div>
+        <h4>Alerts &amp; Notifications</h4><p>Get notified the moment something matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="justify-content:center;">Our Process</span>
+      <h2>From Data to Decisions</h2>
+      <p>A repeatable six-step path that takes you from scattered raw data to confident, everyday decisions.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step is-active reveal"><div class="step-num">01</div><div><h4>Collect</h4><p>Gather data from every source you use.</p></div></div>
+      <div class="process-step reveal"><div class="step-num">02</div><div><h4>Prepare</h4><p>Clean and transform it into shape.</p></div></div>
+      <div class="process-step reveal"><div class="step-num">03</div><div><h4>Analyze</h4><p>Extract the insight buried inside it.</p></div></div>
+      <div class="process-step reveal"><div class="step-num">04</div><div><h4>Visualize</h4><p>Build dashboards and reports that click.</p></div></div>
+      <div class="process-step reveal"><div class="step-num">05</div><div><h4>Decide</h4><p>Make calls backed by real numbers.</p></div></div>
+      <div class="process-step reveal"><div class="step-num">06</div><div><h4>Improve</h4><p>Monitor and refine performance over time.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="justify-content:center;">Why Businesses Choose Nexsham BI</span>
+      <h2>Fewer guesses, more traction</h2>
+    </div>
+    <div class="why-strip">
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M8 15l3-3 3 2 4-6"/></svg></div><div><h4>Better Decisions</h4><p>Smarter calls made with accurate, current data.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><div><h4>Increased Efficiency</h4><p>Automate reporting and save valuable time.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19h16M8 19V9m4 10V5m4 14v-7"/></svg></div><div><h4>Improved Performance</h4><p>Track KPIs and drive sustained business growth.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><h4>Data-Driven Culture</h4><p>Empower every team with actionable insight.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg></div><div><h4>Scalable &amp; Flexible</h4><p>Grows with a solution that scales with you.</p></div></div>
+      <div class="why-item reveal"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div><div><h4>Trusted &amp; Secure</h4><p>Enterprise-grade security and data protection.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <div class="cta-inner reveal">
+      <div class="cta-body">
+        <span class="cta-eyebrow">Ready to unlock the power of your data?</span>
+        <h2>Let's Build Smarter Insights Together</h2>
+        <p>Get real-time visibility, actionable insight, and better business outcomes with Nexsham BI.</p>
+        <div class="cta-ctas">
+          <a href="#" class="btn btn-white">Get a Free Demo</a>
+          <a href="#" class="btn btn-ghost-invert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+            Talk to Our Experts</a>
+        </div>
+      </div>
+      <div class="cta-perks">
+        <div class="cta-perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg></div><div><h5>Expert Consultation</h5><p>Get advice from our BI specialists.</p></div></div>
+        <div class="cta-perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16v16H4zM4 10h16M10 4v16"/></svg></div><div><h5>Custom Solution</h5><p>Tailored to how your business runs.</p></div></div>
+        <div class="cta-perk"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></div><div><h5>Quick Implementation</h5><p>Go live in weeks, not months.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  // mobile nav
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  // faq accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; });
+      if(!isOpen){ item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+    });
+  });
+
+  // counters + line chart draw, triggered on view
+  function animateCount(el, end, prefix='', suffix='', duration=1200){
+    let startTime = null;
+    function step(ts){
+      if(!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime)/duration, 1);
+      const eased = 1 - Math.pow(1-progress, 3);
+      const val = end * eased;
+      el.textContent = prefix + (end % 1 === 0 ? Math.floor(val).toLocaleString() : val.toFixed(1)) + suffix;
+      if(progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  let heroAnimated = false;
+  function runHeroAnim(){
+    if(heroAnimated) return;
+    heroAnimated = true;
+    animateCount(document.getElementById('statRevenue'), 2.45, '$', 'M');
+    animateCount(document.getElementById('statOrders'), 18254, '', '');
+    animateCount(document.getElementById('statCustomers'), 4128, '', '');
+    animateCount(document.getElementById('statMargin'), 24.6, '', '%');
+    const line = document.getElementById('linePath');
+    line.style.transition = 'stroke-dashoffset 1.4s ease';
+    requestAnimationFrame(()=> line.style.strokeDashoffset = '0');
+  }
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        if(e.target.classList.contains('mock-stage')) runHeroAnim();
+      }
+    });
+  }, {threshold:.2});
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+  // run hero anim immediately since it's above the fold
+  window.addEventListener('load', ()=> setTimeout(runHeroAnim, 300));
+</script>
+
+</body>
+</html>

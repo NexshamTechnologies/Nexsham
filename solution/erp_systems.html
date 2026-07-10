@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ERP Systems That Power Your Business — Nexsham</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#16a34a;
+    --green-dark:#0f7a38;
+    --green-deep:#0b3b23;
+    --sidebar:#0e2b1c;
+    --ink:#0f1a14;
+    --gray-700:#4b5468;
+    --gray-500:#7b8398;
+    --gray-300:#d7dbe6;
+    --gray-100:#f2f7f4;
+    --line:#e3e9e5;
+    --white:#ffffff;
+    --radius:14px;
+    --shadow-card: 0 4px 24px rgba(15,26,20,0.06);
+    --shadow-lift: 0 20px 60px rgba(15,26,20,0.25);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;margin:0;padding:0;}
+  button{font-family:inherit;cursor:pointer;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 20px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  .btn-primary{background:var(--green); border-radius:10px;padding: 10px;;color:#fff;}
+  .btn-primary:hover{background:var(--green-dark); transform:translateY(-1px);}
+  .btn-outline-dark{background:transparent;color:#fff;border-color:rgba(255,255,255,0.3);}
+  .btn-outline-dark:hover{background:rgba(255,255,255,0.08);}
+  .btn-outline-light{background:transparent;padding:10px; border-radius:10px;border-color:black;border:#0f1a14}
+  .btn-outline-light:hover{background:var(--gray-100);}
+  .btn-sm{padding:9px 18px;font-size:13.5px;}
+  
+  .burger{display:flex;flex-direction:column;gap:5px;background:none;border:none;padding:8px;}
+  .burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;}
+  .mobile-menu{display:none;flex-direction:column;background:#fff;padding:10px 20px 22px;border-top:1px solid var(--line);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:#5c6270;padding:12px 0;font-weight:500;font-size:15px;border-bottom:1px solid var(--line);}
+  .mobile-menu .btn{margin-top:16px;}
+
+  /* ---------- BREADCRUMB ---------- */
+  .breadcrumb{
+    padding:14px 0;
+    font-size:13px;
+    color:var(--gray-500);
+    background:var(--gray-100);
+  }
+  .breadcrumb a{color:var(--gray-500);}
+  .breadcrumb a:hover{color:var(--green);}
+  .breadcrumb .sep{margin:0 8px;color:var(--gray-300);}
+  .breadcrumb .current{color:var(--ink);font-weight:500;}
+
+  /* ---------- HERO ---------- */
+  .hero{background:var(--gray-100);padding:44px 0 56px;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1fr;gap:40px;align-items:center;}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+    letter-spacing:.04em;text-transform:uppercase;color:var(--green-dark);
+    background:#e3f6ea;padding:6px 14px;border-radius:999px;margin-bottom:18px;
+  }
+  .hero h1{font-size:32px;line-height:1.18;font-weight:800;color:var(--ink);margin:0 0 6px;letter-spacing:-0.01em;}
+  .hero h1 .accent{color:var(--green);display:block;}
+  .hero p{color:var(--gray-700);font-size:15.5px;line-height:1.65;max-width:500px;margin:16px 0 24px;}
+  .hero-checks{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:26px;}
+  .check-item{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;color:var(--gray-700);}
+  .check-dot{width:17px;height:17px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:28px;}
+  .trusted-label{font-size:12.5px;color:var(--gray-500);margin-bottom:14px;}
+  .logo-track{display:flex;flex-wrap:wrap;align-items:center;gap:26px;font-weight:700;font-size:15px;color:#9aa1ac;}
+
+  /* dashboard mock */
+  .hero-visual{position:relative;display:flex;justify-content:center;}
+  .dash{
+    display:flex;background:#fff;border-radius:14px;box-shadow:var(--shadow-lift);
+    overflow:hidden;border:1px solid var(--line);width:100%;max-width:480px;
+  }
+  .dash-sidebar{
+    width:76px;background:var(--sidebar);flex-shrink:0;
+    padding:12px 8px;display:flex;flex-direction:column;gap:8px;
+  }
+  .dash-sidebar .sbrand{color:#fff;font-size:9px;font-weight:800;margin-bottom:6px;padding-left:2px;}
+  .dash-item{
+    font-size:8px;color:#9db3a5;padding:6px 6px;border-radius:6px;font-weight:500;
+  }
+  .dash-item.active{background:var(--green);color:#fff;font-weight:700;}
+  .dash-main{flex:1;padding:14px;min-width:0;}
+  .dash-title{font-weight:700;font-size:14px;margin-bottom:10px;}
+  .dash-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:12px;}
+  .dash-stat{background:var(--gray-100);border-radius:7px;padding:7px 8px;}
+  .dash-stat .l{font-size:8px;color:var(--gray-500);font-weight:600;}
+  .dash-stat .v{font-size:11.5px;font-weight:700;margin:2px 0;}
+  .dash-stat .d{font-size:7.5px;font-weight:600;}
+  .d-up{color:#16a34a;} .d-down{color:#dc2626;}
+  .dash-panels{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;margin-bottom:10px;}
+  .dash-panel{background:var(--gray-100);border-radius:9px;padding:9px;}
+  .dash-panel .pt{font-size:9px;font-weight:700;color:var(--gray-700);margin-bottom:5px;}
+  .mini-chart{height:44px;width:100%;background:linear-gradient(180deg, rgba(22,163,74,0.15), transparent);border-radius:6px;}
+  .mini-donut{width:48px;height:48px;border-radius:50%;background:conic-gradient(var(--green) 0% 35%, #60a5fa 35% 60%, #a78bfa 60% 80%, #d7dbe6 80% 100%);margin:2px auto;display:flex;align-items:center;justify-content:center;}
+  .mini-donut span{width:28px;height:28px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:800;text-align:center;}
+  .mini-list{font-size:8.5px;color:var(--gray-700);}
+  .mini-list li{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line);}
+  .mini-list li:last-child{border-bottom:none;}
+  .phone{
+    position:absolute;left:-6px;bottom:-18px;width:100px;background:var(--sidebar);
+    border-radius:18px;padding:7px;box-shadow:var(--shadow-lift);display:none;
+  }
+  .phone-screen{background:#fff;border-radius:12px;padding:9px 7px;font-size:7.5px;}
+  .phone-screen .v{font-size:13px;font-weight:800;margin:2px 0;}
+  .phone-chart{height:24px;background:linear-gradient(180deg, rgba(22,163,74,0.2), transparent);border-radius:5px;margin-top:6px;}
+  .phone-mods{display:flex;gap:5px;margin-top:8px;}
+  .phone-mod{flex:1;background:var(--gray-100);border-radius:5px;padding:4px;text-align:center;font-size:6.5px;font-weight:600;}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{padding:60px 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 40px;}
+  .section-eyebrow{
+    display:block;color:var(--green);font-weight:700;font-size:12px;
+    letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;
+  }
+  .section-head h2{font-size:25px;font-weight:800;margin:0 0 10px;letter-spacing:-0.01em;}
+  .section-head p{color:var(--gray-500);font-size:14.5px;margin:0;line-height:1.6;}
+  .section-head b{color:var(--ink);}
+
+  /* ---------- CORE MODULES ---------- */
+  .core-grid{display:grid;grid-template-columns:1fr;gap:20px;}
+  .core-card{border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-card);transition:transform .15s ease, box-shadow .15s ease;}
+  .core-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(15,26,20,0.1);}
+  .icon-box{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:19px;}
+  .icon-green{background:#e3f6ea;color:var(--green);}
+  .icon-blue{background:#e5f0ff;color:#3b82f6;}
+  .icon-purple{background:#f1e9ff;color:#8b5cf6;}
+  .core-card h3{font-size:16.5px;margin:0 0 8px;}
+  .core-card > p{color:var(--gray-500);font-size:13.5px;line-height:1.6;margin:0 0 14px;}
+  .core-card .checklist li{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-700);padding:4px 0;}
+  .checkmark{color:var(--green);font-weight:800;font-size:13px;}
+
+  /* ---------- POWERFUL MODULES ---------- */
+  .modules-bg{background:var(--gray-100);}
+  .modules-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .mini-module{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;
+    display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow-card);
+  }
+  .mini-module .mi{
+    width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+    font-size:15px;flex-shrink:0;
+  }
+  .mini-module h4{font-size:14px;margin:0 0 4px;}
+  .mini-module p{font-size:12.5px;color:var(--gray-500);margin:0;line-height:1.5;}
+
+  /* ---------- INDUSTRIES ---------- */
+  .industry-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 12px;text-align:center;}
+  .industry-item .ii{
+    width:56px;height:56px;border-radius:50%;background:#e3f6ea;color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 12px;
+  }
+  .industry-item h5{font-size:13px;margin:0;font-weight:600;color:var(--gray-700);}
+
+  /* ---------- PROCESS ---------- */
+  .process-grid{display:grid;grid-template-columns:1fr;gap:30px;position:relative;}
+  .process-step{text-align:center;position:relative;}
+  .process-circle{
+    width:52px;height:52px;border-radius:50%;border:2px solid var(--green);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:19px;margin:0 auto 12px;
+    background:#fff;position:relative;z-index:2;
+  }
+  .process-num{font-weight:800;font-size:13px;color:var(--green);margin-bottom:6px;letter-spacing:.05em;}
+  .process-step h4{font-size:14px;margin:0 0 6px;}
+  .process-step p{font-size:12px;color:var(--gray-500);margin:0;line-height:1.5;}
+
+  /* ---------- WHY CHOOSE ---------- */
+  .why-grid{display:grid;grid-template-columns:1fr;gap:14px;}
+  .why-item{
+    background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;
+    display:flex;gap:12px;align-items:flex-start;box-shadow:var(--shadow-card);
+  }
+  .why-item .wi{
+    width:38px;height:38px;border-radius:10px;background:var(--green);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;
+  }
+  .why-item h5{font-size:14px;margin:0 0 4px;}
+  .why-item p{font-size:12.5px;color:var(--gray-500);margin:0;line-height:1.5;}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{
+    background:var(--green-deep);border-radius:18px;overflow:hidden;
+    display:grid;grid-template-columns:1fr;
+  }
+  .cta-visual{
+    background:linear-gradient(135deg,#144a2c,#0b3b23);
+    min-height:180px;display:flex;align-items:center;justify-content:center;position:relative;padding:20px;
+  }
+  .cta-visual .figs{display:flex;gap:14px;align-items:flex-end;}
+  .fig{width:44px;height:80px;background:linear-gradient(180deg,#22c55e,#0f7a38);border-radius:22px 22px 0 0;position:relative;}
+  .fig::before{content:"";position:absolute;top:-20px;left:50%;transform:translateX(-50%);width:24px;height:24px;border-radius:50%;background:#4ade80;}
+  .cta-content{padding:32px 24px;}
+  .cta-content .eyebrow-text{color:#86efac;font-weight:700;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px;display:block;}
+  .cta-content h2{font-size:22px;font-weight:800;color:#fff;margin:0 0 12px;line-height:1.25;}
+  .cta-content > p{color:#bcd9c8;font-size:14px;line-height:1.6;margin:0 0 20px;}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:12px;}
+  .cta-tags{
+    padding:0 24px 26px;display:flex;flex-wrap:wrap;gap:16px 22px;
+  }
+  .cta-tag{display:flex;align-items:center;gap:6px;font-size:12.5px;color:#dcefe4;font-weight:500;}
+  .cta-tag .cd{width:16px;height:16px;border-radius:50%;background:rgba(255,255,255,0.15);color:#4ade80;display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;}
+
+  /* ---------- FAQ ---------- */
+  .faq h2{text-align:center;}
+  .faq-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:36px;}
+  .faq-item{border:1px solid var(--line);border-radius:12px;overflow:hidden;}
+  .faq-q{width:100%;background:#fff;border:none;padding:17px 18px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600;text-align:left;color:var(--ink);}
+  .faq-q .plus{font-size:18px;font-weight:400;color:var(--gray-500);transition:transform .2s ease;flex-shrink:0;margin-left:12px;}
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);color:var(--green);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;}
+  .faq-a p{margin:0;padding:0 18px 17px;font-size:13.5px;color:var(--gray-500);line-height:1.6;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--sidebar);color:#9db3a5;padding:48px 0 24px;margin-top:16px;}
+  .footer-grid{display:grid;grid-template-columns:1fr;gap:32px;margin-bottom:32px;}
+  .footer-brand .logo{margin-bottom:14px;color:#fff;}
+  .footer-brand p{font-size:13.5px;line-height:1.6;max-width:280px;}
+  .footer-col h5{color:#fff;font-size:14px;margin:0 0 14px;}
+  .footer-col a{display:block;font-size:13.5px;padding:6px 0;color:#9db3a5;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;text-align:center;font-size:12.5px;color:#6d8577;}
+
+  /* ================= TABLET (>=640px) ================= */
+  @media (min-width:640px){
+    .hero h1{font-size:38px;}
+    .core-grid{grid-template-columns:repeat(2,1fr);}
+    .modules-grid{grid-template-columns:repeat(2,1fr);}
+    .industry-grid{grid-template-columns:repeat(4,1fr);}
+    .process-grid{grid-template-columns:repeat(3,1fr);}
+    .why-grid{grid-template-columns:repeat(2,1fr);}
+    .cta-banner{grid-template-columns:0.9fr 1.4fr;}
+    .cta-tags{grid-column:2;}
+    .faq-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1.4fr 1fr 1fr;}
+    .phone{display:block;}
+  }
+
+  /* ================= LAPTOP (>=1024px) ================= */
+  @media (min-width:1024px){
+    .nav-links{display:flex;}
+    .nav-cta{display:inline-flex;}
+    .burger{display:none;}
+    .hero-grid{grid-template-columns:0.95fr 1.05fr;}
+    .hero h1{font-size:42px;}
+    .core-grid{grid-template-columns:repeat(3,1fr);}
+    .modules-grid{grid-template-columns:repeat(4,1fr);}
+    .industry-grid{grid-template-columns:repeat(8,1fr);}
+    .process-grid{grid-template-columns:repeat(6,1fr);}
+    .process-grid::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:2px;background:var(--line);z-index:1;border-top:2px dashed var(--gray-300);background:none;}
+    .why-grid{grid-template-columns:repeat(6,1fr);}
+    .cta-banner{grid-template-columns:0.8fr 1.4fr;align-items:center;}
+    .cta-content{padding:32px 0 32px 32px;}
+    .cta-content-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+    .section-head h2{font-size:28px;}
+  }
+
+  /* ================= DESKTOP (>=1280px) ================= */
+  @media (min-width:1280px){
+    .wrap{padding:0 24px;}
+    .hero{padding:64px 0 72px;}
+    .hero h1{font-size:46px;}
+    .section{padding:76px 0;}
+    .dash{max-width:560px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">ERP Systems</span>
+      <h1>ERP Systems That<span class="accent">Power Your Business</span></h1>
+      <p>Integrated ERP solutions that connect finance, inventory, HR and operations on a single platform to streamline processes and improve efficiency.</p>
+      <div class="hero-checks">
+        <span class="check-item"><span class="check-dot">✓</span>End-to-End Integration</span>
+        <span class="check-item"><span class="check-dot">✓</span>Real-time Insights</span>
+        <span class="check-item"><span class="check-dot">✓</span>Scalable &amp; Secure</span>
+      </div>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary">Request a Demo →</a>
+        <a href="#contact" class="btn btn-outline-light">💬 Talk to Our Experts</a>
+      </div>
+      
+    </div>
+    <div class="hero-visual">
+      <div class="dash">
+        <div class="dash-sidebar">
+          <div class="sbrand">⬢ Nex</div>
+          <div class="dash-item active">▤ Dashboard</div>
+          <div class="dash-item">Finance</div>
+          <div class="dash-item">Inventory</div>
+          <div class="dash-item">Procurement</div>
+          <div class="dash-item">Sales</div>
+          <div class="dash-item">HR</div>
+          <div class="dash-item">Reports</div>
+          <div class="dash-item">Settings</div>
+        </div>
+        <div class="dash-main">
+          <div class="dash-title">ERP Dashboard</div>
+          <div class="dash-stats">
+            <div class="dash-stat"><div class="l">Total Revenue</div><div class="v">$4,85,230</div><div class="d d-up">↑ 12.5%</div></div>
+            <div class="dash-stat"><div class="l">Total Orders</div><div class="v">2,430</div><div class="d d-up">↑ 8.2%</div></div>
+            <div class="dash-stat"><div class="l">Total Customers</div><div class="v">1,320</div><div class="d d-up">↑ 10.3%</div></div>
+            <div class="dash-stat"><div class="l">Pending Tasks</div><div class="v">18</div><div class="d d-down">↓ 5.2%</div></div>
+          </div>
+          <div class="dash-panels">
+            <div class="dash-panel"><div class="pt">Revenue Overview · This Month</div><div class="mini-chart"></div></div>
+            <div class="dash-panel">
+              <div class="pt" style="text-align:center;">Department Wise Expense</div>
+              <div class="mini-donut"><span>$68,650<br>Total</span></div>
+            </div>
+          </div>
+          <div class="dash-panels" style="margin-bottom:0;">
+            <div class="dash-panel">
+              <div class="pt">Recent Activities</div>
+              <ul class="mini-list">
+                <li><span>Payment received from ABC Corp.</span><span>2 min</span></li>
+                <li><span>Purchase Order #PO1256 created</span><span>15 min</span></li>
+                <li><span>New employee John Doe added</span><span>1 hr</span></li>
+              </ul>
+            </div>
+            <div class="dash-panel">
+              <div class="pt">Top Products</div>
+              <ul class="mini-list">
+                <li><span>Product A</span><span>320</span></li>
+                <li><span>Product B</span><span>210</span></li>
+                <li><span>Product C</span><span>145</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="phone">
+          <div class="phone-screen">
+            <div style="font-weight:700;">Dashboard</div>
+            <div class="v">$4,85,230</div>
+            <div style="color:#4ade80;font-weight:700;">↑ 12.5%</div>
+            <div class="phone-chart"></div>
+            <div class="phone-mods">
+              <div class="phone-mod">Finance</div>
+              <div class="phone-mod">Inventory</div>
+              <div class="phone-mod">Sales</div>
+            </div>
+            <div style="margin-top:8px;font-weight:700;">Tasks<br><span style="font-size:11px;">18 Pending Tasks</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CORE MODULES ================= -->
+<section class="section" id="core">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Complete ERP Solution</span>
+      <h2>Everything You Need in One Integrated System</h2>
+      <p>Our ERP system integrates all <b>critical business</b> functions into a unified platform to help you manage, automate and grow effortlessly.</p>
+    </div>
+    <div class="core-grid">
+      <div class="core-card">
+        <div class="icon-box icon-green">💰</div>
+        <h3>Finance Management</h3>
+        <p>Manage GL, accounts payable/receivable, budgeting, taxation and financial reporting with complete accuracy.</p>
+        <ul class="checklist">
+          <li><span class="checkmark">✓</span>General Ledger</li>
+          <li><span class="checkmark">✓</span>Accounts Payable</li>
+          <li><span class="checkmark">✓</span>Accounts Receivable</li>
+          <li><span class="checkmark">✓</span>Budget &amp; Forecasting</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <div class="icon-box icon-blue">📦</div>
+        <h3>Inventory Management</h3>
+        <p>Track inventory in real-time, manage stock levels, warehouses and optimize supply chain operations.</p>
+        <ul class="checklist">
+          <li><span class="checkmark">✓</span>Stock Management</li>
+          <li><span class="checkmark">✓</span>Warehouse Management</li>
+          <li><span class="checkmark">✓</span>Batch &amp; Serial Tracking</li>
+          <li><span class="checkmark">✓</span>Barcode Support</li>
+        </ul>
+      </div>
+      <div class="core-card">
+        <div class="icon-box icon-purple">🛒</div>
+        <h3>Procurement Management</h3>
+        <p>Streamline procurement cycle from purchase requisition to vendor payment with total transparency.</p>
+        <ul class="checklist">
+          <li><span class="checkmark">✓</span>Purchase Requisition</li>
+          <li><span class="checkmark">✓</span>Vendor Management</li>
+          <li><span class="checkmark">✓</span>Purchase Orders</li>
+          <li><span class="checkmark">✓</span>Goods Receiving</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POWERFUL MODULES ================= -->
+<section class="section modules-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Powerful Modules</span>
+      <h2>All the Tools You Need to Run Your Business</h2>
+    </div>
+    <div class="modules-grid">
+      <div class="mini-module"><span class="mi icon-green">📈</span><div><h4>Sales Management</h4><p>Manage leads, quotes, orders and customer relationships.</p></div></div>
+      <div class="mini-module"><span class="mi icon-blue">👥</span><div><h4>HR Management</h4><p>Manage employees, attendance, payroll and performance.</p></div></div>
+      <div class="mini-module"><span class="mi icon-purple">📋</span><div><h4>Project Management</h4><p>Plan, track and deliver projects on time and within budget.</p></div></div>
+      <div class="mini-module"><span class="mi" style="background:#ffe9ef;color:#e11d6a;">🤝</span><div><h4>CRM</h4><p>Build stronger relationships and improve customer loyalty.</p></div></div>
+      <div class="mini-module"><span class="mi icon-green">🏭</span><div><h4>Manufacturing</h4><p>Manage production, BOM, work orders and quality.</p></div></div>
+      <div class="mini-module"><span class="mi icon-blue">🖥️</span><div><h4>Asset Management</h4><p>Track and manage company assets and their lifecycle.</p></div></div>
+      <div class="mini-module"><span class="mi icon-purple">📊</span><div><h4>Reports &amp; Analytics</h4><p>Get real-time insights with advanced reports.</p></div></div>
+      <div class="mini-module"><span class="mi" style="background:#fff3d9;color:#c2790f;">🔒</span><div><h4>Admin &amp; Security</h4><p>Role-based access control and data security.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INDUSTRIES ================= -->
+<section class="section" id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Industries We Serve</span>
+      <h2>Built for Every Industry</h2>
+    </div>
+    <div class="industry-grid">
+      <div class="industry-item"><div class="ii">🏭</div><h5>Manufacturing</h5></div>
+      <div class="industry-item"><div class="ii">🛍️</div><h5>Retail &amp; Wholesale</h5></div>
+      <div class="industry-item"><div class="ii">🏥</div><h5>Healthcare</h5></div>
+      <div class="industry-item"><div class="ii">🎓</div><h5>Education</h5></div>
+      <div class="industry-item"><div class="ii">🚚</div><h5>Logistics &amp; Transport</h5></div>
+      <div class="industry-item"><div class="ii">🏗️</div><h5>Construction</h5></div>
+      <div class="industry-item"><div class="ii">🏠</div><h5>Real Estate</h5></div>
+      <div class="industry-item"><div class="ii">🏢</div><h5>Enterprise</h5></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="section modules-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Our Implementation Process</span>
+      <h2>From Planning to Performance</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step"><div class="process-circle">📋</div><div class="process-num">01</div><h4>Requirement Analysis</h4><p>We understand your business needs and objectives.</p></div>
+      <div class="process-step"><div class="process-circle">🧩</div><div class="process-num">02</div><h4>Solution Design</h4><p>We design a customized ERP solution for your process.</p></div>
+      <div class="process-step"><div class="process-circle">⚙️</div><div class="process-num">03</div><h4>Development</h4><p>We build and integrate the solution with best practices.</p></div>
+      <div class="process-step"><div class="process-circle">✅</div><div class="process-num">04</div><h4>Testing</h4><p>We test thoroughly to ensure quality and performance.</p></div>
+      <div class="process-step"><div class="process-circle">🚀</div><div class="process-num">05</div><h4>Deployment</h4><p>We deploy the ERP system with minimal disruption.</p></div>
+      <div class="process-step"><div class="process-circle">🛠️</div><div class="process-num">06</div><h4>Support &amp; Optimization</h4><p>We provide ongoing support and system improvements.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">Why Choose Our ERP System</span>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><span class="wi">📈</span><div><h5>Increase Productivity</h5><p>Automate processes and reduce manual work.</p></div></div>
+      <div class="why-item"><span class="wi">👁️</span><div><h5>Real-time Visibility</h5><p>Get real-time data across all departments.</p></div></div>
+      <div class="why-item"><span class="wi">🎯</span><div><h5>Better Decision Making</h5><p>Make data-driven decisions with confidence.</p></div></div>
+      <div class="why-item"><span class="wi">💵</span><div><h5>Cost Efficiency</h5><p>Reduce operational costs and increase ROI.</p></div></div>
+      <div class="why-item"><span class="wi">📐</span><div><h5>Scalable Solution</h5><p>Grow your business with scalable ERP platform.</p></div></div>
+      <div class="why-item"><span class="wi">🛡️</span><div><h5>Secure &amp; Reliable</h5><p>Enterprise-grade security and data protection.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BANNER ================= -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div class="cta-visual">
+        <div class="figs">
+          <div class="fig"></div>
+          <div class="fig" style="height:68px;"></div>
+        </div>
+      </div>
+      <div>
+        <div class="cta-content">
+          <div class="cta-content-inner">
+            <div>
+              <span class="eyebrow-text">Ready to Transform Your Business?</span>
+              <h2>Let's Build Your Smart ERP Solution</h2>
+              <p>Connect your teams, unify your data and streamline operations with our powerful ERP system.</p>
+            </div>
+            <div class="cta-actions">
+              <a href="#demo" class="btn btn-primary" style="background:#fff;color:var(--green-deep);">Get a Free Demo →</a>
+              <a href="#contact" class="btn btn-outline-dark">💬 Talk to Our Experts</a>
+            </div>
+          </div>
+        </div>
+        <div class="cta-tags">
+          <span class="cta-tag"><span class="cd">✓</span>Custom Solutions</span>
+          <span class="cta-tag"><span class="cd">✓</span>Expert Support</span>
+          <span class="cta-tag"><span class="cd">✓</span>On-time Delivery</span>
+          <span class="cta-tag"><span class="cd">✓</span>Affordable Pricing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  const burgerBtn = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

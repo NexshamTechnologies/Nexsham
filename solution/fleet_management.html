@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fleet Management | Nexsham</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --blue:#2F6FED;
+    --blue-dark:#1F54C4;
+    --navy:#101C34;
+    --text-dark:#1A2237;
+    --text-gray:#6B7280;
+    --bg-gray:#F7F8FA;
+    --border:#ECEDF1;
+    --badge-bg:#E9F0FE;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Segoe UI',Arial,Helvetica,sans-serif;color:var(--text-dark);line-height:1.5;background:#fff;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  /* ---------- Hero ---------- */
+  .breadcrumb{font-size:13px;color:#8C93A3;padding:18px 24px 0;max-width:1180px;margin:0 auto;}
+  .breadcrumb span{color:var(--text-dark);font-weight:600;}
+  .hero{max-width:1180px;margin:0 auto;padding:20px 24px 50px;display:grid;grid-template-columns:1fr 1.25fr;gap:40px;align-items:center;}
+  .badge{display:inline-block;background:var(--badge-bg);color:var(--blue);font-weight:700;font-size:12px;letter-spacing:.5px;padding:6px 14px;border-radius:20px;margin-bottom:16px;}
+  .hero h1{font-size:38px;line-height:1.2;font-weight:800;color:var(--navy);}
+  .hero h1 .accent{color:var(--blue);display:block;}
+  .hero p{margin:18px 0 20px;color:var(--text-gray);font-size:15.5px;max-width:460px;}
+  .checklist{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:26px;}
+  .checklist li{display:flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--text-dark);}
+  .checklist i{color:var(--blue);}
+  .hero-buttons{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{background:var(--blue);color:#fff;padding:13px 22px;border-radius:6px;font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;transition:background .2s;}
+  .btn-primary:hover{background:var(--blue-dark);}
+  .btn-outline{border:1.5px solid #DCDFE6;color:var(--text-dark);padding:13px 22px;border-radius:6px;font-weight:700;font-size:14.5px;display:inline-flex;align-items:center;gap:8px;}
+  .btn-outline:hover{border-color:var(--blue);color:var(--blue);}
+
+  /* Hero mockup */
+  .hero-visual{position:relative;}
+  .laptop{background:#fff;border-radius:14px;box-shadow:0 30px 60px -20px rgba(20,30,60,.25);overflow:hidden;border:1px solid #eee;}
+  .laptop-top{background:var(--navy);display:flex;color:#fff;font-size:13px;}
+  .side-nav{width:110px;background:var(--navy);padding:14px 10px;font-size:10.5px;}
+  .side-nav .brand{display:flex;align-items:center;gap:5px;font-weight:800;font-size:11px;margin-bottom:16px;color:#fff;}
+  .side-nav .brand .dot{width:16px;height:16px;background:var(--blue);border-radius:4px;display:inline-block;}
+  .side-nav .item{display:flex;align-items:center;gap:6px;padding:7px 8px;border-radius:5px;color:#B7BFD1;margin-bottom:2px;}
+  .side-nav .item.active{background:var(--blue);color:#fff;}
+  .dash-main{flex:1;background:#fff;padding:14px 16px;}
+  .dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;}
+  .dash-header h4{font-size:14px;color:var(--navy);}
+  .search-pill{background:#F3F4F7;border-radius:6px;padding:5px 12px;font-size:10px;color:#9AA1B2;width:130px;}
+  .stat-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px;}
+  .stat-card{background:#F9FAFC;border:1px solid #F0F1F5;border-radius:8px;padding:8px 10px;}
+  .stat-card .label{font-size:8.5px;color:#9AA1B2;margin-bottom:4px;}
+  .stat-card .value{font-size:12.5px;font-weight:800;color:var(--navy);}
+  .stat-card .delta{font-size:8px;color:#2FA84F;font-weight:700;}
+  .stat-card .delta.down{color:#E5484D;}
+  .chart-row{display:grid;grid-template-columns:1.4fr 1fr;gap:10px;margin-bottom:10px;}
+  .panel{background:#F9FAFC;border:1px solid #F0F1F5;border-radius:8px;padding:10px;}
+  .panel .ptitle{font-size:9.5px;color:#6B7280;margin-bottom:6px;font-weight:700;}
+  .map-box{height:100px;background:#EAF0FB;border-radius:6px;position:relative;overflow:hidden;}
+  .map-box svg{width:100%;height:100%;}
+  .map-pill{position:absolute;top:6px;left:6px;background:#fff;border-radius:6px;padding:4px 8px;font-size:8px;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+  .map-pill .t{font-weight:800;color:var(--navy);}
+  .map-pill .s{color:#6B7280;}
+  .donut{display:flex;align-items:center;gap:10px;}
+  .donut-ring{width:52px;height:52px;border-radius:50%;background:conic-gradient(var(--blue) 0 40%, #2FA84F 40% 65%, #F5C242 65% 85%, #E5484D 85% 100%);position:relative;flex-shrink:0;}
+  .donut-ring::after{content:"";position:absolute;inset:8px;background:#F9FAFC;border-radius:50%;}
+  .donut-legend{font-size:8px;color:#6B7280;}
+  .donut-legend div{display:flex;align-items:center;gap:4px;margin-bottom:2px;}
+  .dot-sq{width:6px;height:6px;border-radius:2px;display:inline-block;}
+  .activity-row{display:flex;justify-content:space-between;align-items:center;font-size:9px;padding:5px 0;border-bottom:1px solid #F0F1F5;color:#4B5265;gap:6px;}
+  .activity-row:last-child{border-bottom:none;}
+  .activity-row .dot-status{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+  .fake-chart{height:45px;background:linear-gradient(180deg,rgba(47,111,237,.15),rgba(47,111,237,0));border-radius:4px;position:relative;overflow:hidden;}
+  .fake-chart svg{width:100%;height:100%;}
+
+  .phone{position:absolute;right:-30px;bottom:-40px;width:150px;background:#111;border-radius:22px;padding:6px;box-shadow:0 25px 45px -15px rgba(20,30,60,.35);}
+  .phone-screen{background:#fff;border-radius:16px;padding:10px;}
+  .phone-screen h5{font-size:9px;color:var(--navy);margin-bottom:6px;}
+  .phone-map{height:90px;background:#EAF0FB;border-radius:8px;position:relative;margin-bottom:8px;overflow:hidden;}
+  .phone-map svg{width:100%;height:100%;}
+  .phone-map .pill{position:absolute;bottom:6px;left:6px;right:6px;background:#fff;border-radius:6px;padding:5px 7px;font-size:7px;box-shadow:0 2px 5px rgba(0,0,0,.08);}
+  .phone-map .pill .t{font-weight:800;color:var(--navy);font-size:8px;}
+  .phone-map .pill .s{color:#2FA84F;font-size:6.5px;}
+  .phone-nav{display:flex;justify-content:space-between;margin-top:6px;color:#C7CBD6;font-size:10px;}
+  .phone-nav .on{color:var(--blue);}
+
+  /* ---------- Trusted logos ---------- */
+  .trusted{background:var(--bg-gray);padding:26px 0;}
+  .trusted p{text-align:center;font-size:12px;color:#9AA1B2;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;font-weight:700;}
+  .logo-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;max-width:1180px;margin:0 auto;padding:0 24px;}
+  .logo-row span{font-weight:800;color:#8A93A6;font-size:17px;font-style:italic;}
+
+  /* ---------- Section shared ---------- */
+  section{padding:64px 0;}
+  .eyebrow{text-align:center;color:var(--blue);font-weight:800;font-size:12.5px;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;}
+  .sec-title{text-align:center;font-size:28px;font-weight:800;color:var(--navy);margin-bottom:10px;}
+  .sec-sub{text-align:center;color:var(--text-gray);font-size:14.5px;max-width:560px;margin:0 auto 40px;}
+
+  /* Solution cards */
+  .solutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .sol-card{border:1px solid var(--border);border-radius:12px;padding:26px;transition:box-shadow .2s, transform .2s;}
+  .sol-card:hover{box-shadow:0 14px 30px -10px rgba(20,30,60,.12);transform:translateY(-3px);}
+  .sol-icon{width:44px;height:44px;background:var(--badge-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:19px;margin-bottom:16px;}
+  .sol-card h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:8px;}
+  .sol-card p{font-size:13.5px;color:var(--text-gray);margin-bottom:16px;}
+  .sol-card ul{margin-bottom:18px;}
+  .sol-card ul li{font-size:13px;color:#404863;display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+  .sol-card ul li i{color:var(--blue);font-size:11px;}
+  .sol-card .explore{color:var(--blue);font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:6px;}
+
+  /* Features grid */
+  .features-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;}
+  .feature-card{text-align:center;border:1px solid var(--border);border-radius:12px;padding:22px 14px;transition:box-shadow .2s;}
+  .feature-card:hover{box-shadow:0 14px 30px -10px rgba(20,30,60,.1);}
+  .feature-icon{width:46px;height:46px;background:var(--badge-bg);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:18px;margin:0 auto 14px;}
+  .feature-card h4{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .feature-card p{font-size:11.5px;color:var(--text-gray);}
+
+  /* Process */
+  .process-row{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;position:relative;}
+  .process-row::before{content:"";position:absolute;top:26px;left:8%;right:8%;height:2px;background:repeating-linear-gradient(90deg,var(--blue) 0 6px, transparent 6px 12px);z-index:0;}
+  .process-step{text-align:center;position:relative;z-index:1;}
+  .step-circle{width:54px;height:54px;border-radius:50%;border:2px solid var(--blue);background:#fff;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:19px;margin:0 auto 14px;}
+  .step-num{color:var(--blue);font-weight:800;font-size:13px;margin-bottom:6px;}
+  .process-step h4{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+  .process-step p{font-size:11px;color:var(--text-gray);padding:0 4px;}
+
+  /* Why choose us */
+  .why-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .why-item{border:1px solid var(--border);border-radius:10px;padding:18px 14px;display:flex;gap:12px;align-items:flex-start;}
+  .why-icon{width:34px;height:34px;background:var(--badge-bg);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:14px;flex-shrink:0;}
+  .why-item h4{font-size:12.5px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+  .why-item p{font-size:11px;color:var(--text-gray);}
+
+  /* CTA banner */
+  .cta-banner{background:linear-gradient(120deg,var(--blue) 0%, var(--blue-dark) 100%);border-radius:16px;padding:0;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;color:#fff;}
+  .cta-left{padding:44px 40px;position:relative;}
+  .cta-left .eyebrow-w{color:#D6E4FE;font-weight:800;font-size:12px;letter-spacing:1px;margin-bottom:10px;text-transform:uppercase;}
+  .cta-left h3{font-size:25px;font-weight:800;margin-bottom:10px;}
+  .cta-left p{font-size:13.5px;color:#DCE8FF;max-width:420px;margin-bottom:22px;}
+  .cta-left-buttons{display:flex;gap:14px;}
+  .cta-left-buttons .b1{background:#fff;color:var(--blue-dark);padding:12px 20px;border-radius:6px;font-weight:800;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;}
+  .cta-left-buttons .b2{border:1.5px solid rgba(255,255,255,.6);color:#fff;padding:12px 20px;border-radius:6px;font-weight:800;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;}
+  .cta-right{background:rgba(0,0,0,.12);padding:36px 34px;display:flex;flex-direction:column;justify-content:center;gap:20px;}
+  .cta-feature{display:flex;gap:12px;align-items:flex-start;}
+  .cta-feature .ic{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .cta-feature h5{font-size:13.5px;font-weight:800;margin-bottom:2px;}
+  .cta-feature p{font-size:11.5px;color:#DCE8FF;}
+
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;}
+  .faq-item{border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:14px;font-weight:600;color:var(--navy);}
+  .faq-item i{color:var(--blue);}
+
+  footer{background:var(--navy);color:#B7BFD1;padding:30px 0;text-align:center;font-size:13px;}
+  footer span{color:var(--blue);font-weight:700;}
+
+  @media(max-width:1000px){
+    .hero{grid-template-columns:1fr;}
+    .solutions-grid{grid-template-columns:1fr;}
+    .features-grid{grid-template-columns:repeat(3,1fr);}
+    .process-row{grid-template-columns:repeat(3,1fr);row-gap:30px;}
+    .process-row::before{display:none;}
+    .why-strip{grid-template-columns:1fr 1fr;}
+    .cta-banner{grid-template-columns:1fr;}
+    .faq-grid{grid-template-columns:1fr;}
+    nav.menu{display:none;}
+    .logo-row{justify-content:center;}
+    .stat-row{grid-template-columns:repeat(3,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-copy">
+    <span class="badge">FLEET MANAGEMENT</span>
+    <h1>Complete Visibility.<br>Better Control.<span class="accent">Smarter Fleet.</span></h1>
+    <p>Monitor your vehicles, drivers and routes in real time. Improve efficiency, reduce costs and deliver more with intelligent fleet management.</p>
+    <ul class="checklist">
+      <li><i class="fa-solid fa-circle-check"></i>Real-time Tracking</li>
+      <li><i class="fa-solid fa-circle-check"></i>Driver Performance</li>
+      <li><i class="fa-solid fa-circle-check"></i>Operational Efficiency</li>
+    </ul>
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">Request a Demo <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#" class="btn-outline"><i class="fa-regular fa-comment-dots"></i> Talk to Our Experts</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="laptop">
+      <div class="laptop-top" style="display:flex;">
+        <div class="side-nav">
+          <div class="brand"><span class="dot"></span>NEXSHAM</div>
+          <div class="item active"><i class="fa-solid fa-gauge"></i> Dashboard</div>
+          <div class="item"><i class="fa-solid fa-truck"></i> Vehicles</div>
+          <div class="item"><i class="fa-solid fa-id-badge"></i> Drivers</div>
+          <div class="item"><i class="fa-solid fa-location-crosshairs"></i> Live Tracking</div>
+          <div class="item"><i class="fa-solid fa-route"></i> Routes</div>
+          <div class="item"><i class="fa-solid fa-screwdriver-wrench"></i> Maintenance</div>
+          <div class="item"><i class="fa-solid fa-gas-pump"></i> Fuel</div>
+          <div class="item"><i class="fa-solid fa-bell"></i> Alerts</div>
+          <div class="item"><i class="fa-solid fa-file-lines"></i> Reports</div>
+          <div class="item"><i class="fa-solid fa-gear"></i> Settings</div>
+        </div>
+        <div class="dash-main">
+          <div class="dash-header">
+            <h4>Dashboard</h4>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div class="search-pill"><i class="fa-solid fa-magnifying-glass"></i> Search anything...</div>
+              <i class="fa-regular fa-bell" style="color:#9AA1B2;"></i>
+              <div style="width:22px;height:22px;border-radius:50%;background:#EEE;"></div>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-card"><div class="label">Total Vehicles</div><div class="value">245</div><div class="delta">↑ 12.5%</div></div>
+            <div class="stat-card"><div class="label">Active Vehicles</div><div class="value">198</div><div class="delta">↑ 8.3%</div></div>
+            <div class="stat-card"><div class="label">Total Drivers</div><div class="value">126</div><div class="delta">↑ 6.7%</div></div>
+            <div class="stat-card"><div class="label">Total Distance</div><div class="value">12,540 km</div><div class="delta">↑ 9.4%</div></div>
+            <div class="stat-card"><div class="label">Fuel Consumed</div><div class="value">3,245 L</div><div class="delta down">↓ 3.1%</div></div>
+          </div>
+          <div class="chart-row">
+            <div class="panel">
+              <div class="ptitle">Live Vehicle Tracking</div>
+              <div class="map-box">
+                <svg viewBox="0 0 220 100">
+                  <path d="M10,80 C40,60 60,90 90,50 S150,20 210,20" fill="none" stroke="#2F6FED" stroke-width="2" stroke-dasharray="4 3"/>
+                  <circle cx="10" cy="80" r="4" fill="#2F6FED"/>
+                  <circle cx="210" cy="20" r="4" fill="#E5484D"/>
+                </svg>
+                <div class="map-pill"><div class="t">Truck MH 12 AB 1234</div><div class="s">45 km/h</div></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="ptitle">Vehicle Status</div>
+              <div class="donut">
+                <div class="donut-ring"></div>
+                <div class="donut-legend">
+                  <div><span class="dot-sq" style="background:#2F6FED;"></span>Running (198, 80%)</div>
+                  <div><span class="dot-sq" style="background:#2FA84F;"></span>Idle (25, 10%)</div>
+                  <div><span class="dot-sq" style="background:#F5C242;"></span>Stopped (15, 6%)</div>
+                  <div><span class="dot-sq" style="background:#E5484D;"></span>Maintenance (7, 4%)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="chart-row">
+            <div class="panel">
+              <div class="ptitle">Recent Alerts</div>
+              <div class="activity-row"><span class="dot-status" style="background:#E5484D;"></span><span style="flex:1;">Over Speed: Truck MH 12 AB 1234</span><span>2 mins ago</span></div>
+              <div class="activity-row"><span class="dot-status" style="background:#2FA84F;"></span><span style="flex:1;">Maintenance Due: Van GJ 05 XY 6789</span><span>15 mins ago</span></div>
+              <div class="activity-row"><span class="dot-status" style="background:#F5C242;"></span><span style="flex:1;">Low Fuel: Car DL 8C AX 7777</span><span>1 hour ago</span></div>
+              <div class="activity-row"><span class="dot-status" style="background:#2F6FED;"></span><span style="flex:1;">Geofence Alert: Truck RJ 14 GH 9876</span><span>2 hours ago</span></div>
+            </div>
+            <div class="panel">
+              <div class="ptitle">Fuel Overview <span style="float:right;font-weight:400;">This Month</span></div>
+              <div style="font-size:9px;color:#6B7280;margin-bottom:2px;">Total Fuel</div>
+              <div style="font-size:13px;font-weight:800;color:var(--navy);">3,245 L <span style="font-size:8px;color:#E5484D;font-weight:700;">↓ 3.1%</span></div>
+              <div class="fake-chart">
+                <svg viewBox="0 0 200 60" preserveAspectRatio="none">
+                  <polyline points="0,45 20,42 40,38 60,40 80,30 100,32 120,20 140,24 160,12 180,16 200,6" fill="none" stroke="#2F6FED" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone">
+      <div class="phone-screen">
+        <h5>Live Tracking</h5>
+        <div class="phone-map">
+          <svg viewBox="0 0 150 90">
+            <path d="M10,70 C40,50 60,80 90,40 S130,15 145,15" fill="none" stroke="#2F6FED" stroke-width="2" stroke-dasharray="3 3"/>
+            <circle cx="10" cy="70" r="3.5" fill="#2F6FED"/>
+            <circle cx="145" cy="15" r="3.5" fill="#E5484D"/>
+          </svg>
+          <div class="pill"><div class="t">Truck MH 12 AB 1234</div><div class="s">Running · 45 km/h</div></div>
+        </div>
+        <div class="phone-nav">
+          <i class="fa-solid fa-house on"></i>
+          <i class="fa-solid fa-truck"></i>
+          <i class="fa-solid fa-bell"></i>
+          <i class="fa-solid fa-user"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Complete Fleet Management Solution</div>
+    <h2 class="sec-title">Everything You Need to Manage Your Fleet</h2>
+    <p class="sec-sub">Our all-in-one platform helps you manage fleet operations efficiently and effectively.</p>
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <div class="sol-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Real-time GPS Tracking</h3>
+        <p>Track your vehicles in real time and get location updates instantly.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Live Location</li>
+          <li><i class="fa-solid fa-check"></i>Geofencing</li>
+          <li><i class="fa-solid fa-check"></i>Route History</li>
+          <li><i class="fa-solid fa-check"></i>Speed Monitoring</li>
+        </ul>
+        <a href="#" class="explore">Explore Tracking <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h3>Maintenance Management</h3>
+        <p>Schedule and manage vehicle maintenance to reduce downtime.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Service Reminders</li>
+          <li><i class="fa-solid fa-check"></i>Maintenance History</li>
+          <li><i class="fa-solid fa-check"></i>Cost Tracking</li>
+          <li><i class="fa-solid fa-check"></i>Document Management</li>
+        </ul>
+        <a href="#" class="explore">Explore Maintenance <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="sol-card">
+        <div class="sol-icon"><i class="fa-solid fa-gas-pump"></i></div>
+        <h3>Fuel Tracking &amp; Analysis</h3>
+        <p>Monitor fuel usage, detect anomalies, and optimize fuel costs.</p>
+        <ul>
+          <li><i class="fa-solid fa-check"></i>Fuel Consumption</li>
+          <li><i class="fa-solid fa-check"></i>Fuel Alerts</li>
+          <li><i class="fa-solid fa-check"></i>Refill Records</li>
+          <li><i class="fa-solid fa-check"></i>Fuel Reports</li>
+        </ul>
+        <a href="#" class="explore">Explore Fuel <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="eyebrow">Powerful Features</div>
+    <h2 class="sec-title">Advanced Features for Smarter Fleet Operations</h2>
+    <div class="features-grid" style="margin-top:40px;">
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-people-group"></i></div><h4>Driver Management</h4><p>Manage drivers, licenses and performance.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-route"></i></div><h4>Route Optimization</h4><p>Find the best routes and save time &amp; fuel.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-map-location-dot"></i></div><h4>Trip Management</h4><p>Plan, assign and monitor all trips.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-bell"></i></div><h4>Alerts &amp; Notifications</h4><p>Get instant alerts for critical events.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div><h4>Dashboard &amp; Reports</h4><p>Custom dashboards and detailed reports.</p></div>
+      <div class="feature-card"><div class="feature-icon"><i class="fa-solid fa-mobile-screen"></i></div><h4>Mobile App Access</h4><p>Access your fleet data on the go.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="eyebrow">Our Process</div>
+    <h2 class="sec-title">From Tracking to Optimization</h2>
+    <div class="process-row" style="margin-top:50px;">
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-location-dot"></i></div><div class="step-num">01</div><h4>Track</h4><p>Track vehicles and collect real-time data.</p></div>
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-satellite-dish"></i></div><div class="step-num">02</div><h4>Monitor</h4><p>Monitor performance, routes and driver behavior.</p></div>
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-chart-simple"></i></div><div class="step-num">03</div><h4>Analyze</h4><p>Analyze data to find insights.</p></div>
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-sliders"></i></div><div class="step-num">04</div><h4>Optimize</h4><p>Optimize routes, fuel and maintenance.</p></div>
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-file-lines"></i></div><div class="step-num">05</div><h4>Report</h4><p>Generate reports and share insights.</p></div>
+      <div class="process-step"><div class="step-circle"><i class="fa-solid fa-rocket"></i></div><div class="step-num">06</div><h4>Improve</h4><p>Continuously improve operations.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="eyebrow">Why Businesses Choose Our Fleet Management System</div>
+    <div class="why-strip">
+      <div class="why-item"><div class="why-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><div><h4>Reduce Operational Costs</h4><p>Lower fuel, maintenance and labor costs.</p></div></div>
+      <div class="why-item"><div class="why-icon"><i class="fa-solid fa-gauge-high"></i></div><div><h4>Improve Efficiency</h4><p>Optimize routes and resource utilization.</p></div></div>
+      <div class="why-item"><div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div><div><h4>Ensure Safety</h4><p>Monitor driver behavior and ensure safety.</p></div></div>
+      <div class="why-item"><div class="why-icon"><i class="fa-solid fa-arrow-trend-up"></i></div><div><h4>Increase Productivity</h4><p>Maximize uptime and delivery performance.</p></div></div>
+      <div class="why-item"><div class="why-icon"><i class="fa-solid fa-expand"></i></div><div><h4>Scalable Solution</h4><p>Grow your fleet with our scalable platform.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="cta-banner">
+      <div class="cta-left">
+        <div class="eyebrow-w">Ready to Take Control of Your Fleet?</div>
+        <h3>Let's Build a Smarter Fleet Together</h3>
+        <p>Get complete visibility, reduce costs and improve operational efficiency with Nexsham Fleet Management.</p>
+        <div class="cta-left-buttons">
+          <a href="#" class="b1">Get a Free Demo <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#" class="b2"><i class="fa-regular fa-comment-dots"></i> Talk to Our Experts</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-feature"><div class="ic"><i class="fa-solid fa-headset"></i></div><div><h5>Expert Consultation</h5><p>Get advice from our fleet experts.</p></div></div>
+        <div class="cta-feature"><div class="ic"><i class="fa-solid fa-gears"></i></div><div><h5>Custom Solution</h5><p>Tailored to your business needs.</p></div></div>
+        <div class="cta-feature"><div class="ic"><i class="fa-solid fa-bolt"></i></div><div><h5>Quick Implementation</h5><p>Go live in days, not months.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click',()=>{
+      const icon=item.querySelector('i');
+      icon.classList.toggle('fa-plus');
+      icon.classList.toggle('fa-minus');
+    });
+  });
+</script>
+
+</body>
+</html>

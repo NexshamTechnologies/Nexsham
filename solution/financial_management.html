@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Financial Management Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1240;
+    --ink-soft:#5B5478;
+    --purple-900:#3B1E8C;
+    --purple-700:#5B2FE0;
+    --purple-600:#6E3AF0;
+    --purple-500:#8358F5;
+    --lilac-100:#F1ECFE;
+    --lilac-200:#E6DCFD;
+    --pink-500:#B463E8;
+    --paper:#FBFAFE;
+    --white:#ffffff;
+    --line:#EAE5F7;
+    --green:#1FAE6C;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(60,30,140,0.25);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--purple-700); background:var(--lilac-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--purple-900); font-weight:800; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+eader{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:#241259;
+    padding:24px 0 0;
+  }
+  .crumb{ color:#B9AEE0; font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#7C6FB0; margin:0 6px; }
+  .crumb b{ color:#fff; font-weight:500; }
+  .hero-grid{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:50px; align-items:center;
+  }
+  .hero-copy h1{
+    color:#fff; font-size:34px; line-height:1.12; font-weight:800; margin-bottom:20px;
+  }
+  .hero-copy h1 .grad{
+    background:linear-gradient(90deg,#B79CFB,#F0B4E8);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    display:block;
+  }
+  .hero-copy p{ color:#C7BEE7; font-size:15.5px; line-height:1.7; max-width:440px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:22px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:#E4DDF7; font-size:13.5px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; color:#C6A6FF; font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(150,60,240,0.7);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid rgba(255,255,255,0.25); color:#fff; padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:70px;margin-left:150px;}
+  .dash-card{ 
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:22px;
+    position:relative; z-index:2;
+  }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+  .dash-brand{ display:flex; align-items:center; gap:8px; font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:var(--purple-900);}
+  .dash-brand .mark{ width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,var(--purple-600),var(--pink-500)); }
+  .dash-search{
+    flex:1; margin:0 22px; background:#F5F2FC; border-radius:8px; padding:8px 14px;
+    font-size:12.5px; color:#A199C0;
+  }
+  .dash-user{ width:30px; height:30px; border-radius:50%; background:var(--lilac-200); }
+  .dash-body{ display:grid; grid-template-columns:190px 1fr; gap:16px;}
+  .dash-nav{ display:flex; flex-direction:column; gap:3px; }
+  .dash-nav a{
+    font-size:12.5px; color:var(--ink-soft); padding:9px 12px; border-radius:8px; font-weight:500;
+  }
+  .dash-nav a.on{ background:var(--purple-600); color:#fff; }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:15px; font-weight:700; color:var(--purple-900);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-bottom:14px;}
+  .panel{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:44px; }
+  .donut{ display:flex; align-items:center; gap:10px; }
+  .donut svg{ flex-shrink:0; }
+  .donut ul{ list-style:none; font-size:9.5px; color:var(--ink-soft); }
+  .donut li{ display:flex; align-items:center; gap:5px; margin-bottom:3px;}
+  .donut i{ width:6px; height:6px; border-radius:50%; display:inline-block;}
+  .tx-list{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .tx-row{ display:flex; justify-content:space-between; font-size:10.5px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .tx-row:last-child{ border:none; }
+  .tx-row b{ color:var(--ink); font-weight:600; }
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-40px; width:190px; background:#fff;
+    border-radius:20px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #1B1240;
+  }
+  .phone-card .val{ font-size:16px; font-weight:800; color:var(--purple-900);}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:2px;}
+  .phone-metric{ margin-bottom:10px; }
+  .phone-metric .chg{ font-size:9px; font-weight:700; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#A199C0; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.55; font-weight:700; font-size:19px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--purple-900); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--purple-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--purple-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:22px 14px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--purple-500); }
+  .mod-icon{
+    width:42px; height:42px; border-radius:10px; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:18px;
+  }
+  .mod-card h4{ font-size:13.5px; margin-bottom:6px; }
+  .mod-card p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE ---------- */
+  .why{ padding:80px 0; background:var(--paper); }
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ text-align:center; }
+  .why-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:20px;
+  }
+  .why-card h4{ font-size:14px; margin-bottom:6px; }
+  .why-card p{ font-size:12px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 90px; background:#fff; }
+  .steps{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:20px; left:8%; right:8%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 6px;}
+  .step .num{
+    width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;
+    margin:0 auto 14px; box-shadow:0 8px 18px -6px rgba(140,60,240,0.5);
+  }
+  .step h4{ font-size:13.5px; margin-bottom:6px; }
+  .step p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#5B2FE0,#8B3FE8 60%, #C155D8);
+    border-radius:22px; padding:50px 46px; display:grid; grid-template-columns:1.3fr 1fr; gap:30px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-inner::after{
+    content:''; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+    border-radius:50%; background:rgba(255,255,255,0.08);
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#E6D6FB; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:27px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14.5px; color:#E9DEFB; line-height:1.6; margin-bottom:22px; max-width:420px;}
+  .cta-btns{ display:flex; gap:12px; }
+  .cta-btns .btn-primary{ background:#fff; color:var(--purple-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.4); }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .cta-point h5{ font-size:14px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12.5px; color:#E4D6FA; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#1B0F45; color:#C7BEE7; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#A79CD1;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#8B7FB5; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.1); color:#D5C4FA;">FINANCIAL MANAGEMENT</span>
+        <h1>Smarter Finance.<span class="grad">Stronger Business.</span></h1>
+        <p>Manage accounting, budgeting, payments and reporting from one unified platform to drive financial accuracy and business growth.</p>
+        <div class="hero-badges">
+          <span><i>⚡</i>Real-time Insights</span>
+          <span><i>🛡</i>Secure &amp; Compliant</span>
+          <span><i>✓</i>Easy to Use</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">Request a Demo →</a>
+          <a href="#" class="btn-ghost">Talk to Our Experts</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-top">
+            <div class="dash-brand"><span class="mark"></span>NEXSHAM</div>
+            <div class="dash-search">Search here...</div>
+            <div class="dash-user"></div>
+          </div>
+          <div class="dash-body">
+            <div class="dash-nav">
+              <a class="on">Dashboard</a>
+              <a>Accounts</a>
+              <a>Transactions</a>
+              <a>Budgeting</a>
+              <a>Invoices</a>
+              <a>Payments</a>
+              <a>Reports</a>
+              <a>Settings</a>
+            </div>
+            <div>
+              <div class="stat-row">
+                <div class="stat-card"><div class="lbl">Total Revenue</div><div class="val">$48,75,230</div><div class="chg up">↑ 12.5%</div></div>
+                <div class="stat-card"><div class="lbl">Total Expenses</div><div class="val">$26,18,340</div><div class="chg up">↑ 8.3%</div></div>
+                <div class="stat-card"><div class="lbl">Net Profit</div><div class="val">$22,56,890</div><div class="chg up">↑ 15.7%</div></div>
+                <div class="stat-card"><div class="lbl">Outstanding Payables</div><div class="val">$7,85,450</div><div class="chg down">↓ 3.2%</div></div>
+              </div>
+              <div class="panel-row">
+                <div class="panel">
+                  <div class="ph"><span>Cash Flow Overview</span><span>This Month</span></div>
+                  <svg class="sparkline" viewBox="0 0 220 50" preserveAspectRatio="none">
+                    <polyline points="0,40 25,28 50,34 75,15 100,25 125,10 150,20 175,8 200,18 220,5" fill="none" stroke="#6E3AF0" stroke-width="2.5"/>
+                    <polyline points="0,45 25,42 50,38 75,40 100,32 125,36 150,28 175,30 200,22 220,26" fill="none" stroke="#F0A6E0" stroke-width="2.5"/>
+                  </svg>
+                  <div style="display:flex; gap:14px; font-size:9.5px; color:var(--ink-soft);">
+                    <span>● Inflow $58,45,600</span><span>● Outflow $35,08,200</span>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="ph"><span>Expense Distribution</span></div>
+                  <div class="donut">
+                    <svg width="60" height="60" viewBox="0 0 42 42">
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#6E3AF0" stroke-width="6" stroke-dasharray="40 60" stroke-dashoffset="25"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#B463E8" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-15"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#F0A6E0" stroke-width="6" stroke-dasharray="15 85" stroke-dashoffset="-35"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#D8CCF5" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-50"/>
+                    </svg>
+                    <ul>
+                      <li><i style="background:#6E3AF0"></i>Operations 40%</li>
+                      <li><i style="background:#B463E8"></i>Marketing 20%</li>
+                      <li><i style="background:#F0A6E0"></i>HR 15%</li>
+                      <li><i style="background:#D8CCF5"></i>Finance 10%</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="tx-list">
+                <div class="ph"><span>Recent Transactions</span></div>
+                <div class="tx-row"><span><b>INV-2024-1256</b> Invoice to ABC Corp.</span><span>$4,850</span><span>2 mins ago</span></div>
+                <div class="tx-row"><span><b>BILL-2024-0987</b> Office Supplies</span><span>$850</span><span>1 hour ago</span></div>
+                <div class="tx-row"><span><b>PAY-2024-3345</b> Payment to Vendor</span><span>$2,450</span><span>3 hours ago</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-mini" style="font-weight:700; color:var(--purple-900); font-size:12px;">Dashboard</div>
+          <div class="phone-mini">This Month ▾</div>
+          <div class="phone-metric" style="margin-top:10px;">
+            <div class="phone-mini">Total Revenue</div>
+            <div class="val">$48,75,230</div>
+            <div class="chg up">↑ 12.0%</div>
+          </div>
+          <svg width="100%" height="30" viewBox="0 0 150 30" style="margin-bottom:10px;">
+            <polyline points="0,25 20,18 40,22 60,10 80,16 100,6 120,14 150,4" fill="none" stroke="#6E3AF0" stroke-width="2"/>
+          </svg>
+          <div class="phone-metric">
+            <div class="phone-mini">Total Expenses</div>
+            <div class="val" style="font-size:14px;">$26,18,340</div>
+            <div class="chg up">↑ 8.3%</div>
+          </div>
+          <div class="phone-metric" style="margin-bottom:0;">
+            <div class="phone-mini">Net Profit</div>
+            <div class="val" style="font-size:14px;">$22,56,890</div>
+            <div class="chg up">↑ 15.7%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE FINANCIAL MANAGEMENT</span>
+      <h2>Everything You Need to Manage Your Finances</h2>
+      <p>A comprehensive solution to manage every aspect of your financial operations.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>Accounting Management</h3>
+        <p>Simplify your accounting with automated workflows and real-time tracking.</p>
+        <ul class="feat-list">
+          <li>General Ledger</li><li>Accounts Payable</li><li>Accounts Receivable</li><li>Bank Reconciliation</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Accounting →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧾</div>
+        <h3>Billing Management</h3>
+        <p>Create and manage invoices, track payments and automate billing.</p>
+        <ul class="feat-list">
+          <li>Invoice Generation</li><li>Recurring Billing</li><li>Payment Reminders</li><li>Credit Notes</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Billing →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h3>Reports &amp; Analytics</h3>
+        <p>Generate insightful reports to make smarter financial decisions.</p>
+        <ul class="feat-list">
+          <li>Profit &amp; Loss Statement</li><li>Balance Sheet</li><li>Cash Flow Statement</li><li>Custom Reports</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Reports →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL MODULES</span>
+      <h2>All Financial Operations in One Platform</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">📅</div><h4>Budgeting</h4><p>Plan and manage budgets effectively.</p></div>
+      <div class="mod-card"><div class="mod-icon">🧮</div><h4>Expense Tracking</h4><p>Track and categorize all your expenses.</p></div>
+      <div class="mod-card"><div class="mod-icon">🏢</div><h4>Fixed Assets</h4><p>Manage and track your company assets.</p></div>
+      <div class="mod-card"><div class="mod-icon">🧾</div><h4>Tax Management</h4><p>Handle taxes and compliance easily.</p></div>
+      <div class="mod-card"><div class="mod-icon">💱</div><h4>Multi-Currency</h4><p>Support for multiple currencies.</p></div>
+      <div class="mod-card"><div class="mod-icon">🔍</div><h4>Audit Trail</h4><p>Track every financial activity and change.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">WHY CHOOSE OUR FINANCIAL MANAGEMENT SYSTEM</span>
+      <h2>Built for Accuracy. Designed for Growth.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⏱</div><h4>Real-time Data</h4><p>Access real-time financial data anytime.</p></div>
+      <div class="why-card"><div class="why-icon">🎯</div><h4>Reduce Errors</h4><p>Automate processes and minimize human errors.</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h4>Cost Effective</h4><p>Lower operational costs with automation.</p></div>
+      <div class="why-card"><div class="why-icon">🛡</div><h4>Compliance Ready</h4><p>Stay compliant with local and global standards.</p></div>
+      <div class="why-card"><div class="why-icon">📶</div><h4>Scalable Solution</h4><p>Grows with your business needs.</p></div>
+      <div class="why-card"><div class="why-icon">🔒</div><h4>Secure &amp; Reliable</h4><p>Enterprise-grade security for your data.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR IMPLEMENTATION PROCESS</span>
+      <h2>From Setup to Success</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Requirement Analysis</h4><p>We understand your business needs and financial goals.</p></div>
+      <div class="step"><div class="num">02</div><h4>Planning</h4><p>We create a tailored implementation plan.</p></div>
+      <div class="step"><div class="num">03</div><h4>Setup &amp; Configuration</h4><p>We configure the system as per your requirements.</p></div>
+      <div class="step"><div class="num">04</div><h4>Data Migration</h4><p>We securely migrate your existing financial data.</p></div>
+      <div class="step"><div class="num">05</div><h4>Training</h4><p>We train your team to use the system effectively.</p></div>
+      <div class="step"><div class="num">06</div><h4>Go Live &amp; Support</h4><p>We go live and provide ongoing support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-eyebrow">READY TO TAKE CONTROL OF YOUR FINANCES?</div>
+      <h2>Let's Simplify Your Financial Management</h2>
+      <p>Get complete visibility, control and insights into your financial operations with Nexsham.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn-ghost">Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our finance experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your business needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Get started in days, not months.</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>

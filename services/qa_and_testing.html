@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — QA &amp; Testing Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --ink-950:#060a18;
+    --ink-900:#0a1230;
+    --ink-800:#101c42;
+    --blue-700:#1447e6;
+    --blue-600:#2f5cf0;
+    --blue-500:#4571f5;
+    --blue-100:#e8edfd;
+    --paper:#f5f7fb;
+    --paper-2:#ffffff;
+    --line:#e2e6f0;
+    --slate-900:#0e1526;
+    --slate-600:#5a6377;
+    --slate-400:#8b93a8;
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --shadow-card:0 2px 4px rgba(14,21,38,0.04), 0 12px 24px -12px rgba(14,21,38,0.09);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--slate-900);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;max-width:100%;}
+
+  :focus-visible{
+    outline:2.5px solid var(--blue-600);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--blue-600);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.95rem;
+    border:1.5px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--blue-600);
+    color:#fff;
+    box-shadow:0 8px 20px -8px rgba(47,92,240,0.55);
+  }
+  .btn-primary:hover{background:var(--blue-500);}
+  .btn-ghost-dark{
+    border-color:rgba(255,255,255,0.28);
+    color:#fff;
+  }
+  .btn-ghost-dark:hover{background:rgba(255,255,255,0.08);}
+  .btn-ghost-light{
+    border-color:var(--line);
+    color:var(--slate-900);
+  }
+  .btn-ghost-light:hover{background:#fff;border-color:var(--slate-900);}
+
+  /* ===== HEADER ===== */
+  .navbar{
+    position:sticky; top:0; z-index:100;
+    background:var(--ink-950);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+ .nav-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 16px 32px;
+}
+  
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    white-space:nowrap;
+
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+
+    flex-shrink:0;
+}
+.logo-text{
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+  .logo-img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
+}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    margin-left:40px;
+}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:15px;
+    font-weight:500;
+
+    gap:5px;
+
+    transition:.2s;
+}
+  .nav-links a:hover{ color:#fff; }
+  .nav-links svg{width:13px;height:13px;}
+  .nav-cta{ margin-left:auto; display:flex; align-items:center;  }
+  .nav-toggle{ margin-left:10px;display:none; background:none; border:none; color:#fff; cursor:pointer; }
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 18%, rgba(47,92,240,0.24), transparent 60%),
+      linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{
+    background:rgba(47,92,240,0.14);
+    border:1px solid rgba(69,113,245,0.32);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+    color:#a9bffb;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.1rem, 5.6vw, 3.2rem);
+    line-height:1.08;
+    color:#fff;
+    font-weight:700;
+  }
+  .hero-copy h1 span{
+    display:block;
+    color:var(--blue-500);
+  }
+  .hero-copy p.lede{
+    margin-top:20px;
+    font-size:1.02rem;
+    line-height:1.65;
+    color:rgba(255,255,255,0.68);
+    max-width:520px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:30px;
+  }
+  .hero-check-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-top:34px;
+  }
+  .hero-check-row span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.72);
+  }
+  .hero-check-row i{color:var(--blue-500);}
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:300px;
+  }
+  .device{
+    position:relative;
+    width:min(420px, 88vw);
+  }
+  .laptop-screen{
+    background:linear-gradient(160deg,#16224f,#0d1633);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:34px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    position:relative;
+    min-height:210px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .shield-badge{
+    width:96px;height:96px;
+    border-radius:26px;
+    background:linear-gradient(150deg,var(--blue-500),var(--blue-700));
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;
+    font-size:2.4rem;
+    box-shadow:0 20px 40px -14px rgba(47,92,240,0.65);
+  }
+  .laptop-base{
+    height:14px;
+    background:linear-gradient(180deg,#16224f,#0d1633);
+    border-radius:0 0 10px 10px;
+    margin:0 6px;
+    position:relative;
+    opacity:0.9;
+  }
+  .laptop-base::after{
+    content:'';
+    position:absolute;
+    left:50%;top:0;
+    transform:translateX(-50%);
+    width:60px;height:5px;
+    background:#0a1230;
+    border-radius:0 0 6px 6px;
+  }
+
+  .float-badge{
+    position:absolute;
+    background:var(--ink-800);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:16px;
+    padding:14px 16px;
+    text-align:center;
+    box-shadow:0 18px 34px -14px rgba(0,0,0,0.55);
+  }
+  .float-badge i{
+    width:38px;height:38px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 8px;
+    font-size:0.95rem;
+  }
+  .float-badge span{
+    display:block;
+    font-size:0.72rem;
+    font-weight:600;
+    color:rgba(255,255,255,0.8);
+    white-space:nowrap;
+  }
+  .fb-bug{top:6%;left:-13%;}
+  .fb-bug i{background:#ff5a5f;color:#fff;}
+  .fb-checklist{top:-2%;right:-11%;}
+  .fb-checklist i{background:var(--blue-600);color:#fff;}
+  .fb-gauge{bottom:-6%;right:-9%;}
+  .fb-gauge i{background:#101c42;color:var(--blue-500);border:1px solid rgba(69,113,245,0.4);}
+  .fb-loupe{
+    position:absolute;
+    bottom:-10%;left:20%;
+    width:56px;height:56px;
+    background:var(--ink-800);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--blue-500);
+    font-size:1.3rem;
+    box-shadow:0 16px 30px -10px rgba(0,0,0,0.5);
+  }
+
+  /* ===== LOGO STRIP ===== */
+  .logo-strip{
+    background:#eef1f8;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .logo-strip .strip-label{
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--slate-400);
+    margin-bottom:20px;
+  }
+  .strip-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:clamp(20px,4vw,52px);
+    color:var(--slate-600);
+    font-weight:700;
+    font-family:var(--font-display);
+    opacity:0.75;
+  }
+  .strip-row span{display:flex;align-items:center;gap:8px;font-size:1.05rem;}
+
+  /* ===== SECTION HEADS ===== */
+  section{padding:76px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem,3.4vw,2.3rem);
+    margin-top:12px;
+    color:var(--slate-900);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--slate-600);
+    line-height:1.6;
+  }
+
+  /* ===== SERVICE CARDS ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .service-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    box-shadow:var(--shadow-card);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -20px rgba(14,21,38,0.18);
+  }
+  .card-icon{
+    width:48px;height:48px;
+    border-radius:12px;
+    background:var(--blue-600);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    margin-bottom:18px;
+  }
+  .service-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .service-card p{color:var(--slate-600);line-height:1.6;font-size:0.94rem;}
+  .check-list{margin:18px 0;}
+  .check-list li{
+    display:flex;align-items:center;gap:9px;
+    font-size:0.88rem;color:var(--slate-600);
+    padding:5px 0;
+  }
+  .check-list i{color:var(--blue-600);font-size:0.8rem;}
+  .learn-more{
+    color:var(--blue-600);
+    font-weight:600;
+    font-size:0.9rem;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .learn-more i{font-size:0.75rem;transition:transform .18s ease;}
+  .learn-more:hover i{transform:translateX(3px);}
+
+  /* ===== WHY CHOOSE ===== */
+  .why-choose{background:var(--paper-2);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px 24px;
+  }
+  .why-item{text-align:center;}
+  .why-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--blue-100);
+    color:var(--blue-700);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    margin:0 auto 16px;
+  }
+  .why-item h4{font-size:1rem;margin-bottom:8px;}
+  .why-item p{font-size:0.87rem;color:var(--slate-600);line-height:1.55;}
+
+  /* ===== PROCESS ===== */
+  .process{position:relative;}
+  .process-track{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    position:relative;
+  }
+  .process-step{
+    text-align:center;
+    position:relative;
+  }
+  .step-circle{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--paper-2);
+    border:2px solid var(--blue-600);
+    color:var(--blue-600);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.15rem;
+    margin:0 auto 16px;
+    position:relative;
+    z-index:2;
+  }
+  .step-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--blue-600);
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .process-step h4{font-size:1rem;margin-bottom:6px;}
+  .process-step p{font-size:0.85rem;color:var(--slate-600);line-height:1.5;}
+
+  /* ===== TOOLS STRIP ===== */
+  .tools-strip{
+    background:var(--paper-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:38px 0;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--ink-950), var(--blue-700) 130%);
+    border-radius:var(--radius-lg);
+    margin:0 20px;
+    padding:38px 32px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    max-width:1200px;
+    margin-inline:auto;
+  }
+  .cta-left{display:flex;align-items:center;gap:20px;flex:1 1 320px;}
+  .cta-icon{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--blue-500);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+  }
+  .cta-left h3{color:#fff;font-size:1.25rem;margin:6px 0;}
+  .cta-left p{color:rgba(255,255,255,0.65);font-size:0.9rem;}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .cta-banner .eyebrow{color:#a9bffb;}
+  .cta-banner .btn-ghost-dark{border-color:rgba(255,255,255,0.3);}
+
+  /* ===== FAQ ===== */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .faq-item{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .faq-q{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:none;border:none;
+    padding:18px 22px;
+    font-size:0.96rem;
+    font-weight:600;
+    color:var(--slate-900);
+    text-align:left;
+  }
+  .faq-q i{color:var(--blue-600);transition:transform .22s ease;flex-shrink:0;margin-left:14px;}
+  .faq-item.open .faq-q i{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .28s ease;
+  }
+  .faq-a p{
+    padding:0 22px 20px;
+    color:var(--slate-600);
+    font-size:0.9rem;
+    line-height:1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--ink-950);
+    color:rgba(255,255,255,0.6);
+    padding:52px 0 26px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand p{margin-top:14px;font-size:0.88rem;line-height:1.6;max-width:280px;}
+  .footer-col h5{
+    color:#fff;font-size:0.85rem;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .footer-col li{margin-bottom:10px;font-size:0.88rem;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    padding-top:22px;
+    display:flex;flex-wrap:wrap;gap:12px;
+    justify-content:space-between;
+    font-size:0.8rem;
+  }
+  .social-row{display:flex;gap:12px;}
+  .social-row a{
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social-row a:hover{background:var(--blue-600);border-color:var(--blue-600);color:#fff;}
+
+  /* =========================================================
+     TIER 2 — TABLET  (min-width: 576px)
+     ========================================================= */
+  @media (min-width:576px){
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .faq-grid{grid-template-columns:1fr 1fr;}
+    .hero-check-row{gap:26px;}
+  }
+
+  /* =========================================================
+     TIER 3 — LAPTOP  (min-width: 992px)
+     ========================================================= */
+  @media (min-width:992px){
+    .nav-links{display:flex;}
+    .hamburger{display:none;}
+    .mobile-menu{display:none !important;}
+
+    .hero-grid{grid-template-columns:1.05fr 0.95fr;gap:40px;}
+    .hero-copy p.lede{max-width:460px;}
+
+    .card-grid{grid-template-columns:repeat(3,1fr);}
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .process-track{
+      grid-template-columns:repeat(6,1fr);
+    }
+    .process-track::before{
+      content:'';
+      position:absolute;
+      top:29px;left:8%;right:8%;
+      height:2px;
+      background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
+      z-index:1;
+    }
+    .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;}
+    .device{width:460px;}
+  }
+
+  /* =========================================================
+     TIER 4 — DESKTOP  (min-width: 1200px)
+     ========================================================= */
+  @media (min-width:1200px){
+    .nav-links{gap:40px;}
+    .hero{padding:78px 0 68px;}
+    .hero-copy h1{font-size:3.35rem;}
+    section{padding:96px 0;}
+    .why-grid{grid-template-columns:repeat(6,1fr);}
+    .card-grid{gap:28px;}
+    .cta-banner{padding:44px 48px;}
+  }
+
+  /* Mobile nav toggle (below 992px) */
+  @media (max-width:991.98px){
+    .nav-links{display:none;}
+    .nav-cta .btn-primary{display:none;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:480px){
+    .cta-banner{padding:30px 22px;}
+    .hero-art{margin-top:10px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+    <!-- Your Logo -->
+    <img src="/images/favicon.jpg" alt="NexSham Logo" class="logo-img">
+
+    <span class="logo-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#">Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      <a href="#">Our Process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#quote" class="btn btn-primary">Book Free Consultation <span>→</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<br>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="fa-solid fa-shield-halved"></i> QA &amp; Testing Services</span>
+        <h1>QA &amp; Testing<span>Quality You Can Trust</span></h1>
+        <p class="lede">We ensure your software is reliable, secure and performs exceptionally through end-to-end testing and quality assurance.</p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn btn-primary">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="btn btn-ghost-dark"><i class="fa-regular fa-comment-dots"></i> Talk to Our Experts</a>
+        </div>
+        <div class="hero-check-row">
+          <span><i class="fa-solid fa-shield-halved"></i> High Quality</span>
+          <span><i class="fa-solid fa-bolt"></i> Faster Releases</span>
+          <span><i class="fa-solid fa-triangle-exclamation"></i> Reduced Risks</span>
+          <span><i class="fa-solid fa-face-smile"></i> Happy Users</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="device">
+          <div class="float-badge fb-bug">
+            <i class="fa-solid fa-bug"></i>
+          </div>
+          <div class="float-badge fb-checklist">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Test Cases</span>
+          </div>
+          <div class="float-badge fb-gauge">
+            <i class="fa-solid fa-gauge-high"></i>
+            <span>Performance</span>
+          </div>
+          <div class="fb-loupe"><i class="fa-solid fa-magnifying-glass"></i></div>
+
+          <div class="laptop-screen">
+            <div class="shield-badge"><i class="fa-solid fa-check"></i></div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+    </div><br>
+  </div>
+  <br>
+</section>
+
+
+
+<!-- WHAT WE TEST -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What We Test</span>
+      <h2>Comprehensive Testing Services</h2>
+      <p>We offer a wide range of testing services to ensure your application is bug-free, secure and delivers the best user experience.</p>
+    </div>
+    <div class="card-grid">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-regular fa-window-maximize"></i></div>
+        <h3>Functional Testing</h3>
+        <p>Ensure every feature and function works as expected across all devices and platforms.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Test Case Development</li>
+          <li><i class="fa-solid fa-check"></i> UI/UX Testing</li>
+          <li><i class="fa-solid fa-check"></i> Regression Testing</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+        <h3>Performance Testing</h3>
+        <p>Ensure your application performs well under load and provides a seamless experience.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Load Testing</li>
+          <li><i class="fa-solid fa-check"></i> Stress Testing</li>
+          <li><i class="fa-solid fa-check"></i> Scalability Testing</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-lock"></i></div>
+        <h3>Security Testing</h3>
+        <p>Identify vulnerabilities and ensure your application and data are completely secure.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Vulnerability Assessment</li>
+          <li><i class="fa-solid fa-check"></i> Penetration Testing</li>
+          <li><i class="fa-solid fa-check"></i> OWASP Top 10 Testing</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-choose">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Nexsham</span>
+      <h2>Quality That Drives Success</h2>
+      <p>We follow industry best practices and advanced testing methodologies to deliver high-quality software.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h4>Expert Testers</h4>
+        <p>Experienced QA engineers with domain expertise.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Quality Assurance</h4>
+        <p>Comprehensive testing for bug-free software.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h4>Faster Time-to-Market</h4>
+        <p>Early bug detection for quicker releases.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-sack-dollar"></i></div>
+        <h4>Cost Effective</h4>
+        <p>Reduce rework and maintenance costs with quality.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-lock"></i></div>
+        <h4>Secure Applications</h4>
+        <p>Identify security risks and protect your data.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-regular fa-file-lines"></i></div>
+        <h4>Detailed Reports</h4>
+        <p>Clear insights and actionable reports for improvement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Testing Process</span>
+      <h2>A Proven Testing Approach</h2>
+      <p>A systematic process to ensure quality at every stage.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-regular fa-file-lines"></i></div>
+        <span class="step-num">01</span>
+        <h4>Requirement Analysis</h4>
+        <p>We understand your application requirements and identify testing objectives.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-list-check"></i></div>
+        <span class="step-num">02</span>
+        <h4>Test Planning</h4>
+        <p>We create a detailed test plan, strategy and test cases.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-gear"></i></div>
+        <span class="step-num">03</span>
+        <h4>Test Execution</h4>
+        <p>Our QA team executes test cases across different environments.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-bug"></i></div>
+        <span class="step-num">04</span>
+        <h4>Bug Reporting</h4>
+        <p>We log, track and prioritize bugs with detailed information.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-circle-check"></i></div>
+        <span class="step-num">05</span>
+        <h4>Retesting &amp; Validation</h4>
+        <p>We verify fixes and ensure issues are resolved.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-chart-column"></i></div>
+        <span class="step-num">06</span>
+        <h4>Release &amp; Support</h4>
+        <p>We ensure a smooth release and provide post-release support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="wrap">
+    <p class="strip-label" style="text-align:center;">Tools &amp; Technologies We Use</p><br>
+    <div class="strip-row" style="color:var(--slate-900);opacity:0.85;">
+      <span><i class="fa-solid fa-s" style="background:#43B02A;color:#fff;width:20px;height:20px;border-radius:4px;display:inline-flex;align-items:center;justify-content:center;font-size:0.7rem;"></i> Selenium</span>
+      <span><i class="fa-brands fa-python" style="color:#3776AB;"></i> Cypress</span>
+      <span><i class="fa-brands fa-jenkins" style="color:#D24939;"></i> Jenkins</span>
+      <span><i class="fa-brands fa-jira" style="color:#2684FF;"></i> JIRA</span>
+      <span><i class="fa-solid fa-paper-plane" style="color:#FF6C37;"></i> Postman</span>
+      <span><i class="fa-solid fa-vial" style="color:#4CAF50;"></i> SoapUI</span>
+      <span><i class="fa-solid fa-gauge" style="color:#D22128;"></i> JMeter</span>
+      <span><i class="fa-solid fa-vial-circle-check" style="color:#3B5998;"></i> TestRail</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<section style="padding:60px 0;">
+  <div class="cta-banner">
+    <div class="cta-left">
+      <div class="cta-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div>
+        <span class="eyebrow">Ready to Deliver High-Quality Software?</span>
+        <h3>Let's Build Bug-Free Software Together</h3>
+        <p>Partner with us for reliable QA &amp; testing services that ensure your software performs flawlessly.</p>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="#quote" class="btn btn-primary">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#contact" class="btn btn-ghost-dark"><i class="fa-solid fa-phone"></i> Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    hamburgerBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        if (o !== item) { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+</script>
+
+</body>
+</html>

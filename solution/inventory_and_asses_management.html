@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Inventory &amp; Asset Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#12241E;
+    --ink-soft:#5C7368;
+    --green-900:#0B3B2C;
+    --green-800:#0F4A36;
+    --green-700:#14603F;
+    --green-600:#1B7A4D;
+    --green-500:#249A5E;
+    --mint-100:#E7F5EC;
+    --mint-200:#D3EEDD;
+    --paper:#FAFBF9;
+    --white:#ffffff;
+    --line:#E4EDE7;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(15,60,40,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--green-700); background:var(--mint-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--green-900); font-weight:800; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--paper); padding:44px 0 0; }
+  .crumb{ color:var(--ink-soft); font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#9EB1A8; margin:0 6px; }
+  .crumb b{ color:var(--ink); font-weight:600; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 1.25fr; gap:50px; align-items:center; padding-bottom:70px;}
+  .hero-copy h1{ color:var(--ink); font-size:42px; line-height:1.12; font-weight:800; margin-bottom:20px;}
+  .hero-copy h1 .grad{ color:var(--green-600); display:block; }
+  .hero-copy p{ color:var(--ink-soft); font-size:15.5px; line-height:1.7; max-width:440px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:22px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:var(--ink); font-size:13.5px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:var(--mint-100);
+    display:flex; align-items:center; justify-content:center; color:var(--green-600); font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--green-600),var(--green-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(20,120,70,0.5);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid var(--line); color:var(--ink); padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:40px;}
+  .dash-card{
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:18px;
+    position:relative; z-index:2; display:grid; grid-template-columns:170px 1fr; gap:16px;
+    border:1px solid var(--line);
+  }
+  .dash-nav{
+    background:var(--green-900); border-radius:12px; padding:16px 12px; display:flex; flex-direction:column; gap:2px;
+  }
+  .dash-brand{ display:flex; align-items:center; gap:8px; font-family:'Sora',sans-serif; font-weight:700; font-size:14px; color:#fff; margin-bottom:16px; padding:0 6px;}
+  .dash-brand .mark{ width:22px; height:22px; border-radius:6px; background:linear-gradient(135deg,var(--green-500),#3FC988); }
+  .dash-nav a{ font-size:12px; color:#B9CBC1; padding:8px 10px; border-radius:8px; font-weight:500; }
+  .dash-nav a.on{ background:var(--green-600); color:#fff; }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;}
+  .dash-top h4{ font-size:16px; color:var(--ink); }
+  .dash-icons{ display:flex; gap:10px; }
+  .dash-icons span{ width:24px; height:24px; border-radius:50%; background:var(--mint-100); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--green-700);}
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#F7FBF8; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:15px; font-weight:700; color:var(--green-900);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green-600); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-bottom:14px;}
+  .panel{ background:#F7FBF8; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:44px; }
+  .donut{ display:flex; align-items:center; gap:10px; }
+  .donut svg{ flex-shrink:0; }
+  .donut ul{ list-style:none; font-size:9.5px; color:var(--ink-soft); }
+  .donut li{ display:flex; align-items:center; gap:5px; margin-bottom:3px;}
+  .donut i{ width:6px; height:6px; border-radius:50%; display:inline-block;}
+  .two-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tx-list{ background:#F7FBF8; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .tx-row{ display:flex; justify-content:space-between; font-size:10px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft); gap:6px;}
+  .tx-row:last-child{ border:none; }
+  .tx-row b{ color:var(--ink); font-weight:600; }
+  .tx-row .tag{ font-weight:600; }
+  .low{ color:#D98B25; }
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-30px; width:190px; background:#fff;
+    border-radius:22px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #12241E;
+  }
+  .phone-card .val{ font-size:16px; font-weight:800; color:var(--green-900);}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:2px;}
+  .phone-metric{ margin-bottom:10px; }
+  .phone-metric .chg{ font-size:9px; font-weight:700; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#8FA39A; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.6; font-weight:700; font-size:19px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--green-600),var(--green-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--green-900); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--green-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--green-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES / FEATURES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:14px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:20px 10px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--green-500); }
+  .mod-icon{
+    width:40px; height:40px; border-radius:10px; background:var(--mint-100); color:var(--green-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:17px;
+  }
+  .mod-card h4{ font-size:12.5px; margin-bottom:6px; }
+  .mod-card p{ font-size:11px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 30px; background:var(--paper); }
+  .steps{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:24px; left:8%; right:8%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 6px;}
+  .step .num{
+    width:48px; height:48px; border-radius:50%; background:#fff; border:2px solid var(--green-500);
+    color:var(--green-700); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;
+    margin:0 auto 14px;
+  }
+  .step h4{ font-size:13.5px; margin-bottom:6px; color:var(--green-800);}
+  .step p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE (bar) ---------- */
+  .why{ padding:50px 0 70px; background:var(--paper); }
+  .why-bar{
+    background:#fff; border:1px solid var(--line); border-radius:18px; padding:30px;
+  }
+  .why-eyebrow{ text-align:center; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-700); margin-bottom:26px;}
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ display:flex; align-items:flex-start; gap:10px; }
+  .why-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--mint-100); color:var(--green-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .why-card h4{ font-size:13px; margin-bottom:4px; }
+  .why-card p{ font-size:11px; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#0B3B2C,#0F4A36 55%, #14603F);
+    border-radius:22px; padding:46px; display:grid; grid-template-columns:0.9fr 1.1fr 1fr; gap:24px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-illustration{
+    width:100%; height:150px; border-radius:16px; background:linear-gradient(160deg,#123526,#0B2A1E);
+    display:flex; align-items:center; justify-content:center; font-size:52px;
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#9FE0BC; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:25px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14px; color:#CFE7DA; line-height:1.6; margin-bottom:22px; }
+  .cta-btns{ display:flex; gap:12px; flex-wrap:wrap;}
+  .cta-btns .btn-primary{ background:#fff; color:var(--green-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px;
+  }
+  .cta-point h5{ font-size:13.5px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12px; color:#CFE7DA; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--mint-100); color:var(--green-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#0B2A1E; color:#B9CBC1; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#8FA69B;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#77917F; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap">
+    
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">INVENTORY &amp; ASSET MANAGEMENT</span>
+        <h1>Track. Manage. Optimize.<span class="grad">In Real Time.</span></h1>
+        <p>Track company assets, equipment and inventory in real time. Improve control, reduce loss and maximize efficiency across your business.</p>
+        <div class="hero-badges">
+          <span><i>⏱</i>Real-time Tracking</span>
+          <span><i>📊</i>Accurate Reporting</span>
+          <span><i>✓</i>Better Control</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">Request a Demo →</a>
+          <a href="#" class="btn-ghost">Talk to Our Experts</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-nav">
+            <div class="dash-brand"><span class="mark"></span>NEXSHAM</div>
+            <a class="on">📊 Dashboard</a>
+            <a>📦 Assets</a>
+            <a>🏬 Inventory</a>
+            <a>🔁 Transactions</a>
+            <a>▦ Barcode</a>
+            <a>🤝 Vendors</a>
+            <a>📄 Reports</a>
+            <a>🔔 Alerts</a>
+            <a>⚙️ Settings</a>
+          </div>
+          <div>
+            <div class="dash-top">
+              <h4>Dashboard</h4>
+              <div class="dash-icons"><span>⚙</span><span>👤</span></div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-card"><div class="lbl">Total Assets</div><div class="val">2,458</div><div class="chg up">↑ 12.5%</div></div>
+              <div class="stat-card"><div class="lbl">Total Inventory Items</div><div class="val">6,782</div><div class="chg up">↑ 8.3%</div></div>
+              <div class="stat-card"><div class="lbl">Low Stock Items</div><div class="val">128</div><div class="chg down">↓ 4.2%</div></div>
+              <div class="stat-card"><div class="lbl">Total Value</div><div class="val">$4.58M</div><div class="chg up">↑ 10.7%</div></div>
+            </div>
+            <div class="panel-row">
+              <div class="panel">
+                <div class="ph"><span>Inventory Overview</span><span>This Month</span></div>
+                <svg class="sparkline" viewBox="0 0 220 50" preserveAspectRatio="none">
+                  <polyline points="0,42 30,30 60,36 90,20 120,28 150,12 180,22 220,6" fill="none" stroke="#1B7A4D" stroke-width="2.5"/>
+                </svg>
+                <div style="display:flex; justify-content:space-between; font-size:9px; color:var(--ink-soft);">
+                  <span>01</span><span>06</span><span>11</span><span>16</span><span>21</span><span>26</span><span>30</span>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="ph"><span>Asset Status</span></div>
+                <div class="donut">
+                  <svg width="56" height="56" viewBox="0 0 42 42">
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#1B7A4D" stroke-width="6" stroke-dasharray="75 25" stroke-dashoffset="25"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#249A5E" stroke-width="6" stroke-dasharray="10 90" stroke-dashoffset="-50"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#7FCB9F" stroke-width="6" stroke-dasharray="8 92" stroke-dashoffset="-60"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#D3EEDD" stroke-width="6" stroke-dasharray="7 93" stroke-dashoffset="-68"/>
+                  </svg>
+                  <ul>
+                    <li><i style="background:#1B7A4D"></i>Active 75%</li>
+                    <li><i style="background:#249A5E"></i>Maintenance 10%</li>
+                    <li><i style="background:#7FCB9F"></i>Retired 8%</li>
+                    <li><i style="background:#D3EEDD"></i>Lost/Other 7%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="two-list">
+              <div class="tx-list">
+                <div class="ph"><span>Recent Transactions</span></div>
+                <div class="tx-row"><span><b>Laptop Dell S520</b></span><span>Checked Out</span><span>2 mins ago</span></div>
+                <div class="tx-row"><span><b>Projector Epson X500</b></span><span>Checked In</span><span>15 mins ago</span></div>
+                <div class="tx-row"><span><b>Office Chair Premium</b></span><span>Added</span><span>1 hour ago</span></div>
+                <div class="tx-row"><span><b>Printer HP LaserJet</b></span><span>Maintenance</span><span>2 hours ago</span></div>
+              </div>
+              <div class="tx-list">
+                <div class="ph"><span>Low Stock Alerts</span></div>
+                <div class="tx-row"><span><b>Wireless Mouse</b></span><span class="tag low">12 Left</span></div>
+                <div class="tx-row"><span><b>HDMI Cable</b></span><span class="tag low">8 Left</span></div>
+                <div class="tx-row"><span><b>A4 Paper Ream</b></span><span class="tag low">15 Left</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-mini" style="font-weight:700; color:var(--green-900); font-size:12px;">Dashboard</div>
+          <div class="phone-mini">Today ▾</div>
+          <div class="phone-metric" style="margin-top:10px;">
+            <div class="phone-mini">Total Assets</div>
+            <div class="val">2,458</div>
+            <div class="chg up">↑ 12.5%</div>
+          </div>
+          <svg width="100%" height="26" viewBox="0 0 150 26" style="margin-bottom:10px;">
+            <polyline points="0,22 20,16 40,19 60,8 80,14 100,5 120,12 150,3" fill="none" stroke="#1B7A4D" stroke-width="2"/>
+          </svg>
+          <div class="phone-metric">
+            <div class="phone-mini">Total Inventory Items</div>
+            <div class="val" style="font-size:14px;">6,782</div>
+            <div class="chg up">↑ 8.3%</div>
+          </div>
+          <div class="phone-metric" style="margin-bottom:0;">
+            <div class="phone-mini">Low Stock Items</div>
+            <div class="val" style="font-size:14px;">128</div>
+            <div class="chg down">↓ 4.3%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE INVENTORY &amp; ASSET MANAGEMENT</span>
+      <h2>Everything You Need to Manage Assets &amp; Inventory</h2>
+      <p>A complete solution to track, monitor and manage your business assets and inventory seamlessly.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🏷️</div>
+        <h3>Asset Tracking</h3>
+        <p>Track and manage all company assets throughout their lifecycle.</p>
+        <ul class="feat-list">
+          <li>Asset Registration</li><li>Location Tracking</li><li>Maintenance Scheduling</li><li>Asset Lifecycle Management</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Assets →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📦</div>
+        <h3>Inventory Management</h3>
+        <p>Manage stock levels, categories and warehouses in real time.</p>
+        <ul class="feat-list">
+          <li>Stock Management</li><li>Multi-warehouse Support</li><li>Reorder Management</li><li>Batch &amp; Serial Tracking</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Inventory →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h3>Reporting &amp; Analytics</h3>
+        <p>Get detailed insights and reports to make smarter decisions.</p>
+        <ul class="feat-list">
+          <li>Real-time Reports</li><li>Custom Dashboards</li><li>Export &amp; Share</li><li>Performance Analytics</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Reports →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL FEATURES</span>
+      <h2>Smart Features for Complete Control</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">▦</div><h4>Barcode Scanning</h4><p>Fast &amp; accurate data capture.</p></div>
+      <div class="mod-card"><div class="mod-icon">📍</div><h4>Multi-location</h4><p>Manage multiple sites easily.</p></div>
+      <div class="mod-card"><div class="mod-icon">🔔</div><h4>Low Stock Alerts</h4><p>Get notified for low inventory.</p></div>
+      <div class="mod-card"><div class="mod-icon">🛠️</div><h4>Asset Maintenance</h4><p>Schedule &amp; track maintenance.</p></div>
+      <div class="mod-card"><div class="mod-icon">👤</div><h4>User Access</h4><p>Role-based access control.</p></div>
+      <div class="mod-card"><div class="mod-icon">🕵️</div><h4>Audit Trail</h4><p>Track all actions and changes.</p></div>
+      <div class="mod-card"><div class="mod-icon">📱</div><h4>Mobile Access</h4><p>Manage on the go, anytime.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR PROCESS</span>
+      <h2>From Tracking to Optimization</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">▦</div><h4>01 Register</h4><p>Add assets and inventory to the system.</p></div>
+      <div class="step"><div class="num">📡</div><h4>02 Track</h4><p>Use barcode / QR to track in real time.</p></div>
+      <div class="step"><div class="num">🗂️</div><h4>03 Manage</h4><p>Organize, update and maintain data.</p></div>
+      <div class="step"><div class="num">👁️</div><h4>04 Monitor</h4><p>Monitor stock levels and asset usage.</p></div>
+      <div class="step"><div class="num">📊</div><h4>05 Analyze</h4><p>Get insights and analyze performance.</p></div>
+      <div class="step"><div class="num">🎯</div><h4>06 Optimize</h4><p>Make data-driven decisions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="why-bar">
+      <div class="why-eyebrow">WHY BUSINESSES CHOOSE OUR SOLUTION</div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">👁️</div><div><h4>Better Visibility</h4><p>Get real-time visibility of assets &amp; inventory.</p></div></div>
+        <div class="why-card"><div class="why-icon">📉</div><div><h4>Reduce Loss</h4><p>Minimize loss, theft and misplacement.</p></div></div>
+        <div class="why-card"><div class="why-icon">💰</div><div><h4>Cost Efficiency</h4><p>Optimize usage and reduce operational cost.</p></div></div>
+        <div class="why-card"><div class="why-icon">⏱️</div><div><h4>Time Saving</h4><p>Automate processes and save time.</p></div></div>
+        <div class="why-card"><div class="why-icon">🛡️</div><div><h4>Compliance Ready</h4><p>Stay compliant with audit and policies.</p></div></div>
+        <div class="why-card"><div class="why-icon">📶</div><div><h4>Scalable Solution</h4><p>Grows with your business needs.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-illustration">📦</div>
+    <div>
+      <div class="cta-eyebrow">READY <span style="color:#fff; font-weight:400; text-transform:none; letter-spacing:normal;">TO TAKE CONTROL?</span></div>
+      <h2>Manage Your Assets &amp; Inventory Smarter</h2>
+      <p>Get full visibility, control and insights across your assets and inventory with Nexsham.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn-ghost">Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your business needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Go live in weeks, not months.</span></div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

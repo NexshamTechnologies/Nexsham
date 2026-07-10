@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Cloud Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --ink-950:#0c0906;
+    --ink-900:#160f0a;
+    --ink-800:#241608;
+    --orange-700:#c2410c;
+    --orange-600:#ea6a12;
+    --orange-500:#f28a2e;
+    --orange-100:#fdead9;
+    --paper:#f7f6f4;
+    --paper-2:#ffffff;
+    --line:#e7e3dd;
+    --slate-900:#181310;
+    --slate-600:#63594f;
+    --slate-400:#948a7d;
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --shadow-card:0 2px 4px rgba(24,19,16,0.05), 0 12px 24px -12px rgba(24,19,16,0.1);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--slate-900);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;max-width:100%;}
+
+  :focus-visible{
+    outline:2.5px solid var(--orange-600);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--orange-600);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.95rem;
+    border:1.5px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--orange-600);
+    color:#fff;
+    box-shadow:0 8px 20px -8px rgba(234,106,18,0.55);
+  }
+  .btn-primary:hover{background:var(--orange-500);}
+  .btn-ghost-dark{
+    border-color:rgba(255,255,255,0.28);
+    color:#fff;
+  }
+  .btn-ghost-dark:hover{background:rgba(255,255,255,0.08);}
+  .btn-ghost-light{
+    border-color:var(--line);
+    color:var(--slate-900);
+  }
+  .btn-ghost-light:hover{background:#fff;border-color:var(--slate-900);}
+
+  /* ===== HEADER ===== */
+  .navbar{
+    position:sticky; top:0; z-index:100;
+    background:var(--ink-950);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+ .nav-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 16px 32px;
+}
+  
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    white-space:nowrap;
+
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+
+    flex-shrink:0;
+}
+.logo-text{
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+  .logo-img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
+}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    margin-left:40px;
+}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:15px;
+    font-weight:500;
+
+    gap:5px;
+
+    transition:.2s;
+}
+  .nav-links a:hover{ color:#fff; }
+  .nav-links svg{width:13px;height:13px;}
+  .nav-cta{ margin-left:auto; display:flex; align-items:center;  }
+  .nav-toggle{ margin-left:10px;display:none; background:none; border:none; color:#fff; cursor:pointer; }
+
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 22%, rgba(234,106,18,0.24), transparent 60%),
+      linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{
+    background:rgba(234,106,18,0.14);
+    border:1px solid rgba(242,138,46,0.32);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+    color:#f6b97a;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.1rem, 5.6vw, 3.1rem);
+    line-height:1.1;
+    color:#fff;
+    font-weight:700;
+  }
+  .hero-copy h1 span{
+    display:block;
+    color:var(--orange-500);
+  }
+  .hero-copy p.lede{
+    margin-top:20px;
+    font-size:1.02rem;
+    line-height:1.65;
+    color:rgba(255,255,255,0.68);
+    max-width:520px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:30px;
+  }
+  .hero-check-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    margin-top:34px;
+  }
+  .hero-check-row span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.72);
+  }
+  .hero-check-row i{
+    color:#fff;
+    background:var(--orange-600);
+    width:16px;height:16px;
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;justify-content:center;
+    font-size:0.6rem;
+  }
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:300px;
+  }
+  .device{
+    position:relative;
+    width:min(440px, 90vw);
+    height:320px;
+  }
+  .cloud-core{
+    position:absolute;
+    left:50%;top:38%;
+    transform:translate(-50%,-50%);
+    width:150px;height:150px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cloud-core i.fa-cloud{
+    position:absolute;
+    font-size:9rem;
+    color:#1c130a;
+    -webkit-text-stroke:1px rgba(242,138,46,0.5);
+  }
+  .cloud-core i.fa-arrow-up{
+    position:relative;
+    z-index:2;
+    font-size:2.6rem;
+    color:var(--orange-500);
+    filter:drop-shadow(0 0 14px rgba(242,138,46,0.7));
+  }
+  .server-block{
+    position:absolute;
+    left:50%;bottom:6%;
+    transform:translateX(-50%);
+    width:120px;height:70px;
+    background:linear-gradient(160deg,#2a1b0d,#160f0a);
+    border:1px solid rgba(242,138,46,0.35);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .server-block::before{
+    content:'';
+    width:34px;height:34px;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--orange-500), rgba(242,138,46,0));
+    box-shadow:0 0 30px 8px rgba(242,138,46,0.55);
+  }
+  .provider-chip{
+    position:absolute;
+    width:64px;height:64px;
+    background:#fff;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 16px 30px -10px rgba(0,0,0,0.5);
+    font-weight:700;
+    font-size:0.85rem;
+  }
+  .provider-chip.aws{top:2%;left:0%;color:#ff9900;}
+  .provider-chip.azure{bottom:16%;left:6%;color:#0089d6;font-size:1.5rem;}
+  .provider-chip.gcp{top:6%;right:0%;font-size:1.5rem;}
+  .provider-chip.node{
+    bottom:0%;right:14%;
+    width:44px;height:44px;
+    background:var(--ink-800);
+    border:1px solid rgba(242,138,46,0.4);
+  }
+  .provider-chip.node span{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--orange-500);
+    box-shadow:0 0 12px 4px rgba(242,138,46,0.6);
+  }
+  .connector-line{
+    position:absolute;
+    background:rgba(242,138,46,0.35);
+    z-index:0;
+  }
+
+  /* ===== LOGO STRIP ===== */
+  .logo-strip{
+    background:#efece7;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .logo-strip .strip-label{
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--slate-400);
+    margin-bottom:20px;
+  }
+  .strip-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:clamp(20px,4vw,52px);
+    color:var(--slate-600);
+    font-weight:700;
+    font-family:var(--font-display);
+    opacity:0.75;
+  }
+  .strip-row span{display:flex;align-items:center;gap:8px;font-size:1.05rem;}
+
+  /* ===== SECTION HEADS ===== */
+  section{padding:76px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem,3.4vw,2.3rem);
+    margin-top:12px;
+    color:var(--slate-900);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--slate-600);
+    line-height:1.6;
+  }
+
+  /* ===== SERVICE CARDS ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .service-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    box-shadow:var(--shadow-card);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -20px rgba(24,19,16,0.18);
+  }
+  .card-icon{
+    width:48px;height:48px;
+    border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    margin-bottom:18px;
+    background:#fff;
+    border:1px solid var(--line);
+  }
+  .card-icon.aws-icon{color:#ff9900;}
+  .card-icon.azure-icon{background:#0089d6;color:#fff;border:none;}
+  .card-icon.gcp-icon{font-size:1.5rem;}
+  .service-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .service-card p{color:var(--slate-600);line-height:1.6;font-size:0.94rem;}
+  .check-list{margin:18px 0;}
+  .check-list li{
+    display:flex;align-items:center;gap:9px;
+    font-size:0.88rem;color:var(--slate-600);
+    padding:5px 0;
+  }
+  .check-list i{color:var(--orange-600);font-size:0.8rem;}
+  .learn-more{
+    color:var(--orange-600);
+    font-weight:600;
+    font-size:0.9rem;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .learn-more i{font-size:0.75rem;transition:transform .18s ease;}
+  .learn-more:hover i{transform:translateX(3px);}
+
+  /* ===== WHY CHOOSE ===== */
+  .why-choose{background:var(--paper-2);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px 24px;
+  }
+  .why-item{text-align:center;}
+  .why-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--orange-100);
+    color:var(--orange-700);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    margin:0 auto 16px;
+  }
+  .why-item h4{font-size:1rem;margin-bottom:8px;}
+  .why-item p{font-size:0.87rem;color:var(--slate-600);line-height:1.55;}
+
+  /* ===== PROCESS ===== */
+  .process{position:relative;}
+  .process-track{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    position:relative;
+  }
+  .process-step{
+    text-align:center;
+    position:relative;
+  }
+  .step-circle{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--paper-2);
+    border:2px solid var(--orange-600);
+    color:var(--orange-600);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.15rem;
+    margin:0 auto 16px;
+    position:relative;
+    z-index:2;
+  }
+  .step-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--orange-600);
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .process-step h4{font-size:1rem;margin-bottom:6px;}
+  .process-step p{font-size:0.85rem;color:var(--slate-600);line-height:1.5;}
+
+  /* ===== TOOLS STRIP ===== */
+  .tools-strip{
+    background:var(--paper-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:38px 0;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--orange-700), var(--orange-600) 130%);
+    border-radius:var(--radius-lg);
+    margin:0 20px;
+    padding:38px 32px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    max-width:1200px;
+    margin-inline:auto;
+  }
+  .cta-left{display:flex;align-items:center;gap:20px;flex:1 1 320px;}
+  .cta-icon{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:#fff;
+    color:var(--orange-600);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+  }
+  .cta-left h3{color:#fff;font-size:1.25rem;margin:6px 0;}
+  .cta-left p{color:rgba(255,255,255,0.85);font-size:0.9rem;}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:14px;}
+  .cta-banner .eyebrow{color:#fff0e0;}
+  .cta-banner .btn-primary{background:#fff;color:var(--orange-700);box-shadow:none;}
+  .cta-banner .btn-primary:hover{background:#fff0e0;}
+  .cta-banner .btn-ghost-dark{border-color:rgba(255,255,255,0.5);}
+
+  /* ===== FAQ ===== */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .faq-item{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .faq-q{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:none;border:none;
+    padding:18px 22px;
+    font-size:0.96rem;
+    font-weight:600;
+    color:var(--slate-900);
+    text-align:left;
+  }
+  .faq-q i{color:var(--orange-600);transition:transform .22s ease;flex-shrink:0;margin-left:14px;}
+  .faq-item.open .faq-q i{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .28s ease;
+  }
+  .faq-a p{
+    padding:0 22px 20px;
+    color:var(--slate-600);
+    font-size:0.9rem;
+    line-height:1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--ink-950);
+    color:rgba(255,255,255,0.6);
+    padding:52px 0 26px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand p{margin-top:14px;font-size:0.88rem;line-height:1.6;max-width:280px;}
+  .footer-col h5{
+    color:#fff;font-size:0.85rem;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .footer-col li{margin-bottom:10px;font-size:0.88rem;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    padding-top:22px;
+    display:flex;flex-wrap:wrap;gap:12px;
+    justify-content:space-between;
+    font-size:0.8rem;
+  }
+  .social-row{display:flex;gap:12px;}
+  .social-row a{
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social-row a:hover{background:var(--orange-600);border-color:var(--orange-600);color:#fff;}
+
+  /* =========================================================
+     TIER 2 — TABLET  (min-width: 576px)
+     ========================================================= */
+  @media (min-width:576px){
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .faq-grid{grid-template-columns:1fr 1fr;}
+    .hero-check-row{gap:24px;}
+  }
+
+  /* =========================================================
+     TIER 3 — LAPTOP  (min-width: 992px)
+     ========================================================= */
+  @media (min-width:992px){
+    .nav-links{display:flex;}
+    .hamburger{display:none;}
+    .mobile-menu{display:none !important;}
+
+    .hero-grid{grid-template-columns:1.05fr 0.95fr;gap:40px;}
+    .hero-copy p.lede{max-width:460px;}
+
+    .card-grid{grid-template-columns:repeat(3,1fr);}
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .process-track{
+      grid-template-columns:repeat(6,1fr);
+    }
+    .process-track::before{
+      content:'';
+      position:absolute;
+      top:29px;left:8%;right:8%;
+      height:2px;
+      background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
+      z-index:1;
+    }
+    .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;}
+    .device{width:480px;height:340px;}
+  }
+
+  /* =========================================================
+     TIER 4 — DESKTOP  (min-width: 1200px)
+     ========================================================= */
+  @media (min-width:1200px){
+    .nav-links{gap:40px;}
+    .hero{padding:78px 0 68px;}
+    .hero-copy h1{font-size:3.2rem;}
+    section{padding:96px 0;}
+    .why-grid{grid-template-columns:repeat(6,1fr);}
+    .card-grid{gap:28px;}
+    .cta-banner{padding:44px 48px;}
+  }
+
+  /* Mobile nav toggle (below 992px) */
+  @media (max-width:991.98px){
+    .nav-links{display:none;}
+    .nav-cta .btn-primary{display:none;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:480px){
+    .cta-banner{padding:30px 22px;}
+    .hero-art{margin-top:10px;}
+    .device{height:280px;}
+    .cloud-core i.fa-cloud{font-size:7.5rem;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+    <!-- Your Logo -->
+    <img src="/images/favicon.jpg" alt="NexSham Logo" class="logo-img">
+
+    <span class="logo-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#">Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      <a href="#">Our Process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#quote" class="btn btn-primary">Book Free Consultation <span>→</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<br>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="fa-solid fa-cloud"></i> Cloud Solutions</span>
+        <h1>Cloud Solutions<span>Built for Performance, Security &amp; Scalability</span></h1>
+        <p class="lede">Deploy, host and manage your applications securely on modern cloud infrastructure that grows with your business.</p>
+        <div class="hero-actions">
+          <a href="#quote" class="btn btn-primary">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#contact" class="btn btn-ghost-dark">Talk to Our Experts <i class="fa-regular fa-comment-dots"></i></a>
+        </div>
+        <div class="hero-check-row">
+          <span><i class="fa-solid fa-check"></i> Secure</span>
+          <span><i class="fa-solid fa-check"></i> Scalable</span>
+          <span><i class="fa-solid fa-check"></i> High Availability</span>
+          <span><i class="fa-solid fa-check"></i> Cost Effective</span>
+          <span><i class="fa-solid fa-check"></i> 24/7 Monitoring</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="device">
+          <div class="provider-chip aws">aws</div>
+          <div class="provider-chip azure"><i class="fa-brands fa-microsoft"></i></div>
+          <div class="provider-chip gcp"><i class="fa-brands fa-google"></i></div>
+          <div class="provider-chip node"><span></span></div>
+          <div class="cloud-core">
+            <i class="fa-solid fa-cloud"></i>
+            <i class="fa-solid fa-arrow-up"></i>
+          </div>
+          <div class="server-block"></div>
+        </div>
+      </div>
+    </div><br>
+  </div><br>
+</section>
+
+
+
+<!-- WHAT WE OFFER -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Comprehensive Cloud Solutions</h2>
+      <p>End-to-end cloud services to accelerate your business transformation.</p>
+    </div>
+    <div class="card-grid">
+      <div class="service-card">
+        <div class="card-icon aws-icon"><i class="fa-brands fa-aws"></i></div>
+        <h3>AWS</h3>
+        <p>Scalable, secure and reliable cloud solutions on Amazon Web Services.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> EC2, S3, Lambda</li>
+          <li><i class="fa-solid fa-check"></i> RDS &amp; DynamoDB</li>
+          <li><i class="fa-solid fa-check"></i> DevOps &amp; CI/CD</li>
+          <li><i class="fa-solid fa-check"></i> Cloud Migration</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon azure-icon"><i class="fa-brands fa-microsoft"></i></div>
+        <h3>Azure</h3>
+        <p>Build, deploy and manage applications using Microsoft Azure cloud platform.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Azure App Service</li>
+          <li><i class="fa-solid fa-check"></i> Virtual Machines</li>
+          <li><i class="fa-solid fa-check"></i> Azure SQL Database</li>
+          <li><i class="fa-solid fa-check"></i> Hybrid Cloud Solutions</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="service-card">
+        <div class="card-icon gcp-icon"><i class="fa-brands fa-google"></i></div>
+        <h3>Google Cloud</h3>
+        <p>Modernize your infrastructure and applications with Google Cloud.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Compute Engine</li>
+          <li><i class="fa-solid fa-check"></i> Cloud Storage</li>
+          <li><i class="fa-solid fa-check"></i> Kubernetes Engine</li>
+          <li><i class="fa-solid fa-check"></i> BigQuery &amp; Analytics</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-choose">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Nexsham</span>
+      <h2>Cloud That Drives Business Forward</h2>
+      <p>We deliver secure, reliable and cost-effective cloud solutions that empower your business.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+        <h4>Scalability</h4>
+        <p>Scale up or down instantly based on your business needs.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Security</h4>
+        <p>Enterprise-grade security to protect your data and applications.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-diagram-project"></i></div>
+        <h4>High Availability</h4>
+        <p>Ensure maximum uptime and reliability for your critical workloads.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>Cost Optimization</h4>
+        <p>Optimize cloud costs with smart architecture and best practices.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>Expert Support</h4>
+        <p>24/7 expert support to monitor and manage your cloud infrastructure.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-headset"></i></div>
+        <h4>Future Ready</h4>
+        <p>Leverage the latest cloud technologies to stay ahead of the curve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Cloud Deployment Process</span>
+      <h2>A Proven Approach to the Cloud</h2>
+      <p>We follow a structured process to deliver secure and scalable cloud solutions.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <span class="step-num">01</span>
+        <h4>Assess &amp; Plan</h4>
+        <p>We analyze your requirements and create a tailored cloud strategy.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-cloud"></i></div>
+        <span class="step-num">02</span>
+        <h4>Design</h4>
+        <p>We design secure, scalable and cost-effective cloud architecture.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-code"></i></div>
+        <span class="step-num">03</span>
+        <h4>Migrate / Deploy</h4>
+        <p>We migrate or deploy your applications to the cloud seamlessly.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-shield-halved"></i></div>
+        <span class="step-num">04</span>
+        <h4>Monitor &amp; Secure</h4>
+        <p>We continuously monitor and secure your cloud infrastructure.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-chart-line"></i></div>
+        <span class="step-num">05</span>
+        <h4>Optimize</h4>
+        <p>We optimize performance and costs to ensure maximum efficiency.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-headset"></i></div>
+        <span class="step-num">06</span>
+        <h4>Manage &amp; Support</h4>
+        <p>We provide ongoing support and management for peace of mind.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="wrap">
+    <p class="strip-label" style="text-align:center;">Technologies &amp; Platforms We Use</p><br>
+    <div class="strip-row" style="color:var(--slate-900);opacity:0.85;">
+      <span><i class="fa-brands fa-aws" style="color:#ff9900;"></i> AWS</span>
+      <span><i class="fa-brands fa-microsoft" style="color:#0089d6;"></i> Azure</span>
+      <span><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Cloud</span>
+      <span><i class="fa-brands fa-docker" style="color:#2496ED;"></i> Docker</span>
+      <span><i class="fa-solid fa-dharmachakra" style="color:#326CE5;"></i> Kubernetes</span>
+      <span><i class="fa-solid fa-cubes" style="color:#7B42BC;"></i> Terraform</span>
+      <span><i class="fa-brands fa-black-tie" style="color:#000;"></i> Ansible</span>
+      <span><i class="fa-brands fa-linux" style="color:#000;"></i> Linux</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<section style="padding:60px 0;">
+  <div class="cta-banner">
+    <div class="cta-left">
+      <div class="cta-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+      <div>
+        <span class="eyebrow">Ready to Move to the Cloud?</span>
+        <h3>Let's Build Your Cloud Success</h3>
+        <p>Modernize your infrastructure, improve performance and drive innovation with the power of cloud.</p>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="#quote" class="btn btn-primary">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a href="#contact" class="btn btn-ghost-dark"><i class="fa-solid fa-phone"></i> Schedule a Call</a>
+    </div>
+  </div>
+</section>
+
+
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    hamburgerBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        if (o !== item) { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+</script>
+
+</body>
+</html>

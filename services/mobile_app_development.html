@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXSHAM Technologies | Mobile App Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-950:#0c0616;
+    --bg-900:#150a26;
+    --bg-800:#1e1035;
+    --violet-600:#7c3aed;
+    --violet-500:#8b5cf6;
+    --violet-400:#a78bfa;
+    --violet-100:#efe8fe;
+    --violet-glow: rgba(124,58,237,0.35);
+    --ink-900:#131022;
+    --ink-700:#3d3a4c;
+    --ink-500:#6e6b7c;
+    --ink-400:#9995a8;
+    --bg-soft:#f7f6fb;
+    --white:#ffffff;
+    --border:#e9e6f0;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-card: 0 10px 30px -12px rgba(20,10,40,0.12);
+    --shadow-btn: 0 12px 26px -10px rgba(124,58,237,0.5);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink-900);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+    font-size:15px;
+  }
+  h1,h2,h3,h4{font-family:'Sora', sans-serif;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+  button{font-family:inherit;}
+
+  .container{ max-width:1180px; margin:0 auto; padding:0 24px; }
+  section{position:relative;}
+
+  .hero h1{ font-size:clamp(30px, 5vw, 48px); }
+  .section-head h2{ font-size:clamp(24px, 3.4vw, 34px); }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:14.5px; padding:13px 22px; border-radius:10px;
+    border:1.5px solid transparent; cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
+  }
+  .btn svg{width:16px; height:16px; flex-shrink:0;}
+  .btn-primary{ background:linear-gradient(120deg, var(--violet-500), var(--violet-600)); color:#fff; box-shadow:var(--shadow-btn); }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 18px 30px -10px rgba(124,58,237,0.6); }
+  .btn-ghost-dark{ background:transparent; color:#fff; border-color:rgba(255,255,255,0.28); }
+  .btn-ghost-dark:hover{ background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.5); }
+  .btn-ghost-light{ background:transparent; color:#fff; border-color:rgba(255,255,255,0.35); }
+  .btn-ghost-light:hover{ background:rgba(255,255,255,0.1); }
+
+  .eyebrow{ display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.4px; text-transform:uppercase; }
+
+  /* ---------- Navbar ---------- */
+  .navbar{
+    position:sticky; top:0; z-index:100;
+    background:var(--bg-950);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+ .nav-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 16px 32px;
+}
+  
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    white-space:nowrap;
+
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+
+    flex-shrink:0;
+}
+.logo-text{
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+  .logo-img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
+}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    margin-left:40px;
+}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:15px;
+    font-weight:500;
+
+    gap:5px;
+
+    transition:.2s;
+}
+  .nav-links a:hover{ color:#fff; }
+  .nav-links svg{width:13px;height:13px;}
+  .nav-cta{ margin-left:auto; display:flex; align-items:center;  }
+  .nav-toggle{ margin-left:10px;display:none; background:none; border:none; color:#fff; cursor:pointer; }
+
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 700px 500px at 78% 30%, rgba(124,58,237,0.25), transparent 62%),
+      linear-gradient(180deg, var(--bg-950) 0%, var(--bg-900) 100%);
+    padding:56px 24px 64px;
+    overflow:hidden;
+  }
+  .hero-inner{ max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.05fr 1fr; gap:40px; align-items:center; }
+  .hero .eyebrow{
+    color:var(--violet-400); background:rgba(124,58,237,0.16); border:1px solid rgba(139,92,246,0.4);
+    padding:7px 15px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{ line-height:1.12; font-weight:700; color:#fff; letter-spacing:-0.5px; margin-bottom:6px; }
+  .hero h1 .accent{
+    background:linear-gradient(120deg, var(--violet-500), var(--violet-600));
+    -webkit-background-clip:text; background-clip:text; color:transparent; display:block;
+  }
+  .hero p{ font-size:15.5px; line-height:1.7; color:rgba(255,255,255,0.65); max-width:480px; margin:20px 0 28px; }
+  .hero-actions{ display:flex; gap:14px; margin-bottom:30px; flex-wrap:wrap; }
+  .hero-trust{ display:flex; gap:20px; flex-wrap:wrap; }
+  .trust-item{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:rgba(255,255,255,0.72); font-weight:500; }
+  .trust-check{ width:18px;height:18px; border-radius:50%; background:var(--violet-600); display:flex;align-items:center;justify-content:center; flex-shrink:0; }
+  .trust-check svg{ width:10px;height:10px; }
+
+  /* ---------- Phone mockups ---------- */
+  .hero-visual{ position:relative; height:400px; display:flex; align-items:center; justify-content:center; }
+  .phone{
+    position:absolute;
+    width:190px; height:380px;
+    background:linear-gradient(160deg,#1c1230,#0e0818);
+    border:6px solid #241735;
+    border-radius:34px;
+    box-shadow:0 30px 60px -18px rgba(0,0,0,0.65);
+    padding:14px 10px;
+    overflow:hidden;
+  }
+  .phone-back{ left:2%; top:6%; z-index:1; transform:rotate(-6deg); }
+  .phone-front{ right:2%; top:-2%; z-index:2; transform:rotate(4deg); }
+  .phone-notch{ width:50px; height:5px; background:#000; border-radius:4px; margin:0 auto 10px; }
+  .phone-screen{ font-size:9px; color:#fff; }
+  .status-row{ display:flex; justify-content:space-between; font-size:9px; color:rgba(255,255,255,0.6); margin-bottom:10px; }
+  .app-title{ font-size:12px; font-weight:700; margin-bottom:10px; }
+  .balance-card{
+    background:linear-gradient(135deg, var(--violet-500), var(--violet-600));
+    border-radius:12px; padding:12px; margin-bottom:10px;
+  }
+  .balance-card .lbl{ font-size:8px; opacity:0.8; margin-bottom:4px; }
+  .balance-card .amt{ font-size:16px; font-weight:700; }
+  .balance-card .chg{ font-size:8px; opacity:0.85; margin-top:4px; }
+  .mini-chart{ height:34px; display:flex; align-items:flex-end; gap:2px; margin-bottom:10px; }
+  .mini-chart .pt{ flex:1; background:var(--violet-500); border-radius:2px 2px 0 0; opacity:0.7; }
+  .row-line{ display:flex; justify-content:space-between; align-items:center; font-size:8.5px; color:rgba(255,255,255,0.75); padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .row-line .amt-pos{ color:#4ade80; }
+  .row-line .amt-neg{ color:#f87171; }
+  .grid-icons{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:10px 0; }
+  .grid-icons div{ width:100%; aspect-ratio:1; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:11px; }
+
+  .badge-chip{
+    position:absolute; z-index:3;
+    width:48px; height:48px; border-radius:14px;
+    background:#fff; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 30px -10px rgba(0,0,0,0.4);
+  }
+  .badge-chip svg{ width:22px; height:22px; color:var(--violet-600); }
+  .badge-chip.apple{ top:20%; right:-2%; }
+  .badge-chip.android{ bottom:22%; right:0%; background:linear-gradient(135deg, var(--violet-500), var(--violet-600)); }
+  .badge-chip.android svg{ color:#fff; }
+
+  /* ---------- Logo strip ---------- */
+  .logo-strip{ background:var(--bg-soft); padding:24px 24px; }
+  .logo-strip-inner{ max-width:1180px; margin:0 auto; text-align:center; }
+  .logo-strip-label{ font-size:13px; color:var(--ink-500); margin-bottom:16px; }
+  .logo-row{ display:flex; align-items:center; justify-content:center; gap:36px; flex-wrap:wrap; opacity:0.75; }
+  .logo-row span{ font-weight:700; font-size:16px; color:var(--ink-700); display:flex; align-items:center; gap:6px; white-space:nowrap; }
+
+  /* ---------- Sections ---------- */
+  .section-soft{ background:var(--bg-soft); padding:72px 24px; }
+  .section-white{ background:#fff; padding:72px 24px; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 48px; }
+  .section-head .eyebrow{ color:var(--violet-600); margin-bottom:10px; }
+  .section-head h2{ font-weight:700; color:var(--ink-900); letter-spacing:-0.4px; margin:6px 0 12px; }
+  .section-head p{ color:var(--ink-500); font-size:15px; line-height:1.65; }
+
+  /* ---------- Service cards ---------- */
+  .card-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  .service-card{
+    background:#fff; border-radius:var(--radius-lg); padding:30px 26px;
+    box-shadow:var(--shadow-card); border:1px solid var(--border);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:0 20px 40px -16px rgba(20,10,40,0.18); }
+  .icon-box{
+    width:48px;height:48px; border-radius:13px; display:flex;align-items:center;justify-content:center; margin-bottom:18px;
+    background:linear-gradient(135deg, var(--violet-500), var(--violet-600));
+  }
+  .icon-box svg{ width:22px; height:22px; color:#fff; }
+  .service-card h3{ font-size:18px; font-weight:700; margin-bottom:8px; color:var(--ink-900); }
+  .service-card p{ font-size:14px; color:var(--ink-500); line-height:1.6; margin-bottom:16px; }
+  .check-list{ margin-bottom:18px; }
+  .check-list li{ display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--ink-700); padding:4px 0; }
+  .check-list svg{ width:15px;height:15px; color:var(--violet-600); flex-shrink:0; }
+  .learn-more{ display:inline-flex; align-items:center; gap:6px; color:var(--violet-600); font-weight:600; font-size:14px; transition:gap .15s ease; }
+  .learn-more svg{ width:14px;height:14px; }
+  .learn-more:hover{ gap:10px; }
+
+  /* ---------- Why choose (icon grid) ---------- */
+  .feature-grid{ display:grid; grid-template-columns:repeat(6, 1fr); gap:24px 16px; }
+  .feature-item{ text-align:center; }
+  .feature-icon{
+    width:56px;height:56px; border-radius:15px; margin:0 auto 14px;
+    background:var(--violet-100); display:flex;align-items:center;justify-content:center;
+  }
+  .feature-icon svg{ width:24px;height:24px; color:var(--violet-600); }
+  .feature-item h4{ font-size:14.5px; font-weight:700; margin-bottom:6px; color:var(--ink-900); }
+  .feature-item p{ font-size:12.5px; color:var(--ink-500); line-height:1.55; }
+
+  /* ---------- Process ---------- */
+  .process-track{ position:relative; display:grid; grid-template-columns:repeat(5, 1fr); gap:14px; margin-top:56px; }
+  .process-track:before{
+    content:""; position:absolute; top:32px; left:10%; right:10%; height:2px;
+    background:repeating-linear-gradient(90deg, var(--border) 0 8px, transparent 8px 16px); z-index:0;
+  }
+  .process-step{ position:relative; z-index:1; text-align:center; padding:0 6px; }
+  .step-circle{
+    width:64px;height:64px; border-radius:50%;
+    background:linear-gradient(150deg, var(--violet-500), var(--violet-600));
+    display:flex;align-items:center;justify-content:center; margin:0 auto 12px;
+    box-shadow:0 14px 24px -10px rgba(124,58,237,0.5);
+  }
+  .step-circle svg{ width:24px;height:24px; color:#fff; }
+  .step-num{ font-size:12.5px; font-weight:700; color:var(--violet-600); margin-bottom:6px; letter-spacing:0.5px; }
+  .process-step h4{ font-size:15px; font-weight:700; margin-bottom:7px; color:var(--ink-900); }
+  .process-step p{ font-size:12.5px; color:var(--ink-500); line-height:1.55; }
+
+  /* ---------- Tech stack ---------- */
+  .tech-strip{ padding:20px 24px 0; }
+  .tech-label{ text-align:center; font-size:12px; font-weight:700; letter-spacing:0.6px; color:var(--ink-500); margin-bottom:22px; }
+  .tech-grid{ display:grid; grid-template-columns:repeat(8, 1fr); gap:12px; }
+  .tech-chip{
+    display:flex; align-items:center; gap:8px; justify-content:center;
+    padding:13px 10px; border:1px solid var(--border); border-radius:12px;
+    font-size:13px; font-weight:600; color:var(--ink-700); background:#fff;
+  }
+  .tech-chip svg{ width:16px;height:16px; flex-shrink:0; }
+
+  /* ---------- CTA Banner ---------- */
+  .cta-banner{
+    background:linear-gradient(120deg, var(--violet-600), #4c1d95);
+    margin:52px 24px 52px; border-radius:22px; padding:40px 44px;
+    display:flex; align-items:center; justify-content:space-between; gap:28px; flex-wrap:wrap;
+  }
+  .cta-left{ display:flex; align-items:center; gap:20px; }
+  .cta-icon{
+    width:60px;height:60px; border-radius:50%;
+    background:rgba(255,255,255,0.16);
+    display:flex;align-items:center;justify-content:center; flex-shrink:0;
+  }
+  .cta-icon svg{ width:26px;height:26px; color:#fff; }
+  .cta-text .eyebrow{ color:rgba(255,255,255,0.75); margin-bottom:8px; display:block; }
+  .cta-text h3{ font-size:23px; font-weight:700; color:#fff; margin-bottom:8px; }
+  .cta-text p{ font-size:14px; color:rgba(255,255,255,0.75); max-width:440px; line-height:1.6; }
+  .cta-actions{ display:flex; gap:14px; flex-shrink:0; }
+  .cta-banner .btn-primary{ background:#fff; color:var(--violet-600); box-shadow:none; }
+  .cta-banner .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -10px rgba(0,0,0,0.3); }
+
+
+
+  /* ============================================================
+     4-TIER RESPONSIVE SYSTEM
+     Mobile:  <= 480px
+     Tablet:  481px - 768px
+     Laptop:  769px - 1199px
+     Desktop: >= 1200px  (base styles above are desktop defaults)
+     ============================================================ */
+
+  /* ---- LAPTOP (769px - 1199px) ---- */
+  @media (max-width: 1199px){
+    .container{ padding:0 22px; }
+    .hero-inner{ gap:32px; }
+    .card-grid{ gap:18px; }
+    .feature-grid{ grid-template-columns:repeat(3, 1fr); }
+    .tech-grid{ grid-template-columns:repeat(4, 1fr); }
+    .logo-row{ gap:26px; }
+    .phone{ width:170px; height:340px; }
+  }
+
+  /* ---- TABLET (481px - 768px) ---- */
+  @media (max-width: 768px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:flex; }
+    body{ font-size:14.5px; }
+
+    .hero{ padding:40px 20px 48px; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ order:-1; height:300px; margin-bottom:8px; }
+    .hero p{ max-width:100%; }
+    .phone{ width:150px; height:300px; }
+    .badge-chip{ width:40px; height:40px; }
+    .badge-chip svg{ width:18px; height:18px; }
+
+    .logo-row{ gap:22px; row-gap:14px; }
+
+    .section-soft, .section-white{ padding:56px 20px; }
+    .card-grid{ grid-template-columns:1fr 1fr; }
+    .feature-grid{ grid-template-columns:repeat(3, 1fr); gap:20px 14px; }
+    .process-track{ grid-template-columns:1fr 1fr 1fr; row-gap:32px; }
+    .process-track:before{ display:none; }
+    .tech-grid{ grid-template-columns:repeat(3, 1fr); }
+
+    .cta-banner{ flex-direction:column; align-items:flex-start; margin:44px 20px 0; padding:32px 28px; }
+    .faq-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---- MOBILE (<= 480px) ---- */
+  @media (max-width: 480px){
+    .container{ padding:0 18px; }
+    .hero{ padding:32px 18px 40px; }
+    .hero p{ font-size:14.5px; }
+    .hero-actions{ flex-direction:column; }
+    .hero-actions .btn{ width:100%; justify-content:center; }
+    .hero-trust{ flex-direction:column; gap:10px; }
+    .hero-visual{ height:250px; }
+    .phone{ width:120px; height:240px; border-width:5px; border-radius:26px; }
+    .phone-back{ left:6%; top:10%; }
+    .phone-front{ right:6%; top:0%; }
+    .balance-card .amt{ font-size:13px; }
+    .badge-chip{ width:34px; height:34px; border-radius:10px; }
+    .badge-chip svg{ width:15px; height:15px; }
+
+    .logo-strip{ padding:20px 18px; }
+    .logo-row{ gap:18px; }
+    .logo-row span{ font-size:14px; }
+
+    .section-soft, .section-white{ padding:44px 18px; }
+    .section-head{ margin-bottom:34px; }
+    .card-grid{ grid-template-columns:1fr; }
+    .feature-grid{ grid-template-columns:1fr 1fr; }
+    .process-track{ grid-template-columns:1fr 1fr; }
+    .tech-grid{ grid-template-columns:1fr 1fr; }
+
+    .cta-banner{ padding:28px 20px; margin:32px 18px 0; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:14px; }
+    .cta-actions{ flex-direction:column; width:100%; }
+    .cta-actions .btn{ justify-content:center; }
+
+    .faq-section{ padding:44px 18px 56px; }
+    .faq-q{ padding:14px 16px; font-size:13.5px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+    <!-- Your Logo -->
+    <img src="/images/favicon.jpg" alt="NexSham Logo" class="logo-img">
+
+    <span class="logo-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#">Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      <a href="#">Our Process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#quote" class="btn btn-primary">Book Free Consultation <span>→</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<br>
+
+<!-- Hero -->
+<section class="hero"><br>
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Mobile App Development</span>
+      <h1>Mobile App<span class="accent">Development</span></h1>
+      <p>We build high-performance, cross-platform mobile applications for Android and iOS that deliver seamless user experiences and drive business growth.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">Start Your Project
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#" class="btn btn-ghost-dark">Talk to Our Experts
+          <svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cross-Platform</span>
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>High Performance</span>
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scalable Solutions</span>
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>On-time Delivery</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="phone phone-back">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="status-row"><span>9:41</span><span>●●●</span></div>
+          <div class="app-title">Categories</div>
+          <div class="grid-icons">
+            <div style="background:#7c3aed22;">🎮</div>
+            <div style="background:#8b5cf622;">📷</div>
+            <div style="background:#a78bfa22;">🎵</div>
+            <div style="background:#7c3aed22;">📚</div>
+          </div>
+          <div class="app-title" style="margin-top:14px;">Popular Products</div>
+          <div class="row-line"><span>🎧 Wireless Headphones</span><span>$129</span></div>
+          <div class="row-line"><span>⌚ Smart Watch</span><span>$249</span></div>
+        </div>
+      </div>
+
+      <div class="phone phone-front">
+        <div class="phone-notch"></div>
+        <div class="phone-screen">
+          <div class="status-row"><span>9:41</span><span>●●●</span></div>
+          <div style="font-size:9px; opacity:0.6; margin-bottom:2px;">Hello, Alex</div>
+          <div class="app-title">Dashboard</div>
+          <div class="balance-card">
+            <div class="lbl">Total Balance</div>
+            <div class="amt">$24,680.50</div>
+            <div class="chg">▲ 12.5% from last month</div>
+          </div>
+          <div style="font-size:9px; opacity:0.6; margin-bottom:6px;">Statistics</div>
+          <div class="mini-chart">
+            <div class="pt" style="height:40%"></div>
+            <div class="pt" style="height:60%"></div>
+            <div class="pt" style="height:35%"></div>
+            <div class="pt" style="height:80%"></div>
+            <div class="pt" style="height:55%"></div>
+            <div class="pt" style="height:95%"></div>
+            <div class="pt" style="height:65%"></div>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:9px; opacity:0.6; margin-bottom:6px;"><span>Recent Activity</span><span>View All</span></div>
+          <div class="row-line"><span>Payment Received</span><span class="amt-pos">+$250.00</span></div>
+          <div class="row-line"><span>Subscription</span><span class="amt-neg">-$15.90</span></div>
+          <div class="row-line"><span>Order Completed</span><span class="amt-pos">+$231.00</span></div>
+        </div>
+      </div>
+
+      <div class="badge-chip apple">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.44 2.06-1.19 2.85-.83.87-2.05 1.55-3.28 1.44-.16-1.2.48-2.36 1.24-3.11.83-.85 2.15-1.5 3.23-1.18zM20.5 17.14c-.5 1.15-.74 1.66-1.38 2.68-.9 1.42-2.16 3.19-3.72 3.2-1.39.02-1.74-.9-3.62-.89-1.87.01-2.26.9-3.65.88-1.56-.02-2.75-1.6-3.65-3.02-2.5-3.9-2.76-8.48-1.22-10.92 1.1-1.74 2.83-2.76 4.45-2.76 1.65 0 2.7.9 4.07.9 1.33 0 2.14-.9 4.06-.9 1.44 0 2.97.78 4.06 2.14-3.57 1.96-2.99 7.06.6 8.59z"/></svg>
+      </div>
+      <div class="badge-chip android">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zM20.5 8c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zM15.53 2.16l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.24 12.95 1 12 1s-1.85.24-2.64.63L7.88.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.3 1.3C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.74-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- What we build -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHAT WE BUILD</span>
+      <h2>Mobile Solutions That Engage Users</h2>
+      <p>We create powerful mobile applications tailored to your business needs.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4l8 8-8 8" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l8 8-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Flutter Apps</h3>
+        <p>Cross-platform applications built with Flutter for faster development and native performance.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Single Codebase</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Beautiful UI/UX</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Fast Development</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.4" stroke="#fff" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#fff" stroke-width="1.6"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#fff" stroke-width="1.6" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#fff" stroke-width="1.6" transform="rotate(120 12 12)"/></svg></div>
+        <h3>React Native</h3>
+        <p>Robust and scalable apps built with React Native for seamless user experiences.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Hot Reload</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Native Performance</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Wide Community Support</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="service-card">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.7"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18" stroke="#fff" stroke-width="1.4"/></svg></div>
+        <h3>Progressive Web Apps</h3>
+        <p>Fast, reliable and engaging web apps that work offline and load instantly.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Offline Functionality</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Push Notifications</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>App-like Experience</li>
+        </ul>
+        <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why choose us -->
+<section class="section-soft">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHY CHOOSE NEXSHAM</span>
+      <h2>Why Businesses Choose Us</h2>
+      <p>We combine creativity, technology and strategy to build mobile apps that make a real impact.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M4 20c0-3.5 3.5-6 8-6s8 2.5 8 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h4>User-Centric Design</h4>
+        <p>Beautiful, intuitive and engaging interfaces that users love.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 12l4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <h4>High Performance</h4>
+        <p>Optimized applications for speed, reliability and smooth performance.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+        <h4>Secure &amp; Scalable</h4>
+        <p>We follow best security practices and build apps that scale with your growth.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4l8 8-8 8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 4l8 8-4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Latest Technologies</h4>
+        <p>We use modern tools and frameworks to deliver future-ready solutions.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.7"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Expert Developers</h4>
+        <p>Skilled mobile app developers with proven experience.</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>On-time Delivery</h4>
+        <p>We respect timelines and deliver projects within the agreed schedule.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">OUR DEVELOPMENT PROCESS</span>
+      <h2>Our Proven Development Process</h2>
+      <p>A streamlined approach to build powerful mobile applications.</p>
+    </div>
+
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M9 3h6v2H9z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><rect x="5" y="5" width="14" height="16" rx="2" stroke="#fff" stroke-width="1.7"/><path d="M9 11h6M9 15h4" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div class="step-num">01</div>
+        <h4>Requirement Analysis</h4>
+        <p>We understand your goals, target audience and business requirements.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="2" stroke="#fff" stroke-width="1.7"/><path d="M10 18h4" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div class="step-num">02</div>
+        <h4>UI/UX Design</h4>
+        <p>We design intuitive and engaging interfaces for the best user experience.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">03</div>
+        <h4>Development</h4>
+        <p>We build clean, scalable and high-performance mobile applications.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="#fff" stroke-width="1.7"/><path d="M9 8h6M9 12h6M9 16h3" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+        <div class="step-num">04</div>
+        <h4>Testing &amp; QA</h4>
+        <p>We test thoroughly to ensure bug-free and smooth performance.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-2-8-8-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">05</div>
+        <h4>Deployment &amp; Support</h4>
+        <p>We deploy your app and provide continuous support and maintenance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tech stack -->
+<section class="section-soft tech-strip" style="padding-bottom:56px;">
+  <div class="container">
+    <div class="tech-label">TECHNOLOGIES WE USE</div>
+    <div class="tech-grid">
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4l8 8-8 8" stroke="#02569b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Flutter</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2" fill="#61dafb"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61dafb" stroke-width="1.4"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61dafb" stroke-width="1.4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61dafb" stroke-width="1.4" transform="rotate(120 12 12)"/></svg>React Native</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22h20z" stroke="#7f52ff" stroke-width="1.6" stroke-linejoin="round"/></svg>Kotlin</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M3 15c4-8 14-8 18 0" stroke="#f05138" stroke-width="1.6" stroke-linecap="round"/></svg>Swift</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L4 8l8 6 8-6z" stroke="#ffca28" stroke-width="1.6" stroke-linejoin="round"/></svg>Firebase</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#339933" stroke-width="1.6"/></svg>Node.js</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#ff9900" stroke-width="1.6"/></svg>aws</div>
+      <div class="tech-chip"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#181717" stroke-width="1.6"/></svg>GitHub</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="quote">
+  <div class="cta-banner">
+    <div class="cta-left">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cta-text">
+        <span class="eyebrow">READY TO BUILD YOUR MOBILE APP?</span>
+        <h3>Let's Turn Your Idea Into Reality</h3>
+        <p>Share your idea with us and our experts will help you build a product your users will love.</p>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary">Get a Free Quote
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn btn-ghost-light">Schedule a Call
+        <svg viewBox="0 0 24 24" fill="none"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    item.querySelector('.faq-q').addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

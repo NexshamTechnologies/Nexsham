@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Learning Management System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1B3A;
+    --ink-soft:#65647F;
+    --violet-900:#211A4E;
+    --violet-800:#2B2266;
+    --violet-700:#4633C4;
+    --violet-600:#5B3FE0;
+    --violet-500:#7A63F0;
+    --lav-100:#EFEDFC;
+    --lav-200:#E1DCFA;
+    --paper:#FBFAFE;
+    --white:#ffffff;
+    --line:#E7E3F7;
+    --green:#1FAE6C;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(45,25,140,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--violet-700); background:var(--lav-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--violet-900); font-weight:800; }
+  .section-head{ text-align:center; max-width:660px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--paper); padding:44px 0 0; }
+  .crumb{ color:var(--ink-soft); font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#B0ABD0; margin:0 6px; }
+  .crumb b{ color:var(--ink); font-weight:600; }
+  .hero-grid{ display:grid; grid-template-columns:1fr 1.3fr; gap:50px; align-items:center; padding-bottom:70px;}
+  .hero-copy h1{ color:var(--ink); font-size:40px; line-height:1.15; font-weight:800; margin-bottom:20px;}
+  .hero-copy h1 .grad{ color:var(--violet-600); }
+  .hero-copy p{ color:var(--ink-soft); font-size:15.5px; line-height:1.7; max-width:440px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:22px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:var(--ink); font-size:13.5px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:var(--lav-100);
+    display:flex; align-items:center; justify-content:center; color:var(--violet-600); font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--violet-600),var(--violet-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(90,60,220,0.5);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid var(--line); color:var(--ink); padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:40px;}
+  .dash-card{
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:0;
+    position:relative; z-index:2; display:grid; grid-template-columns:170px 1fr; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .dash-nav{ background:var(--violet-900); padding:18px 12px; display:flex; flex-direction:column; gap:2px;}
+  .dash-brand{ display:flex; align-items:center; gap:8px; font-family:'Sora',sans-serif; font-weight:700; font-size:13px; color:#fff; margin-bottom:16px; padding:0 6px;}
+  .dash-brand .mark{ width:22px; height:22px; border-radius:6px; background:linear-gradient(135deg,var(--violet-500),#9B7CF5); }
+  .dash-nav a{ font-size:12px; color:#B3ADD6; padding:8px 10px; border-radius:8px; font-weight:500; }
+  .dash-nav a.on{ background:var(--violet-600); color:#fff; }
+  .dash-main{ padding:18px; }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .dash-top h4{ font-size:16px; color:var(--ink); }
+  .dash-top span{ font-size:11.5px; color:var(--ink-soft); font-weight:400; }
+  .dash-search{ flex:1; margin:0 16px; background:#F5F3FD; border-radius:8px; padding:8px 14px; font-size:11.5px; color:#A29DC2;}
+  .dash-icons{ display:flex; align-items:center; gap:10px; }
+  .dash-icons .bell{ width:24px; height:24px; border-radius:50%; background:var(--lav-100); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--violet-700);}
+  .dash-avatar{ width:28px; height:28px; border-radius:50%; background:var(--lav-200); }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#FAF9FE; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:16px; font-weight:700; color:var(--violet-900);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; }
+  .panel{ background:#FAF9FE; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:60px; }
+  .course-list{ list-style:none; }
+  .course-list li{ display:flex; align-items:center; gap:8px; font-size:10.5px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .course-list li:last-child{ border:none; }
+  .course-list .sw{ width:24px; height:24px; border-radius:6px; flex-shrink:0; }
+  .course-list b{ color:var(--ink); font-weight:600; display:block; font-size:10.5px;}
+  .act-list{ background:#FAF9FE; border:1px solid var(--line); border-radius:12px; padding:12px; margin-top:14px;}
+  .act-row{ display:flex; justify-content:space-between; font-size:10.5px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .act-row:last-child{ border:none; }
+  .act-row b{ color:var(--ink); font-weight:600;}
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-30px; width:190px; background:#fff;
+    border-radius:22px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #1B1B3A;
+  }
+  .phone-hi{ font-size:13px; font-weight:700; color:var(--violet-900); margin-bottom:2px;}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .phone-btn{ background:var(--violet-600); color:#fff; font-size:10px; font-weight:600; text-align:center; padding:8px; border-radius:8px; margin:10px 0;}
+  .phone-course{ display:flex; justify-content:space-between; align-items:center; font-size:9.5px; margin-bottom:8px; color:var(--ink-soft);}
+  .phone-course b{ color:var(--ink); font-size:9.5px; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#A29DC2; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.65; font-weight:700; font-size:18px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--violet-600),var(--violet-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--violet-900); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--violet-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--violet-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:14px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:20px 10px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--violet-500); }
+  .mod-icon{
+    width:40px; height:40px; border-radius:10px; background:var(--lav-100); color:var(--violet-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:17px;
+  }
+  .mod-card h4{ font-size:12.5px; margin-bottom:6px; }
+  .mod-card p{ font-size:11px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 30px; background:var(--paper); }
+  .steps{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:24px; left:8%; right:8%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 6px;}
+  .step .num{
+    width:48px; height:48px; border-radius:50%; background:#fff; border:2px solid var(--violet-500);
+    color:var(--violet-700); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;
+    margin:0 auto 14px;
+  }
+  .step .n{ font-size:11px; font-weight:700; color:var(--violet-500); margin-bottom:6px; display:block;}
+  .step h4{ font-size:13.5px; margin-bottom:6px; color:var(--violet-800);}
+  .step p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE (bar) ---------- */
+  .why{ padding:50px 0 70px; background:var(--paper); }
+  .why-bar{ background:#fff; border:1px solid var(--line); border-radius:18px; padding:30px; }
+  .why-eyebrow{ text-align:center; font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--violet-700); margin-bottom:26px;}
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ display:flex; align-items:flex-start; gap:10px; }
+  .why-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--lav-100); color:var(--violet-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .why-card h4{ font-size:13px; margin-bottom:4px; }
+  .why-card p{ font-size:11px; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#4633C4,#5B3FE0 55%, #7A5CF0);
+    border-radius:22px; padding:46px; display:grid; grid-template-columns:0.9fr 1.1fr 1fr; gap:24px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-illustration{
+    width:100%; height:150px; border-radius:16px; background:linear-gradient(160deg,#3A2AA0,#251A75);
+    display:flex; align-items:center; justify-content:center; font-size:52px;
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#D6CBFB; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:25px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14px; color:#E1D9FA; line-height:1.6; margin-bottom:22px; }
+  .cta-btns{ display:flex; gap:12px; flex-wrap:wrap;}
+  .cta-btns .btn-primary{ background:#fff; color:var(--violet-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.35); color:#fff; }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px;
+  }
+  .cta-point h5{ font-size:13.5px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12px; color:#E1D9FA; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--lav-100); color:var(--violet-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#1B1642; color:#B3ADD6; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#9089B8;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#7B739E; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+    
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+<section class="hero">
+  <div class="wrap">
+    
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">LEARNING MANAGEMENT SYSTEM</span>
+        <h1>Smart Learning. Better Engagement.<br><span class="grad">Stronger Outcomes.</span></h1>
+        <p>A complete digital learning platform to create, manage and deliver engaging learning experiences.</p>
+        <div class="hero-badges">
+          <span><i>📘</i>Engaging Learning</span>
+          <span><i>📈</i>Track Performance</span>
+          <span><i>🌐</i>Accessible Anywhere</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">Request a Demo →</a>
+          <a href="#" class="btn-ghost">Talk to Our Experts</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-nav">
+            <div class="dash-brand"><span class="mark"></span>NEXSHAM LMS</div>
+            <a class="on">🏠 Dashboard</a>
+            <a>📚 Courses</a>
+            <a>🎓 Students</a>
+            <a>📝 Exams</a>
+            <a>📋 Assignments</a>
+            <a>🏅 Certificates</a>
+            <a>📄 Reports</a>
+            <a>🗓️ Calendar</a>
+            <a>💬 Messages</a>
+            <a>⚙️ Settings</a>
+          </div>
+          <div class="dash-main">
+            <div class="dash-top">
+              <div>
+                <h4>Welcome back, Admin 👋</h4>
+                <span>Here's what's happening today.</span>
+              </div>
+              <div style="display:flex; align-items:center;">
+                <div class="dash-search">Search here...</div>
+                <div class="dash-icons"><span class="bell">🔔</span><div class="dash-avatar"></div></div>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-card"><div class="lbl">Total Students</div><div class="val">2,456</div><div class="chg up">↑ 12.5%</div></div>
+              <div class="stat-card"><div class="lbl">Active Courses</div><div class="val">156</div><div class="chg up">↑ 8.2%</div></div>
+              <div class="stat-card"><div class="lbl">Today's Logins</div><div class="val">1,245</div><div class="chg up">↑ 15.6%</div></div>
+              <div class="stat-card"><div class="lbl">Certificates Issued</div><div class="val">845</div><div class="chg up">↑ 10.3%</div></div>
+            </div>
+            <div class="panel-row">
+              <div class="panel">
+                <div class="ph"><span>Course Overview</span><span>This Month</span></div>
+                <svg class="sparkline" viewBox="0 0 220 60" preserveAspectRatio="none">
+                  <polyline points="0,50 30,38 60,44 90,22 120,32 150,14 180,24 220,8" fill="none" stroke="#5B3FE0" stroke-width="2.5"/>
+                </svg>
+                <div style="display:flex; justify-content:space-between; font-size:9px; color:var(--ink-soft);">
+                  <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="ph"><span>Top Courses</span><span>View All</span></div>
+                <ul class="course-list">
+                  <li><div class="sw" style="background:#EAD9FF;"></div><div><b>Web Development</b>1,245 Students</div></li>
+                  <li><div class="sw" style="background:#D8E4FF;"></div><div><b>Data Science</b>984 Students</div></li>
+                  <li><div class="sw" style="background:#FFE1EC;"></div><div><b>UI/UX Design</b>754 Students</div></li>
+                  <li><div class="sw" style="background:#FFEBC7;"></div><div><b>Digital Marketing</b>642 Students</div></li>
+                </ul>
+              </div>
+            </div>
+            <div class="act-list">
+              <div class="ph"><span>Recent Activities</span></div>
+              <div class="act-row"><span>New course <b>"React Basics"</b> created</span><span>2 mins ago</span></div>
+              <div class="act-row"><span>John Doe completed <b>"JavaScript Basics"</b></span><span>15 mins ago</span></div>
+              <div class="act-row"><span>New assignment submitted in <b>"Python"</b></span><span>30 mins ago</span></div>
+              <div class="act-row"><span>Exam <b>"Data Structures"</b> published</span><span>1 hour ago</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-hi">Hello, Student 👋</div>
+          <div class="phone-mini">Keep learning, keep growing!</div>
+          <div style="background:var(--lav-100); border-radius:10px; padding:10px; margin-bottom:10px;">
+            <div style="font-size:10px; font-weight:700; color:var(--violet-900);">Bonjour Basics</div>
+            <div style="font-size:9px; color:var(--ink-soft); margin:4px 0;">10% Complete</div>
+            <div class="phone-btn">Continue</div>
+          </div>
+          <div class="phone-mini" style="font-weight:700; color:var(--ink); margin-bottom:8px;">My Courses</div>
+          <div class="phone-course"><b>Web Development</b><span>75%</span></div>
+          <div class="phone-course"><b>Data Science</b><span>40%</span></div>
+          <div class="phone-course" style="margin-bottom:0;"><b>Digital Marketing</b><span>20%</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE LEARNING MANAGEMENT SOLUTION</span>
+      <h2>Everything You Need to Deliver Quality Education</h2>
+      <p>All-in-one LMS to create, manage, deliver and track learning effortlessly.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🖥️</div>
+        <h3>Online Courses</h3>
+        <p>Create and manage engaging online courses with multimedia content.</p>
+        <ul class="feat-list">
+          <li>Course Creation</li><li>Content Management</li><li>Drip Learning</li><li>Progress Tracking</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Courses →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏛️</div>
+        <h3>Exams &amp; Assessments</h3>
+        <p>Conduct online exams, quizzes and assessments with ease and security.</p>
+        <ul class="feat-list">
+          <li>Multiple Question Types</li><li>Auto Grading</li><li>Exam Scheduling</li><li>Performance Analytics</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Exams →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏅</div>
+        <h3>Certificates</h3>
+        <p>Generate and manage digital certificates automatically.</p>
+        <ul class="feat-list">
+          <li>Custom Certificate Templates</li><li>Auto Certificate Generation</li><li>Verification &amp; QR Code</li><li>Certificate Analytics</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Certificates →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL FEATURES</span>
+      <h2>Designed for Educators. Built for Learners.</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">👥</div><h4>User Management</h4><p>Manage students, instructors &amp; roles.</p></div>
+      <div class="mod-card"><div class="mod-icon">📦</div><h4>Course Management</h4><p>Organize courses, modules &amp; lessons.</p></div>
+      <div class="mod-card"><div class="mod-icon">🖥️</div><h4>Live Classes</h4><p>Conduct live sessions and webinars.</p></div>
+      <div class="mod-card"><div class="mod-icon">📄</div><h4>Assignments</h4><p>Create, assign and evaluate tasks.</p></div>
+      <div class="mod-card"><div class="mod-icon">💬</div><h4>Discussion Forum</h4><p>Encourage discussions and collaboration.</p></div>
+      <div class="mod-card"><div class="mod-icon">🔔</div><h4>Notifications</h4><p>Send real-time alerts and announcements.</p></div>
+      <div class="mod-card"><div class="mod-icon">📱</div><h4>Mobile Friendly</h4><p>Learn anytime, anywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR PROCESS</span>
+      <h2>From Learning to Achievement</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">▦</div><span class="n">01</span><h4>Create</h4><p>Design and publish courses easily.</p></div>
+      <div class="step"><div class="num">📝</div><span class="n">02</span><h4>Enroll</h4><p>Students enroll in courses.</p></div>
+      <div class="step"><div class="num">🎧</div><span class="n">03</span><h4>Learn</h4><p>Access content and complete lessons.</p></div>
+      <div class="step"><div class="num">📊</div><span class="n">04</span><h4>Assess</h4><p>Take quizzes, exams and assignments.</p></div>
+      <div class="step"><div class="num">👁️</div><span class="n">05</span><h4>Evaluate</h4><p>Track performance and provide feedback.</p></div>
+      <div class="step"><div class="num">🏅</div><span class="n">06</span><h4>Achieve</h4><p>Earn certificates and showcase skills.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="why-bar">
+      <div class="why-eyebrow">WHY CHOOSE NEXSHAM LMS?</div>
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">🖥️</div><div><h4>Easy to Use</h4><p>Intuitive interface for seamless learning.</p></div></div>
+        <div class="why-card"><div class="why-icon">📶</div><div><h4>Scalable</h4><p>Built to scale with your growing needs.</p></div></div>
+        <div class="why-card"><div class="why-icon">🛡️</div><div><h4>Secure</h4><p>Enterprise-grade security for your data.</p></div></div>
+        <div class="why-card"><div class="why-icon">⚙️</div><div><h4>Customizable</h4><p>Tailored to your brand and requirements.</p></div></div>
+        <div class="why-card"><div class="why-icon">📈</div><div><h4>Insightful Reports</h4><p>Data-driven insights for better decisions.</p></div></div>
+        <div class="why-card"><div class="why-icon">🎧</div><div><h4>24/7 Support</h4><p>We are here to help you anytime.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-illustration">🎓</div>
+    <div>
+      <div class="cta-eyebrow">READY TO TRANSFORM LEARNING?</div>
+      <h2>Let's Build a Smarter Learning Experience</h2>
+      <p>Empower your learners, simplify your teaching and achieve better outcomes with Nexsham LMS.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn-ghost">Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our LMS experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your institution's needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Go live in days, not months.</span></div></div>
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+</html>

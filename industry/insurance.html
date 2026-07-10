@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Insurance Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241722;
+    --ink-soft:#6B5D68;
+    --pink-900:#5C0F38;
+    --pink-800:#7A1348;
+    --pink-700:#B3175F;
+    --pink-600:#E01B6F;
+    --pink-500:#F0428C;
+    --rose-100:#FDECF3;
+    --rose-200:#FBD9E7;
+    --paper:#FFFBFC;
+    --white:#ffffff;
+    --line:#F4E3EC;
+    --green:#1FAE6C;
+    --amber:#D98B25;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(160,15,80,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--pink-700); background:var(--rose-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--ink); font-weight:800; }
+  .section-head{ text-align:center; max-width:660px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--paper); padding:44px 0 0; }
+  .crumb{ color:var(--ink-soft); font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#CDB3C2; margin:0 6px; }
+  .crumb b{ color:var(--ink); font-weight:600; }
+  .hero-grid{ display:grid; grid-template-columns:0.95fr 1.35fr; gap:50px; align-items:center; padding-bottom:70px;}
+  .hero-copy h1{ color:var(--ink); font-size:36px; line-height:1.18; font-weight:800; margin-bottom:20px;}
+  .hero-copy h1 .grad{ color:var(--pink-600); }
+  .hero-copy p{ color:var(--ink-soft); font-size:15px; line-height:1.7; max-width:420px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:var(--ink); font-size:13px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:var(--rose-100);
+    display:flex; align-items:center; justify-content:center; color:var(--pink-600); font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--pink-600),var(--pink-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(224,27,111,0.5);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid var(--line); color:var(--ink); padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:40px;}
+  .dash-card{
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:0;
+    position:relative; z-index:2; display:grid; grid-template-columns:150px 1fr; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .dash-nav{ background:linear-gradient(180deg,var(--pink-600),var(--pink-800)); padding:18px 12px; display:flex; flex-direction:column; gap:2px;}
+  .dash-brand{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:'Sora',sans-serif; font-weight:700; font-size:12px; color:#fff; margin-bottom:16px; padding:0 6px;}
+  .dash-brand .mark{ width:26px; height:26px; border-radius:7px; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+  .dash-brand small{ font-weight:400; font-size:9px; color:#FBD9E7; }
+  .dash-nav a{ font-size:11.5px; color:#FBD9E7; padding:8px 10px; border-radius:8px; font-weight:500; }
+  .dash-nav a.on{ background:rgba(255,255,255,0.22); color:#fff; }
+  .dash-main{ padding:18px; }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .dash-top h4{ font-size:16px; color:var(--ink); }
+  .dash-icons{ display:flex; align-items:center; gap:12px; }
+  .dash-icons span{ font-size:11.5px; color:var(--ink-soft); }
+  .dash-icons .bell{ width:24px; height:24px; border-radius:50%; background:var(--rose-100); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--pink-700);}
+  .dash-user{ display:flex; align-items:center; gap:8px; }
+  .dash-avatar{ width:28px; height:28px; border-radius:50%; background:var(--rose-200); }
+  .dash-user div span{ display:block; font-size:11px; font-weight:600; color:var(--ink);}
+  .dash-user div small{ font-size:9px; color:var(--ink-soft); }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:16px; font-weight:700; color:var(--ink);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-bottom:14px;}
+  .panel{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:56px; }
+  .donut{ display:flex; align-items:center; gap:10px; }
+  .donut svg{ flex-shrink:0; }
+  .donut ul{ list-style:none; font-size:9.5px; color:var(--ink-soft); }
+  .donut li{ display:flex; align-items:center; gap:5px; margin-bottom:3px;}
+  .donut i{ width:6px; height:6px; border-radius:50%; display:inline-block;}
+  .donut .big{ text-align:center; }
+  .donut .big b{ display:block; font-size:15px; color:var(--ink); }
+  .two-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tx-list{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .tx-row{ display:flex; align-items:center; gap:8px; font-size:10px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .tx-row:last-child{ border:none; }
+  .tx-row b{ color:var(--ink); font-weight:600; display:block; font-size:10.5px;}
+  .tx-icon{ width:20px; height:20px; border-radius:6px; background:var(--rose-100); color:var(--pink-700); display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0;}
+  .tag{ font-size:9px; font-weight:700; padding:2px 7px; border-radius:99px; margin-left:auto;}
+  .tag.settled{ background:#DEF7EA; color:var(--green); }
+  .tag.process{ background:#FFF1D6; color:var(--amber); }
+  .tag.pending{ background:#FDE3EC; color:var(--pink-600); }
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-30px; width:190px; background:#fff;
+    border-radius:22px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #241722;
+  }
+  .phone-hi{ font-size:13px; font-weight:700; color:var(--ink); margin-bottom:2px;}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .phone-stat{ background:linear-gradient(135deg,var(--pink-600),var(--pink-500)); border-radius:10px; padding:10px; color:#fff; margin-bottom:10px;}
+  .phone-stat .l{ font-size:9px; opacity:0.85; }
+  .phone-stat .v{ font-size:16px; font-weight:800; margin:2px 0;}
+  .phone-stat .c{ font-size:8.5px; opacity:0.9;}
+  .phone-list-title{ font-size:10px; font-weight:700; color:var(--ink); margin-bottom:6px;}
+  .phone-row{ display:flex; justify-content:space-between; font-size:9px; margin-bottom:6px; color:var(--ink-soft);}
+  .phone-row b{ color:var(--ink); font-size:9px; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#B79DAE; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.8; font-weight:700; font-size:17px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--pink-600),var(--pink-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--ink); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--pink-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--pink-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(8,1fr); gap:12px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:18px 8px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--pink-500); }
+  .mod-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--rose-100); color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:16px;
+  }
+  .mod-card h4{ font-size:12px; margin-bottom:6px; }
+  .mod-card p{ font-size:10.5px; color:var(--ink-soft); line-height:1.45; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 30px; background:var(--paper); }
+  .steps{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:24px; left:6%; right:6%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 4px;}
+  .step .num{
+    width:48px; height:48px; border-radius:50%; background:#fff; border:2px solid var(--pink-500);
+    color:var(--pink-700); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;
+    margin:0 auto 14px;
+  }
+  .step .n{ font-size:11px; font-weight:700; color:var(--pink-500); margin-bottom:6px; display:block;}
+  .step h4{ font-size:13px; margin-bottom:6px; color:var(--ink);}
+  .step p{ font-size:11px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE (bar) ---------- */
+  .why{ padding:50px 0 70px; background:var(--paper); }
+  .why-bar{ background:var(--rose-100); border-radius:18px; padding:30px; }
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ display:flex; align-items:flex-start; gap:10px; }
+  .why-icon{
+    width:38px; height:38px; border-radius:10px; background:#fff; color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .why-card h4{ font-size:13px; margin-bottom:4px; }
+  .why-card p{ font-size:11px; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#B3175F,#E01B6F 55%, #F0428C);
+    border-radius:22px; padding:46px; display:grid; grid-template-columns:0.9fr 1.1fr 1fr; gap:24px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-illustration{
+    width:100%; height:150px; border-radius:16px; background:linear-gradient(160deg,#8E1350,#5C0F38);
+    display:flex; align-items:center; justify-content:center; font-size:52px;
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#FBCBE0; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:25px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14px; color:#FBE0EC; line-height:1.6; margin-bottom:22px; }
+  .cta-btns{ display:flex; gap:12px; flex-wrap:wrap;}
+  .cta-btns .btn-primary{ background:#fff; color:var(--pink-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.4); color:#fff; }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.18);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px;
+  }
+  .cta-point h5{ font-size:13.5px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12px; color:#FBE0EC; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--rose-100); color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#2E1120; color:#CDB3C2; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#B092A5;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#9A7C8E; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+   
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">INSURANCE SOLUTIONS</span>
+        <h1>Smarter Insurance. Simplified Processes.<br><span class="grad">Stronger Relationships.</span></h1>
+        <p>We build digital insurance platforms that streamline policy management, automate claims and enhance customer experience.</p>
+        <div class="hero-badges">
+          <span><i>⚡</i>Faster Claims Processing</span>
+          <span><i>🛡</i>Better Risk Management</span>
+          <span><i>😊</i>Happy Customers</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">Get a Free Demo →</a>
+          <a href="#" class="btn-ghost">Talk to Our Experts</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-nav">
+            <div class="dash-brand"><span class="mark">N</span>NEXSHAM<small>INSURANCE</small></div>
+            <a class="on">📊 Dashboard</a>
+            <a>📋 Policies</a>
+            <a>📎 Claims</a>
+            <a>👤 Customers</a>
+            <a>🧑‍💼 Agents</a>
+            <a>💳 Payments</a>
+            <a>📄 Reports</a>
+            <a>📈 Analytics</a>
+            <a>⚙️ Settings</a>
+          </div>
+          <div class="dash-main">
+            <div class="dash-top">
+              <h4>Dashboard</h4>
+              <div class="dash-icons">
+                <span>May 1 – May 31, 2024 ▾</span>
+                <span class="bell">🔔</span>
+                <div class="dash-user"><div class="dash-avatar"></div><div><span>Rohit Sharma</span><small>Administrator</small></div></div>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-card"><div class="lbl">Total Policies</div><div class="val">12,540</div><div class="chg up">↑ 14.0%</div></div>
+              <div class="stat-card"><div class="lbl">Active Policies</div><div class="val">9,856</div><div class="chg up">↑ 12.4%</div></div>
+              <div class="stat-card"><div class="lbl">Claims Registered</div><div class="val">1,248</div><div class="chg up">↑ 18.7%</div></div>
+              <div class="stat-card"><div class="lbl">Claims Settled</div><div class="val">876</div><div class="chg up">↑ 15.3%</div></div>
+            </div>
+            <div class="panel-row">
+              <div class="panel">
+                <div class="ph"><span>Claims Overview</span><span>This Month</span></div>
+                <svg class="sparkline" viewBox="0 0 220 56" preserveAspectRatio="none">
+                  <polyline points="0,44 30,38 60,42 90,20 120,30 150,10 180,24 220,6" fill="none" stroke="#E01B6F" stroke-width="2.5"/>
+                </svg>
+                <div style="display:flex; justify-content:space-between; font-size:9px; color:var(--ink-soft);">
+                  <span>May 1</span><span>May 6</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="ph"><span>Claims Status</span></div>
+                <div class="donut">
+                  <svg width="64" height="64" viewBox="0 0 42 42">
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#E01B6F" stroke-width="6" stroke-dasharray="60 40" stroke-dashoffset="25"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#7A1348" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-35"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#F0A6C6" stroke-width="6" stroke-dasharray="10 90" stroke-dashoffset="-60"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#3B0F26" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-70"/>
+                  </svg>
+                  <ul>
+                    <li><i style="background:#E01B6F"></i>Settled 60%</li>
+                    <li><i style="background:#7A1348"></i>In Process 25%</li>
+                    <li><i style="background:#F0A6C6"></i>Pending 10%</li>
+                    <li><i style="background:#3B0F26"></i>Rejected 5%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="two-list">
+              <div class="tx-list">
+                <div class="ph"><span>Recent Claims</span><span>View All</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00125</b>Health Insurance · May 25, 2024</div><span class="tag settled">Settled</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00124</b>Motor Insurance · May 24, 2024</div><span class="tag process">In Process</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00123</b>Travel Insurance · May 23, 2024</div><span class="tag pending">Pending</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00122</b>Home Insurance · May 22, 2024</div><span class="tag settled">Settled</span></div>
+              </div>
+              <div class="tx-list">
+                <div class="ph"><span>Top Policies</span><span>View All</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Health Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">4,520</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Motor Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">3,210</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Term Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">2,450</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Travel Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">1,855</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-hi">Hello, Rohit</div>
+          <div class="phone-mini">Here's your policy overview</div>
+          <div class="phone-stat">
+            <div class="l">Active Policies</div>
+            <div class="v">9,856</div>
+            <div class="c">↑ 12.4% from last month</div>
+          </div>
+          <div class="phone-list-title">Quick Actions</div>
+          <div style="display:flex; gap:6px; margin-bottom:12px;">
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">File Claim</div>
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">Pay Premium</div>
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">Documents</div>
+          </div>
+          <div class="phone-list-title">Policy Overview</div>
+          <div class="phone-row"><b>Health Insurance</b><span>4,520</span></div>
+          <div class="phone-row"><b>Motor Insurance</b><span>3,210</span></div>
+          <div class="phone-row"><b>Travel Insurance</b><span>1,230</span></div>
+          <div class="phone-row" style="margin-bottom:0;"><b>Term Insurance</b><span>805</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE INSURANCE SOLUTIONS</span>
+      <h2>End-to-End Solutions for Insurance Businesses</h2>
+      <p>From policy issuance to claims settlement, we've got everything covered.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📎</div>
+        <h3>Claims Portal</h3>
+        <p>Simplify claims registration, tracking and settlement.</p>
+        <ul class="feat-list">
+          <li>Online Claim Intimation</li><li>Document Upload</li><li>Claim Tracking</li><li>Settlement &amp; Payout</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Claims Portal →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📋</div>
+        <h3>Policy System</h3>
+        <p>Manage policies, endorsements, renewals and pricing with ease.</p>
+        <ul class="feat-list">
+          <li>Policy Issuance</li><li>Renewals &amp; Endorsements</li><li>Premium Management</li><li>Product Configuration</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Policy System →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👤</div>
+        <h3>Customer Dashboard</h3>
+        <p>360° view of customers, policies, claims and communications.</p>
+        <ul class="feat-list">
+          <li>Customer Profile</li><li>Policy Overview</li><li>Claims History</li><li>Notifications &amp; Alerts</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Customer Dashboard →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL FEATURES</span>
+      <h2>Built for Every Part of Your Insurance Business</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">📋</div><h4>Policy Management</h4><p>Create, manage &amp; renew policies.</p></div>
+      <div class="mod-card"><div class="mod-icon">📎</div><h4>Claims Management</h4><p>End-to-end claims processing.</p></div>
+      <div class="mod-card"><div class="mod-icon">💳</div><h4>Premium Collection</h4><p>Automate invoicing &amp; collections.</p></div>
+      <div class="mod-card"><div class="mod-icon">👥</div><h4>Customer Management</h4><p>Centralized customer database.</p></div>
+      <div class="mod-card"><div class="mod-icon">📈</div><h4>Reports &amp; Analytics</h4><p>Real-time insights &amp; dashboards.</p></div>
+      <div class="mod-card"><div class="mod-icon">🗄️</div><h4>Document Vault</h4><p>Secure document storage.</p></div>
+      <div class="mod-card"><div class="mod-icon">🛡️</div><h4>Compliance &amp; Audit</h4><p>Stay compliant with audit trails.</p></div>
+      <div class="mod-card"><div class="mod-icon">📱</div><h4>Mobile Access</h4><p>Manage on the go, anywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR PROCESS</span>
+      <h2>A Smarter Way to Deliver Insurance</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">🔍</div><span class="n">01</span><h4>Understand</h4><p>Business needs &amp; requirements.</p></div>
+      <div class="step"><div class="num">📝</div><span class="n">02</span><h4>Plan</h4><p>Solution planning &amp; strategy.</p></div>
+      <div class="step"><div class="num">🎨</div><span class="n">03</span><h4>Design</h4><p>Design user-friendly platform.</p></div>
+      <div class="step"><div class="num">💻</div><span class="n">04</span><h4>Develop</h4><p>Build secure &amp; scalable solution.</p></div>
+      <div class="step"><div class="num">✅</div><span class="n">05</span><h4>Test</h4><p>Ensure quality, security &amp; compliance.</p></div>
+      <div class="step"><div class="num">🚀</div><span class="n">06</span><h4>Deploy</h4><p>Go live &amp; migrate seamlessly.</p></div>
+      <div class="step"><div class="num">🎧</div><span class="n">07</span><h4>Support</h4><p>24/7 support &amp; continuous improvement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow" style="display:block; text-align:center; width:fit-content; margin:0 auto 12px;">WHY INSURANCE BUSINESSES CHOOSE NEXSHAM</span>
+    <div class="why-bar">
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">⚡</div><div><h4>Faster Claims Settlement</h4><p>Reduce turnaround time &amp; improve satisfaction.</p></div></div>
+        <div class="why-card"><div class="why-icon">⚙️</div><div><h4>Operational Efficiency</h4><p>Automate workflows &amp; reduce manual work.</p></div></div>
+        <div class="why-card"><div class="why-icon">🛡️</div><div><h4>Better Risk Management</h4><p>Data-driven insights to manage risk.</p></div></div>
+        <div class="why-card"><div class="why-icon">📜</div><div><h4>Regulatory Compliance</h4><p>Built-in compliance &amp; audit controls.</p></div></div>
+        <div class="why-card"><div class="why-icon">📶</div><div><h4>Scalable Solutions</h4><p>Grow your business with flexible solutions.</p></div></div>
+        <div class="why-card"><div class="why-icon">🎧</div><div><h4>24/7 Support</h4><p>We're here whenever you need us.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-illustration">🛡️</div>
+    <div>
+      <div class="cta-eyebrow">READY TO TRANSFORM YOUR INSURANCE BUSINESS?</div>
+      <h2>Let's Build a More Secure Tomorrow</h2>
+      <p>Partner with Nexsham to streamline operations, reduce costs and deliver better customer experiences.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn-ghost">Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our insurance experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your business needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Go live in weeks, not months.</span></div></div>
+      <div class="cta-point"><div class="ic">🎧</div><div><h5>Ongoing Support</h5><span>We're here whenever you need us.</span></div></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
