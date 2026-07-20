@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSham Technologies — Book Free Consultation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-600:#4f5bf3;
+    --blue-700:#3d3ff0;
+    --violet-600:#7c3aed;
+    --grad: linear-gradient(90deg,#5b5ff5 0%, #7b3ff0 100%);
+    --ink-900:#0f1222;
+    --ink-700:#3a3d52;
+    --ink-500:#6b6f85;
+    --ink-400:#8b8fa3;
+    --line:#e7e8f0;
+    --bg-soft:#f6f7fb;
+    --card:#ffffff;
+    --green:#16a34a;
+    --amber:#f59e0b;
+    --radius:14px;
+  }
+    :root{
+    --navy:#0b1130;
+    --indigo:#4f39f6;
+    --indigo-dark:#3b28d6;
+    --violet:#6d4bff;
+    --ink:#12142b;
+    --ink-soft:#4b4f6b;
+    --muted:#6b7089;
+    --border:#e7e8f2;
+    --bg-soft:#f3f4fb;
+    --bg-card:#ffffff;
+    --purple-chip:#f1eefe;
+    --star:#f6b93b;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-card:0 2px 10px rgba(20,20,60,0.05);
+    --shadow-hero:0 20px 50px rgba(30,20,90,0.18);
+  } 
+   :root{
+    --navy:#0b1130;
+    --indigo:#4f39f6;
+    --indigo-dark:#3b28d6;
+    --violet:#6d4bff;
+    --ink:#12142b;
+    --ink-soft:#4b4f6b;
+    --muted:#6b7089;
+    --border:#e7e8f2;
+    --bg-soft:#f3f4fb;
+    --bg-card:#ffffff;
+    --purple-chip:#f1eefe;
+    --star:#f6b93b;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-card:0 2px 10px rgba(20,20,60,0.05);
+    --shadow-hero:0 20px 50px rgba(30,20,90,0.18);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;color:var(--ink-900);background:#fff;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px;}
+
+    .btn-primary{
+    background:linear-gradient(135deg,var(--indigo),#7c5cff);
+    color:#fff;padding:14px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 10px 22px rgba(79,57,246,0.3);
+  }
+  .btn-secondary{
+    border:1.5px solid var(--indigo);color:var(--indigo);
+    padding:13px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;background:#fff;
+  }
+
+  /* NAVBAR */
+/* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:74px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+  /* HERO */
+  section.hero{background:linear-gradient(180deg,#f2f3fb 0%, #ffffff 60%);padding:56px 0 72px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start;}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#e9eaff;color:var(--blue-700);font-weight:600;font-size:12.5px;padding:7px 14px;border-radius:999px;margin-bottom:22px;}
+  h1.hero-title{font-size:44px;line-height:1.15;font-weight:800;margin:0 0 18px;letter-spacing:-1px;}
+  h1.hero-title .accent{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+  p.hero-sub{font-size:16.5px;color:var(--ink-500);line-height:1.65;max-width:480px;margin:0 0 36px;}
+
+  .feature-row{display:flex;gap:34px;margin-bottom:36px;flex-wrap:wrap;}
+  .feature{display:flex;gap:12px;align-items:flex-start;max-width:170px;}
+  .feature .icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .feature .icon svg{width:18px;height:18px;}
+  .feature.f1 .icon{background:#e7e6fd;color:var(--violet-600);}
+  .feature.f2 .icon{background:#d9f5e9;color:var(--green);}
+  .feature.f3 .icon{background:#fdeadb;color:var(--amber);}
+  .feature h4{font-size:14px;margin:0 0 3px;font-weight:700;}
+  .feature p{font-size:12.5px;color:var(--ink-500);margin:0;line-height:1.4;}
+
+  .trust-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .avatars{display:flex;}
+  .avatars .av{width:38px;height:38px;border-radius:50%;border:2.5px solid #fff;margin-left:-10px;object-fit:cover;background:#ccc;}
+  .avatars .av:first-child{margin-left:0;}
+  .avatars .plus{width:38px;height:38px;border-radius:50%;background:var(--blue-600);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-left:-10px;border:2.5px solid #fff;}
+  .trust-text p{margin:0;font-size:13px;font-weight:600;color:var(--ink-700);}
+  .stars{color:var(--amber);font-size:13px;letter-spacing:1px;}
+  .rating-line{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-700);font-weight:600;}
+  .rating-line span.muted{color:var(--ink-500);font-weight:500;}
+
+  /* FORM CARD */
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px;box-shadow:0 20px 45px -25px rgba(30,30,80,.25);}
+  .form-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:26px;}
+  .form-head .icn{width:42px;height:42px;border-radius:11px;background:#e9eaff;display:flex;align-items:center;justify-content:center;color:var(--blue-600);flex-shrink:0;}
+  .form-head .icn svg{width:20px;height:20px;}
+  .form-head h3{margin:0 0 4px;font-size:18px;font-weight:800;}
+  .form-head p{margin:0;font-size:13px;color:var(--ink-500);}
+
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:7px;color:var(--ink-900);}
+  .field label .req{color:#ef4444;}
+  .field input, .field select, .field textarea{
+    width:100%;border:1px solid var(--line);background:var(--bg-soft);border-radius:9px;padding:11px 13px;
+    font-size:13.5px;font-family:inherit;color:var(--ink-900);outline:none;transition:border-color .15s, background .15s;
+  }
+  .field input::placeholder, .field textarea::placeholder{color:#a6a9ba;}
+  .field input:focus, .field select:focus, .field textarea:focus{border-color:var(--blue-600);background:#fff;}
+  .field textarea{resize:vertical;min-height:78px;font-family:inherit;}
+  .phone-field{display:flex;gap:8px;}
+  .phone-field .code{display:flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--bg-soft);border-radius:9px;padding:0 10px;font-size:13.5px;white-space:nowrap;}
+  .select-wrap{position:relative;}
+  .select-wrap select{appearance:none;-webkit-appearance:none;cursor:pointer;}
+  .select-wrap::after{content:"";position:absolute;right:14px;top:50%;width:8px;height:8px;border-right:2px solid var(--ink-400);border-bottom:2px solid var(--ink-400);transform:translateY(-65%) rotate(45deg);pointer-events:none;}
+
+  .agree-row{display:flex;align-items:center;gap:9px;margin:6px 0 20px;font-size:12.5px;color:var(--ink-500);}
+  .agree-row a{color:var(--blue-600);font-weight:600;}
+  .agree-row input{width:15px;height:15px;accent-color:var(--blue-600);}
+
+  .submit-btn{width:100%;background:var(--grad);color:#fff;border:none;padding:14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 12px 26px -10px rgba(91,95,245,.6);transition:transform .15s;}
+  .submit-btn:hover{transform:translateY(-1px);}
+  .secure-line{text-align:center;font-size:11.5px;color:var(--ink-400);margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px;}
+
+  /* PROCESS */
+  section.process{padding:80px 0;background:#fff;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 56px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;color:var(--blue-600);font-weight:700;font-size:12.5px;margin-bottom:14px;}
+  .section-head h2{font-size:30px;font-weight:800;margin:0 0 12px;letter-spacing:-.5px;}
+  .section-head h2 .hl{color:var(--blue-600);}
+  .section-head p{color:var(--ink-500);font-size:14.5px;margin:0;}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+  .step{text-align:center;padding:0 18px;position:relative;}
+  .step-icons{position:relative;width:76px;height:76px;margin:0 auto 20px;}
+  .step-icons .main-ic{width:76px;height:76px;border-radius:20px;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;}
+  .step-icons .main-ic svg{width:28px;height:28px;}
+  .step-icons .num{position:absolute;left:-6px;top:-6px;width:26px;height:26px;border-radius:50%;background:#eef0f7;color:var(--ink-500);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;z-index:1;border:2px solid #fff;}
+  .step-icons .sub{position:absolute;right:-8px;bottom:-8px;width:30px;height:30px;border-radius:50%;background:var(--blue-600);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3;border:3px solid #fff;}
+  .step-icons .sub svg{width:14px;height:14px;}
+  .step h4{font-size:15.5px;font-weight:700;margin:0 0 8px;}
+  .step p{font-size:13px;color:var(--ink-500);margin:0;line-height:1.5;}
+  .s1 .main-ic{background:#e7e6fd;color:#7c3aed;}
+  .s2 .main-ic{background:#dbe8ff;color:#2563eb;}
+  .s3 .main-ic{background:#e7e6fd;color:#7c3aed;}
+  .s4 .main-ic{background:#d9f5e9;color:#16a34a;}
+  .connector{position:absolute;top:38px;height:2px;background:repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 12px);left:calc(12.5% + 38px);right:calc(12.5% + 38px);z-index:0;}
+
+  /* FAQ + CONTACT */
+  section.faq-sec{padding:0 0 90px;background:#fff;}
+  .faq-grid{display:grid;grid-template-columns:1fr 0.85fr;gap:36px;align-items:start;}
+  .faq-col .eyebrow{margin-bottom:10px;}
+  .faq-col h2{font-size:26px;font-weight:800;margin:0 0 26px;letter-spacing:-.5px;}
+  .faq-item{border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:14px;font-weight:600;transition:border-color .15s, background .15s;}
+  .faq-item:hover{border-color:#c7cbe6;background:var(--bg-soft);}
+  .faq-item svg{width:16px;height:16px;color:var(--ink-500);flex-shrink:0;transition:transform .2s;}
+  .faq-item.open svg{transform:rotate(180deg);}
+  .faq-answer{max-height:0;overflow:hidden;font-size:13px;font-weight:400;color:var(--ink-500);line-height:1.6;transition:max-height .25s ease;}
+  .faq-item-wrap{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;}
+  .faq-item-wrap .faq-item{border:none;margin:0;border-radius:0;}
+  .faq-item-wrap .faq-answer-pad{padding:0 20px 18px;}
+
+  .contact-card{background:linear-gradient(160deg,#eef0fd 0%, #f6eefc 100%);border-radius:20px;padding:34px;position:relative;overflow:hidden;min-height:380px;}
+  .contact-card .icn{width:52px;height:52px;border-radius:14px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--blue-600);box-shadow:0 8px 18px -10px rgba(30,30,80,.3);margin-bottom:20px;}
+  .contact-card .icn svg{width:24px;height:24px;}
+  .contact-card h3{font-size:22px;font-weight:800;margin:0 0 12px;line-height:1.3;}
+  .contact-card p{font-size:13.5px;color:var(--ink-700);line-height:1.6;margin:0 0 22px;max-width:280px;}
+  .contact-line{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:600;color:var(--blue-700);margin-bottom:12px;}
+  .contact-line svg{width:16px;height:16px;flex-shrink:0;}
+  .contact-line.plain{color:var(--ink-700);}
+  .deco-calendar{position:absolute;right:-10px;bottom:-14px;width:170px;opacity:.95;}
+
+  /* FOOTER */
+  footer{background:#0b0f22;color:#c7c9db;padding:64px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:24px;margin-bottom:48px;}
+  .footer-brand .brand{color:#fff;margin-bottom:14px;}
+  .footer-brand p{font-size:13px;line-height:1.6;color:#9295ab;margin:0 0 20px;max-width:260px;}
+  .soc-row{display:flex;gap:10px;}
+  .soc-row a{width:34px;height:34px;border-radius:9px;background:#161b32;display:flex;align-items:center;justify-content:center;transition:background .15s;}
+  .soc-row a:hover{background:#232a4d;}
+  .soc-row svg{width:15px;height:15px;color:#c7c9db;}
+  footer h5{color:#fff;font-size:14px;font-weight:700;margin:0 0 18px;}
+  footer ul li{margin-bottom:11px;}
+  footer ul li a{font-size:13.5px;color:#9295ab;transition:color .15s;}
+  footer ul li a:hover{color:#fff;}
+  .contact-col .cline{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#9295ab;margin-bottom:14px;}
+  .contact-col .cline svg{width:15px;height:15px;flex-shrink:0;margin-top:2px;color:#7a7ea0;}
+  .footer-cta{background:#fff;color:var(--ink-900) !important;border-radius:9px;padding:12px 18px;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;gap:8px;margin-top:6px;}
+  .foot-bottom{border-top:1px solid #1b2140;padding-top:22px;text-align:center;font-size:12.5px;color:#7a7ea0;}
+
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr 1fr;row-gap:40px;}
+    .connector{display:none;}
+    .faq-grid{grid-template-columns:1fr;}
+    nav.links{display:none;}
+  }
+  @media (max-width:640px){
+    .wrap{padding:0 18px;}
+    h1.hero-title{font-size:32px;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .feature-row{gap:20px;}
+    nav.links{display:none;}
+    .cta-btn span.long{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" >Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#" class="active">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">📅 BOOK FREE CONSULTATION</span>
+      <h1 class="hero-title">Let's Build Something Amazing <span class="accent">Together.</span></h1>
+      <p class="hero-sub">Share your ideas, challenges and goals with us. Our experts will understand your requirements and suggest the best solutions tailored for your business.</p>
+
+      <div class="feature-row">
+        <div class="feature f1">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div><h4>100% Free</h4><p>No hidden charges, no obligations</p></div>
+        </div>
+        <div class="feature f2">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div><h4>30–60 Min Consultation</h4><p>With industry experts</p></div>
+        </div>
+        <div class="feature f3">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+          <div><h4>Actionable Insights</h4><p>Get clarity and next steps instantly</p></div>
+        </div>
+      </div>
+
+      <div class="trust-row">
+        <div class="avatars">
+          <img class="av" src="https://i.pravatar.cc/80?img=12" alt="">
+          <img class="av" src="https://i.pravatar.cc/80?img=32" alt="">
+          <img class="av" src="https://i.pravatar.cc/80?img=15" alt="">
+          <img class="av" src="https://i.pravatar.cc/80?img=51" alt="">
+          <span class="plus">+50</span>
+        </div>
+        <div class="trust-text">
+          <p>Trusted by 500+ businesses worldwide</p>
+          <div class="rating-line"><span class="stars">★★★★★</span> 4.8/5 <span class="muted">(120+ Reviews)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-head">
+        <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div>
+          <h3>Request Your Free Consultation</h3>
+          <p>Fill out the form below and we'll get back to you shortly.</p>
+        </div>
+      </div>
+      <form>
+        <div class="form-row">
+          <div class="field"><label>Full Name<span class="req">*</span></label><input type="text" placeholder="Enter your full name"></div>
+          <div class="field"><label>Work Email<span class="req">*</span></label><input type="email" placeholder="Enter your work email"></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Company Name</label><input type="text" placeholder="Enter your company name"></div>
+          <div class="field">
+            <label>Phone Number<span class="req">*</span></label>
+            <div class="phone-field">
+              <div class="code">🇮🇳 +91 ▾</div>
+              <input type="tel" placeholder="98765 43210">
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field select-wrap"><label>What best describes you?<span class="req">*</span></label>
+            <select><option>Select your role</option><option>Founder / CEO</option><option>Product Manager</option><option>Engineer</option><option>Other</option></select>
+          </div>
+          <div class="field select-wrap"><label>Project Budget</label>
+            <select><option>Select budget range</option><option>Under ₹1L</option><option>₹1L – ₹5L</option><option>₹5L+</option></select>
+          </div>
+        </div>
+        <div class="field" style="margin-bottom:16px;">
+          <label>Tell us about your project<span class="req">*</span></label>
+          <textarea placeholder="Describe your project, goals, challenges or any specific requirements..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="field select-wrap"><label>Preferred Timeline</label>
+            <select><option>Select timeline</option><option>ASAP</option><option>1–3 months</option><option>3–6 months</option></select>
+          </div>
+          <div class="field select-wrap"><label>How did you hear about us?</label>
+            <select><option>Select an option</option><option>Google</option><option>LinkedIn</option><option>Referral</option></select>
+          </div>
+        </div>
+        <div class="agree-row">
+          <input type="checkbox" id="agree"><label for="agree">I agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms &amp; Conditions</a>.</label>
+        </div>
+        <button type="button" class="submit-btn">Book My Free Consultation →</button>
+        <div class="secure-line">🔒 Your information is secure and confidential.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">◆ HOW IT WORKS</span>
+      <h2>Our <span class="hl">Simple 4-Step</span> Process</h2>
+      <p>From understanding your needs to delivering the right solution.</p>
+    </div>
+    <div class="steps">
+      <div class="connector"></div>
+      <div class="step s1">
+        <div class="step-icons">
+          <div class="num">01</div>
+          <div class="main-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <div class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg></div>
+        </div>
+        <h4>Share Your Requirements</h4>
+        <p>Tell us about your project, challenges and business goals.</p>
+      </div>
+      <div class="step s2">
+        <div class="step-icons">
+          <div class="num">02</div>
+          <div class="main-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <div class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg></div>
+        </div>
+        <h4>Schedule a Call</h4>
+        <p>Pick a convenient time. We'll confirm your consultation.</p>
+      </div>
+      <div class="step s3">
+        <div class="step-icons">
+          <div class="num">03</div>
+          <div class="main-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg></div>
+        </div>
+        <h4>Consult With Experts</h4>
+        <p>Speak with our experts and get clarity on the best approach.</p>
+      </div>
+      <div class="step s4">
+        <div class="step-icons">
+          <div class="num">04</div>
+          <div class="main-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div class="sub"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l2 2"/></svg></div>
+        </div>
+        <h4>Get Actionable Plan</h4>
+        <p>Receive a customized plan, solution strategy and next steps.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-sec">
+  <div class="wrap faq-grid">
+    <div class="faq-col">
+      <span class="eyebrow">◆ FAQS</span>
+      <h2>Frequently Asked Questions</h2>
+      <div id="faqList">
+        <div class="faq-item-wrap">
+          <div class="faq-item"><span>Is the consultation really free?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-pad">Yes, completely. There are no hidden charges or obligations — it's our way of understanding your needs before proposing a solution.</div></div>
+        </div>
+        <div class="faq-item-wrap">
+          <div class="faq-item"><span>How long does the consultation call take?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-pad">Most calls take between 30 and 60 minutes, depending on the complexity of your project and requirements.</div></div>
+        </div>
+        <div class="faq-item-wrap">
+          <div class="faq-item"><span>What will I get in the consultation?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-pad">You'll walk away with clarity on the best approach for your project, along with a customized plan and next steps.</div></div>
+        </div>
+        <div class="faq-item-wrap">
+          <div class="faq-item"><span>Do I need to sign any agreement?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-pad">No. The consultation carries no obligation — you're free to decide whether to move forward afterward.</div></div>
+        </div>
+        <div class="faq-item-wrap">
+          <div class="faq-item"><span>What if I'm not sure about my requirements?</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></div>
+          <div class="faq-answer"><div class="faq-answer-pad">That's perfectly fine. Our experts will help you think through your goals and shape the right requirements together.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-card">
+      <div class="icn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+      <h3>Have Questions? We're Here to Help!</h3>
+      <p>Our team is ready to assist you. Reach out to us directly or book a time that works for you.</p>
+      <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg> contact@nexsham.com</div>
+      <div class="contact-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.61.54 2.39a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.69-1.11a2 2 0 0 1 2.11-.45c.78.24 1.58.42 2.39.54A2 2 0 0 1 22 16.92z"/></svg> +91 63982 52496</div>
+      <div class="contact-line plain"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lucknow, Uttar Pradesh, India</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand"><div class="mark">N</div>NEXSHAM<span style="color:#8b90ff;">TECHNOLOGIES</span></div>
+        <p>Building innovative digital solutions that empower businesses and create a better tomorrow.</p>
+        <div class="soc-row">
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.22-6.83-5.97 6.83H1.66l7.73-8.84L1.25 2.25h6.83l4.72 6.24 5.44-6.24zm-1.16 17.52h1.83L7.02 4.13H5.06l12.02 15.64z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58 0 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s0 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58 0-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92-.06-1.27-.07-1.65-.07-4.85s0-3.58.07-4.85C2.38 3.9 3.9 2.38 7.15 2.23c1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.7.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.35 2.63 6.78 6.98 6.98 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c4.35-.2 6.78-2.63 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95C23.73 2.7 21.3.27 16.95.07 15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.41-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.94c.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.17.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.02 11.02 0 0 1 5.8 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.07.78 2.15v3.19c0 .3.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>Quick Links</h5>
+        <ul><li><a href="#">Home</a></li><li><a href="#">Services</a></li><li><a href="#">Featured Solutions</a></li><li><a href="#">Industries</a></li><li><a href="#">Technologies</a></li><li><a href="#">Our Process</a></li><li><a href="#">Career</a></li></ul>
+      </div>
+      <div>
+        <h5>Solutions</h5>
+        <ul><li><a href="#">Enterprise Software</a></li><li><a href="#">ERP Systems</a></li><li><a href="#">Financial Management</a></li><li><a href="#">Supply Chain Management</a></li><li><a href="#">Mobile Applications</a></li><li><a href="#">AI &amp; Automation</a></li></ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul><li><a href="#">About Us</a></li><li><a href="#">Our Team</a></li><li><a href="#">Careers</a></li><li><a href="#">Blog</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="contact-col">
+        <h5>Contact Us</h5>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lucknow, Uttar Pradesh, India</div>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg> contact@nexsham.com</div>
+        <div class="cline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.81.3 1.61.54 2.39a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.69-1.11a2 2 0 0 1 2.11-.45c.78.24 1.58.42 2.39.54A2 2 0 0 1 22 16.92z"/></svg> +91 63982 52496</div>
+        <a href="#" class="footer-cta">Book Free Consultation →</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2025 NexSham Technologies. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      const wrap = item.parentElement;
+      const answer = wrap.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{
+        i.classList.remove('open');
+        i.parentElement.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 20 + 'px';
+      }
+    });
+  });
+
+  const menuBtn = document.querySelector('.menu-toggle');
+</script>
+
+</body>
+</html>
