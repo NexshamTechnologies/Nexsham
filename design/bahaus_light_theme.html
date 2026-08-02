@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nexsham Technologies — Build in Bold</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF;
+  --bg-2:#F4F4F7;
+  --ink:#0F0F14;
+  --ink-soft:#5B5B68;
+  --line:#0F0F14;
+
+  --violet:#7C3AED;
+  --pink:#FF2D78;
+  --cyan:#00B8D9;
+  --amber:#FFB800;
+  --lime:#4ADE80;
+  --coral:#FF6B4A;
+}
+*{margin:0; padding:0; box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg); color:var(--ink); font-family:'Inter',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif; font-weight:700; letter-spacing:-0.01em;}
+.mono{font-family:'JetBrains Mono',monospace;}
+a{color:inherit; text-decoration:none;}
+ul{list-style:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+.prism-text{background:linear-gradient(90deg,var(--violet),var(--pink) 50%,var(--amber)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+
+/* nav */
+header{position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); border-bottom:2px solid var(--line);}
+nav{max-width:1180px; margin:0 auto; padding:18px 32px; display:flex; align-items:center; justify-content:space-between;}
+.logo{display:flex; align-items:center; gap:10px; font-family:'Space Grotesk'; font-weight:700; font-size:19px;}
+.logo-mark{width:32px; height:32px; background:var(--ink); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:15px; color:#fff; position:relative;}
+.logo-mark::after{content:""; position:absolute; width:8px; height:8px; background:var(--pink); top:-4px; right:-4px;}
+.nav-links{display:flex; gap:28px; font-size:14px; font-weight:600; color:var(--ink-soft);}
+.nav-links a:hover{color:var(--ink);}
+.btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; font-size:13.5px; font-weight:700; cursor:pointer; font-family:'Inter'; border:2px solid var(--line);}
+.btn-solid{background:var(--ink); color:#fff;}
+.btn-solid:hover{background:var(--pink); border-color:var(--pink);}
+.btn-outline{background:#fff; color:var(--ink);}
+.btn-outline:hover{background:var(--bg-2);}
+
+/* hero */
+.hero{position:relative; padding:90px 0 100px; overflow:hidden; border-bottom:2px solid var(--line);}
+.confetti{position:absolute; z-index:0;}
+.hero .wrap{position:relative; z-index:1; display:grid; grid-template-columns:1.05fr 0.95fr; gap:60px; align-items:center;}
+.status{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; background:var(--ink); color:#fff; padding:7px 14px; margin-bottom:26px;}
+.status .dot{width:6px; height:6px; border-radius:50%; background:var(--lime);}
+.hero h1{font-size:58px; line-height:1.04; margin-bottom:22px;}
+.hero p.lede{font-size:17px; color:var(--ink-soft); max-width:480px; margin-bottom:36px;}
+.hero-ctas{display:flex; gap:14px; margin-bottom:54px;}
+.hero-stats{display:flex; gap:0; border:2px solid var(--line); border-left:none;}
+.hero-stats div{padding:16px 22px; border-left:2px solid var(--line);}
+.hero-stats div b{display:block; font-family:'Space Grotesk'; font-size:24px;}
+.hero-stats div span{font-size:11px; color:var(--ink-soft); font-family:'JetBrains Mono'; text-transform:uppercase;}
+.hero-stats div:nth-child(1) b{color:var(--violet);}
+.hero-stats div:nth-child(2) b{color:var(--pink);}
+.hero-stats div:nth-child(3) b{color:var(--cyan);}
+.hero-stats div:nth-child(4) b{color:var(--amber);}
+
+.panel{border:2px solid var(--line); background:var(--bg-2); padding:0; position:relative;}
+.panel-tab{position:absolute; top:-2px; left:24px; background:var(--pink); color:#fff; font-family:'JetBrains Mono'; font-size:11px; padding:6px 12px; border:2px solid var(--line); border-top:none;}
+.panel-body{padding:36px 26px 26px;}
+.metric-row{display:grid; grid-template-columns:repeat(3,1fr); gap:0; border:2px solid var(--line); margin-bottom:16px;}
+.metric{padding:16px; border-right:2px solid var(--line); background:#fff;}
+.metric:last-child{border-right:none;}
+.metric span{font-family:'JetBrains Mono'; font-size:10px; color:var(--ink-soft); text-transform:uppercase;}
+.metric b{display:block; font-family:'Space Grotesk'; font-size:21px; margin-top:4px;}
+.metric:nth-child(1) b{color:var(--violet);} .metric:nth-child(2) b{color:var(--pink);} .metric:nth-child(3) b{color:var(--cyan);}
+.pulse-bar{height:64px; border:2px solid var(--line); margin-bottom:16px; background:#fff;}
+.log-line{font-family:'JetBrains Mono'; font-size:11px; color:var(--ink-soft); padding:6px 0; border-top:1px dashed var(--line); display:flex; gap:8px;}
+.log-line b{color:var(--ink); font-weight:600;}
+
+/* sections */
+section{padding:100px 0; position:relative;}
+.eyebrow{display:inline-flex; align-items:center; gap:8px; font-family:'JetBrains Mono'; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:18px; padding:5px 10px; border:2px solid var(--line);}
+.section-head{max-width:640px; margin-bottom:54px;}
+.section-head.center{margin:0 auto 54px; text-align:center;}
+.section-head h2{font-size:40px; margin-bottom:14px; line-height:1.14;}
+.section-head p{color:var(--ink-soft); font-size:15.5px;}
+.alt{background:var(--bg-2); border-top:2px solid var(--line); border-bottom:2px solid var(--line);}
+
+.grid{display:grid; gap:0;}
+.grid-4{grid-template-columns:repeat(4,1fr);}
+.grid-2{grid-template-columns:1fr 1fr;}
+
+/* cards: hard border grid, poster tabs */
+.card{background:#fff; border:2px solid var(--line); border-left:none; border-top:none; padding:26px; position:relative; transition:background .15s;}
+.grid-4 .card:nth-child(4n+1){border-left:2px solid var(--line);}
+.grid-4 .card:nth-last-child(-n+4){border-bottom:2px solid var(--line);}
+.grid > .card:first-child, .grid-2 .card{border-left:2px solid var(--line);}
+.card:hover{background:var(--bg-2);}
+.tab{position:absolute; top:-2px; left:22px; padding:4px 10px; font-family:'JetBrains Mono'; font-size:10px; font-weight:600; color:#fff; border:2px solid var(--line); border-top:none;}
+.card h3{font-size:17px; margin:14px 0 8px;}
+.card p{font-size:13.8px; color:var(--ink-soft); margin-bottom:14px;}
+.tag{font-family:'JetBrains Mono'; font-size:10.5px; padding:4px 9px; border:1.5px solid var(--line);}
+.tag-list{display:flex; flex-wrap:wrap; gap:6px;}
+.check-list li{font-size:13.5px; color:var(--ink-soft); margin-bottom:6px; padding-left:18px; position:relative; font-weight:500;}
+.check-list li::before{content:"—"; position:absolute; left:0; font-weight:700;}
+
+.grid .card:nth-child(6n+1) .tab, .grid .card:nth-child(6n+1) .check-list li::before{background:var(--violet); color:var(--violet);}
+.grid .card:nth-child(6n+2) .tab, .grid .card:nth-child(6n+2) .check-list li::before{background:var(--pink); color:var(--pink);}
+.grid .card:nth-child(6n+3) .tab, .grid .card:nth-child(6n+3) .check-list li::before{background:var(--cyan); color:var(--cyan);}
+.grid .card:nth-child(6n+4) .tab, .grid .card:nth-child(6n+4) .check-list li::before{background:var(--amber); color:var(--amber);}
+.grid .card:nth-child(6n+5) .tab, .grid .card:nth-child(6n+5) .check-list li::before{background:var(--coral); color:var(--coral);}
+.grid .card:nth-child(6n+6) .tab, .grid .card:nth-child(6n+6) .check-list li::before{background:var(--lime); color:var(--lime);}
+.check-list li::before{background:none !important;}
+
+/* problems */
+.problem-card{background:#fff; border:2px solid var(--line); border-left:none; border-top:none; padding:24px;}
+.grid-4 .problem-card:nth-child(4n+1){border-left:2px solid var(--line);}
+.grid-4 .problem-card:nth-last-child(-n+4){border-bottom:2px solid var(--line);}
+.problem-card h3{font-size:16px; margin-bottom:8px;}
+.problem-card p{font-size:13.5px; color:var(--ink-soft); margin-bottom:16px;}
+.solve-box{padding:11px 14px; font-size:13px; font-weight:600; border:1.5px solid var(--line);}
+.problem-card:nth-child(4n+1) .solve-box{background:rgba(124,58,237,0.08); border-color:var(--violet);}
+.problem-card:nth-child(4n+2) .solve-box{background:rgba(0,184,217,0.08); border-color:var(--cyan);}
+.problem-card:nth-child(4n+3) .solve-box{background:rgba(255,184,0,0.1); border-color:var(--amber);}
+.problem-card:nth-child(4n+4) .solve-box{background:rgba(255,45,120,0.08); border-color:var(--pink);}
+
+/* tech */
+.tech-shell{display:grid; grid-template-columns:240px 1fr; border:2px solid var(--line); background:#fff;}
+.tech-nav{border-right:2px solid var(--line);}
+.tech-nav li{padding:16px 20px; font-size:14px; font-weight:600; border-bottom:2px solid var(--line); color:var(--ink-soft); cursor:pointer;}
+.tech-nav li.active{background:var(--ink); color:#fff;}
+.tech-body{padding:36px;}
+.tech-body h3{font-size:20px; margin-bottom:8px;}
+.tech-body p.desc{color:var(--ink-soft); font-size:14px; margin-bottom:26px; max-width:460px;}
+.tech-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:2px solid var(--line);}
+.tech-item{padding:20px 8px; text-align:center; border-right:2px solid var(--line); border-bottom:2px solid var(--line);}
+.tech-item:nth-child(4n){border-right:none;}
+.tech-item:nth-last-child(-n+4){border-bottom:none;}
+.tech-item .glyph{font-family:'Space Grotesk'; font-weight:700; font-size:19px; margin-bottom:6px;}
+.tech-item:nth-child(8n+1) .glyph{color:var(--violet);} .tech-item:nth-child(8n+2) .glyph{color:var(--pink);}
+.tech-item:nth-child(8n+3) .glyph{color:var(--cyan);} .tech-item:nth-child(8n+4) .glyph{color:var(--amber);}
+.tech-item:nth-child(8n+5) .glyph{color:var(--coral);} .tech-item:nth-child(8n+6) .glyph{color:var(--violet);}
+.tech-item:nth-child(8n+7) .glyph{color:var(--pink);} .tech-item:nth-child(8n+8) .glyph{color:var(--cyan);}
+.tech-item span{font-size:12px; color:var(--ink-soft); font-weight:500;}
+
+/* stats/why */
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); border:2px solid var(--line); margin-top:34px;}
+.stat{padding:22px; border-right:2px solid var(--line); background:#fff;}
+.stat:last-child{border-right:none;}
+.stat b{font-family:'Space Grotesk'; font-size:28px; display:block;}
+.stat:nth-child(1) b{color:var(--violet);} .stat:nth-child(2) b{color:var(--pink);} .stat:nth-child(3) b{color:var(--cyan);} .stat:nth-child(4) b{color:var(--amber);}
+.stat span{font-size:12px; color:var(--ink-soft); font-family:'JetBrains Mono';}
+.why-quote{margin-top:28px; background:var(--ink); color:#fff; padding:22px 26px; display:flex; gap:16px; border:2px solid var(--line);}
+.why-quote .mark{font-family:'Space Grotesk'; font-weight:700; font-size:24px; color:var(--amber);}
+.why-quote p{font-size:14px; color:#D8D8DE;}
+.why-quote strong{color:#fff;}
+
+/* faq */
+.faq-shell{display:grid; grid-template-columns:0.85fr 1.4fr; gap:0; border:2px solid var(--line);}
+.faq-side{background:var(--ink); color:#fff; padding:30px; border-right:2px solid var(--line);}
+.faq-side h3{font-size:19px; margin-bottom:10px; color:#fff;}
+.faq-side p{font-size:14px; color:#B8B8C0; margin-bottom:20px;}
+.pill-row{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;}
+.pill{font-family:'JetBrains Mono'; font-size:11px; border:1.5px solid rgba(255,255,255,0.3); padding:6px 10px; color:#fff;}
+.faq-list{background:#fff;}
+details{border-bottom:2px solid var(--line);}
+details:last-child{border-bottom:none;}
+summary{padding:20px 24px; font-weight:600; font-size:14.5px; cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+"; font-size:18px; color:var(--pink);}
+details[open] summary::after{content:"–";}
+.faq-a{padding:0 24px 20px; font-size:13.5px; color:var(--ink-soft);}
+
+/* contact */
+.contact-shell{display:grid; grid-template-columns:1fr 1fr; gap:0; border:2px solid var(--line);}
+.contact-left{padding:40px; background:var(--bg-2);}
+.contact-checks{display:flex; flex-direction:column; gap:10px; margin:26px 0 0;}
+.contact-checks div{display:flex; align-items:center; gap:10px; font-size:14px; font-weight:600;}
+.contact-checks .dot{width:20px; height:20px; background:var(--ink); color:#fff; display:flex; align-items:center; justify-content:center; font-size:11px;}
+.form-card{padding:40px; background:#fff; border-left:2px solid var(--line);}
+.field{margin-bottom:18px;}
+.field label{display:block; font-size:13px; font-weight:700; margin-bottom:6px;}
+.field label .opt{font-weight:400; color:var(--ink-soft);}
+.field label .req{color:var(--pink);}
+.field input, .field select, .field textarea{width:100%; border:2px solid var(--line); padding:12px 14px; font-family:'Inter'; font-size:13.5px; background:#fff;}
+.field textarea{min-height:90px; resize:vertical;}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--violet);}
+.upload{border:2px dashed var(--line); padding:24px; text-align:center; font-size:13px; color:var(--ink-soft);}
+
+/* footer */
+footer{background:var(--ink); color:#B8B8C0; padding:70px 0 26px;}
+.foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:30px; padding-bottom:50px;}
+.foot-brand .logo{color:#fff; margin-bottom:14px;}
+.foot-brand .logo-mark{background:#fff; color:var(--ink);}
+.foot-brand p{font-size:13.5px; color:#9494A0; margin-bottom:20px; max-width:260px;}
+.foot-col h4{font-family:'JetBrains Mono'; font-size:12px; letter-spacing:0.06em; color:#fff; margin-bottom:16px; text-transform:uppercase;}
+.foot-col li{margin-bottom:10px; font-size:13.5px; color:#9494A0;}
+.foot-col:nth-child(2) li:hover{color:var(--violet);} .foot-col:nth-child(3) li:hover{color:var(--pink);}
+.foot-col:nth-child(4) li:hover{color:var(--cyan);} .foot-col:nth-child(5) li:hover{color:var(--amber);}
+.foot-meta{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; padding:30px 0; border-top:1px solid rgba(255,255,255,0.15); border-bottom:1px solid rgba(255,255,255,0.15);}
+.foot-meta div span{display:block; font-size:11px; color:#7A7A86; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; font-family:'JetBrains Mono';}
+.foot-meta div b{font-size:13.5px; color:#fff; font-weight:500;}
+.foot-bottom{display:flex; justify-content:space-between; padding-top:26px; font-size:12.5px; color:#7A7A86;}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .grid-4,.grid-2{grid-template-columns:repeat(2,1fr);}
+  .tech-shell,.faq-shell,.contact-shell{grid-template-columns:1fr;}
+  .foot-grid,.foot-meta{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><div class="logo-mark">N</div>NEXSHAM</div>
+    <ul class="nav-links" style="display:flex;">
+      <li><a href="#">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#tech">Technologies</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-solid">Book Free Consultation →</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="confetti" style="top:60px; right:60px; width:120px; opacity:0.9;" viewBox="0 0 100 100"><rect x="0" y="0" width="26" height="26" fill="#FFB800"/><circle cx="70" cy="20" r="13" fill="#00B8D9"/><rect x="60" y="55" width="20" height="20" transform="rotate(20 70 65)" fill="#FF2D78"/></svg>
+  <div class="wrap">
+    <div>
+      <div class="status"><span class="dot"></span> SYSTEMS ONLINE — ACCEPTING NEW PROJECTS</div>
+      <h1>Software built<br>to <span class="prism-text">stand out.</span></h1>
+      <p class="lede">Custom software, AI-powered automation and cloud-native platforms engineered to help ambitious businesses move faster than their market.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-solid">Book Free Consultation →</a>
+        <a href="#services" class="btn btn-outline">Explore Services</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>150+</b><span>PROJECTS</span></div>
+        <div><b>75+</b><span>CLIENTS</span></div>
+        <div><b>5+</b><span>YEARS</span></div>
+        <div><b>24/7</b><span>SUPPORT</span></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-tab">nexsham://live-console</div>
+      <div class="panel-body">
+        <div class="metric-row">
+          <div class="metric"><span>REVENUE</span><b>$98,760</b></div>
+          <div class="metric"><span>USERS</span><b>12,540</b></div>
+          <div class="metric"><span>UPTIME</span><b>99.98%</b></div>
+        </div>
+        <div class="pulse-bar">
+          <svg viewBox="0 0 400 64" preserveAspectRatio="none" width="100%" height="100%">
+            <polyline points="0,48 40,42 80,26 120,38 160,12 200,32 240,18 280,36 320,8 360,26 400,16"
+              fill="none" stroke="url(#g1)" stroke-width="2.6"/>
+            <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#7C3AED"/><stop offset="0.5" stop-color="#FF2D78"/><stop offset="1" stop-color="#FFB800"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="log-line"><b>[OK]</b> deploy — build #482 shipped to production</div>
+        <div class="log-line"><b>[OK]</b> automation — 3 workflows triggered, 0 errors</div>
+        <div class="log-line"><b>[OK]</b> ai-engine — inference latency 42ms</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--violet);">Our Services</div>
+      <h2>End-to-end software,<br>engineered to run.</h2>
+      <p>From custom software development to AI-powered automation — secure, scalable, future-ready systems tailored to your business.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="tab">01</div><h3>Custom Software Development</h3><p>Tailor-made systems built around your processes and long-term goals.</p><ul class="check-list"><li>ERP systems</li><li>CRM systems</li><li>Business portals</li></ul></div>
+      <div class="card"><div class="tab">02</div><h3>Web Application Development</h3><p>Fast, secure and scalable web applications on modern foundations.</p><ul class="check-list"><li>Company websites</li><li>Admin dashboards</li><li>SaaS platforms</li></ul></div>
+      <div class="card"><div class="tab">03</div><h3>Mobile App Development</h3><p>Cross-platform Android and iOS apps with high-performance UI.</p><ul class="check-list"><li>Flutter apps</li><li>React Native</li><li>Progressive web apps</li></ul></div>
+      <div class="card"><div class="tab">04</div><h3>AI & Automation</h3><p>Integrate AI to automate tasks and sharpen decisions.</p><ul class="check-list"><li>AI chatbots</li><li>Process automation</li><li>Machine learning</li></ul></div>
+      <div class="card"><div class="tab">05</div><h3>Business Automation</h3><p>Replace manual workflows with intelligent automation.</p><ul class="check-list"><li>Workflow automation</li><li>HR automation</li><li>Inventory automation</li></ul></div>
+      <div class="card"><div class="tab">06</div><h3>Cloud Solutions</h3><p>Deploy, host and manage applications on modern infrastructure.</p><ul class="check-list"><li>AWS</li><li>Azure</li><li>Google Cloud</li></ul></div>
+      <div class="card"><div class="tab">07</div><h3>QA & Testing</h3><p>Deliver reliable software through rigorous testing.</p><ul class="check-list"><li>Functional testing</li><li>Performance testing</li><li>Security testing</li></ul></div>
+      <div class="card"><div class="tab">08</div><h3>Maintenance & Support</h3><p>Continuous monitoring, updates and support around the clock.</p><ul class="check-list"><li>Bug fixes</li><li>Feature updates</li><li>Technical support</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="section-head center" style="max-width:620px;">
+      <div class="eyebrow" style="justify-content:center; color:var(--cyan);">Business Problems We Solve</div>
+      <h2>Business problems, <span class="prism-text">solved.</span></h2>
+      <p>We help businesses eliminate inefficiencies, automate workflows and build scalable software that solves real challenges.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="problem-card"><h3>Manual & Time-Consuming Work</h3><p>Manual processes waste time and slow daily operations.</p><div class="solve-box">→ We automate repetitive tasks and streamline workflows.</div></div>
+      <div class="problem-card"><h3>Disconnected Systems</h3><p>Multiple disconnected tools create confusion and inconsistent data.</p><div class="solve-box">→ We integrate your systems into one centralized platform.</div></div>
+      <div class="problem-card"><h3>Business Can't Scale</h3><p>Your current software can't support growth or demand.</p><div class="solve-box">→ We build scalable software designed for future expansion.</div></div>
+      <div class="problem-card"><h3>Security Risks</h3><p>Weak security leaves your data vulnerable.</p><div class="solve-box">→ We implement modern security and best practices.</div></div>
+      <div class="problem-card"><h3>Poor Customer Experience</h3><p>Slow, outdated systems drive customers away.</p><div class="solve-box">→ We create fast, intuitive digital experiences.</div></div>
+      <div class="problem-card"><h3>High Operational Costs</h3><p>Manual work inflates operational expenses.</p><div class="solve-box">→ We automate workflows to cut costs and improve efficiency.</div></div>
+      <div class="problem-card"><h3>Slow Time to Market</h3><p>Development delays mean missed opportunities.</p><div class="solve-box">→ Agile development helps you launch products faster.</div></div>
+      <div class="problem-card"><h3>Legacy Software</h3><p>Old systems are difficult to maintain and integrate.</p><div class="solve-box">→ We modernize legacy software without disrupting operations.</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="solutions">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow" style="color:var(--pink);">Featured Solutions</div>
+      <h2>Software solutions we build.</h2>
+      <p>From enterprise platforms to AI-powered automation — systems that help businesses grow, automate and scale.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="tab">ERP</div><h3>Enterprise Software</h3><p>Complete systems designed to simplify operations.</p><div class="tag-list"><span class="tag">ERP</span><span class="tag">CRM</span><span class="tag">HRMS</span></div></div>
+      <div class="card"><div class="tab">SYS</div><h3>ERP Systems</h3><p>Integrated ERP connecting finance, inventory, HR and ops.</p><div class="tag-list"><span class="tag">Finance</span><span class="tag">Inventory</span></div></div>
+      <div class="card"><div class="tab">FIN</div><h3>Financial Management</h3><p>Accounting, budgeting, payments and reporting, unified.</p><div class="tag-list"><span class="tag">Accounting</span><span class="tag">Billing</span></div></div>
+      <div class="card"><div class="tab">SCM</div><h3>Supply Chain Management</h3><p>Optimize procurement, logistics and warehouse ops.</p><div class="tag-list"><span class="tag">Warehouse</span><span class="tag">Tracking</span></div></div>
+      <div class="card"><div class="tab">AST</div><h3>Inventory & Asset Management</h3><p>Track assets, equipment and inventory in real time.</p><div class="tag-list"><span class="tag">Assets</span><span class="tag">Barcode</span></div></div>
+      <div class="card"><div class="tab">FLT</div><h3>Fleet Management</h3><p>Monitor vehicles, drivers and routes from one dashboard.</p><div class="tag-list"><span class="tag">GPS</span><span class="tag">Maintenance</span></div></div>
+      <div class="card"><div class="tab">HRM</div><h3>HR Management System</h3><p>Manage employees, attendance, payroll and recruitment.</p><div class="tag-list"><span class="tag">Payroll</span><span class="tag">Attendance</span></div></div>
+      <div class="card"><div class="tab">LMS</div><h3>Learning Management System</h3><p>Digital learning platforms for schools and companies.</p><div class="tag-list"><span class="tag">Courses</span><span class="tag">Exams</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="tech">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center; color:var(--amber);">Our Stack</div>
+      <h2>Technologies we build with.</h2>
+      <p>From modern frontend frameworks to cloud-native infrastructure — the tools behind secure, scalable software.</p>
+    </div>
+    <div class="tech-shell">
+      <ul class="tech-nav">
+        <li class="active">Frontend</li><li>Backend</li><li>Mobile</li><li>Database</li><li>Cloud & DevOps</li><li>AI / ML</li><li>Security</li>
+      </ul>
+      <div class="tech-body">
+        <h3>Frontend Technologies</h3>
+        <p class="desc">Modern frameworks and libraries for building responsive, fast and scalable web applications.</p>
+        <div class="tech-grid">
+          <div class="tech-item"><div class="glyph">&lt;/&gt;</div><span>HTML5</span></div>
+          <div class="tech-item"><div class="glyph">◈</div><span>CSS3</span></div>
+          <div class="tech-item"><div class="glyph">JS</div><span>JavaScript</span></div>
+          <div class="tech-item"><div class="glyph">TS</div><span>TypeScript</span></div>
+          <div class="tech-item"><div class="glyph">⚛</div><span>React</span></div>
+          <div class="tech-item"><div class="glyph">▲</div><span>Next.js</span></div>
+          <div class="tech-item"><div class="glyph">B</div><span>Bootstrap</span></div>
+          <div class="tech-item"><div class="glyph">TW</div><span>Tailwind CSS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center; color:var(--coral);">Industries We Serve</div>
+      <h2>Software built for every industry.</h2>
+      <p>Every industry has unique challenges. We build custom software tailored to your workflows, customers and goals.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card"><div class="tab">01</div><h3>Healthcare</h3><p>Platforms improving patient care and hospital operations.</p><div class="tag-list"><span class="tag">HMS</span><span class="tag">Patient Portal</span></div></div>
+      <div class="card"><div class="tab">02</div><h3>Retail & eCommerce</h3><p>Scalable commerce that increases sales and automates ops.</p><div class="tag-list"><span class="tag">Store</span><span class="tag">POS</span></div></div>
+      <div class="card"><div class="tab">03</div><h3>Finance & Banking</h3><p>Secure software for banks, NBFCs and fintech startups.</p><div class="tag-list"><span class="tag">FinTech</span><span class="tag">Payments</span></div></div>
+      <div class="card"><div class="tab">04</div><h3>Education</h3><p>Modern platforms for schools, colleges and edtech.</p><div class="tag-list"><span class="tag">LMS</span><span class="tag">Exams</span></div></div>
+      <div class="card"><div class="tab">05</div><h3>Manufacturing</h3><p>Optimize production, inventory and factory operations.</p><div class="tag-list"><span class="tag">ERP</span><span class="tag">Tracking</span></div></div>
+      <div class="card"><div class="tab">06</div><h3>Logistics & Supply Chain</h3><p>Track vehicles, shipments and warehouses in real time.</p><div class="tag-list"><span class="tag">Fleet</span><span class="tag">Routes</span></div></div>
+      <div class="card"><div class="tab">07</div><h3>Real Estate</h3><p>Platforms simplifying sales, rentals and communication.</p><div class="tag-list"><span class="tag">CRM</span><span class="tag">Listings</span></div></div>
+      <div class="card"><div class="tab">08</div><h3>Hospitality & Restaurants</h3><p>Software improving customer experience and operations.</p><div class="tag-list"><span class="tag">POS</span><span class="tag">Booking</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap grid grid-2" style="align-items:flex-start; border:none;">
+    <div style="padding-right:30px;">
+      <div class="eyebrow" style="color:var(--lime);">Why Choose Nexsham</div>
+      <h2 style="font-size:36px; margin-bottom:16px;">Why businesses choose Nexsham.</h2>
+      <p style="color:var(--ink-soft); font-size:15px;">We combine technology, strategy and craft to deliver software that creates measurable growth.</p>
+      <div class="stat-row">
+        <div class="stat"><b>75+</b><span>CLIENTS</span></div>
+        <div class="stat"><b>150+</b><span>PROJECTS</span></div>
+        <div class="stat"><b>5+</b><span>YEARS</span></div>
+        <div class="stat"><b>24/7</b><span>SUPPORT</span></div>
+      </div>
+      <div class="why-quote">
+        <div class="mark">”</div>
+        <p><strong>We build long-term partnerships.</strong><br>Your success is our biggest achievement — we become your technology partner, not just another vendor.</p>
+      </div>
+    </div>
+    <div class="grid grid-2" style="border-left:2px solid var(--line);">
+      <div class="card"><div class="tab">01</div><h3>Client-First Approach</h3><p>Every solution begins with understanding your business.</p></div>
+      <div class="card"><div class="tab">02</div><h3>Modern Technologies</h3><p>We use today's best tools to build future-ready software.</p></div>
+      <div class="card"><div class="tab">03</div><h3>Quality You Can Trust</h3><p>Quality stays central from planning through deployment.</p></div>
+      <div class="card"><div class="tab">04</div><h3>On-Time Delivery</h3><p>Agile processes deliver projects without compromise.</p></div>
+      <div class="card"><div class="tab">05</div><h3>Security by Design</h3><p>Security is built into every stage of development.</p></div>
+      <div class="card"><div class="tab">06</div><h3>Built to Scale</h3><p>Our software grows as your business grows.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="eyebrow" style="justify-content:center; color:var(--violet);">FAQ's</div>
+      <h2>Frequently asked questions.</h2>
+      <p>Everything you need to know about our services, process, pricing and how we work.</p>
+    </div>
+    <div class="faq-shell">
+      <div class="faq-side">
+        <h3>Have a different question?</h3>
+        <p>Can't find the answer you're looking for? Our team is happy to discuss your project.</p>
+        <div class="pill-row">
+          <span class="pill">24h Response</span><span class="pill">Free Consult</span>
+          <span class="pill">NDA Available</span><span class="pill">150+ Projects</span>
+        </div>
+        <a class="btn" href="#contact" style="width:100%; justify-content:center; background:#fff; color:var(--ink); border-color:#fff;">Contact Our Team →</a>
+      </div>
+      <div class="faq-list">
+        <details open><summary>What services does Nexsham provide?</summary><div class="faq-a">We build custom software including web applications, mobile apps, AI-powered solutions, business automation, cloud applications, enterprise software and ongoing maintenance.</div></details>
+        <details><summary>How much does custom software cost?</summary><div class="faq-a">Pricing depends on scope, complexity and timeline — we scope every project after a free consultation.</div></details>
+        <details><summary>How long does it take to develop a project?</summary><div class="faq-a">Most projects run from a few weeks to a few months, depending on requirements.</div></details>
+        <details><summary>Which technologies do you use?</summary><div class="faq-a">Modern, industry-standard frameworks across frontend, backend, mobile, cloud and AI.</div></details>
+        <details><summary>Can you improve our existing software?</summary><div class="faq-a">Yes — we regularly modernize legacy systems without disrupting operations.</div></details>
+        <details><summary>How do you protect our business data?</summary><div class="faq-a">Security best practices are built into every stage, with NDAs available on request.</div></details>
+        <details><summary>Do you provide support after deployment?</summary><div class="faq-a">Yes — ongoing maintenance, monitoring and technical support are part of every engagement.</div></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-shell">
+      <div class="contact-left">
+        <div class="eyebrow" style="color:var(--amber);">Let's Talk Software</div>
+        <h2 style="font-size:34px;">Let's build your next software solution.</h2>
+        <p style="color:var(--ink-soft); font-size:15px; margin-top:14px;">Have a business idea or need to automate your operations? Our team is here to transform your ideas into scalable software.</p>
+        <div class="contact-checks">
+          <div><span class="dot">✓</span>Free initial consultation</div>
+          <div><span class="dot">✓</span>NDA available on request</div>
+          <div><span class="dot">✓</span>Response within 0–24 hours</div>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="field"><label>Full Name <span class="req">*</span></label><input placeholder="Enter your full name"></div>
+        <div class="field"><label>Company / Business Name <span class="opt">(Optional)</span></label><input placeholder="Enter your company name"></div>
+        <div class="field"><label>Business Email <span class="req">*</span></label><input placeholder="example@company.com"></div>
+        <div class="field"><label>Phone Number <span class="opt">(Optional)</span></label><input placeholder="+91 XXXXX XXXXX"></div>
+        <div class="field"><label>Service Required <span class="req">*</span></label>
+          <select><option>Select a service</option><option>Custom Software</option><option>Web Application</option><option>Mobile App</option><option>AI & Automation</option></select>
+        </div>
+        <div class="field"><label>Project Description <span class="req">*</span></label><textarea placeholder="Tell us about your business and the solution you're looking for."></textarea></div>
+        <div class="field"><label>Attach Requirement Document <span class="opt">(Optional)</span></label><div class="upload">Upload PDF, DOCX, PPT or Images — max 10MB</div></div>
+        <a href="#" class="btn btn-solid" style="width:100%; justify-content:center;">Send Inquiry →</a>
+        <p style="font-size:11.5px; color:var(--ink-soft); text-align:center; margin-top:12px;">By submitting this form, you agree to our <a href="#" style="color:var(--violet); font-weight:700;">Privacy Policy</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-meta">
+      <div><span>Our Location</span><b>123 Business Park, Sector 62, Noida, UP 201301</b></div>
+      <div><span>Call Us</span><b>+91 98765 43210</b></div>
+      <div><span>Email Us</span><b>hello@nexsham.com</b></div>
+      <div><span>Working Hours</span><b>Mon – Sat · 10 AM – 7 PM IST</b></div>
+    </div>
+    <div class="foot-grid" style="padding-top:40px;">
+      <div class="foot-brand">
+        <div class="logo"><div class="logo-mark">N</div>NEXSHAM</div>
+        <p>We build custom software solutions that help businesses automate, scale and achieve long-term growth.</p>
+      </div>
+      <div class="foot-col"><h4>Company</h4><ul><li>About Us</li><li>Our Team</li><li>Our Process</li><li>Careers</li><li>Blog</li></ul></div>
+      <div class="foot-col"><h4>Services</h4><ul><li>Custom Software</li><li>Web Applications</li><li>Mobile Apps</li><li>Cloud Solutions</li><li>AI & Automation</li></ul></div>
+      <div class="foot-col"><h4>Industries</h4><ul><li>Healthcare</li><li>E-Commerce</li><li>Finance & Banking</li><li>Education</li><li>Manufacturing</li></ul></div>
+      <div class="foot-col"><h4>Resources</h4><ul><li>Case Studies</li><li>Portfolio</li><li>FAQs</li><li>Privacy Policy</li><li>Terms</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Nexsham Technologies. All rights reserved.</span>
+      <span>Built bold, in India</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

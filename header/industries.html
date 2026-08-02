@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSham Technologies — Software Solutions Built For Every Industry</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --navy:#0b1230;
+    --indigo:#3d4ce8;
+    --indigo-dark:#1b2559;
+    --blue:#3b5cf5;
+    --purple:#7c5cf0;
+    --sub:#6b7086;
+    --line:#e9e9f4;
+    --ink:#12142b;
+  }
+    .btn-primary{
+    background:linear-gradient(135deg,var(--indigo),#7c5cff);
+    color:#fff;padding:14px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 10px 22px rgba(79,57,246,0.3);
+  }
+  .btn-secondary{
+    border:1.5px solid var(--indigo);color:var(--indigo);
+    padding:13px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;background:#fff;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+    header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:72px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  /* HERO */
+  .hero{background:linear-gradient(180deg,#f6f6fd 0%, #f1f1fb 100%);padding:64px 0 60px;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;background:#e7e6fb;color:var(--indigo);font-size:12px;font-weight:700;letter-spacing:.6px;padding:7px 14px;border-radius:20px;text-transform:uppercase;margin-bottom:18px;}
+  .eyebrow::before{content:'◆';font-size:9px;}
+  .hero h1{font-size:40px;line-height:1.16;font-weight:800;margin:0 0 18px;letter-spacing:-.5px;}
+  .hero h1 .black{color:var(--ink);display:block;}
+  .hero h1 .blue{color:var(--blue);display:block;}
+  .hero p{font-size:15px;color:var(--sub);max-width:440px;line-height:1.65;margin:0 0 22px;}
+  .divider{width:46px;height:3px;background:var(--blue);border-radius:3px;margin-bottom:26px;}
+  .checks{display:flex;gap:34px;flex-wrap:wrap;}
+  .check-item .top{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:#1c1e33;margin-bottom:3px;}
+  .check-item .top i{width:20px;height:20px;border-radius:50%;background:#e6e4fb;color:var(--indigo);display:flex;align-items:center;justify-content:center;font-size:10px;}
+  .check-item .sub{font-size:11.5px;color:var(--sub);margin-left:28px;}
+
+  /* HERO VISUAL */
+  .hero-visual{position:relative;height:330px;}
+  .map-box{
+    position:absolute;right:0;top:8%;width:340px;height:230px;border-radius:16px;overflow:hidden;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(120,110,240,.15) 1.6px, transparent 1.6px),
+      linear-gradient(135deg,#eceafc,#e4e1fb);
+    background-size: 14px 14px, cover;
+  }
+  .growth-card{
+    position:absolute;right:0;bottom:2%;width:170px;background:linear-gradient(135deg,#5b52e8,#7c5cf0);
+    border-radius:14px;padding:16px;color:#fff;box-shadow:0 20px 40px -16px rgba(90,80,230,.5);
+  }
+  .growth-card .g-title{font-size:11.5px;font-weight:700;margin-bottom:2px;}
+  .growth-card .g-num{font-size:19px;font-weight:800;margin-bottom:8px;}
+  .growth-svg{width:100%;height:34px;margin-bottom:6px;}
+  .growth-card .g-note{font-size:9.5px;opacity:.85;line-height:1.3;}
+
+  .industry-card{
+    position:absolute;left:8%;top:22%;background:#fff;border-radius:14px;padding:18px 20px;
+    box-shadow:0 20px 40px -16px rgba(30,30,80,.25);width:220px;border:1px solid #f0f0fa;z-index:5;
+  }
+  .industry-card h4{margin:0 0 10px;font-size:13.5px;font-weight:700;}
+  .industry-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px;}
+  .industry-card li{font-size:12px;color:#4b4f66;display:flex;align-items:center;gap:7px;}
+  .industry-card li i{color:#3ecf8e;font-size:10px;}
+
+  .float-icon{position:absolute;width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 10px 24px -10px rgba(30,30,80,.25);}
+  .fi-heart{top:0%;left:2%;background:#e2f7ec;color:#22b573;}
+  .fi-cap{top:2%;right:22%;background:#e5ecff;color:#3b5cf5;z-index:6;}
+  .fi-cart{top:36%;left:-4%;background:#eee7fd;color:#8a5cf0;}
+  .fi-bank{bottom:2%;left:6%;background:#e2f7ec;color:#22b573;}
+  .fi-refresh{top:42%;right:16%;background:#fff;color:#7c5cf0;}
+  .fi-chart{bottom:20%;right:22%;background:#fff;color:#ef8a2c;}
+
+  /* GRID SECTION */
+  .grid-section{padding:70px 0 40px;}
+  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:20px;}
+  .ind-card{border:1px solid var(--line);border-radius:14px;padding:22px 20px;transition:box-shadow .2s, transform .2s;background:#fff;display:flex;flex-direction:column;}
+  .ind-card:hover{box-shadow:0 16px 30px -18px rgba(30,30,80,.25);transform:translateY(-2px);}
+  .ind-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;margin-bottom:14px;}
+  .ind-card h3{font-size:15px;margin:0 0 8px;font-weight:700;}
+  .ind-card p{font-size:12.5px;color:var(--sub);line-height:1.6;margin:0 0 14px;flex-grow:1;}
+  .tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .tag{font-size:10.5px;font-weight:600;padding:4px 9px;border-radius:20px;}
+  .ind-card .link{font-size:12.5px;font-weight:700;display:inline-flex;align-items:center;gap:5px;}
+
+  /* palettes */
+  .p-teal .ind-icon{background:#e2f7ec;color:#22b573;} .p-teal .link{color:#22b573;}
+  .p-teal .tag{background:#e2f7ec;color:#1a9860;}
+  .p-purple .ind-icon{background:#eee7fd;color:#8a5cf0;} .p-purple .link{color:#8a5cf0;}
+  .p-purple .tag{background:#eee7fd;color:#7c4fe0;}
+  .p-purple .tag.solid{background:#7c5cf0;color:#fff;}
+  .p-green .ind-icon{background:#e2f7ec;color:#1a9860;} .p-green .link{color:#1a9860;}
+  .p-green .tag{background:#e2f7ec;color:#1a9860;}
+  .p-blue .ind-icon{background:#e5ecff;color:#3b5cf5;} .p-blue .link{color:#3b5cf5;}
+  .p-blue .tag{background:#e5ecff;color:#2f52e8;}
+  .p-red .ind-icon{background:#fde7ea;color:#e8577d;} .p-red .link{color:#e8577d;}
+  .p-red .tag{background:#fde7ea;color:#e8577d;}
+  .p-orange .ind-icon{background:#fdecdb;color:#ef8a2c;} .p-orange .link{color:#ef8a2c;}
+  .p-orange .tag{background:#fdecdb;color:#d9791f;}
+  .p-indigo .ind-icon{background:#eceafc;color:#5b52e8;} .p-indigo .link{color:#5b52e8;}
+  .p-indigo .tag{background:#eceafc;color:#5b52e8;}
+  .p-yellow .ind-icon{background:#fdf3d8;color:#e0a622;} .p-yellow .link{color:#c98d16;}
+  .p-yellow .tag{background:#fdf3d8;color:#c98d16;}
+  .p-pink .ind-icon{background:#fde7f0;color:#e8579f;} .p-pink .link{color:#e8579f;}
+  .p-pink .tag{background:#fde7f0;color:#e8579f;}
+
+  /* STATS BAR */
+  .statsbar{background:#eeecfb;border-radius:20px;padding:36px 44px;margin:40px 0 40px;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr 1fr;gap:20px;align-items:center;}
+  .statsbar .eyebrow{background:#fff;}
+  .statsbar h2{font-size:22px;font-weight:800;margin:6px 0 8px;line-height:1.3;}
+  .statsbar h2 .blue{color:var(--blue);}
+  .statsbar p{font-size:13px;color:var(--sub);margin:0;max-width:260px;line-height:1.5;}
+  .stat-item{text-align:center;border-left:1px solid #dcdaf3;padding-left:18px;}
+  .stat-item .icon{width:44px;height:44px;border-radius:50%;background:#fff;color:var(--indigo);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:16px;box-shadow:0 8px 18px -10px rgba(60,50,180,.3);}
+  .stat-item .num{font-size:21px;font-weight:800;color:var(--indigo);}
+  .stat-item .lbl{font-size:12px;color:var(--sub);margin-top:3px;}
+
+  /* CTA BANNER */
+  .cta-banner{background:linear-gradient(120deg,#1b2159,#2a2fae);border-radius:18px;padding:30px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:70px;flex-wrap:wrap;}
+  .cta-left{display:flex;align-items:center;gap:18px;}
+  .cta-left .icon{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;flex-shrink:0;}
+  .cta-left h3{color:#fff;font-size:18px;font-weight:700;margin:0 0 4px;}
+  .cta-left p{color:#c7cbf5;font-size:13.5px;margin:0;}
+  .cta-right{text-align:right;}
+  .cta-white-btn{background:#fff;color:var(--indigo-dark);padding:13px 22px;border-radius:9px;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px;}
+  .cta-note{color:#c7cbf5;font-size:11.5px;margin-top:8px;display:flex;align-items:center;gap:6px;justify-content:flex-end;}
+
+  /* FOOTER (shared) */
+  footer{background:var(--navy);color:#c8cadb;padding:56px 0 0;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1.2fr;gap:30px;padding-bottom:40px;border-bottom:1px solid #232a4d;}
+  .footer-brand .brand{margin-bottom:14px;}
+  .footer-brand .name{color:#fff;}
+  .footer-brand p{font-size:13px;line-height:1.7;color:#9296ae;margin:0 0 18px;max-width:230px;}
+  .soc{display:flex;gap:10px;}
+  .soc a{width:34px;height:34px;border-radius:8px;background:#161c3c;display:flex;align-items:center;justify-content:center;color:#c8cadb;font-size:13px;}
+  footer h5{color:#fff;font-size:14px;font-weight:700;margin:0 0 18px;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;}
+  footer li a{font-size:13px;color:#9296ae;}
+  footer li a.active{color:#7c8cff;}
+  .contact-list{display:flex;flex-direction:column;gap:14px;margin-bottom:18px;}
+  .contact-list .row{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#9296ae;}
+  .contact-list i{color:#7c8cff;margin-top:2px;width:14px;}
+  .footer-cta{background:transparent;border:1px solid #313a63;color:#fff;padding:11px 18px;border-radius:8px;font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:8px;}
+  .footer-bottom{padding:22px 0;text-align:center;font-size:12.5px;color:#767b98;}
+
+  @media(max-width:980px){
+    .navlinks{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{display:none;}
+    .ind-grid{grid-template-columns:repeat(2,1fr);}
+    .statsbar{grid-template-columns:1fr;}
+    .stat-item{border-left:none;padding-left:0;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .cta-banner{flex-direction:column;text-align:center;}
+    .cta-right{text-align:center;}
+    .cta-note{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" >Featured Solutions</a>
+      <a href="#"class="active">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#" >Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Industries We Serve</div>
+      <h1><span class="black">Software Solutions Built For</span><span class="blue">Every Industry.</span></h1>
+      <p>Every industry has unique challenges. We build custom software tailored to your workflows, customers and business goals.</p>
+      <div class="divider"></div>
+      <div class="checks">
+        <div class="check-item">
+          <div class="top"><i class="fa-solid fa-check"></i> Industry Expertise</div>
+          <div class="sub">Deep domain knowledge</div>
+        </div>
+        <div class="check-item">
+          <div class="top"><i class="fa-solid fa-check"></i> Tailored Solutions</div>
+          <div class="sub">Built for your needs</div>
+        </div>
+        <div class="check-item">
+          <div class="top"><i class="fa-solid fa-check"></i> Business Impact</div>
+          <div class="sub">Measurable results</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="map-box"></div>
+
+      <div class="growth-card">
+        <div class="g-title">Business Growth</div>
+        <div class="g-num">+46%</div>
+        <svg class="growth-svg" viewBox="0 0 150 40" preserveAspectRatio="none">
+          <polyline points="0,32 20,26 40,30 60,18 80,22 100,10 120,14 150,2" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="g-note">Average growth achieved by our clients</div>
+      </div>
+
+      <div class="industry-card">
+        <h4>Built for Your Industry</h4>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> Custom Workflows</li>
+          <li><i class="fa-solid fa-check"></i> Scalable &amp; Secure</li>
+          <li><i class="fa-solid fa-check"></i> Better Efficiency</li>
+          <li><i class="fa-solid fa-check"></i> Measurable Results</li>
+        </ul>
+      </div>
+
+      <div class="float-icon fi-heart"><i class="fa-solid fa-heart-pulse"></i></div>
+      <div class="float-icon fi-cap"><i class="fa-solid fa-graduation-cap"></i></div>
+      <div class="float-icon fi-cart"><i class="fa-solid fa-cart-shopping"></i></div>
+      <div class="float-icon fi-bank"><i class="fa-solid fa-building-columns"></i></div>
+      <div class="float-icon fi-refresh"><i class="fa-solid fa-rotate"></i></div>
+      <div class="float-icon fi-chart"><i class="fa-solid fa-chart-line"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY GRID -->
+<section class="grid-section">
+  <div class="wrap">
+    <div class="ind-grid">
+
+      <div class="ind-card p-teal">
+        <div class="ind-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+        <h3>Healthcare</h3>
+        <p>Digital healthcare platforms that improve patient care, hospital operations and medical workflows.</p>
+        <div class="tags"><span class="tag">HMS</span><span class="tag">Patient Portal</span><span class="tag">Appointment System</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-purple">
+        <div class="ind-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+        <h3>Retail &amp; eCommerce</h3>
+        <p>Scalable commerce solutions that increase sales, improve customer experience and automate operations.</p>
+        <div class="tags"><span class="tag solid">Online Store</span><span class="tag">Inventory</span><span class="tag">POS</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-green">
+        <div class="ind-icon"><i class="fa-solid fa-building-columns"></i></div>
+        <h3>Finance &amp; Banking</h3>
+        <p>Secure financial software built for banks, NBFCs, fintech startups and payment systems.</p>
+        <div class="tags"><span class="tag">FinTech</span><span class="tag">Digital Payments</span><span class="tag">Loan Management</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-blue">
+        <div class="ind-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+        <h3>Education</h3>
+        <p>Modern education platforms for schools, colleges, coaching institutes and edtech startups.</p>
+        <div class="tags"><span class="tag">LMS</span><span class="tag">Student Portal</span><span class="tag">Online Exams</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-red">
+        <div class="ind-icon"><i class="fa-solid fa-industry"></i></div>
+        <h3>Manufacturing</h3>
+        <p>Optimise production, inventory and factory operations through intelligent automation.</p>
+        <div class="tags"><span class="tag">ERP</span><span class="tag">Inventory</span><span class="tag">Production Tracking</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-orange">
+        <div class="ind-icon"><i class="fa-solid fa-truck"></i></div>
+        <h3>Logistics &amp; Supply Chain</h3>
+        <p>Smart logistics software that tracks vehicles, shipments and warehouse operations.</p>
+        <div class="tags"><span class="tag">Fleet Tracking</span><span class="tag">Warehouse</span><span class="tag">Route Optimization</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-indigo">
+        <div class="ind-icon"><i class="fa-solid fa-building"></i></div>
+        <h3>Real Estate</h3>
+        <p>Property management platforms that simplify sales, rentals and customer communication.</p>
+        <div class="tags"><span class="tag">CRM</span><span class="tag">Property Listing</span><span class="tag">Booking System</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-yellow">
+        <div class="ind-icon"><i class="fa-solid fa-utensils"></i></div>
+        <h3>Hospitality &amp; Restaurants</h3>
+        <p>Complete restaurant and hospitality software to improve customer experience and operations.</p>
+        <div class="tags"><span class="tag">Restaurant POS</span><span class="tag">Hotel Management</span><span class="tag">Table Booking</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-teal">
+        <div class="ind-icon"><i class="fa-solid fa-display"></i></div>
+        <h3>Media &amp; Entertainment</h3>
+        <p>Content management platforms for media companies, creators and digital businesses.</p>
+        <div class="tags"><span class="tag">CMS</span><span class="tag">OTT Platform</span><span class="tag">Media Portal</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-pink">
+        <div class="ind-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>Insurance</h3>
+        <p>Digital insurance platforms for policy, claims and customer management.</p>
+        <div class="tags"><span class="tag">Claims Portal</span><span class="tag">Policy System</span><span class="tag">Customer Portal</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-blue">
+        <div class="ind-icon"><i class="fa-solid fa-rocket"></i></div>
+        <h3>Startups &amp; SaaS</h3>
+        <p>Launch scalable digital products quickly with modern cloud-native architecture.</p>
+        <div class="tags"><span class="tag">MVP Development</span><span class="tag">SaaS Platform</span><span class="tag">Product Scaling</span></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="ind-card p-purple">
+        <div class="ind-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>And Many More</h3>
+        <p>No matter your industry, our team can build software tailored to your business.</p>
+        <div class="tags"></div>
+        <a href="#" class="link">Explore Industry <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+
+    <!-- STATS BAR -->
+    <div class="statsbar">
+      <div>
+        <div class="eyebrow">Trusted By Businesses Worldwide</div>
+        <h2>Delivering Impact Across <span class="blue">Industries</span></h2>
+        <p>We combine deep industry knowledge with technology to deliver measurable results.</p>
+      </div>
+      <div class="stat-item">
+        <div class="icon"><i class="fa-solid fa-building"></i></div>
+        <div class="num">500+</div>
+        <div class="lbl">Projects Delivered</div>
+      </div>
+      <div class="stat-item">
+        <div class="icon"><i class="fa-solid fa-people-arrows"></i></div>
+        <div class="num">25+</div>
+        <div class="lbl">Industries Served</div>
+      </div>
+      <div class="stat-item">
+        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="num">98%</div>
+        <div class="lbl">Client Satisfaction</div>
+      </div>
+      <div class="stat-item">
+        <div class="icon"><i class="fa-regular fa-clock"></i></div>
+        <div class="num">24/7</div>
+        <div class="lbl">Support Available</div>
+      </div>
+    </div>
+
+    <!-- CTA BANNER -->
+    <div class="cta-banner">
+      <div class="cta-left">
+        <div class="icon"><i class="fa-regular fa-clipboard"></i></div>
+        <div>
+          <h3>Your Industry. Our Expertise.</h3>
+          <p>Let's Build Something Amazing Together.</p>
+        </div>
+      </div>
+      <div class="cta-right">
+        <a href="#" class="cta-white-btn">Book Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="cta-note"><i class="fa-regular fa-circle-check"></i> No commitment. 100% Free Consultation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="logo">N</div>
+          <div class="name">NEXSHAM <span>TECHNOLOGIES</span></div>
+        </div>
+        <p>Building innovative digital solutions that empower businesses and create a better tomorrow.</p>
+        <div class="soc">
+          <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Featured Solutions</a></li>
+          <li><a href="#" class="active">Industries</a></li>
+          <li><a href="#">Technologies</a></li>
+          <li><a href="#">Our Process</a></li>
+          <li><a href="#">Career</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="#">Enterprise Software</a></li>
+          <li><a href="#">ERP Systems</a></li>
+          <li><a href="#">Financial Management</a></li>
+          <li><a href="#">Supply Chain Management</a></li>
+          <li><a href="#">Mobile Applications</a></li>
+          <li><a href="#">AI &amp; Automation</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Our Team</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5>Contact Us</h5>
+        <div class="contact-list">
+          <div class="row"><i class="fa-solid fa-location-dot"></i> Lucknow, Uttar Pradesh, India</div>
+          <div class="row"><i class="fa-solid fa-envelope"></i> contact@nexsham.com</div>
+          <div class="row"><i class="fa-solid fa-phone"></i> +91 63982 52496</div>
+        </div>
+        <a href="#" class="footer-cta">Book Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 NexSham Technologies. All Rights Reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
