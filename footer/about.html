@@ -3,34 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Team | NexSham Technologies</title>
+<title>About Us | NexSham Technologies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --purple: #7C3AED;
-    --purple-light: #A78BFA;
-    --black: #0B0B0F;
-    --near-black: #111116;
-    --gray-bg: #F4F3F8;
-    --text-dark: #17171C;
-    --text-muted: #5D5D6B;
-    --white: #FFFFFF;
-    --border-soft: #E7E5F0;
-    --indigo:#4f39f6;
+    --navy-950:#0a1420;
+    --navy-900:#0d1b2a;
+    --navy-800:#12263a;
+    --navy-700:#1a3350;
+    --blue-500:#2f8fe0;
+    --blue-400:#4fb3f5;
+    --cyan-300:#7fd8f0;
+    --ink-900:#0d1b2a;
+    --ink-600:#4a5a6b;
+    --ink-400:#8593a3;
+    --paper:#ffffff;
+    --paper-tint:#f6f9fc;
+    --line:#e4e9ef;
+    --radius:14px;
   }
-  *{ box-sizing: border-box; margin:0; padding:0; }
+  *{box-sizing:border-box; margin:0; padding:0;}
   body{
-    font-family: 'Inter', sans-serif;
-    color: var(--text-dark);
-    background: var(--gray-bg);
-    -webkit-font-smoothing: antialiased;
+    font-family:'Inter', sans-serif;
+    color:var(--ink-900);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  h1,h2,h3,h4{ font-family:'Poppins', sans-serif; }
-  a{ text-decoration:none; color:inherit; }
-  img{ max-width:100%; display:block; }
-
-
+  h1,h2,h3,h4{font-family:'Sora', sans-serif; letter-spacing:-0.02em;}
+  a{text-decoration:none; color:inherit;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1200px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Sora', sans-serif; font-weight:700; font-size:13px;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--blue-400);
+  }
+  .eyebrow::before{content:""; width:8px; height:8px; border-radius:2px; background:var(--blue-400); display:inline-block;}
 
   /* ==================================================
    NEXSHAM MAIN HEADER
@@ -41,7 +51,7 @@ header {
     top: 0;
     z-index: 1000;
 
-    background: rgba(255, 255, 255, 0.85);
+    background: var(--nave-950);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 
@@ -242,134 +252,85 @@ header .mobile-cta {
 }
   /* ---------- HERO ---------- */
   .hero{
-    background: var(--black);
-    padding: 70px 60px 60px;
-    display:grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 50px;
-    align-items:center;
-    position:relative;
+    background:var(--navy-950);
+    padding:72px 0 0 0;
     overflow:hidden;
   }
-  .hero::before{
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(circle at 80% 20%, rgba(124,58,237,0.18), transparent 55%);
-    pointer-events:none;
-  }
-  .eyebrow{
-    color: var(--purple-light);
-    font-weight:700; font-size:13px; letter-spacing:2px; margin-bottom:18px;
+  .hero-inner{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+    padding-bottom:64px;
   }
   .hero h1{
-    color:#fff; font-size:44px; line-height:1.15; font-weight:700; margin-bottom:22px;
+    font-size:52px; font-weight:800; color:#fff; line-height:1.12; margin:18px 0 22px;
   }
-  .hero h1 .accent{ color: var(--purple-light); }
-  .hero p{
-    color:#B9B9C6; font-size:15.5px; line-height:1.7; max-width:480px; margin-bottom:22px;
+  .hero h1 .accent{color:var(--blue-400);}
+  .hero p{color:#aeb9c6; font-size:16.5px; max-width:480px; margin-bottom:32px;}
+  .btn-primary{
+    display:inline-flex; align-items:center; gap:10px;
+    border:1px solid var(--cyan-300); color:var(--cyan-300);
+    padding:14px 26px; border-radius:8px; font-weight:600; font-size:15px;
+    transition:all .2s;
   }
-  .hero-divider{
-    width:60px; height:3px; background: var(--purple); border-radius:2px; margin-bottom:34px;
-  }
-  .stats{
-    display:flex; gap:34px;
-  }
-  .stat{ text-align:left; }
-  .stat .icon{
-    width:40px; height:40px; border:1.5px solid rgba(167,139,250,0.5); border-radius:10px;
-    display:flex; align-items:center; justify-content:center; margin-bottom:12px;
-    color: var(--purple-light); font-size:16px;
-  }
-  .stat .num{ color:#fff; font-size:24px; font-weight:700; margin-bottom:4px; font-family:'Poppins',sans-serif; }
-  .stat .label{ color:#9C9CAC; font-size:12.5px; }
-
-  .hero-image{
+  .btn-primary:hover{background:var(--cyan-300); color:var(--navy-950); transform:translateY(-1px);}
+  .hero-media{
     position:relative; border-radius:16px; overflow:hidden;
-    aspect-ratio: 4/3;
-    background: linear-gradient(160deg, #1c1c24, #0d0d12);
-    display:flex; align-items:center; justify-content:center;
-    border: 1px solid rgba(255,255,255,0.06);
+    aspect-ratio:16/10.5;
+    background:linear-gradient(135deg, #1a2c3f, #0d1b2a 70%);
   }
-  .hero-image .placeholder-label{
-    color:#5D5D6B; font-size:13px; text-align:center; padding:20px; line-height:1.6;
-  }
-  .hero-image .placeholder-label b{ color:#8C8CA0; display:block; margin-bottom:6px; font-size:14px;}
+  .hero-media svg{width:100%; height:100%;}
 
-  /* ---------- TEAM SECTION ---------- */
-  .team-section{
-    padding: 90px 60px 70px;
-    text-align:center;
-  }
-  .team-section .eyebrow{ color: var(--purple); justify-content:center; }
-  .team-section h2{
-    font-size:36px; font-weight:700; margin: 14px 0 16px; color: var(--text-dark);
-  }
-  .team-section h2 u{
-    text-decoration: none;
-    border-bottom: 3px solid var(--purple);
-    padding-bottom: 6px;
-  }
-  .team-section .sub{
-    color: var(--text-muted); font-size:15px; max-width:560px; margin:0 auto 60px; line-height:1.7;
-  }
+  /* ---------- WHO WE ARE ---------- */
+  .who{padding:96px 0;}
+  .who-inner{display:grid; grid-template-columns:1fr 1.05fr; gap:64px; align-items:center;}
+  .who h2{font-size:38px; font-weight:800; margin:16px 0 22px; color:var(--ink-900); line-height:1.2;}
+  .who .rule{width:52px; height:4px; background:var(--blue-500); border-radius:4px; margin-bottom:22px;}
+  .who p{color:var(--ink-600); font-size:16px; max-width:460px;}
+  .who-media{border-radius:16px; overflow:hidden; aspect-ratio:16/10.2;}
+  .who-media svg{width:100%; height:100%; display:block;}
 
-  .team-grid{
-    display:grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 26px;
-    max-width: 1300px;
-    margin: 0 auto;
+  /* ---------- VALUES ---------- */
+  .values{background:var(--paper-tint); padding:88px 0;}
+  .section-head{text-align:center; margin-bottom:48px;}
+  .section-head h2{font-size:34px; font-weight:800; margin-top:14px;}
+  .values-grid{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:20px;
   }
-  .card{
-    background:#fff; border-radius:16px; overflow:hidden;
-    box-shadow: 0 4px 20px rgba(20,20,40,0.06);
-    text-align:left;
-    transition: transform .25s ease, box-shadow .25s ease;
+  .value-card{
+    background:var(--paper); border-radius:var(--radius); padding:32px 22px;
+    text-align:center; box-shadow:0 1px 2px rgba(13,27,42,0.04);
+    border:1px solid var(--line);
+    transition:transform .2s, box-shadow .2s;
   }
-  .card:hover{ transform: translateY(-6px); box-shadow: 0 14px 34px rgba(20,20,40,0.12); }
+  .value-card:hover{transform:translateY(-4px); box-shadow:0 12px 28px rgba(13,27,42,0.08);}
+  .value-icon{
+    width:56px; height:56px; border-radius:50%; background:#e8f4fc;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 18px;
+    color:var(--blue-500);
+  }
+  .value-card h3{font-size:18px; font-weight:700; margin-bottom:10px;}
+  .value-card p{font-size:14px; color:var(--ink-600);}
 
-  .card-photo{
-    position:relative;
-    aspect-ratio: 1/1;
-    background: linear-gradient(160deg, #ECEAF6, #DCD8EF);
-    display:flex; align-items:center; justify-content:center;
+  /* ---------- JOURNEY ---------- */
+  .journey{padding:96px 0;}
+  .timeline{
+    position:relative; display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+    margin-top:56px;
   }
-  .card-photo .placeholder-label{
-    color:#8A85A6; font-size:12px; text-align:center; padding:16px; line-height:1.6;
+  .timeline::before{
+    content:""; position:absolute; top:8px; left:12.5%; right:12.5%; height:2px;
+    background:var(--line);
   }
-  .card-photo .placeholder-label b{ display:block; color:#5D4E9E; font-size:13px; margin-bottom:4px; }
-  .role-badge{
-    position:absolute; bottom:-20px; left:50%; transform:translateX(-50%);
-    width:42px; height:42px; border-radius:50%;
-    background: var(--purple); color:#fff;
-    display:flex; align-items:center; justify-content:center;
-    font-size:17px; box-shadow: 0 4px 10px rgba(124,58,237,0.4);
-    border:3px solid #fff;
+  .t-item{text-align:center; position:relative; padding-top:36px;}
+  .t-dot{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:18px; height:18px; border-radius:50%; background:var(--blue-500);
+    border:4px solid #dceefb;
   }
-  .card-body{ padding: 32px 20px 22px; text-align:center; }
-  .card-body h3{ font-size:17px; font-weight:700; margin-bottom:4px; }
-  .card-body .role{ color: var(--purple); font-weight:600; font-size:13px; margin-bottom:12px; }
-  .card-body p{ color: var(--text-muted); font-size:13px; line-height:1.6; margin-bottom:18px; min-height:60px; }
-  .socials{ display:flex; gap:14px; justify-content:center; }
-  .socials a{
-    width:30px; height:30px; border-radius:50%; border:1px solid var(--border-soft);
-    display:flex; align-items:center; justify-content:center; color: var(--purple);
-    font-size:13px; transition: background .2s ease, color .2s ease;
-  }
-  .socials a:hover{ background: var(--purple); color:#fff; }
+  .t-year{font-family:'Sora',sans-serif; font-weight:700; color:var(--blue-500); font-size:15px; margin-bottom:6px;}
+  .t-item h4{font-size:18px; font-weight:700; margin-bottom:10px;}
+  .t-item p{font-size:14px; color:var(--ink-600); max-width:230px; margin:0 auto;}
 
-  /* ---------- QUOTE ---------- */
-  .quote-banner{
-    max-width:1300px; margin: 10px auto 60px;
-    background: #EFE9FB;
-    border-radius:14px;
-    padding: 26px 40px;
-    display:flex; align-items:center; justify-content:space-between; gap:20px;
-    flex-wrap:wrap;
-  }
-  .quote-banner .mark{ font-size:30px; color: var(--purple); font-family:'Poppins',sans-serif; font-weight:800; margin-right:6px; }
-  .quote-banner p{ font-size:14.5px; color:#3A3550; display:inline; line-height:1.6; }
-  .quote-banner .attribution{ color: var(--purple); font-weight:700; font-size:14px; white-space:nowrap; }
-
+  
   
     :root{
     --navy-950:#0a1230;
@@ -402,6 +363,7 @@ header .mobile-cta {
     margin:40px 0 0;
     padding:56px 0 0;
     color:#c9d2ea;
+    line-height: 1.2;
   }
 
   .footer-inner{
@@ -545,6 +507,7 @@ header .mobile-cta {
 
   .footer-col ul li a{
     font-size:0.9rem;
+        line-height:1.2;
     color:#a9b3d1;
     display:inline-flex;
     align-items:center;
@@ -678,43 +641,27 @@ header .mobile-cta {
     .cta-text h2{ font-size:1.5rem; }
     .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
   }
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 1100px){
-    .team-grid{ grid-template-columns: repeat(3, 1fr); }
-    .footer-grid{ grid-template-columns: 1fr 1fr; }
-  }
-  @media (max-width: 900px){
-    header{ padding:16px 24px; }
-    nav ul{ display:none; }
-    .hero{ grid-template-columns:1fr; padding:50px 24px; }
-    .hero h1{ font-size:34px; }
-    .team-section{ padding:60px 24px; }
-    .team-grid{ grid-template-columns: repeat(2, 1fr); }
-    .quote-banner, .cta-strip{ margin-left:24px; margin-right:24px; }
-    footer{ padding:50px 24px 24px; }
-  }
-  @media (max-width: 560px){
-    .team-grid{ grid-template-columns: 1fr; }
-    .stats{ flex-wrap:wrap; row-gap:20px; }
-  }
 
-  /* ---------- CTA STRIP ---------- */
-  .cta-strip{
-    max-width:1300px; margin: 0 auto 70px;
-    background: var(--black);
-    border-radius:14px;
-    padding: 30px 40px;
-    display:flex; align-items:center; justify-content:space-between; gap:20px;
-    flex-wrap:wrap;
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-inner, .who-inner{grid-template-columns:1fr;}
+    .who-inner{gap:40px;}
+    .who-media{order:-1;}
+    .values-grid{grid-template-columns:repeat(2,1fr);}
+    .timeline{grid-template-columns:1fr 1fr; row-gap:40px;}
+    .timeline::before{display:none;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .hero h1{font-size:38px;}
   }
-  .cta-left{ display:flex; align-items:center; gap:18px; }
-  .cta-icon{
-    width:52px; height:52px; border-radius:50%; border:1.5px solid rgba(167,139,250,0.5);
-    display:flex; align-items:center; justify-content:center; color: var(--purple-light); font-size:20px; flex-shrink:0;
+  @media (max-width:600px){
+    .values-grid{grid-template-columns:1fr;}
+    .timeline{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column; gap:10px; text-align:center;}
+    .footer-bottom a{margin:0 8px;}
   }
-  .cta-left h3{ color:#fff; font-size:19px; margin-bottom:4px; }
-  .cta-left p{ color:#9C9CAC; font-size:13.5px; }
-  .cta-strip .btn-talk{ white-space:nowrap; }
 
   .site-footer ul {
     list-style: none;
@@ -725,9 +672,12 @@ header .mobile-cta {
 .site-footer li {
     list-style: none;
 }
+
+
 </style>
 </head>
 <body>
+
 
 <header>
   <div class="wrap nav">
@@ -736,17 +686,17 @@ header .mobile-cta {
     <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
 </a>
     <nav class="nav-links">
-      <a href="#">Home</a>
-      <a href="#">Services</a>
-      <a href="#" >Featured Solutions</a>
-      <a href="#">Industries</a>
-      <a href="#">Technologies</a>
+      <a href="/index.html" >Home</a>
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html">Featured Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
       
-      <a href="#">Our process</a>
-      <a href="#" >Career</a>
+      <a href="/header/our_process.html">Our process</a>
+      <a href="/header/career.html">Career</a>
     </nav>
     <div class="nav-right">
-      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      <a href="/header/book_consultation.html" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
      
     </div>
   </div>
@@ -766,171 +716,144 @@ header .mobile-cta {
 </header>
 
 <section class="hero">
-  <div class="hero-copy">
-    <div class="eyebrow">OUR TEAM</div>
-    <h1>The Minds Behind<br><span class="accent">NexSham</span> Technologies</h1>
-    <p>We are a passionate team of innovators, problem solvers, and tech enthusiasts working together to build intelligent and impactful digital solutions.</p>
-    <div class="hero-divider"></div>
-    <div class="stats">
-      <div class="stat">
-        <div class="icon">&#128101;</div>
-        <div class="num">5</div>
-        <div class="label">Team Members</div>
-      </div>
-      <div class="stat">
-        <div class="icon">&lt;/&gt;</div>
-        <div class="num">10+</div>
-        <div class="label">Projects Delivered</div>
-      </div>
-      <div class="stat">
-        <div class="icon">&#128640;</div>
-        <div class="num">100%</div>
-        <div class="label">Commitment</div>
-      </div>
-      <div class="stat">
-        <div class="icon">&#9733;</div>
-        <div class="num">Client First</div>
-        <div class="label">Our Philosophy</div>
-      </div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow">About Us</span>
+      <h1>Building The <span class="accent">Next.</span><br>Starting <span class="accent">Today.</span></h1>
+      <p>NexSham Technologies is a forward-thinking technology company dedicated to crafting innovative digital solutions that drive growth, efficiency, and impact for businesses worldwide.</p>
+      <a href="#" class="btn-primary">Let's Build Together →</a>
     </div>
-  </div>
-
-  <!-- HERO IMAGE PLACEHOLDER: team huddle photo -->
-  <div class="hero-image">
-        <div class="hero-image">
-          <img src="/members/group.png" alt="NexSham team huddle">
-        </div>
+    <div class="hero-media">
+      <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="wallGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1c2f42"/>
+            <stop offset="100%" stop-color="#0a1420"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="400" fill="url(#wallGrad)"/>
+        <rect x="0" y="0" width="220" height="400" fill="#0d1b2a" opacity="0.6"/>
+        <g transform="translate(230,140)">
+          <path d="M0 0 L60 0 L0 100 L60 100" stroke="#4fb3f5" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="80" y="55" font-family="Sora, sans-serif" font-size="42" font-weight="700" fill="#ffffff">NexSham</text>
+          <text x="80" y="88" font-family="Sora, sans-serif" font-size="18" letter-spacing="4" fill="#7fd8f0">TECHNOLOGIES</text>
+        </g>
+        <circle cx="530" cy="60" r="90" fill="#123049" opacity="0.35"/>
+      </svg>
+    </div>
   </div>
 </section>
 
-<section class="team-section">
-  <div class="eyebrow" style="display:flex;">OUR TEAM</div>
-  <h2>Meet The <u>Founding Team</u></h2>
-  <p class="sub">A perfect blend of creativity, technology and business acumen driving NexSham Technologies towards a smarter tomorrow.</p>
-
-  <div class="team-grid">
-
-    <!-- Mohammed Humza -->
-    <div class="card">
-      <div class="card-photo">
-        <!-- IMAGE PLACEHOLDER: Mohammed Humza -->
-        <div class="hero-image">
-          <img src="/members/humza2.jpeg" alt="NexSham team huddle">
-        </div>
-        <div class="role-badge">&#128100;</div>
-      </div>
-      <div class="card-body">
-        <h3>Mohammed Humza</h3>
-        <div class="role">Founder &amp; CEO</div>
-        <p>Drives NexSham's vision, business strategy, client relationships, and growth while turning business challenges into technology-driven solutions.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/mohammed-humza-16082a291/" aria-label="LinkedIn">in</a>
-          <a href="mailto:hamzamuhammad23947@gmail.com" aria-label="Email">&#9993;</a>
-        </div>
-      </div>
+<section class="who">
+  <div class="wrap who-inner">
+    <div>
+      <span class="eyebrow">Who We Are</span>
+      <h2>We Transform Ideas<br>Into Real Solutions</h2>
+      <div class="rule"></div>
+      <p>We are a team of passionate developers, designers, and innovators who believe in the power of technology to solve real-world problems. From startups to enterprises, we help businesses build scalable, secure, and future-ready digital products.</p>
     </div>
-
-    <!-- Jatin Kumar -->
-    <div class="card">
-      <div class="card-photo">
-        <!-- IMAGE PLACEHOLDER: Jatin Kumar -->
-        <div class="hero-image">
-          <img src="/members/jatin2.jpeg" alt="NexSham team huddle">
-        </div>
-        <div class="role-badge">&lt;/&gt;</div>
-      </div>
-      <div class="card-body">
-        <h3>Jatin Kumar</h3>
-        <div class="role">Co-Founder &amp; CTO</div>
-        <p>Leads technology strategy, system architecture, and engineering to build secure, scalable, and reliable software solutions.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/jatin-kumar-319118299" aria-label="LinkedIn">in</a>
-          <a href="mailto:jatin0977kumar@gmail.com" aria-label="Email">&#9993;</a>
-        </div>
-      </div>
+    <div class="who-media">
+      <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="roomGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#16293c"/>
+            <stop offset="100%" stop-color="#0d1b2a"/>
+          </linearGradient>
+        </defs>
+        <rect width="600" height="380" fill="url(#roomGrad)"/>
+        <rect x="60" y="200" width="480" height="90" rx="8" fill="#1a3350"/>
+        <circle cx="180" cy="180" r="42" fill="#2f8fe0" opacity="0.85"/>
+        <circle cx="280" cy="160" r="46" fill="#4fb3f5" opacity="0.85"/>
+        <circle cx="390" cy="170" r="44" fill="#2f8fe0" opacity="0.85"/>
+        <circle cx="470" cy="185" r="40" fill="#4fb3f5" opacity="0.7"/>
+        <rect x="240" y="230" width="90" height="55" rx="4" fill="#0a1420" stroke="#4fb3f5" stroke-width="2"/>
+        <rect x="140" y="330" width="20" height="30" rx="3" fill="#2f8fe0" opacity="0.4"/>
+      </svg>
     </div>
-
-    <!-- Mahak Jurel -->
-    <div class="card">
-      <div class="card-photo">
-        <!-- IMAGE PLACEHOLDER: Mahak Jurel -->
-        <div class="hero-image">
-          <img src="/members/mahak2.jpeg" alt="NexSham team huddle">
-        </div>
-        <div class="role-badge">&#128202;</div>
-      </div>
-      <div class="card-body">
-        <h3>Mahak Jurel</h3>
-        <div class="role">Co-Founder &amp; CFO</div>
-        <p>Oversees financial planning, budgeting, and business operations to support sustainable growth and responsible decision-making.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/mahak-jurel-943582371" aria-label="LinkedIn">in</a>
-          <a href="mailto:mahakjurel13@gmail.com" aria-label="Email">&#9993;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Anuj Kushwah -->
-    <div class="card">
-      <div class="card-photo">
-        <!-- IMAGE PLACEHOLDER: Anuj Kushwah -->
-        <div class="hero-image">
-          <img src="/members/anuj2.jpeg" alt="NexSham team huddle">
-        </div>
-        <div class="role-badge">&#9998;</div>
-      </div>
-      <div class="card-body">
-        <h3>Anuj Kushwah</h3>
-        <div class="role">Co-Founder &amp; CMO</div>
-        <p>Leads marketing and brand strategy, strengthening NexSham’s market presence and connecting our solutions with the right businesses.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/anuj-kushwah-b70186283" aria-label="LinkedIn">in</a>
-          <a href="mailto:anujkushwah7300@gmail.com" aria-label="Email">&#9993;</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Shishant yadav -->
-    <div class="card">
-      <div class="card-photo">
-        <!-- IMAGE PLACEHOLDER: Shishant Yadav -->
-        <div class="hero-image">
-          <img src="/members/shishi2.jpeg" alt="NexSham team huddle">
-        </div>
-        <div class="role-badge">&#128640;</div>
-      </div>
-      <div class="card-body">
-        <h3>Shishant Yadav</h3>
-        <div class="role">Co-Founder &amp; COO</div>
-        <p>Oversees day-to-day operations, team coordination, and project execution to ensure efficient and consistent delivery.</p>
-        <div class="socials">
-          <a href="https://www.linkedin.com/in/contact-to-shishant910/" aria-label="LinkedIn">in</a>
-          <a href="mailto:shishantyadav9636@gmail.com" aria-label="Email">&#9993;</a>
-        </div>  
-      </div>
-    </div>
-
   </div>
+</section>
 
-  <div class="quote-banner">
-    <p><span class="mark">&#8220;</span>We believe in collaboration, transparency and continuous learning. Together, we turn ideas into real-world impact.</p>
-    <div class="attribution">– NexSham Team</div>
-  </div>
-
-    <div class="cta-strip">
-    <div class="cta-left">
-      <div class="cta-icon">&#9993;</div>
-      <div>
-        <h3>Let's build something amazing together!</h3>
-        <p>Have a project in mind? We'd love to hear about it.</p>
+<section class="values">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Values</span>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21h6M12 3a6 6 0 00-4 10.5c.6.6 1 1.4 1 2.5h6c0-1.1.4-1.9 1-2.5A6 6 0 0012 3z"/></svg>
+        </div>
+        <h3>Innovation</h3>
+        <p>We embrace creativity and cutting-edge technologies to build smarter solutions.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3>Integrity</h3>
+        <p>We believe in honesty, transparency, and building trust in every relationship.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 13 7 22l5-3 5 3-1.5-9"/></svg>
+        </div>
+        <h3>Quality</h3>
+        <p>We are committed to delivering high-quality products that create real impact.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3 2.7-5.5 6-5.5s6 2.5 6 5.5M15 14.5c2.5 0 5 1.7 5 5.5"/></svg>
+        </div>
+        <h3>Collaboration</h3>
+        <p>We work closely with our clients and partners to achieve shared success.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-9"/><path d="M15 6h6v6"/></svg>
+        </div>
+        <h3>Growth</h3>
+        <p>We continuously learn, evolve, and grow with our clients and communities.</p>
       </div>
     </div>
-    <button class="btn-talk">Contact Us</button>
+  </div>
+</section>
+
+<section class="journey">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Journey</span>
+    </div>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2024</div>
+        <h4>The Beginning</h4>
+        <p>NexSham Technologies was founded with a vision to empower businesses through technology.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2024</div>
+        <h4>Building Foundations</h4>
+        <p>We built our core team and delivered our first projects with excellence and dedication.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">2025</div>
+        <h4>Growing Together</h4>
+        <p>Expanded our services, helped more businesses, and formed valuable partnerships.</p>
+      </div>
+      <div class="t-item">
+        <div class="t-dot"></div>
+        <div class="t-year">Future</div>
+        <h4>What's Next</h4>
+        <p>We aim to keep innovating, expanding globally, and creating solutions that shape the future.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 
-  <!-- FOOTER -->
+
 <footer class="site-footer">
   <div class="footer-inner">
 
@@ -989,8 +912,8 @@ header .mobile-cta {
         <h3>Company</h3>
         <div class="underline"></div>
         <ul>
-          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
-          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
           <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
           <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
           <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
@@ -1116,7 +1039,6 @@ header .mobile-cta {
 
   </div>
 </footer>
-
 
 </body>
 </html>
