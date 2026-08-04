@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — NexSham Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#060b18;
+    --navy-900:#0a1128;
+    --navy-800:#0e1a36;
+    --teal-500:#14b8a6;
+    --teal-600:#0d9488;
+    --teal-tint:#e8f7f5;
+    --teal-glow:rgba(20,184,166,.35);
+    --ink:#0f1b33;
+    --gray-700:#3d4658;
+    --gray-600:#5b6579;
+    --gray-500:#7d879a;
+    --gray-100:#eef1f6;
+    --gray-50:#f7f8fb;
+    --white:#ffffff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--white);-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4,.brand-name,.nav-link,.btn{font-family:'Sora',sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  svg{display:block;}
+  .container{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+  /* ==================================================
+   NEXSHAM MAIN HEADER
+   ================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: var(--nave-950);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+}
+
+/* Main navbar */
+header .nav {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1400px;
+    height: 72px;
+
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================= BRAND ================= */
+
+header .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+
+    color: #111827;
+}
+
+header .brand-logo {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+    display: block;
+}
+
+header .brand-text {
+    white-space: nowrap;
+    color: #111827;
+}
+
+
+/* ================= NAV LINKS ================= */
+
+header .nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    margin-left: 40px;
+    flex: 1;
+}
+
+header .nav-links a {
+    position: relative;
+
+    padding: 6px 0;
+
+    white-space: nowrap;
+    text-decoration: none;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #111827;
+
+    transition: color 0.2s ease;
+}
+
+header .nav-links a:hover {
+    color: #2563eb;
+}
+
+
+/* Active link */
+
+header .nav-links a.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+header .nav-links a.active::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+
+    height: 2px;
+
+    background: #2563eb;
+    border-radius: 2px;
+}
+
+
+/* ================= RIGHT CTA ================= */
+
+header .nav-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+header .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    background: #0d1b36;
+    color: #ffffff;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+header .btn-primary:hover {
+    background: #16294d;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+header .mobile-menu {
+    display: none;
+
+    flex-direction: column;
+    gap: 2px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    padding: 8px 20px 16px;
+}
+
+header .mobile-menu.open {
+    display: flex;
+}
+
+header .mobile-menu a {
+    padding: 11px 4px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #374151;
+
+    border-bottom: 1px solid #f3f4f6;
+
+    text-decoration: none;
+}
+
+header .mobile-menu a.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+header .mobile-cta {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 12px;
+}
+
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:11px 22px;border-radius:9px;cursor:pointer;border:none;transition:.2s ease;white-space:nowrap;}
+  .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;}
+  .btn-outline:hover{border-color:var(--teal-500);color:var(--teal-500);}
+  .btn-teal{background:var(--teal-600);color:#fff;}
+  .btn-teal:hover{background:var(--teal-500);transform:translateY(-1px);}
+  .btn svg{width:15px;height:15px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:radial-gradient(ellipse 900px 500px at 15% 20%, rgba(20,184,166,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 80%, rgba(37,99,235,.14), transparent 60%), var(--navy-900);
+    position:relative;overflow:hidden;padding:80px 0;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 140px 90px, rgba(255,255,255,.25), transparent),
+      radial-gradient(1px 1px at 260px 50px, rgba(255,255,255,.3), transparent),
+      radial-gradient(1.5px 1.5px at 340px 160px, rgba(255,255,255,.2), transparent);
+    background-repeat:repeat;background-size:400px 220px;opacity:.6;pointer-events:none;
+  }
+  .hero .container{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:2.2px;color:var(--teal-500);text-transform:uppercase;margin-bottom:18px;}
+  .hero h1{font-size:44px;line-height:1.15;font-weight:800;color:#fff;letter-spacing:-.5px;}
+  .hero h1 .accent{color:var(--teal-500);}
+  .hero-divider{width:56px;height:4px;background:var(--teal-500);border-radius:3px;margin:22px 0;}
+  .hero p.lead{font-size:15.5px;line-height:1.7;color:#aab4c8;max-width:470px;margin-bottom:24px;}
+  .updated{display:flex;align-items:center;gap:8px;color:#8f9ab0;font-size:13.5px;}
+  .updated svg{width:16px;height:16px;stroke:var(--teal-500);}
+
+  .shield-wrap{display:flex;align-items:center;justify-content:center;position:relative;height:320px;}
+  .plant-icon{position:absolute;right:6%;bottom:0;font-size:56px;}
+
+  /* ===== MAIN LAYOUT ===== */
+  .main-section{padding:64px 0 90px;}
+  .layout{display:grid;grid-template-columns:2fr 1fr;gap:44px;align-items:start;}
+
+  .policy-block{margin-bottom:34px;padding-bottom:30px;border-bottom:1px solid var(--gray-100);}
+  .policy-block:last-of-type{border-bottom:none;}
+  .policy-block h2{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+  .policy-block p{font-size:15px;line-height:1.75;color:var(--gray-600);margin-bottom:10px;}
+  .policy-block p a{color:var(--teal-600);font-weight:600;}
+
+  .info-item{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;}
+  .info-icon{
+    width:38px;height:38px;border-radius:50%;background:var(--gray-50);border:1px solid var(--gray-100);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .info-icon svg{width:17px;height:17px;stroke:var(--teal-600);}
+  .info-item p{font-size:15px;line-height:1.7;color:var(--gray-600);}
+  .info-item p b{color:var(--ink);font-weight:700;}
+
+  .check-list li{display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;font-size:15px;color:var(--gray-600);line-height:1.6;}
+  .check-list svg{width:19px;height:19px;stroke:var(--teal-600);flex-shrink:0;margin-top:1px;}
+
+  .btn-download{
+    display:inline-flex;align-items:center;gap:9px;margin-top:8px;padding:12px 24px;border-radius:9px;
+    border:1.5px solid var(--teal-600);color:var(--teal-600);font-family:'Sora',sans-serif;font-weight:600;font-size:14px;
+    background:#fff;transition:.2s;
+  }
+  .btn-download:hover{background:var(--teal-tint);}
+  .btn-download svg{width:16px;height:16px;stroke:var(--teal-600);}
+
+  /* ===== SIDEBAR ===== */
+  .sidebar{position:sticky;top:100px;display:flex;flex-direction:column;gap:22px;}
+  .toc-card{background:var(--gray-50);border-radius:var(--radius);padding:26px 24px;border:1px solid var(--gray-100);}
+  .toc-card h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:16px;}
+  .toc-card ul li{margin-bottom:12px;}
+  .toc-card ul li a{font-size:13.5px;color:var(--gray-600);transition:color .2s;}
+  .toc-card ul li a:hover{color:var(--teal-600);}
+  .toc-card ul li a.current{color:var(--teal-600);font-weight:600;}
+
+  .protect-card{
+    background:var(--teal-tint);border-radius:var(--radius);padding:30px 26px;text-align:center;
+  }
+  .protect-icon{
+    width:64px;height:64px;border-radius:50%;background:var(--navy-900);border:2px solid var(--teal-500);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+  }
+  .protect-icon svg{width:28px;height:28px;stroke:var(--teal-500);}
+  .protect-card h4{font-size:16.5px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+  .protect-card p{font-size:13.5px;color:var(--gray-600);line-height:1.65;}
+
+  /* ===== CTA BAR ===== */
+  .cta-section{padding:0 0 80px;}
+  .cta-box{
+    background:var(--navy-900);border-radius:20px;padding:32px 40px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    position:relative;overflow:hidden;
+  }
+  .cta-box::before{
+    content:"";position:absolute;right:-40px;top:-60px;width:220px;height:220px;border-radius:50%;
+    background:radial-gradient(circle, var(--teal-glow), transparent 70%);
+  }
+  .cta-left{display:flex;align-items:center;gap:18px;position:relative;z-index:2;}
+  .cta-icon{
+    width:50px;height:50px;border-radius:50%;background:#fff;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .cta-icon svg{width:22px;height:22px;stroke:var(--navy-900);}
+  .cta-left h3{color:#fff;font-size:19px;font-weight:700;margin-bottom:3px;}
+  .cta-left p{color:#aab4c8;font-size:13.5px;}
+  .cta-box .btn{position:relative;z-index:2;}
+
+   
+    :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+    .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+    line-height: 1.2;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:44px;
+  }
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+        line-height:1.2;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1080px){
+    .nav-links{display:none;}
+    .hero .container{grid-template-columns:1fr;}
+    .shield-wrap{height:220px;margin-top:10px;}
+    .layout{grid-template-columns:1fr;}
+    .sidebar{position:static;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .hero h1{font-size:32px;}
+    .cta-box{flex-direction:column;align-items:flex-start;}
+    .footer-grid{grid-template-columns:1fr;}
+  }  .site-footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.site-footer li {
+    list-style: none;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/index.html" >Home</a>
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html">Featured Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      
+      <a href="/header/our_process.html">Our process</a>
+      <a href="/header/career.html">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/header/book_consultation.html" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="eyebrow">Privacy Policy</div>
+      <h1>Your Privacy.<br><span class="accent">Our Responsibility.</span></h1>
+      <div class="hero-divider"></div>
+      <p class="lead">At NexSham Technologies, we value your trust and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data.</p>
+      <div class="updated">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        Last Updated: May 20, 2025
+      </div>
+    </div>
+    <div class="shield-wrap">
+      <svg viewBox="0 0 220 220" width="220" height="220" fill="none">
+        <path d="M110 12 190 40v58c0 58-38 92-80 108-42-16-80-50-80-108V40z" stroke="#14b8a6" stroke-width="2.5" opacity="0.85"/>
+        <rect x="80" y="100" width="60" height="46" rx="8" fill="none" stroke="#14b8a6" stroke-width="2.5"/>
+        <path d="M92 100v-16a18 18 0 0 1 36 0v16" stroke="#14b8a6" stroke-width="2.5" fill="none"/>
+        <circle cx="110" cy="120" r="6" fill="#14b8a6"/>
+        <path d="M110 126v10" stroke="#14b8a6" stroke-width="2.5"/>
+      </svg>
+      <div class="plant-icon">🪴</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<section class="main-section">
+  <div class="container">
+    <div class="layout">
+
+      <!-- LEFT: POLICY CONTENT -->
+      <div class="policy-content">
+
+        <div class="policy-block" id="introduction">
+          <h2>1. Introduction</h2>
+          <p>NexSham Technologies ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy describes how we collect, use, disclose, and safeguard your information when you visit our website <a href="#">nexsham.com</a> or use our services.</p>
+        </div>
+
+        <div class="policy-block" id="information-we-collect">
+          <h2>2. Information We Collect</h2>
+          <p style="margin-bottom:20px;">We collect information that you provide directly to us and automatically when you use our services.</p>
+
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+            <p><b>Personal Information:</b> Name, email address, phone number, company name, and other details you provide through forms or communication.</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+            <p><b>Usage Information:</b> IP address, browser type, pages visited, time spent on pages, and other analytics data.</p>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v.01M8.5 9.5v.01M9 15v.01M15 15.5v.01M15.5 9v.01"/></svg></div>
+            <p><b>Cookies and Tracking Technologies:</b> We use cookies to enhance your experience and analyze website traffic.</p>
+          </div>
+        </div>
+
+        <div class="policy-block" id="how-we-use">
+          <h2>3. How We Use Your Information</h2>
+          <p style="margin-bottom:16px;">We use the information we collect to:</p>
+          <ul class="check-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Provide, operate, and maintain our services</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Respond to your inquiries and provide customer support</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Improve our website, services, and user experience</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Send updates, newsletters, and marketing communications (with your consent)</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.5 2.5 4.5-5"/></svg>Comply with legal obligations and protect our rights</li>
+          </ul>
+          <a href="#" class="btn-download">Read Full Policy (PDF)
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0-4-4m4 4 4-4M4 19h16"/></svg>
+          </a>
+        </div>
+
+        <div class="policy-block" id="how-we-share">
+          <h2>4. How We Share Your Information</h2>
+          <p>We do not sell your personal information. We may share it with trusted service providers who assist in operating our website and services, when required by law, or with your explicit consent.</p>
+        </div>
+
+        <div class="policy-block" id="data-security">
+          <h2>5. Data Security</h2>
+          <p>We implement industry-standard security measures — including encryption, access controls, and regular audits — to protect your information from unauthorized access, disclosure, alteration, and destruction.</p>
+        </div>
+
+        <div class="policy-block" id="your-rights">
+          <h2>6. Your Rights</h2>
+          <p>Depending on your location, you may have the right to access, correct, delete, or restrict the use of your personal data. Contact us at any time to exercise these rights.</p>
+        </div>
+
+        <div class="policy-block" id="third-party">
+          <h2>7. Third-Party Services</h2>
+          <p>Our website may contain links to third-party services. We are not responsible for the privacy practices of those third parties and encourage you to review their policies.</p>
+        </div>
+
+        <div class="policy-block" id="data-retention">
+          <h2>8. Data Retention</h2>
+          <p>We retain personal information only for as long as necessary to fulfill the purposes outlined in this policy, unless a longer retention period is required by law.</p>
+        </div>
+
+        <div class="policy-block" id="childrens-privacy">
+          <h2>9. Children's Privacy</h2>
+          <p>Our services are not directed to individuals under the age of 13, and we do not knowingly collect personal information from children.</p>
+        </div>
+
+        <div class="policy-block" id="changes">
+          <h2>10. Changes to This Policy</h2>
+          <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with a revised "Last Updated" date.</p>
+        </div>
+
+        <div class="policy-block" id="contact-us" style="border-bottom:none;">
+          <h2>11. Contact Us</h2>
+          <p>If you have any questions about this Privacy Policy, please reach out to us at <a href="#">contact@nexsham.com</a>.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: SIDEBAR -->
+      <aside class="sidebar">
+        <div class="toc-card">
+          <h4>On This Page</h4>
+          <ul>
+            <li><a href="#introduction" class="current">1. Introduction</a></li>
+            <li><a href="#information-we-collect">2. Information We Collect</a></li>
+            <li><a href="#how-we-use">3. How We Use Your Information</a></li>
+            <li><a href="#how-we-share">4. How We Share Your Information</a></li>
+            <li><a href="#data-security">5. Data Security</a></li>
+            <li><a href="#your-rights">6. Your Rights</a></li>
+            <li><a href="#third-party">7. Third-Party Services</a></li>
+            <li><a href="#data-retention">8. Data Retention</a></li>
+            <li><a href="#childrens-privacy">9. Children's Privacy</a></li>
+            <li><a href="#changes">10. Changes to This Policy</a></li>
+            <li><a href="#contact-us">11. Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="protect-card">
+          <div class="protect-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg>
+          </div>
+          <h4>We Protect Your Data</h4>
+          <p>We implement industry-standard security measures to protect your information from unauthorized access, disclosure, alteration, and destruction.</p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-left">
+        <div class="cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>
+        </div>
+        <div>
+          <h3>Have questions about our Privacy Policy?</h3>
+          <p>We're here to help. Reach out to us anytime.</p>
+        </div>
+      </div>
+      <a href="#" class="btn btn-teal">Contact Us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <span class="brand-name">NEXSHAM</span>
+        </div>
+        <p>We build custom software solutions that help businesses automate, scale and achieve long-term growth.</p>
+
+        <div class="socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <!-- <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a> -->
+        </div>
+
+        <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 98765 43210<br>+91 120 456 7890</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br>contact@nexsham.com</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+</body>
+</html>
