@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — NexSham Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#060b18;
+    --navy-900:#0a1128;
+    --navy-800:#0e1a36;
+    --navy-700:#132247;
+    --blue-500:#2563eb;
+    --teal-500:#14b8a6;
+    --teal-600:#0d9488;
+    --teal-glow:rgba(20,184,166,.35);
+    --ink:#0f1b33;
+    --gray-600:#5b6579;
+    --gray-500:#7d879a;
+    --gray-100:#eef1f6;
+    --gray-50:#f7f8fb;
+    --white:#ffffff;
+    --radius:16px;
+    --shadow-card:0 4px 24px rgba(15,27,51,.06);
+    --shadow-card-hover:0 16px 40px rgba(15,27,51,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--ink);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,.brand-name,.nav-link,.btn,.tab{font-family:'Sora',sans-serif;}
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+  .container{max-width:1240px;margin:0 auto;padding:0 32px;}
+
+    /* ==================================================
+   NEXSHAM MAIN HEADER
+   ================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: var(--nave-950);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0;
+}
+
+/* Main navbar */
+header .nav {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    max-width: 1400px;
+    height: 72px;
+
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ================= BRAND ================= */
+
+header .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    flex-shrink: 0;
+    white-space: nowrap;
+
+    text-decoration: none;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+
+    color: #111827;
+}
+
+header .brand-logo {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+    display: block;
+}
+
+header .brand-text {
+    white-space: nowrap;
+    color: #111827;
+}
+
+
+/* ================= NAV LINKS ================= */
+
+header .nav-links {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    margin-left: 40px;
+    flex: 1;
+}
+
+header .nav-links a {
+    position: relative;
+
+    padding: 6px 0;
+
+    white-space: nowrap;
+    text-decoration: none;
+
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #111827;
+
+    transition: color 0.2s ease;
+}
+
+header .nav-links a:hover {
+    color: #2563eb;
+}
+
+
+/* Active link */
+
+header .nav-links a.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+header .nav-links a.active::after {
+    content: '';
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+
+    height: 2px;
+
+    background: #2563eb;
+    border-radius: 2px;
+}
+
+
+/* ================= RIGHT CTA ================= */
+
+header .nav-right {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+header .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    white-space: nowrap;
+
+    padding: 10px 18px;
+
+    border-radius: 12px;
+
+    background: #0d1b36;
+    color: #ffffff;
+
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+header .btn-primary:hover {
+    background: #16294d;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+
+/* ================= MOBILE MENU ================= */
+
+header .mobile-menu {
+    display: none;
+
+    flex-direction: column;
+    gap: 2px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    padding: 8px 20px 16px;
+}
+
+header .mobile-menu.open {
+    display: flex;
+}
+
+header .mobile-menu a {
+    padding: 11px 4px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #374151;
+
+    border-bottom: 1px solid #f3f4f6;
+
+    text-decoration: none;
+}
+
+header .mobile-menu a.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+header .mobile-cta {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 12px;
+}.btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;font-weight:600;
+    padding:11px 22px;border-radius:9px;
+    cursor:pointer;border:none;transition:.2s ease;white-space:nowrap;
+  }
+  .btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;}
+  .btn-outline:hover{border-color:var(--teal-500);color:var(--teal-500);}
+  .btn-teal{background:var(--teal-600);color:#fff;}
+  .btn-teal:hover{background:var(--teal-500);transform:translateY(-1px);}
+  .btn svg{width:15px;height:15px;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% 20%, rgba(20,184,166,.16), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 85% 80%, rgba(37,99,235,.14), transparent 60%),
+      var(--navy-900);
+    position:relative;overflow:hidden;padding:88px 0 96px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,.35), transparent),
+      radial-gradient(1.5px 1.5px at 140px 90px, rgba(255,255,255,.25), transparent),
+      radial-gradient(1px 1px at 260px 50px, rgba(255,255,255,.3), transparent),
+      radial-gradient(1.5px 1.5px at 340px 160px, rgba(255,255,255,.2), transparent),
+      radial-gradient(1px 1px at 60px 200px, rgba(255,255,255,.25), transparent),
+      radial-gradient(1.5px 1.5px at 420px 40px, rgba(255,255,255,.2), transparent);
+    background-repeat:repeat;background-size:460px 220px;
+    opacity:.7;pointer-events:none;
+  }
+  .hero .container{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;
+  }
+  .eyebrow{
+    font-size:13px;font-weight:700;letter-spacing:2.2px;color:var(--teal-500);
+    text-transform:uppercase;margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:46px;line-height:1.15;font-weight:800;color:#fff;letter-spacing:-.5px;
+  }
+  .hero h1 .accent{color:var(--teal-500);}
+  .hero-divider{width:56px;height:4px;background:var(--teal-500);border-radius:3px;margin:22px 0;}
+  .hero p.lead{font-size:16px;line-height:1.7;color:#aab4c8;max-width:480px;margin-bottom:34px;}
+  .hero-features{display:flex;gap:36px;flex-wrap:wrap;}
+  .hero-feature{display:flex;gap:12px;align-items:flex-start;max-width:230px;}
+  .hero-feature-icon{
+    width:38px;height:38px;border-radius:10px;flex-shrink:0;
+    background:rgba(20,184,166,.14);border:1px solid rgba(20,184,166,.35);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .hero-feature-icon svg{width:18px;height:18px;stroke:var(--teal-500);}
+  .hero-feature h4{font-size:14.5px;color:#fff;font-weight:600;margin-bottom:3px;}
+  .hero-feature p{font-size:13px;color:#8f9ab0;line-height:1.5;}
+
+  /* hero mockup */
+  .mockup-wrap{position:relative;height:380px;}
+  .laptop{
+    position:absolute;right:0;top:20px;width:78%;
+    background:#1c2b4a;border-radius:14px 14px 4px 4px;
+    padding:14px 14px 40px;box-shadow:0 30px 60px rgba(0,0,0,.45);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .laptop-base{
+    position:absolute;left:50%;transform:translateX(-50%);bottom:-14px;
+    width:110%;height:14px;background:linear-gradient(#2a3a5c,#1a2743);
+    border-radius:0 0 10px 10px;
+  }
+  .laptop-screen{
+    background:linear-gradient(160deg,#0d1730,#152040);
+    border-radius:6px;height:210px;padding:16px;position:relative;overflow:hidden;
+  }
+  .laptop-screen .row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+  .laptop-screen .dot{width:16px;height:16px;border-radius:5px;background:linear-gradient(135deg,var(--teal-500),var(--blue-500));}
+  .laptop-screen .pill{background:var(--teal-600);font-size:8px;color:#fff;padding:4px 9px;border-radius:5px;font-weight:600;}
+  .laptop-screen h5{color:#fff;font-size:17px;font-weight:700;margin-bottom:6px;}
+  .laptop-screen p{color:#8f9ab0;font-size:9.5px;max-width:150px;line-height:1.5;}
+  .glow-orb{
+    position:absolute;right:14px;top:36px;width:70px;height:70px;border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, rgba(20,184,166,.6), rgba(37,99,235,.15) 70%);
+    filter:blur(2px);
+  }
+  .phone{
+    position:absolute;left:0;bottom:0;width:110px;height:220px;
+    background:#131f3a;border-radius:20px;padding:8px;
+    box-shadow:0 20px 45px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08);
+  }
+  .phone-screen{
+    background:linear-gradient(165deg,#0d1730,#152040);border-radius:14px;height:100%;
+    padding:12px 10px;
+  }
+  .phone-screen .badge{font-size:7px;color:var(--teal-500);font-weight:700;letter-spacing:1px;margin-bottom:6px;}
+  .phone-screen h6{color:#fff;font-size:11px;font-weight:700;line-height:1.3;margin-bottom:8px;}
+  .phone-screen .bar{height:5px;border-radius:3px;background:rgba(255,255,255,.08);margin-bottom:6px;}
+  .phone-screen .bar.short{width:60%;}
+  .mug{
+    position:absolute;right:-6px;bottom:14px;width:40px;height:34px;
+    background:linear-gradient(160deg,#1c2b4a,#0e1a36);border-radius:6px 6px 8px 8px;
+    display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.1);
+  }
+  .mug span{color:var(--teal-500);font-weight:800;font-size:14px;}
+  .plant{position:absolute;right:20px;bottom:-6px;font-size:34px;line-height:1;}
+
+  /* ===== FILTER BAR ===== */
+  .filter-section{padding:56px 0 8px;}
+  .filter-bar{
+    display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+    justify-content:space-between;margin-bottom:44px;
+  }
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;}
+  .tab{
+    font-size:14px;font-weight:600;padding:10px 20px;border-radius:9px;
+    border:1.5px solid var(--gray-100);background:#fff;color:var(--gray-600);
+    cursor:pointer;transition:.2s;
+  }
+  .tab:hover{border-color:var(--teal-500);color:var(--teal-600);}
+  .tab.active{background:var(--teal-600);border-color:var(--teal-600);color:#fff;}
+  .search-box{
+    position:relative;min-width:230px;
+  }
+  .search-box input{
+    width:100%;padding:11px 40px 11px 16px;border-radius:9px;
+    border:1.5px solid var(--gray-100);font-size:14px;font-family:'Inter',sans-serif;
+    outline:none;transition:.2s;
+  }
+  .search-box input:focus{border-color:var(--teal-500);}
+  .search-box svg{position:absolute;right:14px;top:50%;transform:translateY(-50%);width:16px;height:16px;stroke:var(--gray-500);}
+
+  /* ===== PROJECTS GRID ===== */
+  .projects{padding:0 0 90px;}
+  .projects-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:28px;
+  }
+  .card{
+    border-radius:var(--radius);overflow:hidden;background:#fff;
+    box-shadow:var(--shadow-card);border:1px solid var(--gray-100);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card-hover);}
+  .card-thumb{height:190px;position:relative;overflow:hidden;}
+  .card-body{padding:22px 22px 24px;}
+  .card-cat{
+    font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    color:var(--teal-600);margin-bottom:10px;
+  }
+  .card-body h3{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+  .card-body p{font-size:13.5px;color:var(--gray-600);line-height:1.6;margin-bottom:16px;}
+  .card-link{
+    display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;
+    color:var(--teal-600);transition:gap .2s;
+  }
+  .card-link svg{width:15px;height:15px;transition:transform .2s;}
+  .card:hover .card-link svg{transform:translateX(4px);}
+
+  /* thumbnail visual treatments */
+  .thumb-dash{background:linear-gradient(135deg,#eef2ff,#e7f3f1);display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;}
+  .thumb-dash .panel{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(15,27,51,.08);padding:12px;width:62%;height:100%;}
+  .thumb-dash .panel .chip{width:40%;height:6px;border-radius:3px;background:var(--teal-500);margin-bottom:8px;}
+  .thumb-dash .chart{display:flex;align-items:flex-end;gap:4px;height:60px;}
+  .thumb-dash .chart div{flex:1;background:linear-gradient(180deg,var(--blue-500),var(--teal-500));border-radius:3px 3px 0 0;}
+  .thumb-dash .phone-mini{background:#fff;border-radius:10px;box-shadow:0 6px 18px rgba(15,27,51,.08);width:26%;height:88%;padding:8px;}
+  .thumb-dash .phone-mini .b{height:5px;border-radius:3px;background:#e7ebf3;margin-bottom:6px;}
+  .thumb-dash .phone-mini .b.t{background:var(--teal-500);width:70%;}
+
+  .thumb-mobile{background:linear-gradient(160deg,#dff5ea,#c8ecd8);display:flex;align-items:center;justify-content:center;gap:12px;padding:20px;}
+  .thumb-mobile .m{background:#fff;border-radius:14px;box-shadow:0 10px 24px rgba(15,27,51,.12);width:64px;height:130px;padding:8px 6px;}
+  .thumb-mobile .m .img{background:linear-gradient(135deg,#a7e0c1,#5fbd8c);border-radius:8px;height:55%;margin-bottom:6px;}
+  .thumb-mobile .m .b{height:4px;border-radius:2px;background:#e7ebf3;margin-bottom:4px;}
+
+  .thumb-cloud{
+    background:linear-gradient(160deg,#0a1330,#132a4d);
+    display:flex;align-items:center;justify-content:center;position:relative;
+  }
+  .thumb-cloud svg{width:76px;height:76px;}
+  .thumb-cloud .bld{position:absolute;bottom:0;width:14px;background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.1);}
+
+  .thumb-uiux{background:linear-gradient(160deg,#101d3a,#1b2f57);display:flex;align-items:center;justify-content:center;gap:10px;padding:18px;}
+  .thumb-uiux .card2{background:#fff;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,.3);width:36%;height:90%;padding:8px;}
+  .thumb-uiux .card2 .ph{background:linear-gradient(135deg,#9dc6ff,#4f83e8);border-radius:6px;height:50%;margin-bottom:6px;}
+  .thumb-uiux .card2 .b{height:4px;border-radius:2px;background:#e7ebf3;margin-bottom:4px;}
+  .thumb-uiux .card2.tall{height:100%;}
+
+  .thumb-code{background:linear-gradient(160deg,#0c1428,#111d38);padding:18px;font-family:monospace;}
+  .thumb-code .l{height:6px;border-radius:3px;margin-bottom:7px;opacity:.85;}
+  .thumb-code .l1{width:38%;background:#ff8a8a;}
+  .thumb-code .l2{width:60%;background:#7dd3fc;}
+  .thumb-code .l3{width:50%;background:#86efac;}
+  .thumb-code .l4{width:70%;background:#c4b5fd;}
+  .thumb-code .l5{width:44%;background:#fde68a;}
+  .thumb-code .l6{width:65%;background:#7dd3fc;}
+  .thumb-code .l7{width:30%;background:#86efac;}
+
+  .thumb-devops{
+    background:linear-gradient(160deg,#241b52,#3a2a7a);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .thumb-devops .loop{
+    width:120px;height:120px;border-radius:50%;
+    border:14px solid transparent;
+    border-image:conic-gradient(from 0deg,#7c3aed,#4f83e8,#14b8a6,#7c3aed) 1;
+    position:relative;
+  }
+  .thumb-devops .loop::after{
+    content:"CI/CD";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Sora',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;
+  }
+
+  /* ===== STATS ===== */
+  .stats{background:var(--gray-50);padding:52px 0;}
+  .stats .container{
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:28px;
+  }
+  .stat{display:flex;align-items:center;gap:14px;flex:1;min-width:160px;justify-content:center;}
+  .stat-icon{
+    width:52px;height:52px;border-radius:50%;background:var(--teal-600);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .stat-icon svg{width:24px;height:24px;stroke:#fff;}
+  .stat h3{font-size:26px;font-weight:800;color:var(--ink);line-height:1.1;}
+  .stat p{font-size:12.5px;color:var(--gray-600);font-weight:500;}
+
+  /* ===== CTA ===== */
+  .cta-section{padding:80px 0;}
+  .cta-box{
+    background:linear-gradient(120deg,var(--navy-900),var(--navy-800));
+    border-radius:20px;padding:44px 48px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    position:relative;overflow:hidden;
+  }
+  .cta-box::before{
+    content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;
+    background:radial-gradient(circle, var(--teal-glow), transparent 70%);
+  }
+  .cta-left{display:flex;align-items:center;gap:20px;position:relative;z-index:2;}
+  .cta-icon{
+    width:56px;height:56px;border-radius:14px;background:rgba(20,184,166,.15);
+    border:1px solid rgba(20,184,166,.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .cta-icon svg{width:26px;height:26px;stroke:var(--teal-500);}
+  .cta-left h3{color:#fff;font-size:22px;font-weight:700;margin-bottom:4px;}
+  .cta-left p{color:#aab4c8;font-size:14px;}
+  .cta-box .btn{position:relative;z-index:2;}
+
+  
+    :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+    .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+    line-height: 1.2;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:44px;
+  }
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+        line-height:1.2;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:1080px){
+    .nav-links{display:none;}
+    .hero .container{grid-template-columns:1fr;}
+    .mockup-wrap{height:300px;margin-top:20px;}
+    .projects-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .hero h1{font-size:32px;}
+    .projects-grid{grid-template-columns:1fr;}
+    .stats .container{justify-content:flex-start;}
+    .footer-grid{grid-template-columns:1fr;}
+    .cta-box{flex-direction:column;align-items:flex-start;}
+  }
+    .site-footer ul {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.site-footer li {
+    list-style: none;
+}
+
+/* =====================================
+   TEMPORARY PAGE UPGRADE OVERLAY
+===================================== */
+
+.upgrade-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    /* Existing page remains visible */
+    background: rgba(5, 15, 40, 0.55);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.upgrade-card {
+    width: 100%;
+    max-width: 520px;
+
+    padding: 45px 40px;
+
+    text-align: center;
+
+    background: rgba(10, 25, 60, 0.92);
+
+    border: 1px solid rgba(79, 179, 245, 0.25);
+    border-radius: 22px;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.35),
+        0 0 50px rgba(79,179,245,0.08);
+
+    color: #fff;
+}
+
+.upgrade-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(79,179,245,0.12);
+    border: 1px solid rgba(79,179,245,0.3);
+
+    color: #4fb3f5;
+
+    font-size: 28px;
+}
+
+.upgrade-badge {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    color: #5eead4;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.upgrade-card h1 {
+    margin: 0 0 16px;
+
+    font-size: 38px;
+    line-height: 1.15;
+
+    color: #ffffff;
+}
+
+.upgrade-card p {
+    max-width: 420px;
+
+    margin: 0 auto 25px;
+
+    color: #a9b8d6;
+
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* Progress animation */
+
+.upgrade-loader {
+    width: 180px;
+    height: 4px;
+
+    margin: 0 auto 28px;
+
+    overflow: hidden;
+
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+}
+
+.upgrade-loader span {
+    display: block;
+
+    width: 45%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        #2f8fe0,
+        #5eead4
+    );
+
+    border-radius: 20px;
+
+    animation: upgrading 1.6s ease-in-out infinite;
+}
+
+@keyframes upgrading {
+
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(340%);
+    }
+
+}
+
+
+/* Back Home */
+
+.upgrade-home {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 11px 20px;
+
+    border: 1px solid rgba(79,179,245,0.45);
+    border-radius: 9px;
+
+    color: #4fb3f5;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+.upgrade-home:hover {
+    background: #4fb3f5;
+    color: #081431;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .upgrade-card {
+        padding: 36px 22px;
+    }
+
+    .upgrade-card h1 {
+        font-size: 30px;
+    }
+
+}
+</style>
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body>
+<!-- 
+  TEMPORARY PAGE UPGRADE OVERLAY -->
+<div class="upgrade-overlay">
+    <div class="upgrade-card">
+
+        <div class="upgrade-icon">
+            ⚙
+        </div>
+
+        <span class="upgrade-badge">PAGE UPDATE IN PROGRESS</span>
+
+        <h1>We're Upgrading<br>This Page.</h1>
+
+        <p>
+            We're currently improving this section to deliver
+            a better experience. Please check back soon.
+        </p>
+
+        <div class="upgrade-loader">
+            <span></span>
+        </div>
+
+        <a href="https://nexsham.com" class="upgrade-home">
+            ← Back to Home
+        </a>
+
+    </div>
+</div> 
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/index.html" >Home</a>
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html">Featured Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      
+      <a href="/header/our_process.html">Our process</a>
+      <a href="/header/career.html">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/header/book_consultation.html" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <div class="eyebrow">Our Portfolio</div>
+      <h1>Ideas We Build.<br><span class="accent">Impact We Deliver.</span></h1>
+      <div class="hero-divider"></div>
+      <p class="lead">Explore our collection of successful projects that showcase our expertise, creativity, and commitment to delivering exceptional digital solutions.</p>
+      <div class="hero-features">
+        <div class="hero-feature">
+          <div class="hero-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          </div>
+          <div>
+            <h4>Tailored Solutions</h4>
+            <p>Custom-built solutions designed for unique business needs.</p>
+          </div>
+        </div>
+        <div class="hero-feature">
+          <div class="hero-feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5z"/></svg>
+          </div>
+          <div>
+            <h4>Results Driven</h4>
+            <p>Focused on delivering measurable impact and real growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mockup-wrap">
+      <div class="plant">🪴</div>
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="row">
+            <div class="dot"></div>
+            <span class="pill">Let's Talk</span>
+          </div>
+          <h5>Building The Next.<br>Starting Today.</h5>
+          <p>Innovative digital solutions engineered for growth.</p>
+          <div class="glow-orb"></div>
+        </div>
+        <div class="laptop-base"></div>
+      </div>
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="badge">NEXSHAM</div>
+          <h6>Innovative Digital Solutions</h6>
+          <div class="bar"></div>
+          <div class="bar short"></div>
+        </div>
+      </div>
+      <div class="mug"><span>N</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- FILTER + SEARCH -->
+<section class="filter-section">
+  <div class="container">
+    <div class="filter-bar">
+      <div class="tabs">
+        <button class="tab active" data-filter="all">All Projects</button>
+        <button class="tab" data-filter="web">Web Development</button>
+        <button class="tab" data-filter="mobile">Mobile Apps</button>
+        <button class="tab" data-filter="uiux">UI/UX Design</button>
+        <button class="tab" data-filter="cloud">Cloud Solutions</button>
+        <button class="tab" data-filter="devops">DevOps</button>
+        <button class="tab" data-filter="others">Others</button>
+      </div>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search projects...">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </div>
+    </div>
+
+    <!-- PROJECTS GRID -->
+    <div class="projects">
+      <div class="projects-grid" id="projectsGrid">
+
+        <div class="card" data-cat="web">
+          <div class="card-thumb thumb-dash">
+            <div class="panel">
+              <div class="chip"></div>
+              <div class="chart">
+                <div style="height:40%"></div><div style="height:70%"></div><div style="height:50%"></div>
+                <div style="height:85%"></div><div style="height:60%"></div><div style="height:95%"></div>
+              </div>
+            </div>
+            <div class="phone-mini">
+              <div class="b t"></div><div class="b"></div><div class="b"></div><div class="b" style="width:60%"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">Web Development</div>
+            <h3>Jai Shiv Trading Company – JBMS Platform</h3>
+            <p>A comprehensive business management system for inventory, billing, and reporting.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="mobile">
+          <div class="card-thumb thumb-mobile">
+            <div class="m"><div class="img"></div><div class="b"></div><div class="b" style="width:70%"></div></div>
+            <div class="m"><div class="img"></div><div class="b"></div><div class="b" style="width:70%"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">Mobile App</div>
+            <h3>GreenMart – Grocery Delivery App</h3>
+            <p>On-demand grocery delivery app with real-time tracking and secure payments.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="cloud">
+          <div class="card-thumb thumb-cloud">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#14b8a6" stroke-width="1.5">
+              <path d="M6 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 16.4 8.02 4.5 4.5 0 0 1 17.5 17H6z"/>
+              <path d="M9 21v-3m0 0-2 2m2-2 2 2M15 21v-4m0 0-2 2m2-2 2 2"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">Cloud Solutions</div>
+            <h3>SecureCloud – Scalable Infrastructure</h3>
+            <p>High-performance cloud infrastructure ensuring security, scalability, and reliability.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="uiux">
+          <div class="card-thumb thumb-uiux">
+            <div class="card2 tall"><div class="ph"></div><div class="b"></div><div class="b" style="width:60%"></div></div>
+            <div class="card2"><div class="ph"></div><div class="b"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">UI/UX Design</div>
+            <h3>TravelVista – Redesigning Experiences</h3>
+            <p>Modern UI/UX design for a seamless travel booking experience.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="web">
+          <div class="card-thumb thumb-code">
+            <div class="l l1"></div><div class="l l2"></div><div class="l l3"></div>
+            <div class="l l4"></div><div class="l l5"></div><div class="l l6"></div><div class="l l7"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">Web Development</div>
+            <h3>CodeLearn – E-Learning Platform</h3>
+            <p>An interactive learning platform with courses, quizzes, and progress tracking.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="card" data-cat="devops">
+          <div class="card-thumb thumb-devops">
+            <div class="loop"></div>
+          </div>
+          <div class="card-body">
+            <div class="card-cat">DevOps</div>
+            <h3>AutoDeploy – CI/CD Pipeline</h3>
+            <p>Automated CI/CD pipeline for faster and more reliable software deployments.</p>
+            <a href="#" class="card-link">View Case Study
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
+      <div><h3>25+</h3><p>Projects Completed</p></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3"/><circle cx="16" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c2.4.4 4 2.3 4 5.5"/></svg></div>
+      <div><h3>15+</h3><p>Happy Clients</p></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5 7 21l5-2.5 5 2.5-1.5-8.5"/></svg></div>
+      <div><h3>5+</h3><p>Industries Served</p></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 9-3 3 3 3M16 9l3 3-3 3M13 6l-2 12"/></svg></div>
+      <div><h3>50K+</h3><p>Lines of Code</p></div>
+    </div>
+    <div class="stat">
+      <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
+      <div><h3>98%</h3><p>Client Satisfaction</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-left">
+        <div class="cta-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 19 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-1 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+        </div>
+        <div>
+          <h3>Have a Project in Mind?</h3>
+          <p>Let's collaborate and build something amazing together.</p>
+        </div>
+      </div>
+      <a href="#" class="btn btn-teal">Discuss Your Project
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <span class="brand-name">NEXSHAM</span>
+        </div>
+        <p>We build custom software solutions that help businesses automate, scale and achieve long-term growth.</p>
+
+        <div class="socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <!-- <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a> -->
+        </div>
+
+        <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 98765 43210<br>+91 120 456 7890</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br>contact@nexsham.com</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.card');
+  const searchInput = document.getElementById('searchInput');
+
+  function applyFilters(){
+    const activeTab = document.querySelector('.tab.active').dataset.filter;
+    const query = searchInput.value.trim().toLowerCase();
+    cards.forEach(card => {
+      const matchesTab = activeTab === 'all' || card.dataset.cat === activeTab;
+      const text = card.innerText.toLowerCase();
+      const matchesSearch = query === '' || text.includes(query);
+      card.style.display = (matchesTab && matchesSearch) ? '' : 'none';
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+</script>
+
+</body>
+</html>

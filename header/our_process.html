@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexSham Technologies | Our Process</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            50: '#f4f3ff',
+            100: '#ece9ff',
+            500: '#5b4bf5',
+            600: '#4a3adb',
+            700: '#3d2fc0',
+          }
+        },
+        fontFamily: {
+          sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+  .card-hover { transition: all .25s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 30px -8px rgba(91,75,245,0.18); border-color: #c9c3ff; }
+  .step-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    width: 100%;
+    height: 1px;
+    border-top: 2px dashed #d8d4ff;
+    transform: translateY(-50%);
+  }
+  .step-item:last-child .step-dot::after { display: none; }
+    /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:72px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+    .btn-primary{
+    background:linear-gradient(135deg,var(--indigo),#7c5cff);
+    color:#fff;padding:14px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;
+    box-shadow:0 10px 22px rgba(79,57,246,0.3);
+  }
+  .btn-secondary{
+    border:1.5px solid var(--indigo);color:var(--indigo);
+    padding:13px 22px;border-radius:10px;font-size:13.5px;font-weight:700;
+    display:inline-flex;align-items:center;gap:8px;background:#fff;
+  }
+:root{
+    --navy:#0b1130;
+    --indigo:#4f39f6;
+    --indigo-dark:#3b28d6;
+    --violet:#6d4bff;
+    --ink:#12142b;
+    --ink-soft:#4b4f6b;
+    --muted:#6b7089;
+    --border:#e7e8f2;
+    --bg-soft:#f3f4fb;
+    --bg-card:#ffffff;
+    --purple-chip:#f1eefe;
+    --star:#f6b93b;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-card:0 2px 10px rgba(20,20,60,0.05);
+    --shadow-hero:0 20px 50px rgba(30,20,90,0.18);
+  }
+  
+    :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+    .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1.55fr 1fr 1fr 1fr;
+    gap:28px;
+    padding-bottom:2px;
+    align-items:start;
+}
+.footer-contact-col{
+    display:flex;
+    align-items:flex-start;
+    padding-top:18px;
+}
+
+.footer-contact-col .contact-card{
+    width:100%;
+    max-width:370px;
+    min-height:135px;
+    box-sizing:border-box;
+}
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+    margin-top:125px;
+    margin-left:-25px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ---------- RESPONSIVE ---------- */
+@media (max-width: 1199px){
+    .wrap{
+        padding:32px 28px 0;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr 1fr;
+        row-gap:36px;
+    }
+
+    .footer-brand-col{
+        grid-column:auto;
+    }
+
+    .footer-brand-col p,
+    .contact-card{
+        max-width:none;
+    }
+
+    .contact-strip{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .site-footer{
+        padding-top:48px;
+    }
+
+    .footer-inner{
+        padding:0 32px;
+    }
+}
+
+  @media (max-width: 768px){
+    .wrap{ padding:24px 18px 0; }
+    .cta-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:28px 24px;
+    }
+    .cta-actions{ width:100%; }
+    .cta-actions .btn{ flex:1; justify-content:center; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-strip{ grid-template-columns:1fr; }
+    .bottom-bar{ flex-direction:column; align-items:flex-start; }
+    .site-footer{ padding-top:40px; margin-top:28px; }
+    .footer-inner{ padding:0 20px; }
+  }
+
+  @media (max-width: 480px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .cta-text h2{ font-size:1.5rem; }
+    .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+  }
+
+ .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.brand-logo{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.brand-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.brand-name{
+    font-family:var(--font-head);
+    font-size:1.22rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:.6px;
+    line-height:1;
+}
+
+.brand-subname{
+    display:block;
+    margin-top:5px;
+
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:3px;
+
+    color:var(--teal-300);
+}
+.brand-tagline{
+    margin:18px 0 8px;
+
+    font-family:var(--font-head);
+    font-size:.82rem;
+    font-weight:600;
+
+    color:#dce4f7;
+}
+
+.footer-brand-col > p{
+    font-size:0.9rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:310px;
+    margin:0 0 22px;
+}
+</style>
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body class="bg-white text-slate-800 antialiased">
+
+<!-- NAV -->
+<header>
+  <div class="wrap nav">
+    <a href="https://nexsham.com" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html" >Featured Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      
+      <a href="/header/our_process.html">Our process</a>
+      <a href="/header/career.html" >Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/header/book_consultation.html" class="btn btn-primary" class="active" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative overflow-hidden bg-gradient-to-b from-brand-50/70 to-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20 grid lg:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="tag bg-brand-100 text-brand-600 mb-5">✦ OUR PROCESS</span>
+      <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 leading-tight mt-4">
+        A Proven Process<br>
+        <span class="text-brand-500">For Successful Delivery.</span>
+      </h1>
+      <p class="text-slate-500 mt-5 max-w-md leading-relaxed">
+        We follow a structured, transparent and agile approach to deliver high-quality software solutions that drive real business results.
+      </p>
+      <div class="flex flex-wrap gap-6 mt-7">
+        <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+          <span class="w-8 h-8 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center text-sm">💬</span> Transparent<br>Communication
+        </div>
+        <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+          <span class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">&lt;/&gt;</span> Agile & Adaptive<br>Methodology
+        </div>
+        <div class="flex items-center gap-2 text-sm font-medium text-slate-700">
+          <span class="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm">🕐</span> On-Time<br>Delivery
+        </div>
+      </div>
+    </div>
+
+    <!-- Orbit diagram -->
+    <div class="relative h-[340px] flex items-center justify-center">
+      <div class="orbit-ring absolute w-72 h-72 rounded-full border-2 border-dashed border-brand-200"></div>
+      <div class="w-24 h-24 bg-gradient-to-br from-brand-500 to-indigo-700 rounded-2xl rotate-45 shadow-xl flex items-center justify-center">
+        <span class="-rotate-45 text-white font-extrabold text-2xl">N</span>
+      </div>
+
+      <!-- orbiting icon badges -->
+      <div class="absolute top-2 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-emerald-500">📋</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Plan</span>
+      </div>
+      <div class="absolute right-0 top-1/4 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-purple-500">🎨</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Design</span>
+      </div>
+      <div class="absolute right-4 bottom-6 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-blue-500">&lt;/&gt;</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Develop</span>
+      </div>
+      <div class="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-orange-500">🛡️</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Test</span>
+      </div>
+      <div class="absolute left-4 bottom-6 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-cyan-500">🚀</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Deploy</span>
+      </div>
+      <div class="absolute left-0 top-1/4 flex flex-col items-center">
+        <div class="w-10 h-10 rounded-xl bg-white shadow-md flex items-center justify-center text-violet-500">🎧</div>
+        <span class="text-[11px] font-semibold text-slate-700 mt-1">Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6-STEP PROCESS -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-16 text-center">
+  <span class="tag bg-brand-100 text-brand-600">✦ OUR 6-STEP PROCESS</span>
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-4">From <span class="text-brand-500">Idea to Impact</span></h2>
+  <p class="text-slate-500 mt-2 text-sm">A step-by-step approach to turn your vision into powerful digital solutions.</p>
+
+  <div class="grid md:grid-cols-3 lg:grid-cols-6 gap-6 mt-12 text-left" id="process-grid"></div>
+</section>
+
+<!-- RESULTS BANNER -->
+<section class="max-w-7xl mx-auto px-6 lg:px-10 mb-14">
+  <div class="bg-brand-50 rounded-2xl p-8 lg:p-10 grid lg:grid-cols-2 gap-8 items-center">
+    <div>
+      <span class="tag bg-white text-brand-600 mb-3">✦ WHY OUR PROCESS WORKS</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-3">Built For <span class="text-brand-500">Results.</span></h2>
+      <p class="text-slate-500 mt-3 max-w-md text-sm leading-relaxed">
+        Our process ensures transparency, quality and timely delivery while keeping you involved at every step.
+      </p>
+ 
+      <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%20would%20like%20to%20discuss%20a%20software%20project%20with%20your%20team."
+    class="inline-flex items-center gap-2 bg-brand-500 hover:bg-brand-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg mt-5 transition"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Let's Work Together →
+</a>
+    </div>
+    <div class="grid grid-cols-4 gap-4">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto mb-3 text-xl">🏅</div>
+        <div class="text-xl sm:text-2xl font-extrabold text-brand-500">500+</div>
+        <div class="text-xs text-slate-500 mt-1">Projects Delivered</div>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto mb-3 text-xl">🤝</div>
+        <div class="text-xl sm:text-2xl font-extrabold text-brand-500">98%</div>
+        <div class="text-xs text-slate-500 mt-1">Client Satisfaction</div>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto mb-3 text-xl">⏱️</div>
+        <div class="text-xl sm:text-2xl font-extrabold text-brand-500">25%</div>
+        <div class="text-xs text-slate-500 mt-1">Faster Delivery</div>
+      </div>
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center mx-auto mb-3 text-xl">🎧</div>
+        <div class="text-xl sm:text-2xl font-extrabold text-brand-500">24/7</div>
+        <div class="text-xs text-slate-500 mt-1">Support Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS
+<section class="max-w-7xl mx-auto px-6 lg:px-10 py-6 pb-16 text-center relative">
+  <span class="tag bg-brand-100 text-brand-600">✦ TRUSTED BY BUSINESSES WORLDWIDE</span>
+  <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-4 mb-10">"What Our Clients Say"</h2>
+
+  <div class="flex items-center gap-4">
+    <button class="hidden sm:flex w-9 h-9 rounded-full border border-brand-200 text-brand-500 items-center justify-center hover:bg-brand-50 shrink-0">←</button>
+    <div class="grid md:grid-cols-3 gap-6 text-left flex-1" id="testimonials-grid"></div>
+    <button class="hidden sm:flex w-9 h-9 rounded-full border border-brand-200 text-brand-500 items-center justify-center hover:bg-brand-50 shrink-0">→</button>
+  </div>
+  <div class="flex justify-center gap-1.5 mt-6">
+    <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+    <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+    <span class="w-2 h-2 rounded-full bg-slate-200"></span>
+  </div>
+</section> -->
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+
+    <img
+        src="/images/favicon.png"
+        alt="NexSham Technologies Logo"
+        class="brand-logo"
+    >
+
+    <div class="brand-info">
+        <span class="brand-name">NEXSHAM </span>
+        <span class="brand-subname"> TECHNOLOGIES</span>
+    </div>
+
+</div>
+
+<div class="brand-tagline">
+    Building technology for what's next.
+</div>
+
+<p>
+    We build custom software solutions that help businesses
+    automate, scale and achieve long-term growth.
+</p>
+        <div class="socials">
+          <!-- facebook -->
+          <!-- <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a> -->
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@nexshamtechnologies" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="/header/our_process.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="/header/career.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="/footer/blog.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="/header/book_consultation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/services/custom_software_development.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <!-- <li><a href="/services/web_application_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li> -->
+          <li><a href="/services/mobile_app_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="/services/cloud_solutions.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="/services/ai_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <!-- <li><a href="/services/qa_and_testing.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li> -->
+          <li><a href="/services/maintanence_and_support.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+          <li><a href="/services/business_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Business Automation</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <!-- <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/industry/healthcare.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="/industry/retail_and_Ecommerce.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="/industry/finance_and_banking.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="/industry/education.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="/industry/manufacturing.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="/industry/logistics_and_supply_chain.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="/industry/realestate.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="/header/industries.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+          
+        </ul>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/case_studies.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="/footer/portfolio.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="/footer/faq.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="/footer/documentation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="/footer/privacy_policy.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="/footer/terms_and_condition.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 88590 01102</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br></p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/footer/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="footer/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+const steps = [
+  { num: '01', color: 'bg-blue-100 text-blue-600', icon: '🔍', title: 'Discover & Research', desc: 'We understand your business, objectives and challenges through in-depth research.', items: ['Requirement Gathering','Market Research','Competitor Analysis'] },
+  { num: '02', color: 'bg-emerald-100 text-emerald-600', icon: '📋', title: 'Plan & Strategize', desc: 'We create a clear roadmap and strategy tailored to your business goals.', items: ['Project Roadmap','Tech Stack Planning','Resource Allocation'] },
+  { num: '03', color: 'bg-purple-100 text-purple-600', icon: '🎨', title: 'Design & Prototype', desc: 'We design intuitive user experiences and interactive prototypes.', items: ['UI/UX Design','Wireframing','Prototyping'] },
+  { num: '04', color: 'bg-blue-100 text-blue-600', icon: '💻', title: 'Develop & Build', desc: 'Our developers build scalable, secure and high-performance solutions.', items: ['Clean Code','Agile Development','Regular Updates'] },
+  { num: '05', color: 'bg-orange-100 text-orange-600', icon: '🛡️', title: 'Test & Quality Check', desc: 'We ensure every solution is rigorously tested for quality, security and performance.', items: ['Functional Testing','Performance Testing','Security Testing'] },
+  { num: '06', color: 'bg-emerald-100 text-emerald-600', icon: '🚀', title: 'Deploy & Support', desc: 'We deploy your solution seamlessly and provide ongoing support.', items: ['Smooth Deployment','Monitoring','Continuous Support'] },
+];
+
+const grid = document.getElementById('process-grid');
+steps.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'step-item relative';
+  card.innerHTML = `
+    <div class="step-line relative flex items-center gap-2 mb-4">
+      <div class="w-9 h-9 rounded-full ${s.color} flex items-center justify-center text-sm z-10 bg-white ring-4 ring-white">${s.icon}</div>
+      <span class="text-xs font-extrabold ${s.color.split(' ')[1]}">${s.num}</span>
+    </div>
+    <div class="step-card bg-white border border-slate-100 rounded-2xl p-5 shadow-sm h-full">
+      <h3 class="font-bold text-slate-900 mb-2 text-sm">${s.title}</h3>
+      <p class="text-xs text-slate-500 leading-relaxed mb-4">${s.desc}</p>
+      <ul class="space-y-1.5">
+        ${s.items.map(it => `<li class="flex items-center gap-2 text-xs text-slate-600"><span class="text-emerald-500">✓</span>${it}</li>`).join('')}
+      </ul>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+const testimonials = [
+  { text: "NexSham's process was smooth, transparent and highly efficient. They delivered exactly what we envisioned, on time and with great quality.", name: 'Rahul Sharma', role: 'CTO, RetailMart' },
+  { text: "Their team was proactive and communicated clearly throughout the project. The end product has significantly improved our operations.", name: 'Priya Mehta', role: 'Product Manager, HealthPlus' },
+  { text: "Professional, skilled and reliable. NexSham is our go-to partner for all our digital transformation initiatives.", name: 'Arjun Verma', role: 'Founder, EduLearn' },
+];
+const tGrid = document.getElementById('testimonials-grid');
+testimonials.forEach(t => {
+  const card = document.createElement('div');
+  card.className = 'bg-white border border-slate-100 rounded-2xl p-6 shadow-sm';
+  card.innerHTML = `
+    <div class="text-2xl text-pink-300 mb-2">"</div>
+    <p class="text-sm text-slate-600 leading-relaxed mb-5">${t.text}</p>
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center font-semibold text-sm">${t.name.charAt(0)}</div>
+      <div>
+        <div class="text-sm font-semibold text-slate-900">${t.name}</div>
+        <div class="text-xs text-slate-500">${t.role}</div>
+      </div>
+      <div class="ml-auto text-amber-400 text-xs">★★★★★</div>
+    </div>
+  `;
+  tGrid.appendChild(card);
+});
+</script>
+
+</body>
+</html>

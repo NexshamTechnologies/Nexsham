@@ -1,0 +1,2619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexsham Technologies</title>
+
+  <link rel="shortcut icon" href="./images/favicon.png" type="image/svg+xml">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <style>
+      header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    padding:0;
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:72px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:16px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:38px;
+    height:38px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+
+
+      :root{
+      --navy-950:#0a1230;
+      --navy-900:#0c1638;
+      --navy-800:#0f1c42;
+      --navy-700:#16234f;
+      --blue-500:#2f6bff;
+      --blue-600:#1d4ed8;
+      --teal-400:#2dd4bf;
+      --teal-300:#5eead4;
+      --ink-900:#0c1638;
+      --ink-700:#38415c;
+      --ink-500:#6b7594;
+      --paper:#f4f7fd;
+      --paper-soft:#eef2fb;
+      --white:#ffffff;
+      --line-soft:rgba(255,255,255,0.09);
+      --line-soft-2:rgba(255,255,255,0.14);
+      --radius-lg:20px;
+      --radius-md:14px;
+      --radius-sm:10px;
+      --font-head:'Sora', sans-serif;
+      --font-body:'Inter', sans-serif;
+    }
+      .site-footer{
+      background:var(--navy-900);
+      background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                        radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+      width:100%;
+      margin:40px 0 0;
+      padding:56px 0 0;
+      color:#c9d2ea;
+    }
+
+    .footer-inner{
+      max-width:1440px;
+      margin:0 auto;
+      padding:0 48px;
+    }
+
+  .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1.55fr 1fr 1fr 1fr;
+      gap:28px;
+      padding-bottom:2px;
+      align-items:start;
+  }
+  .footer-contact-col{
+      display:flex;
+      align-items:flex-start;
+      padding-top:18px;
+  }
+
+  .footer-contact-col .contact-card{
+      width:100%;
+      max-width:370px;
+      min-height:135px;
+      box-sizing:border-box;
+  }
+
+    .footer-brand-col .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--font-head);
+      font-weight:800;
+      color:#fff;
+      font-size:1.15rem;
+    }
+
+    .brand-name{
+      font-family:var(--font-head);
+      font-weight:700;
+      font-size:1.3rem;
+      color:#fff;
+      letter-spacing:0.5px;
+    }
+
+    .footer-brand-col p{
+      font-size:0.92rem;
+      line-height:1.65;
+      color:#95a1c4;
+      max-width:280px;
+      margin:0 0 22px;
+    }
+
+    .socials{
+      display:flex;
+      gap:10px;
+      margin-bottom:26px;
+    }
+
+    .social-btn{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background 0.18s ease, transform 0.18s ease;
+    }
+    .social-btn:hover{
+      background:rgba(255,255,255,0.14);
+      transform:translateY(-2px);
+    }
+    .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+    .contact-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--line-soft-2);
+      border-radius:var(--radius-md);
+      padding:18px 20px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      max-width:340px;
+      margin-top:125px;
+      margin-left:-25px;
+    }
+
+    .contact-card .icon-circle{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.09);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+    .contact-card h4{
+      margin:0 0 4px;
+      font-size:0.98rem;
+      font-weight:600;
+      color:#fff;
+      font-family:var(--font-head);
+    }
+
+    .contact-card p{
+      margin:0 0 6px;
+      font-size:0.85rem;
+      color:#9aa5c4;
+    }
+
+    .contact-card .email-link{
+      color:var(--teal-300);
+      font-size:0.9rem;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+    .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+    .footer-col h3{
+      font-family:var(--font-head);
+      font-size:1.02rem;
+      font-weight:700;
+      color:#fff;
+      margin:0 0 12px;
+    }
+
+    .footer-col .underline{
+      width:28px;
+      height:3px;
+      border-radius:2px;
+      background:var(--teal-400);
+      margin-bottom:18px;
+    }
+
+    .footer-col ul li{ margin-bottom:13px; }
+
+    .footer-col ul li a{
+      font-size:0.9rem;
+      color:#a9b3d1;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      transition:color 0.15s ease, gap 0.15s ease;
+    }
+
+    .footer-col ul li a svg{
+      width:13px;
+      height:13px;
+      stroke:var(--teal-400);
+      flex-shrink:0;
+    }
+
+    .footer-col ul li a:hover{
+      color:#fff;
+    }
+
+    /* ---------- CONTACT STRIP ---------- */
+    .contact-strip{
+      border-top:1px solid var(--line-soft);
+      padding:32px 0;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:32px;
+    }
+
+    .strip-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .strip-icon{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line-soft-2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+    .strip-item h5{
+      margin:0 0 6px;
+      font-size:0.88rem;
+      font-weight:700;
+      color:var(--teal-300);
+      font-family:var(--font-head);
+    }
+
+    .strip-item p{
+      margin:0;
+      font-size:0.86rem;
+      line-height:1.55;
+      color:#a9b3d1;
+    }
+
+    /* ---------- BOTTOM BAR ---------- */
+    .bottom-bar{
+      border-top:1px solid var(--line-soft);
+      padding:22px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .bottom-bar p{
+      margin:0;
+      font-size:0.85rem;
+      color:#8b96b8;
+    }
+
+    .bottom-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-size:0.85rem;
+      color:#8b96b8;
+    }
+
+    .bottom-right .heart{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+    .bottom-right a:hover{ color:#fff; }
+
+    .divider-dot{ opacity:0.4; }
+
+    /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1199px){
+      .wrap{
+          padding:32px 28px 0;
+      }
+
+      .footer-grid{
+          grid-template-columns:1fr 1fr 1fr;
+          row-gap:36px;
+      }
+
+      .footer-brand-col{
+          grid-column:auto;
+      }
+
+      .footer-brand-col p,
+      .contact-card{
+          max-width:none;
+      }
+
+      .contact-strip{
+          grid-template-columns:1fr 1fr;
+      }
+
+      .site-footer{
+          padding-top:48px;
+      }
+
+      .footer-inner{
+          padding:0 32px;
+      }
+  }
+
+    @media (max-width: 768px){
+      .wrap{ padding:24px 18px 0; }
+      .cta-banner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:28px 24px;
+      }
+      .cta-actions{ width:100%; }
+      .cta-actions .btn{ flex:1; justify-content:center; }
+      .footer-grid{ grid-template-columns:1fr 1fr; }
+      .contact-strip{ grid-template-columns:1fr; }
+      .bottom-bar{ flex-direction:column; align-items:flex-start; }
+      .site-footer{ padding-top:40px; margin-top:28px; }
+      .footer-inner{ padding:0 20px; }
+    }
+
+    @media (max-width: 480px){
+      .footer-grid{ grid-template-columns:1fr; }
+      .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+      .cta-text h2{ font-size:1.5rem; }
+      .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+    }
+
+  .footer-brand-col .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+  }
+
+  .brand-logo{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      flex-shrink:0;
+  }
+
+  .brand-info{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+  }
+
+  .brand-name{
+      font-family:var(--font-head);
+      font-size:1.22rem;
+      font-weight:800;
+      color:#fff;
+      letter-spacing:.6px;
+      line-height:1;
+  }
+
+  .brand-subname{
+      display:block;
+      margin-top:5px;
+
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:3px;
+
+      color:var(--teal-300);
+  }
+  .brand-tagline{
+      margin:18px 0 8px;
+
+      font-family:var(--font-head);
+      font-size:.82rem;
+      font-weight:600;
+
+      color:#dce4f7;
+  }
+
+  .footer-brand-col > p{
+      font-size:0.9rem;
+      line-height:1.65;
+      color:#95a1c4;
+      max-width:310px;
+      margin:0 0 22px;
+  }
+
+
+
+  </style>
+  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/responsive-fix.css">
+  <script src="./js/responsive-nav.js" defer></script>
+</head>
+
+<body id="top">
+
+
+  
+
+
+
+<header>
+  <div class="wrap nav">
+    <a href="https://nexsham.com" class="brand">
+    <img src="/images/favicon.png" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <!-- <a href="/index.html" class="active">Home</a> -->
+      <a href="/header/services.html" target="_blank">Services</a>
+      <a href="/header/featured_solutions.html"target="_blank">Featured Solutions</a>
+      <a href="/header/industries.html"target="_blank">Industries</a>
+      <a href="/header/technologies.html"target="_blank">Technologies</a>
+      
+      <a href="/header/our_process.html"target="_blank">Our process</a>
+      <a href="/header/career.html"target="_blank">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/header/book_consultation.html" target="_blank" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+     
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+
+  <main>
+
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="hero">
+  <div class="hero-copy">
+    <div class="badge reveal">🚀 ENGINEERING BUSINESS SOLUTIONS</div>
+    <h1>
+      <span class="reveal l1">Engineering Software</span>
+      <span class="reveal l2">That Helps Businesses</span>
+      <span class="reveal l3 accent">Automate &amp; Scale.</span>
+    </h1>
+
+    <p class="lead reveal">
+      We build custom software, AI-powered solutions, web applications,
+      mobile apps and business automation systems that help businesses
+      streamline operations, improve productivity and scale with confidence.
+    </p>
+
+    <div class="hero-ctas reveal">
+      <a href="/header/book_consultation.html" target="_blank" ><button class="btn btn-primary">📅 Book Free Consultation</button></a>
+      <a href="/header/services.html" target="_blank"><button class="btn btn-secondary">Explore Services →</button></a>
+    </div>
+
+    <div class="feature-row reveal">
+      <div class="feature">
+        <div class="fi">💻</div>
+        <div class="ft"><strong>Custom Solutions</strong><small>Built for your business</small></div>
+      </div>
+      <div class="feature">
+        <div class="fi">🛡</div>
+        <div class="ft"><strong>Secure &amp; Reliable</strong><small>Security at every step</small></div>
+      </div>
+      <div class="feature">
+        <div class="fi">🚀</div>
+        <div class="ft"><strong>Scalable &amp; Future-Ready</strong><small>Grow without limitations</small></div>
+      </div>
+      <div class="feature">
+        <div class="fi">🎧</div>
+        <div class="ft"><strong>24/7 Support</strong><small>We're always here</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="orbit-ring"></div>
+
+    <div class="float-card fc-ai">
+      <div class="fc-ico">🤖</div>
+      <div><div class="fc-title">AI Solutions</div><div class="fc-sub">Smart Automation</div></div>
+    </div>
+
+    <div class="laptop">
+      <div class="laptop-screen">
+        <div class="laptop-inner">
+          <div class="l-sidebar">
+            <div class="dot"></div>
+            <div class="ic"></div>
+            <div class="ic"></div>
+            <div class="ic"></div>
+            <div class="ic"></div>
+          </div>
+          <div class="l-main">
+            <div class="l-stats">
+              <div class="stat-card">
+                <div class="label">Revenue</div>
+                <div class="value">$98,760</div>
+                <div class="delta">+12.8%</div>
+              </div>
+              <div class="stat-card">
+                <div class="label">New Users</div>
+                <div class="value">12,540</div>
+                <div class="delta">+8.2%</div>
+              </div>
+              <div class="stat-card">
+                <div class="label">Orders</div>
+                <div class="value">8,320</div>
+                <div class="delta">+15.7%</div>
+              </div>
+            </div>
+            <div class="l-panels">
+              <div class="panel">
+                <div class="p-title">Analytics Overview <span class="pill-up">+16.5%</span></div>
+                <svg class="chart-line" viewBox="0 0 220 60" preserveAspectRatio="none">
+                  <polyline fill="none" stroke="#2FB6E0" stroke-width="2.5"
+                    points="0,45 25,30 50,38 75,20 100,32 125,15 150,26 175,10 200,18 220,8" />
+                </svg>
+              </div>
+              <div class="panel">
+                <div class="p-title">Top Products</div>
+                <div class="bar-row"><span class="bn">Product 1</span><span class="bp">72%</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width:72%"></div></div>
+                <div class="bar-row"><span class="bn">Product 2</span><span class="bp">56%</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width:56%"></div></div>
+                <div class="bar-row"><span class="bn">Product 3</span><span class="bp">30%</span></div>
+                <div class="bar-track"><div class="bar-fill" style="width:30%"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="laptop-base"></div>
+      </div>
+
+    <div class="phone">
+      <div class="phone-inner">
+        <div class="p-label">Overview</div>
+        <div class="p-value">$24,560</div>
+        <div class="p-delta">+12.5%</div>
+        <svg class="mini-chart" viewBox="0 0 130 44" preserveAspectRatio="none">
+          <polyline fill="none" stroke="#2FB6E0" stroke-width="2.5"
+            points="0,30 15,22 30,28 45,14 60,24 75,10 90,20 105,6 120,14 130,8" />
+        </svg>
+        <div class="activity-title">Recent Activity</div>
+        <div class="activity-row">
+          <div class="a-ico" style="background:#DCFCE7;">💳</div>
+          <div class="a-text">Payment Received</div>
+          <div class="a-amt">+$2,120</div>
+        </div>
+        <div class="activity-row">
+          <div class="a-ico" style="background:#FEE2E2;">🛒</div>
+          <div class="a-text">New Order</div>
+          <div class="a-amt">+$1,330</div>
+        </div>
+        <div class="activity-row">
+          <div class="a-ico" style="background:#E0F2FE;">🔁</div>
+          <div class="a-text">Subscription</div>
+          <div class="a-amt">+$850</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="float-card fc-cloud">
+      <div class="fc-ico">☁</div>
+      <div><div class="fc-title">Cloud Ready</div><div class="fc-sub">AWS, Azure, GCP</div></div>
+    </div>
+
+    <div class="float-card fc-webmobile">
+      <div class="fc-ico">📱</div>
+      <div><div class="fc-title">Web &amp; Mobile</div><div class="fc-sub">Cross Platform</div></div>
+    </div>
+  </div>
+</section>
+      <!-- 
+        - #our services
+      -->
+        <div class="page">
+
+  <div class="dots" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <svg class="waves" viewBox="0 0 420 520" fill="none" aria-hidden="true">
+    <path d="M0 60 C 100 20, 200 100, 420 60" stroke="#c9e4e2" stroke-width="1.5"/>
+    <path d="M0 140 C 100 100, 200 180, 420 140" stroke="#c9e4e2" stroke-width="1.5"/>
+    <path d="M0 220 C 100 180, 200 260, 420 220" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <header class="header">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+      OUR SERVICES
+    </span>
+    <h1>End-to-End <span class="accent">Software Solutions</span></h1>
+    <p class="sub">From custom software development to AI-powered automation, we deliver secure, scalable and future-ready digital solutions tailored to your business needs.</p>
+    <div class="rule"></div>
+  </header>
+
+  <section class="grid">
+
+    <!-- 01 Custom Software Development -->
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue); --card-accent:var(--c-blue);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <span class="index">01</span>
+      </div>
+      <h3>Custom Software Development</h3>
+      <div class="card-divider"></div>
+      <p>Tailor-made software built specifically for your business processes, workflows and long-term goals.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ERP Systems</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>CRM Systems</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Business Portals</li>
+      </ul>
+      <a class="learn" href="/services/custom_software_development.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 02 Web Application Development -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green); --card-accent:var(--c-green);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div
+          <span class="index">02</span>
+      </div>
+      <h3>Web Application Development</h3>
+      <div class="card-divider"></div>
+      <p>Fast, secure and scalable web applications built using modern technologies and best practices.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Company Websites</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Admin Dashboards</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>SaaS Platforms</li>
+      </ul>
+      <a class="learn" href="/services/web_application_development.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 03 Mobile App Development -->
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple); --card-accent:var(--c-purple);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+        <span class="index">03</span>
+      </div>
+      <h3>Mobile App Development</h3>
+      <div class="card-divider"></div>
+      <p>Cross-platform Android and iOS applications with beautiful UI and high performance.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Flutter Apps</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>React Native</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Progressive Web Apps</li>
+      </ul>
+      <a class="learn" href="/services/mobile_app_development.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 04 AI & Automation -->
+    <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink); --card-accent:var(--c-pink);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a3 3 0 0 0-3 3v.2A3 3 0 0 0 7 10v1a3 3 0 0 0 0 6 3 3 0 0 0 3 3h4a3 3 0 0 0 3-3 3 3 0 0 0 0-6v-1a3 3 0 0 0-2-2.8V7a3 3 0 0 0-3-3z"/></svg></div>
+        <span class="index">04</span>
+        </div>
+      <h3>AI &amp; Automation</h3>
+      <div class="card-divider"></div>
+      <p>Integrate AI into your business to automate repetitive tasks and improve decision making.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AI Chatbots</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Process Automation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Machine Learning</li>
+      </ul>
+      <a class="learn" href="/services/ai_automation.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 05 Business Automation -->
+    <article class="card" style="--icon-bg:var(--c-amber-bg); --icon-color:var(--c-amber); --card-accent:var(--c-amber);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <span class="index">05</span>
+      </div>
+      <h3>Business Automation</h3>
+      <div class="card-divider"></div>
+      <p>Replace manual workflows with intelligent automation that saves time and reduces errors.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Workflow Automation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>HR Automation</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Inventory Automation</li>
+      </ul>
+      <a class="learn" href="/services/business_automation.html" target=_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 06 Cloud Solutions -->
+     <article class="card" style="--icon-bg:var(--c-orange-bg); --icon-color:var(--c-orange); --card-accent:var(--c-orange);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h.79a4.5 4.5 0 1 1 1 8.9z"/></svg></div>
+        <span class="index">06</span>
+      </div>
+      <h3>Cloud Solutions</h3>
+      <div class="card-divider"></div>
+      <p>Deploy, host and manage your applications securely on modern cloud infrastructure.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>AWS</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Azure</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google Cloud</li>
+      </ul>
+      <a class="learn" href="/services/cloud_solutions.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+    <!-- 07 QA & Testing -->
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue); --card-accent:var(--c-blue);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <span class="index">07</span>
+      </div>
+      <h3>QA &amp; Testing</h3>
+      <div class="card-divider"></div>
+      <p>Deliver reliable software through comprehensive testing and quality assurance processes.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Functional Testing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Performance Testing</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Security Testing</li>
+      </ul>
+      <a class="learn" href="/services/qa_and_testing.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+    <!-- 08 Maintenance & Support -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green); --card-accent:var(--c-green);">
+      <div class="card-top">
+        <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 1 5.4-5.4l-2.5 2.5-2-2 2.5-2.5z"/></svg></div>
+        <span class="index">08</span>
+      </div>
+      <h3>Maintenance &amp; Support</h3>
+      <div class="card-divider"></div>
+      <p>Continuous monitoring, updates and support to keep your software secure and running smoothly.</p>
+      <ul class="checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bug Fixes</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Feature Updates</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Technical Support</li>
+      </ul>
+      <a class="learn" href="/services/maintanence_and_support.html" target="_blank">Learn More <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </article>
+
+  </section>
+
+
+
+</div>
+
+
+      <!-- 
+      bussines problem solved 
+      -->
+
+      <div class="page">
+
+  <div class="dots" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <svg class="rings" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+    <circle cx="210" cy="210" r="200" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="150" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="100" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <header class="header">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+      BUSINESS PROBLEMS WE SOLVE
+    </span>
+    <h1>Business Problems, <span class="accent">Solved.</span></h1>
+    <p class="sub">We help businesses eliminate inefficiencies, automate workflows and build scalable software that solves real business challenges.</p>
+    <div class="rule"></div>
+  </header>
+
+  <section class="grid">
+
+    <!-- 01 Manual & Time-Consuming Work — Blue -->
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <h3>Manual &amp; Time-Consuming Work</h3>
+      <div class="card-divider"></div>
+      <p>Manual processes waste valuable time and slow down your daily operations.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We automate repetitive tasks and streamline business workflows.</span>
+      </div>
+    </article>
+
+    <!-- 02 Disconnected Systems — Green -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 11v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
+      <h3>Disconnected Systems</h3>
+      <div class="card-divider"></div>
+      <p>Using multiple disconnected tools creates confusion and inconsistent data.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We integrate your systems into one centralized platform.</span>
+      </div>
+    </article>
+
+    <!-- 03 Business Can't Scale — Purple -->
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+      <h3>Business Can't Scale</h3>
+      <div class="card-divider"></div>
+      <p>Your current software cannot support business growth or increasing customers.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We build scalable software designed for future expansion.</span>
+      </div>
+    </article>
+
+    <!-- 04 Security Risks — Orange -->
+    <article class="card" style="--icon-bg:var(--c-orange-bg); --icon-color:var(--c-orange);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Security Risks</h3>
+      <div class="card-divider"></div>
+      <p>Weak security leaves your business and customer information vulnerable.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We implement modern security and industry best practices.</span>
+      </div>
+    </article>
+
+    <!-- 05 Poor Customer Experience — Pink -->
+    <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div>
+      <h3>Poor Customer Experience</h3>
+      <div class="card-divider"></div>
+      <p>Slow websites and outdated systems drive customers away.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We create fast, intuitive digital experiences.</span>
+      </div>
+    </article>
+
+    <!-- 06 High Operational Costs — Yellow -->
+    <article class="card" style="--icon-bg:var(--c-yellow-bg); --icon-color:var(--c-yellow);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
+      <h3>High Operational Costs</h3>
+      <div class="card-divider"></div>
+      <p>Manual work and inefficient processes increase operational expenses.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We automate workflows to reduce costs and improve efficiency.</span>
+      </div>
+    </article>
+
+    <!-- 07 Slow Time to Market — Indigo -->
+    <article class="card" style="--icon-bg:var(--c-indigo-bg); --icon-color:var(--c-indigo);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14M5 2h14M17 22v-4.17a2 2 0 0 0-.59-1.42L13 13l3.41-3.41A2 2 0 0 0 17 8.17V4M7 22v-4.17a2 2 0 0 1 .59-1.42L11 13 7.59 9.59A2 2 0 0 1 7 8.17V4"/></svg></div>
+      <h3>Slow Time to Market</h3>
+      <div class="card-divider"></div>
+      <p>Development delays mean missed business opportunities.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>Agile development helps launch products faster.</span>
+      </div>
+    </article>
+
+    <!-- 08 Legacy Software — Teal -->
+    <article class="card" style="--icon-bg:var(--c-teal-bg); --icon-color:var(--c-teal);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <h3>Legacy Software</h3>
+      <div class="card-divider"></div>
+      <p>Old systems are difficult to maintain, upgrade and integrate.</p>
+      <div class="solution">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        <span>We modernize legacy software without disrupting operations.</span>
+      </div>
+    </article>
+
+  </section>
+
+
+
+</div>
+       <!-- 
+      featured solution 
+      -->
+      <div class="page">
+
+  <div class="dots" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <svg class="waves" viewBox="0 0 420 260" fill="none" aria-hidden="true">
+    <path d="M0 60 C 100 20, 200 100, 420 60" stroke="#c9e4e2" stroke-width="1.5"/>
+    <path d="M0 140 C 100 100, 200 180, 420 140" stroke="#c9e4e2" stroke-width="1.5"/>
+    <path d="M0 220 C 100 180, 200 260, 420 220" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <header class="header">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>
+      FEATURED SOLUTIONS
+    </span>
+    <h1>Software Solutions <span class="accent">We Build.</span></h1>
+    <p class="sub">From enterprise platforms to AI-powered automation, we design and develop software solutions that help businesses grow, automate and scale.</p>
+    <div class="rule"></div>
+  </header>
+
+  <section class="grid">
+
+    <!-- 01 Enterprise Software — Blue -->
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M14 9h1M14 13h1M9 21v-4h6v4"/></svg></div>
+      <h3>Enterprise Software</h3>
+      <p>Complete enterprise software designed to simplify operations and improve productivity.</p>
+      <div class="chips"><span class="chip">ERP</span><span class="chip">CRM</span><span class="chip">HRMS</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/enterprise_software.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 02 ERP Systems — Green -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg></div>
+      <h3>ERP Systems</h3>
+      <p>Integrated ERP solutions that connect finance, inventory, HR and operations.</p>
+      <div class="chips"><span class="chip">Finance</span><span class="chip">Inventory</span><span class="chip">Procurement</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/erp_systems.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 03 Financial Management — Purple -->
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+      <h3>Financial Management</h3>
+      <p>Manage accounting, budgeting, payments and reporting from one platform.</p>
+      <div class="chips"><span class="chip">Accounting</span><span class="chip">Billing</span><span class="chip">Reports</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/financial_management.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 04 Supply Chain Management — Orange -->
+    <article class="card" style="--icon-bg:var(--c-orange-bg); --icon-color:var(--c-orange);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+      <h3>Supply Chain Management</h3>
+      <p>Optimize procurement, logistics and warehouse operations.</p>
+      <div class="chips"><span class="chip">Warehouse</span><span class="chip">Tracking</span><span class="chip">Inventory</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/supply_chain_management.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 05 Inventory & Asset Management — Green -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>Inventory &amp; Asset Management</h3>
+      <p>Track company assets, equipment and inventory in real time.</p>
+      <div class="chips"><span class="chip">Asset Tracking</span><span class="chip">Barcode</span><span class="chip">Reports</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/inventory_and_asses_management.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 06 Fleet Management — Blue -->
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="1"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="20" r="2"/><circle cx="18.5" cy="20" r="2"/></svg></div>
+      <h3>Fleet Management</h3>
+      <p>Monitor vehicles, drivers and routes from one dashboard.</p>
+      <div class="chips"><span class="chip">GPS</span><span class="chip">Maintenance</span><span class="chip">Fuel Tracking</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/fleet_management.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 07 HR Management System — Yellow -->
+    <article class="card" style="--icon-bg:var(--c-yellow-bg); --icon-color:var(--c-yellow);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <h3>HR Management System</h3>
+      <p>Manage employees, attendance, payroll and recruitment.</p>
+      <div class="chips"><span class="chip">Payroll</span><span class="chip">Attendance</span><span class="chip">Leave Management</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/hr_management_system.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+    <!-- 08 Learning Management System — Purple -->
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.66 3.13 3 7 3s6-1.34 6-3v-5"/></svg></div>
+      <h3>Learning Management System</h3>
+      <p>Digital learning platforms for schools, universities and companies.</p>
+      <div class="chips"><span class="chip">Online Courses</span><span class="chip">Exams</span><span class="chip">Certificates</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/learning_management_system.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 09 eCommerce Platform — Pink -->
+    <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></div>
+      <h3>eCommerce Platform</h3>
+      <p>Launch scalable online stores with secure payments and inventory management.</p>
+      <div class="chips"><span class="chip">Shopping Cart</span><span class="chip">Payments</span><span class="chip">Orders</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/e_commerce_platform.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 10 Mobile Applications — Teal -->
+    <article class="card" style="--icon-bg:var(--c-teal-bg); --icon-color:var(--c-teal);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg></div>
+      <h3>Mobile Applications</h3>
+      <p>Build Android and iOS applications that deliver seamless user experiences.</p>
+      <div class="chips"><span class="chip">Android</span><span class="chip">iOS</span><span class="chip">Flutter</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/mobile_development.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+    <!-- 11 Document Management — Green -->
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></div>
+      <h3>Document Management</h3>
+      <p>Store, organize and retrieve documents securely from anywhere.</p>
+      <div class="chips"><span class="chip">File Storage</span><span class="chip">Search</span><span class="chip">Access Control</span></div>
+      <div class="card-footer"><a class="learn" href="#" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 12 Business Intelligence — Indigo -->
+    <article class="card" style="--icon-bg:var(--c-indigo-bg); --icon-color:var(--c-indigo);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <h3>Business Intelligence</h3>
+      <p>Transform business data into real-time dashboards and insights.</p>
+      <div class="chips"><span class="chip">Analytics</span><span class="chip">Reports</span><span class="chip">KPIs</span></div>
+      <div class="card-footer"><a class="learn" href="/solution/bussiness_intelligence.html" target="_blank">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+ 
+
+</div>
+
+
+       <!-- 
+        - #why-choose-us
+      -->
+        <div class="page">
+
+  <svg class="rings" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+    <circle cx="210" cy="210" r="200" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="150" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="100" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <div class="layout">
+
+    <!-- LEFT -->
+    <div class="left-col">
+      <span class="eyebrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        WHY CHOOSE NEXSHAM
+      </span>
+      <h1>Why Businesses Choose <span class="accent">Nexsham.</span></h1>
+      <p class="sub">We combine technology, innovation and business strategy to deliver software solutions that create measurable business growth and long-term success.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <div>
+            <div class="stat-num">5+</div>
+            <div class="stat-label">Happy Clients</div>
+            <div class="stat-desc">Trusted by startups, SMEs and enterprises.</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <div>
+            <div class="stat-num">10+</div>
+            <div class="stat-label">Projects Delivered</div>
+            <div class="stat-desc">Successfully delivered across multiple industries.</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg></div>
+          <div>
+            <div class="stat-num">1+</div>
+            <div class="stat-label">Years of Excellence</div>
+            <div class="stat-desc">Building reliable, future-ready software.</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div>
+            <div class="stat-num">24/7</div>
+            <div class="stat-label">Support</div>
+            <div class="stat-desc">Continuous assistance whenever you need us.</div>
+            </div>
+        </div>
+      </div>
+
+      <div class="partner-banner">
+        <div class="partner-left">
+          <div class="partner-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21H5a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h1"/><path d="M13 21h6a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-1"/><path d="M8 11V9a4 4 0 0 1 8 0v2"/><path d="M9 11h6v4a3 3 0 0 1-6 0z"/></svg></div>
+          <p>We Build Long-Term Partnerships.<br>Your success is our biggest achievement — we become your technology partner, not just another vendor.</p>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="cards">
+
+      <!-- Client First — Teal -->
+      <article class="card" style="--icon-bg:var(--c-teal-bg); --icon-color:var(--c-teal);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>Client-First Approach</h3>
+        <div class="card-divider"></div>
+        <p>Every solution begins with understanding your business, your goals and your vision.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Business-focused development</div>
+      </article>
+
+      <!-- Modern Technologies — Purple -->
+      <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>Modern Technologies</h3>
+        <div class="card-divider"></div>
+        <p>We use today's best technologies to build secure, scalable and future-ready software.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Latest Tech Stack</div>
+      </article>
+
+      <!-- Quality — Orange -->
+      <article class="card" style="--icon-bg:var(--c-orange-bg); --icon-color:var(--c-orange);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>Quality You Can Trust</h3>
+        <div class="card-divider"></div>
+        <p>From planning to deployment, quality remains at the center of everything we build.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Clean &amp; Maintainable Code</div>
+      </article>
+
+      <!-- On-Time Delivery — Blue -->
+      <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>On-Time Delivery</h3>
+        <div class="card-divider"></div>
+        <p>Agile development processes help us deliver projects efficiently without compromising quality.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Transparent Milestones</div>
+      </article>
+
+      <!-- Security — Pink -->
+      <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>Security by Design</h3>
+        <div class="card-divider"></div>
+        <p>Security is integrated into every stage of development to protect your business and customers.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Industry Best Practices</div>
+      </article>
+
+      <!-- Scalability — Green -->
+      <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+        <div class="card-top">
+          <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+          <div class="dots"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+        <h3>Built to Scale</h3>
+        <div class="card-divider"></div>
+        <p>Our software grows with your business so you never outgrow your technology.</p>
+        <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Cloud Ready Architecture</div>
+      </article>
+
+    </div>
+  </div>
+
+
+
+</div>
+
+      <!-- 
+        - #Tech-section
+      -->
+
+    <!-- <section class="tech-section"> 
+      <div class="tech-head">
+        <span class="eyebrow">Our Stack</span>
+        <h2>Technologies We Build With</h2>
+        <p>From modern frontend frameworks to cloud-native infrastructure, we use industry-standard technologies to build secure, scalable, and future-ready software solutions.</p>
+      </div>
+      <div class="tech-layout">
+        <nav class="pill-rail" id="pillRail"></nav>
+        <div class="tech-content">
+          <h3 id="catTitle"></h3>
+          <p class="desc" id="catDesc"></p>
+          <div class="card-grid" id="cardGrid"></div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- 
+        - #Industries we serve
+      -->
+        <!-- <div class="page">
+
+  <div class="dots" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <svg class="rings" viewBox="0 0 460 460" fill="none" aria-hidden="true">
+    <circle cx="230" cy="230" r="220" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="230" cy="230" r="165" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="230" cy="230" r="110" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <header class="header">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M14 9h1M14 13h1M9 21v-4h6v4"/></svg>
+      INDUSTRIES WE SERVE
+    </span>
+    <h1>Software Solutions Built For <span class="accent">Every Industry.</span></h1>
+    <p class="sub">Every industry has unique challenges. We build custom software tailored to your workflows, customers and business goals.</p>
+    <div class="rule"></div>
+  </header>
+
+  <section class="grid">
+
+    <!-- 01 Healthcare — Teal 
+    <article class="card" style="--icon-bg:var(--c-teal-bg); --icon-color:var(--c-teal);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/><path d="M8 12h1.5l1.5-3 2 6 1.5-3H16"/></svg></div>
+      <h3>Healthcare</h3>
+      <p>Digital healthcare platforms that improve patient care, hospital operations and medical workflows.</p>
+      <div class="chips">
+        <span class="chip">HMS</span><span class="chip">Patient Portal</span><span class="chip">Appointment System</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/healthcare.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 02 Retail & eCommerce — Purple 
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg></div>
+      <h3>Retail &amp; eCommerce</h3>
+      <p>Scalable commerce solutions that increase sales, improve customer experience and automate operations.</p>
+      <div class="chips">
+        <span class="chip">Online Store</span><span class="chip">Inventory</span><span class="chip">POS</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/retail_and_Ecommerce.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 03 Finance & Banking — Green 
+    <article class="card" style="--icon-bg:var(--c-green-bg); --icon-color:var(--c-green);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="10"/><line x1="10" y1="21" x2="10" y2="10"/><line x1="14" y1="21" x2="14" y2="10"/><line x1="19" y1="21" x2="19" y2="10"/><polygon points="12 3 21 8 3 8"/></svg></div>
+      <h3>Finance &amp; Banking</h3>
+      <p>Secure financial software built for banks, NBFCs, fintech startups and payment systems.</p>
+      <div class="chips">
+        <span class="chip">FinTech</span><span class="chip">Digital Payments</span><span class="chip">Loan Management</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/finance_and_banking.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 04 Education — Blue 
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.66 3.13 3 7 3s6-1.34 6-3v-5"/></svg></div>
+      <h3>Education</h3>
+      <p>Modern education platforms for schools, colleges, coaching institutes and edtech startups.</p>
+      <div class="chips">
+        <span class="chip">LMS</span><span class="chip">Student Portal</span><span class="chip">Online Exams</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/education.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 05 Manufacturing — Pink 
+    <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M4 20V10l5 4v-4l5 4v-4l5 4v6"/><path d="M4 10l5-4 5 4 5-4"/></svg></div>
+      <h3>Manufacturing</h3>
+      <p>Optimize production, inventory and factory operations through intelligent automation.</p>
+      <div class="chips">
+        <span class="chip">ERP</span><span class="chip">Inventory</span><span class="chip">Production Tracking</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/manufacturing.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 06 Logistics & Supply Chain — Orange 
+    <article class="card" style="--icon-bg:var(--c-orange-bg); --icon-color:var(--c-orange);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="15" height="12" rx="1"/><path d="M16 10h4l3 3v5h-7z"/><circle cx="6" cy="20" r="2"/><circle cx="18.5" cy="20" r="2"/></svg></div>
+      <h3>Logistics &amp; Supply Chain</h3>
+      <p>Smart logistics software that tracks vehicles, shipments and warehouse operations.</p>
+      <div class="chips">
+        <span class="chip">Fleet Tracking</span><span class="chip">Warehouse</span><span class="chip">Route Optimization</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/logistics_and_supply_chain.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 07 Real Estate — Indigo 
+    <article class="card" style="--icon-bg:var(--c-indigo-bg); --icon-color:var(--c-indigo);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M6 21V9l6-5 6 5v12"/><line x1="10" y1="21" x2="10" y2="14"/><line x1="14" y1="21" x2="14" y2="14"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h3>Real Estate</h3>
+      <p>Property management platforms that simplify sales, rentals and customer communication.</p>
+      <div class="chips">
+        <span class="chip">CRM</span><span class="chip">Property Listing</span><span class="chip">Booking System</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/realestate.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 08 Hospitality & Restaurants — Yellow 
+    <article class="card" style="--icon-bg:var(--c-yellow-bg); --icon-color:var(--c-yellow);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V2"/><path d="M7 2v13"/><path d="M17 2c-2 0-3.5 2-3.5 5.5S15 12 17 12s3.5-2.5 3.5-6.5C20.5 4 19 2 17 2z"/><line x1="17" y1="12" x2="17" y2="22"/></svg></div>
+      <h3>Hospitality &amp; Restaurants</h3>
+      <p>Complete restaurant and hospitality software to improve customer experience and operations.</p>
+      <div class="chips">
+        <span class="chip">Restaurant POS</span><span class="chip">Hotel Management</span><span class="chip">Table Booking</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/hospitality_and_restaurant.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 09 Media & Entertainment — Teal 
+    <article class="card" style="--icon-bg:var(--c-teal-bg); --icon-color:var(--c-teal);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><polygon points="10 7.5 15 10 10 12.5"/></svg></div>
+      <h3>Media &amp; Entertainment</h3>
+      <p>Content management platforms for media companies, creators and digital businesses.</p>
+      <div class="chips">
+        <span class="chip">CMS</span><span class="chip">OTT Platform</span><span class="chip">Media Portal</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/media_and_entertainment.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 10 Insurance — Pink 
+    <article class="card" style="--icon-bg:var(--c-pink-bg); --icon-color:var(--c-pink);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+      <h3>Insurance</h3>
+      <p>Digital insurance platforms for policy, claims and customer management.</p>
+      <div class="chips">
+        <span class="chip">Claims Portal</span><span class="chip">Policy System</span><span class="chip">Customer Dashboard</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/insurance.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 11 Startups & SaaS — Blue 
+    <article class="card" style="--icon-bg:var(--c-blue-bg); --icon-color:var(--c-blue);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+      <h3>Startups &amp; SaaS</h3>
+      <p>Launch scalable digital products quickly with modern cloud-native architecture.</p>
+      <div class="chips">
+        <span class="chip">MVP Development</span><span class="chip">SaaS Platform</span><span class="chip">Subscription System</span>
+      </div>
+      <div class="card-footer"><a class="learn" href="/industry/startup_and_saas.html">Explore Industry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+    <!-- 12 And Many More — Purple 
+    <article class="card" style="--icon-bg:var(--c-purple-bg); --icon-color:var(--c-purple);">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+      <h3>And Many More</h3>
+      <p>No matter your industry, our team can build software tailored to your business.</p>
+      <div class="card-footer"><a class="learn" href="/header/book_consultation.html">Let's Discuss <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a></div>
+    </article>
+
+
+
+</div> -->
+
+      
+
+
+
+      <!-- 
+        - #process
+    -->
+     <!-- <div class="wrap">
+
+  <div class="header">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      OUR DEVELOPMENT PROCESS
+    </div>
+    <h1>Our Development <span class="grad">Process</span></h1>
+    <p class="sub">From idea to deployment, we follow a structured development process to ensure quality, transparency, and timely delivery.</p>
+    <div class="underline"></div>
+  </div>
+
+  <div class="process">
+    <!-- Row 1 
+    <div class="row-wrap">
+      <div class="rail">
+        <div class="rail-node"><div class="num-circle blue">01</div><div class="dot blue"></div></div>
+        <div class="rail-node"><div class="num-circle green">02</div><div class="dot green"></div></div>
+        <div class="rail-node"><div class="num-circle purple">03</div><div class="dot purple"></div></div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="tag blue">01</span>
+          <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Discovery &amp; Consultation</h3>
+          <div class="mini-underline blue"></div>
+          <p>We understand your business, challenges, and goals to define the right solution.</p>
+        </div>
+        <div class="card">
+          <span class="tag green">02</span>
+          <div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3>Solution Design &amp; Roadmap</h3>
+          <div class="mini-underline green"></div>
+          <p>We analyze requirements, design the solution architecture, and create a clear project roadmap.</p>
+           </div>
+        <div class="card">
+          <span class="tag purple">03</span>
+          <div class="icon-box purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <h3>UI / UX Design</h3>
+          <div class="mini-underline purple"></div>
+          <p>We craft intuitive, modern, and user-friendly interfaces that deliver great experiences.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 
+    <div class="row-wrap">
+      <div class="rail">
+        <div class="rail-node"><div class="num-circle orange">04</div><div class="dot orange"></div></div>
+        <div class="rail-node"><div class="num-circle blue">05</div><div class="dot blue"></div></div>
+        <div class="rail-node"><div class="num-circle green">06</div><div class="dot green"></div></div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <span class="tag orange">04</span>
+          <div class="icon-box orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <h3>Development</h3>
+          <div class="mini-underline orange"></div>
+          <p>Our developers build secure, scalable, and reliable solutions using best coding practices.</p>
+        </div>
+        <div class="card">
+          <span class="tag blue">05</span>
+          <div class="icon-box blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <h3>Quality Assurance</h3>
+          <div class="mini-underline blue"></div>
+          <p>We test every feature rigorously to ensure performance, security, and a bug-free experience.</p>
+        </div>
+        <div class="card">
+          <span class="tag green">06</span>
+          <div class="icon-box green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+          <h3>Deployment &amp; Support</h3>
+          <div class="mini-underline green"></div>
+          <p>We deploy your solution and provide ongoing support, maintenance &amp; improvements.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Benefits 
+  <div class="benefits">
+    <div class="benefit">
+      <div class="b-icon blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/></svg></div>
+      <div class="benefit-text"><h4>Transparent Process</h4><p>You stay informed at every step.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="benefit-text"><h4>Client Collaboration</h4><p>We work closely with you throughout the journey.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+      <div class="benefit-text"><h4>On-Time Delivery</h4><p>We value your time and deadlines.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M9 14l-2 8 5-3 5 3-2-8"/></svg></div>
+      <div class="benefit-text"><h4>Quality Assurance</h4><p>Quality is our promise, not just a phase.</p></div>
+    </div>
+    <div class="benefit">
+      <div class="b-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+      <div class="benefit-text"><h4>Long-Term Support</h4><p>We grow with your business.</p></div>
+    </div>
+  </div>
+
+</div> -->
+
+<!-- 
+        - #FAQ's
+      -->
+
+<!-- <div class="page">
+
+  <div class="dots" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <svg class="rings" viewBox="0 0 420 420" fill="none" aria-hidden="true">
+    <circle cx="210" cy="210" r="200" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="150" stroke="#c9e4e2" stroke-width="1.5"/>
+    <circle cx="210" cy="210" r="100" stroke="#c9e4e2" stroke-width="1.5"/>
+  </svg>
+
+  <header class="header">
+    <span class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      FAQ'S
+    </span>
+    <h1>Frequently Asked <span class="accent">Questions.</span></h1>
+    <p class="sub">Everything you need to know about our services, development process, pricing and how we work.</p>
+    <div class="rule"></div>
+  </header>
+
+  <div class="layout">
+
+    <!--LEFT CARD 
+    <aside class="left-card">
+      <h2>Have a Different Question?</h2>
+      <p class="desc">Can't find the answer you're looking for? Our team is always happy to discuss your project, understand your requirements and guide you towards the right solution.</p>
+
+      <svg class="illustration" viewBox="0 0 260 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M138 20h-95a18 18 0 0 0-18 18v50a18 18 0 0 0 18 18h20l-2 22 30-22h47a18 18 0 0 0 18-18V38a18 18 0 0 0-18-18z" fill="#0f1b2d"/>
+        <text x="90" y="72" font-size="42" font-weight="800" fill="#ffffff" text-anchor="middle" font-family="Inter, sans-serif">?</text>
+        <path d="M228 46h-58a14 14 0 0 0-14 14v34a14 14 0 0 0 14 14h10l14 16v-16h34a14 14 0 0 0 14-14V60a14 14 0 0 0-14-14z" fill="#dbe6fb"/>
+        <circle cx="182" cy="80" r="4" fill="#2f6df6"/>
+        <circle cx="197" cy="80" r="4" fill="#2f6df6"/>
+        <circle cx="212" cy="80" r="4" fill="#2f6df6"/>
+        <line x1="228" y1="18" x2="222" y2="30" stroke="#12b3a8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="240" y1="24" x2="236" y2="34" stroke="#12b3a8" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="42" cy="130" r="4" fill="none" stroke="#c3cfe0" stroke-width="2"/>
+        <circle cx="188" cy="132" r="4" fill="none" stroke="#c3cfe0" stroke-width="2"/>
+      </svg>
+
+      <div class="stats-mini">
+        <div class="stat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>24h Response</div>
+        <div class="stat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6z"/></svg>Free Consult</div>
+        <div class="stat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>NDA Available</div>
+        <div class="stat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>10+ Projects</div>
+      </div>
+
+      <ul class="benefits">
+        <li><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></span>Response within 24 hours</li>
+        <li><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Free initial consultation</li>
+        <li><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>100% confidential discussion</li>
+        <li><span class="benefit-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>Tailored software recommendations</li>
+      </ul>
+
+      <a class="contact-btn" href="/header/book_consultation.html">Contact Our Team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </aside>
+
+    <!-- RIGHT: ACCORDION 
+    <div class="accordion">
+
+      <!-- 01 Services 
+      <div class="faq-item active">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">What services does NEXSHAM provide?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">We build custom software solutions including web applications, mobile apps, AI-powered solutions, business automation systems, cloud applications, enterprise software and ongoing maintenance.</div>
+        </div>
+      </div>
+
+      <!-- 02 Cost 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">How much does custom software cost?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Every project is unique. Pricing depends on project size, features, technology stack and timeline. <strong>Contact us for a free consultation and personalized quotation.</strong></div>
+        </div>
+      </div>
+
+      <!-- 03 Timeline 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">How long does it take to develop a project?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Project timelines depend on the complexity. A basic MVP typically takes <strong>3–6 weeks</strong>, while larger enterprise solutions may require <strong>2–6 months</strong>. After understanding your requirements, we'll provide a detailed timeline.</div>
+        </div>
+      </div>
+
+      <!-- 04 Tech stack 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">Which technologies do you use?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We work with modern technologies including:
+            <div class="tech-list">
+              <span class="tech-chip">React</span><span class="tech-chip">Next.js</span><span class="tech-chip">Node.js</span><span class="tech-chip">Python</span><span class="tech-chip">Java</span><span class="tech-chip">Flutter</span><span class="tech-chip">MongoDB</span><span class="tech-chip">PostgreSQL</span><span class="tech-chip">AWS</span><span class="tech-chip">Docker</span><span class="tech-chip">AI Frameworks</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 05 Upgrade existing software 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">Can you improve our existing software?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner"><strong>Absolutely.</strong> Whether it's upgrading legacy software, adding new features or rebuilding your application, we can work with your existing systems.</div>
+        </div>
+      </div>
+      <!-- 06 Security 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">How do you protect our business data?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Security is built into every stage of development. We follow secure coding standards, encrypted communication, access control and industry best practices to keep your data safe.</div>
+        </div>
+      </div>
+
+      <!-- 07 Post-launch support 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">Do you provide support after deployment?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner"><strong>Yes.</strong> We provide ongoing maintenance, bug fixes, feature enhancements, performance optimization and technical support after launch.</div>
+        </div>
+      </div>
+
+      <!-- 08 Communication 
+      <div class="faq-item">
+        <button class="faq-question" type="button">
+          <span class="faq-toggle">
+            <svg class="icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="q-text">How do you manage project communication?</span>
+          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">You'll receive regular progress updates, milestone reviews and transparent communication throughout the development process.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+      <!-- 
+        - #CONTACT
+      -->
+
+      <!-- <section class="contact" id="contact">
+        <div class="wrap">
+  <div class="contact-grid">
+
+    <!-- ============ LEFT SIDE ============ 
+    <div class="left-col">
+      <span class="eyebrow"><span class="dot"></span>Let's talk software</span>
+
+      <h1 class="headline">Let's Build Your Next Software Solution.</h1>
+
+      <p class="subheading">
+        Have a business idea or looking to automate your operations? Whether you're a startup, café, restaurant, retail store, or growing business, our team is here to transform your ideas into scalable software solutions.
+      </p>
+
+      <div class="trust-cards">
+        <div class="trust-card"><span class="check">✓</span> Free Initial Consultation</div>
+        <div class="trust-card"><span class="check">✓</span> NDA Available on Request</div>
+        <div class="trust-card"><span class="check">✓</span> Response within 0–24   Hours</div>
+      </div>
+
+      <div class="illustration-wrap">
+        <svg viewBox="0 0 460 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of a software build workflow">
+          <!-- backdrop shape 
+          <ellipse cx="230" cy="270" rx="170" ry="24" fill="#F0F4F8"/>
+
+          <!-- connecting lines 
+          <g stroke="#CBD7E3" stroke-width="2" fill="none">
+            <path d="M110 150 L230 110"/>
+            <path d="M230 110 L350 150"/>
+            <path d="M230 110 L230 190"/>
+            <path d="M110 150 L110 220"/>
+            <path d="M350 150 L350 220"/>
+          </g>
+
+          <!-- node: laptop / core 
+          <g class="float-a">
+            <rect x="180" y="160" width="100" height="66" rx="10" fill="#0A2647"/>
+            <rect x="192" y="172" width="76" height="42" rx="4" fill="#123A6B"/>
+            <rect x="196" y="176" width="30" height="4" rx="2" fill="#14B8A6"/>
+            <rect x="196" y="184" width="46" height="4" rx="2" fill="#3E6690"/>
+            <rect x="196" y="192" width="38" height="4" rx="2" fill="#3E6690"/>
+            <circle class="pulse-dot" cx="255" cy="200" r="5" fill="#14B8A6"/>
+          </g>
+
+          <!-- node: cloud 
+          <g class="float-b">
+            <circle cx="110" cy="150" r="30" fill="#E9F9F6"/>
+            <path d="M92 156c0-7 6-12 13-12 2-8 9-13 17-13 9 0 17 6 19 15 6 1 11 6 11 12 0 7-6 12-13 12H98c-7 0-13-5-13-14z" fill="#14B8A6"/>
+          </g>
+
+          <!-- node: gear / automation 
+          <g class="float-c">
+            <circle cx="350" cy="150" r="30" fill="#EAF1F8"/>
+            <circle cx="350" cy="150" r="14" fill="none" stroke="#0A2647" stroke-width="4"/>
+            <circle cx="350" cy="150" r="4" fill="#0A2647"/>
+            <g stroke="#0A2647" stroke-width="4" stroke-linecap="round">
+              <line x1="350" y1="130" x2="350" y2="124"/>
+              <line x1="350" y1="176" x2="350" y2="170"/>
+              <line x1="330" y1="150" x2="324" y2="150"/>
+              <line x1="376" y1="150" x2="370" y2="150"/>
+            </g>
+          </g>
+
+          <!-- node: doc / idea below left 
+          <g class="float-b">
+            <rect x="82" y="220" width="56" height="44" rx="8" fill="#0A2647"/>
+            <rect x="92" y="230" width="36" height="4" rx="2" fill="#14B8A6"/>
+            <rect x="92" y="238" width="26" height="4" rx="2" fill="#5A7FA3"/>
+            <rect x="92" y="246" width="30" height="4" rx="2" fill="#5A7FA3"/>
+          </g>
+
+          <!-- node: chart / growth below right 
+          <g class="float-a">
+            <rect x="322" y="220" width="56" height="44" rx="8" fill="#14B8A6"/>
+            <polyline points="332,252 344,238 356,246 368,228" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="368" cy="228" r="3" fill="#fff"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============ RIGHT SIDE / FORM ============ 
+     <div class="right-col">
+      <div class="form-card">
+        <h2 class="form-title">Tell us about your project</h2>
+
+        <form id="contactForm" novalidate>
+
+          <div class="field" id="field-name">
+            <label for="fullName">Full Name <span class="req">*</span></label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" autocomplete="name">
+            <div class="error-msg">Please enter your name.</div>
+          </div>
+
+          <div class="field" id="field-company">
+            <label for="company">Company / Business Name <span class="optional">(Optional)</span></label>
+            <input type="text" id="company" name="company" placeholder="Enter your company name" autocomplete="organization">
+          </div>
+
+          <div class="field" id="field-email">
+            <label for="email">Business Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" placeholder="example@company.com" autocomplete="email">
+            <div class="error-msg">Please enter a valid email address.</div>
+          </div>
+
+          <div class="field" id="field-phone">
+            <label for="phone">Phone Number <span class="optional">(Optional)</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" autocomplete="tel">
+          </div>
+
+          <div class="field" id="field-service">
+            <label for="service">Service Required <span class="req">*</span></label>
+            <select id="service" name="service">
+              <option value="" selected disabled>Select a service</option>
+              <option>Custom Software Development</option>
+              <option>Web Application Development</option>
+              <option>Mobile Application Development</option>
+              <option>Business Automation</option>
+              <option>AI Solutions</option>
+              <option>Cloud Solutions</option>
+              <option>Consultation</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field" id="field-description">
+            <label for="description">Project Description <span class="req">*</span></label>
+            <textarea id="description" name="description" placeholder="Tell us about your business, the problem you're facing, and the software solution you're looking for."></textarea>
+            <div class="error-msg">Please describe your project.</div>
+          </div>
+
+          <div class="field" id="field-upload">
+            <label for="fileInput">Attach Requirement Document <span class="optional">(Optional)</span></label>
+            <div class="upload-box" id="uploadBox">
+              <div class="upload-icon">📎</div>
+              <div class="upload-label">Upload PDF, DOCX, PPT or Images</div>
+              <div class="upload-hint">Max file size 10 MB</div>
+            </div>
+            <input type="file" id="fileInput" accept=".pdf,.doc,.docx,.ppt,.pptx,.jpg,.jpeg,.png">
+            <div class="upload-filename" id="uploadFilename">
+              <span>📄</span>
+              <span id="uploadFilenameText"></span>
+              <button type="button" id="removeFile" aria-label="Remove file">✕</button>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Inquiry <span class="arrow">→</span>
+          </button>
+
+          <p class="privacy-note">By submitting this form, you agree to our <a href="#">Privacy Policy</a>.</p>
+
+          <!-- <div class="contact-info">
+            <div>📧 <a href="mailto:contact@nexsham.com">contact@nexsham.com</a></div>
+            <div>🌐 <a href="https://www.nexsham.com" target="_blank" rel="noopener">www.nexsham.com</a></div>
+            <div>📍 India</div>
+          </div> 
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ SUCCESS MODAL ============ --
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box">
+    <span class="modal-emoji">🎉</span>
+    <h3>Thank You!</h3>
+    <p>We've received your inquiry. Our team will review your project and contact you within 0-24 hours.</p>
+    <button class="modal-btn" id="backHomeBtn">Back to Home</button>
+  </div>
+</div>
+      </section> -->
+
+    </article>
+
+  </main>
+
+
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+
+    <img
+        src="/images/favicon.png"
+        alt="NexSham Technologies Logo"
+        class="brand-logo"
+    >
+
+    <div class="brand-info">
+        <span class="brand-name">NEXSHAM </span>
+        <span class="brand-subname"> TECHNOLOGIES</span>
+    </div>
+
+</div>
+
+<div class="brand-tagline">
+    Building technology for what's next.
+</div>
+
+<p>
+    We build custom software solutions that help businesses
+    automate, scale and achieve long-term growth.
+</p>
+        <div class="socials">
+          <!-- facebook -->
+          <!-- <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a> -->
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@nexshamtechnologies" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="/header/our_process.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="/header/career.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="/footer/blog.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="/header/book_consultation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/services/custom_software_development.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <!-- <li><a href="/services/web_application_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li> -->
+          <li><a href="/services/mobile_app_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="/services/cloud_solutions.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="/services/ai_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <!-- <li><a href="/services/qa_and_testing.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li> -->
+          <li><a href="/services/maintanence_and_support.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+          <li><a href="/services/business_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Business Automation</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <!-- <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/industry/healthcare.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="/industry/retail_and_Ecommerce.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="/industry/finance_and_banking.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="/industry/education.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="/industry/manufacturing.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="/industry/logistics_and_supply_chain.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="/industry/realestate.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="/header/industries.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+          
+        </ul>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/case_studies.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="/footer/portfolio.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="/footer/faq.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="/footer/documentation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="/footer/privacy_policy.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="/footer/terms_and_condition.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 88590 01102</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br></p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/footer/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="footer/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+  <!-- 
+    - #GO TO TOP
+  -->
+
+  <a href="#top" class="go-top active" data-go-top>
+    <ion-icon name="chevron-up-outline"></ion-icon>
+  </a>
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+
+  <script src="./js/script.js"></script>
+  <script src="./process/process.js"></script>
+  <script src="./tech-stack/tech.js"></script>
+  <script src="./hero/hero.js"></script>
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init({
+    publicKey: "ZSe5k6AggYEZjjD04",
+});
+</script>
+
+  <script>
+      const form = document.getElementById('contactForm');
+  const successModal = document.getElementById('successModal');
+  const backHomeBtn = document.getElementById('backHomeBtn');
+
+  const uploadBox = document.getElementById('uploadBox');
+  const fileInput = document.getElementById('fileInput');
+  const uploadFilename = document.getElementById('uploadFilename');
+  const uploadFilenameText = document.getElementById('uploadFilenameText');
+  const removeFileBtn = document.getElementById('removeFile');
+
+  const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
+
+  // ---- Upload interactions ----
+  uploadBox.addEventListener('click', () => fileInput.click());
+
+  uploadBox.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadBox.classList.add('dragover');
+    });
+  uploadBox.addEventListener('dragleave', () => {
+    uploadBox.classList.remove('dragover');
+  });
+  uploadBox.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadBox.classList.remove('dragover');
+    if (e.dataTransfer.files.length) {
+      fileInput.files = e.dataTransfer.files;
+      handleFileSelect();
+    }
+  });
+
+  fileInput.addEventListener('change', handleFileSelect);
+
+  function handleFileSelect(){
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE) {
+      alert('File is too large. Please upload a file under 10 MB.');
+      fileInput.value = '';
+      return;
+    }
+
+    uploadFilenameText.textContent = file.name;
+    uploadFilename.classList.add('show');
+    uploadBox.style.display = 'none';
+  }
+
+  removeFileBtn.addEventListener('click', () => {
+    fileInput.value = '';
+    uploadFilename.classList.remove('show');
+    uploadBox.style.display = 'block';
+  });
+
+  // ---- Validation helpers ----
+  function setError(fieldId, isError){
+    const field = document.getElementById(fieldId);
+    field.classList.toggle('error', isError);
+  }
+
+  function isValidEmail(value){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+
+  // ---- Form submit ----
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const service = document.getElementById('service').value;
+    const description = document.getElementById('description').value.trim();
+
+    let valid = true;
+
+    if (!fullName){
+      setError('field-name', true);
+      valid = false;
+    } else {
+      setError('field-name', false);
+       }
+
+    if (!email || !isValidEmail(email)){
+      setError('field-email', true);
+      valid = false;
+    } else {
+      setError('field-email', false);
+    }
+
+    if (!description){
+      setError('field-description', true);
+      valid = false;
+    } else {
+      setError('field-description', false);
+    }
+
+    setError('field-service', !service);
+    if (!service) valid = false;
+
+    if (!valid){
+      const firstError = form.querySelector('.error');
+      if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Simulated submission (email dispatch handled server-side later)
+    const sendBtn = form.querySelector("button[type='submit']");
+    sendBtn.textContent = "Sending...";
+    sendBtn.disabled = true;
+
+    const templateParams = {
+        full_name: fullName,
+        company: document.getElementById("company").value.trim(),
+        email: email,
+        phone: document.getElementById("phone").value.trim(),
+        service: service,
+        description: description,
+        attachment: fileInput.files[0]
+            ? fileInput.files[0].name
+            : "No attachment"
+          };
+          emailjs.send(
+            "service_aypnrbn",
+            "template_ptfinhg",
+            templateParams
+          )
+          .then(() => {
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = "Send Inquiry →";
+            successModal.classList.add("show");
+          })
+          .catch((error) => {
+            sendBtn.disabled = false;
+            sendBtn.innerHTML = "Send Inquiry →";
+            alert("Something went wrong.\nPlease try again.");
+            console.error(error);
+          });
+        });
+        backHomeBtn.addEventListener('click', () => {
+    successModal.classList.remove('show');
+    form.reset();
+    uploadFilename.classList.remove('show');
+    uploadBox.style.display = 'block';
+    document.querySelectorAll('.field.error').forEach(f => f.classList.remove('error'));
+  });
+
+  successModal.addEventListener('click', (e) => {
+    if (e.target === successModal) {
+      successModal.classList.remove('show');
+    }
+  });
+  </script>
+
+  <script>
+  const items = document.querySelectorAll('.faq-item');
+
+  function setMaxHeight(item, open){
+    const answer = item.querySelector('.faq-answer');
+    if(open){
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    } else {
+      answer.style.maxHeight = '0px';
+    }
+  }
+
+  items.forEach(item => {
+    // init state
+    setMaxHeight(item, item.classList.contains('active'));
+
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isActive = item.classList.contains('active');
+      items.forEach(other => {
+        other.classList.remove('active');
+        setMaxHeight(other, false);
+      });
+      if(!isActive){
+        item.classList.add('active');
+        setMaxHeight(item, true);
+      }
+    });
+  });
+  window.addEventListener('resize', () => {
+    items.forEach(item => {
+      if(item.classList.contains('active')) setMaxHeight(item, true);
+    });
+  });
+</script>
+
+<script>
+  const categories = [
+    {
+      id: "uiux", label: "UI/UX", icon: "🎨",
+      title: "UI/UX Design Tools",
+      desc: "Design tools we use to craft intuitive interfaces and pixel-perfect user experiences before a single line of code is written.",
+      items: [
+        { name: "Figma", icon: "🎨" },
+        { name: "Adobe XD", icon: "◈" },
+        { name: "Photoshop", icon: "🖌" },
+        { name: "Illustrator", icon: "✏️" },
+      ]
+    },
+    {
+      id: "frontend", label: "Frontend", icon: "💻",
+      title: "Frontend Technologies",
+      desc: "Modern frontend frameworks and libraries for building responsive, fast and scalable web applications.",
+      items: [
+        { name: "HTML5", icon: "🌐" },
+        { name: "CSS3", icon: "🎨" },
+        { name: "JavaScript", icon: "JS" },
+        { name: "TypeScript", icon: "TS" },
+        { name: "React", icon: "⚛" },
+        { name: "Next.js", icon: "▲" },
+        { name: "Bootstrap", icon: "🅱" },
+        { name: "Tailwind CSS", icon: "〰" },
+      ]
+    },
+    {
+      id: "backend", label: "Backend", icon: "⚙",
+      title: "Backend Technologies",
+      desc: "Robust server-side frameworks and languages that power reliable APIs and business logic.",
+      items: [{ name: "Node.js", icon: "🟢" },
+        { name: "Express.js", icon: "🚂" },
+        { name: "Python", icon: "🐍" },
+        { name: "Java", icon: "☕" },
+        { name: "Spring Boot", icon: "🌱" },
+        { name: "PHP", icon: "🐘" },
+        { name: "FastAPI", icon: "⚡" },
+      ]
+    },
+    {
+      id: "mobile", label: "Mobile", icon: "📱",
+      title: "Mobile Development",
+      desc: "Cross-platform and native tools we use to ship polished mobile apps on iOS and Android.",
+      items: [
+        { name: "Flutter", icon: "🦋" },
+        { name: "React Native", icon: "⚛" },
+        { name: "Android", icon: "🤖" },
+        { name: "Kotlin", icon: "🎯" },
+        { name: "Swift", icon: "🐦" },
+      ]
+    },
+    {
+      id: "database", label: "Database", icon: "🗄",
+      title: "Database Technologies",
+      desc: "Relational and NoSQL databases chosen to fit the shape and scale of your data.",
+      items: [
+        { name: "MySQL", icon: "🐬" },
+        { name: "PostgreSQL", icon: "🐘" },
+        { name: "MongoDB", icon: "🍃" },
+        { name: "Firebase", icon: "🔥" },
+        { name: "Redis", icon: "🔴" },
+      ]
+    },
+    {
+      id: "cloud", label: "Cloud", icon: "☁",
+      title: "Cloud Infrastructure",
+      desc: "Cloud platforms and hosting services we rely on for scalable, always-on deployments.",
+      items: [
+        { name: "AWS", icon: "☁" },
+        { name: "Azure", icon: "🔷" },
+        { name: "Google Cloud", icon: "☁" },
+        { name: "Vercel", icon: "▲" },
+        { name: "Render", icon: "🅁" },
+        { name: "Netlify", icon: "🌐" },
+      ]
+    },
+    {
+      id: "devops", label: "DevOps", icon: "🚀",
+      title: "DevOps & Deployment",
+      desc: "Tools that automate builds, deployments, and infrastructure so releases stay fast and reliable.",
+      items: [
+        { name: "Docker", icon: "🐳" },
+        { name: "Kubernetes", icon: "☸" },
+        { name: "GitHub Actions", icon: "🐙" },
+        { name: "Jenkins", icon: "🎩" },
+        { name: "Nginx", icon: "🌐" },
+      ]
+    },
+    {
+      id: "aiml", label: "AI / ML", icon: "🤖",
+      title: "AI & Machine Learning",
+      desc: "Frameworks and platforms we use to build intelligent features, from chatbots to predictive models.",
+      items: [
+        { name: "OpenAI", icon: "🧠" },
+        { name: "Python", icon: "🐍" },
+        { name: "TensorFlow", icon: "🔶" },
+        { name: "PyTorch", icon: "🔥" },
+        { name: "LangChain", icon: "🔗" },
+        { name: "Hugging Face", icon: "🤗" },
+      ]
+    },
+    {
+      id: "security", label: "Security", icon: "🔒",
+      title: "Security & Compliance",
+      desc: "Standards and tools we build in from day one to keep applications and data protected.",
+      items: [
+        { name: "JWT", icon: "🔑" },
+        { name: "OAuth", icon: "🔐" },
+        { name: "SSL", icon: "🔒" },
+        { name: "Cloudflare", icon: "☁" },
+        { name: "OWASP", icon: "🛡" },
+      ]
+    },
+    {
+      id: "crmerp", label: "CRM/ERP", icon: "🏢",
+      title: "CRM & ERP Systems",
+      desc: "Business platforms we integrate with to connect your software to sales, ops, and finance.",
+      items: [
+        { name: "Salesforce", icon: "☁" },
+        { name: "Zoho", icon: "📊" },
+        { name: "Odoo", icon: "🟣" },
+        { name: "SAP", icon: "🔷" },
+      ]
+    },
+    {
+      id: "automation", label: "Automation", icon: "⚡",
+      title: "Automation Tools",
+      desc: "Workflow automation platforms that connect your tools and remove repetitive manual work.",
+      items: [
+        { name: "n8n", icon: "🔀" },
+        { name: "Zapier", icon: "⚡" },
+        { name: "Power Automate", icon: "🔄" },
+        { name: "Make", icon: "⚙" },
+        { name: "Apache Airflow", icon: "🌬" },
+      ]
+    },
+  ];
+
+  const pillRail = document.getElementById("pillRail");
+  const catTitle = document.getElementById("catTitle");
+  const catDesc = document.getElementById("catDesc");
+  const cardGrid = document.getElementById("cardGrid");
+
+  let activeId = categories[1].id; // default to Frontend, matches spec's default example
+
+  function renderPills(){
+    pillRail.innerHTML = categories.map(cat => `
+      <button class="pill ${cat.id === activeId ? 'active' : ''}" data-id="${cat.id}">
+        <span class="ico">${cat.icon}</span>
+        <span>${cat.label}</span>
+      </button>
+    `).join("");
+
+    pillRail.querySelectorAll(".pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-id");
+        if (id === activeId) return;
+        switchCategory(id);
+      });
+    });
+  }
+
+  function renderContent(cat){
+    catTitle.textContent = cat.title;
+    catDesc.textContent = cat.desc;
+    cardGrid.innerHTML = cat.items.map(item => `
+      <div class="tech-card">
+        <span class="glyph">${item.icon}</span>
+        <span class="name">${item.name}</span>
+      </div>
+    `).join("");
+  }function switchCategory(id){
+    activeId = id;
+    renderPills();
+    cardGrid.classList.add("is-animating");
+    setTimeout(() => {
+      const cat = categories.find(c => c.id === id);
+      renderContent(cat);
+      cardGrid.classList.remove("is-animating");
+    }, 300);
+  }
+
+  renderPills();
+  renderContent(categories.find(c => c.id === activeId));
+</script>
+
+<script>
+  const menuBtn = document.querySelector(".menu-btn");
+const navLinks = document.querySelector(".nav-links");
+
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+    });
+}
+</script>
+
+
+</body>
+
+</html>

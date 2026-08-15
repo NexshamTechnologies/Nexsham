@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Insurance Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#241722;
+    --ink-soft:#6B5D68;
+    --pink-900:#5C0F38;
+    --pink-800:#7A1348;
+    --pink-700:#B3175F;
+    --pink-600:#E01B6F;
+    --pink-500:#F0428C;
+    --rose-100:#FDECF3;
+    --rose-200:#FBD9E7;
+    --paper:#FFFBFC;
+    --white:#ffffff;
+    --line:#F4E3EC;
+    --green:#1FAE6C;
+    --amber:#D98B25;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(160,15,80,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--pink-700); background:var(--rose-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--ink); font-weight:800; }
+  .section-head{ text-align:center; max-width:660px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:72px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+  /* ---------- HERO ---------- */
+  .hero{ background:var(--paper); padding:44px 0 0; }
+  .crumb{ color:var(--ink-soft); font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#CDB3C2; margin:0 6px; }
+  .crumb b{ color:var(--ink); font-weight:600; }
+  .hero-grid{ display:grid; grid-template-columns:0.95fr 1.35fr; gap:50px; align-items:center; padding-bottom:70px;}
+  .hero-copy h1{ color:var(--ink); font-size:36px; line-height:1.18; font-weight:800; margin-bottom:20px;}
+  .hero-copy h1 .grad{ color:var(--pink-600); }
+  .hero-copy p{ color:var(--ink-soft); font-size:15px; line-height:1.7; max-width:420px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:20px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:var(--ink); font-size:13px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:var(--rose-100);
+    display:flex; align-items:center; justify-content:center; color:var(--pink-600); font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--pink-600),var(--pink-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(224,27,111,0.5);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid var(--line); color:var(--ink); padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:40px;}
+  .dash-card{
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:0;
+    position:relative; z-index:2; display:grid; grid-template-columns:150px 1fr; overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .dash-nav{ background:linear-gradient(180deg,var(--pink-600),var(--pink-800)); padding:18px 12px; display:flex; flex-direction:column; gap:2px;}
+  .dash-brand{ display:flex; flex-direction:column; align-items:flex-start; gap:2px; font-family:'Sora',sans-serif; font-weight:700; font-size:12px; color:#fff; margin-bottom:16px; padding:0 6px;}
+  .dash-brand .mark{ width:26px; height:26px; border-radius:7px; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+  .dash-brand small{ font-weight:400; font-size:9px; color:#FBD9E7; }
+  .dash-nav a{ font-size:11.5px; color:#FBD9E7; padding:8px 10px; border-radius:8px; font-weight:500; }
+  .dash-nav a.on{ background:rgba(255,255,255,0.22); color:#fff; }
+  .dash-main{ padding:18px; }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;}
+  .dash-top h4{ font-size:16px; color:var(--ink); }
+  .dash-icons{ display:flex; align-items:center; gap:12px; }
+  .dash-icons span{ font-size:11.5px; color:var(--ink-soft); }
+  .dash-icons .bell{ width:24px; height:24px; border-radius:50%; background:var(--rose-100); display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--pink-700);}
+  .dash-user{ display:flex; align-items:center; gap:8px; }
+  .dash-avatar{ width:28px; height:28px; border-radius:50%; background:var(--rose-200); }
+  .dash-user div span{ display:block; font-size:11px; font-weight:600; color:var(--ink);}
+  .dash-user div small{ font-size:9px; color:var(--ink-soft); }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:16px; font-weight:700; color:var(--ink);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-bottom:14px;}
+  .panel{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:56px; }
+  .donut{ display:flex; align-items:center; gap:10px; }
+  .donut svg{ flex-shrink:0; }
+  .donut ul{ list-style:none; font-size:9.5px; color:var(--ink-soft); }
+  .donut li{ display:flex; align-items:center; gap:5px; margin-bottom:3px;}
+  .donut i{ width:6px; height:6px; border-radius:50%; display:inline-block;}
+  .donut .big{ text-align:center; }
+  .donut .big b{ display:block; font-size:15px; color:var(--ink); }
+  .two-list{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .tx-list{ background:#FDF7FA; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .tx-row{ display:flex; align-items:center; gap:8px; font-size:10px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .tx-row:last-child{ border:none; }
+  .tx-row b{ color:var(--ink); font-weight:600; display:block; font-size:10.5px;}
+  .tx-icon{ width:20px; height:20px; border-radius:6px; background:var(--rose-100); color:var(--pink-700); display:flex; align-items:center; justify-content:center; font-size:10px; flex-shrink:0;}
+  .tag{ font-size:9px; font-weight:700; padding:2px 7px; border-radius:99px; margin-left:auto;}
+  .tag.settled{ background:#DEF7EA; color:var(--green); }
+  .tag.process{ background:#FFF1D6; color:var(--amber); }
+  .tag.pending{ background:#FDE3EC; color:var(--pink-600); }
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-30px; width:190px; background:#fff;
+    border-radius:22px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #241722;
+  }
+  .phone-hi{ font-size:13px; font-weight:700; color:var(--ink); margin-bottom:2px;}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .phone-stat{ background:linear-gradient(135deg,var(--pink-600),var(--pink-500)); border-radius:10px; padding:10px; color:#fff; margin-bottom:10px;}
+  .phone-stat .l{ font-size:9px; opacity:0.85; }
+  .phone-stat .v{ font-size:16px; font-weight:800; margin:2px 0;}
+  .phone-stat .c{ font-size:8.5px; opacity:0.9;}
+  .phone-list-title{ font-size:10px; font-weight:700; color:var(--ink); margin-bottom:6px;}
+  .phone-row{ display:flex; justify-content:space-between; font-size:9px; margin-bottom:6px; color:var(--ink-soft);}
+  .phone-row b{ color:var(--ink); font-size:9px; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#B79DAE; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.8; font-weight:700; font-size:17px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--pink-600),var(--pink-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--ink); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--pink-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--pink-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(8,1fr); gap:12px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:18px 8px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--pink-500); }
+  .mod-icon{
+    width:38px; height:38px; border-radius:10px; background:var(--rose-100); color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:16px;
+  }
+  .mod-card h4{ font-size:12px; margin-bottom:6px; }
+  .mod-card p{ font-size:10.5px; color:var(--ink-soft); line-height:1.45; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 30px; background:var(--paper); }
+  .steps{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:24px; left:6%; right:6%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 4px;}
+  .step .num{
+    width:48px; height:48px; border-radius:50%; background:#fff; border:2px solid var(--pink-500);
+    color:var(--pink-700); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:14px;
+    margin:0 auto 14px;
+  }
+  .step .n{ font-size:11px; font-weight:700; color:var(--pink-500); margin-bottom:6px; display:block;}
+  .step h4{ font-size:13px; margin-bottom:6px; color:var(--ink);}
+  .step p{ font-size:11px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE (bar) ---------- */
+  .why{ padding:50px 0 70px; background:var(--paper); }
+  .why-bar{ background:var(--rose-100); border-radius:18px; padding:30px; }
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ display:flex; align-items:flex-start; gap:10px; }
+  .why-icon{
+    width:38px; height:38px; border-radius:10px; background:#fff; color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .why-card h4{ font-size:13px; margin-bottom:4px; }
+  .why-card p{ font-size:11px; color:var(--ink-soft); line-height:1.4; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#B3175F,#E01B6F 55%, #F0428C);
+    border-radius:22px; padding:46px; display:grid; grid-template-columns:0.9fr 1.1fr 1fr; gap:24px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-illustration{
+    width:100%; height:150px; border-radius:16px; background:linear-gradient(160deg,#8E1350,#5C0F38);
+    display:flex; align-items:center; justify-content:center; font-size:52px;
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#FBCBE0; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:25px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14px; color:#FBE0EC; line-height:1.6; margin-bottom:22px; }
+  .cta-btns{ display:flex; gap:12px; flex-wrap:wrap;}
+  .cta-btns .btn-primary{ background:#fff; color:var(--pink-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.4); color:#fff; }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:36px; height:36px; border-radius:10px; background:rgba(255,255,255,0.18);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:15px;
+  }
+  .cta-point h5{ font-size:13.5px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12px; color:#FBE0EC; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--rose-100); color:var(--pink-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#2E1120; color:#CDB3C2; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#B092A5;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#9A7C8E; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+<style>
+  :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink-900);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; margin:0; padding:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:40px 48px 0;
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:44px;
+  }
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1199px){
+    .wrap{ padding:32px 28px 0; }
+    .footer-grid{
+      grid-template-columns:1fr 1fr 1fr;
+      row-gap:36px;
+    }
+    .footer-brand-col{ grid-column:1 / -1; }
+    .footer-brand-col p, .contact-card{ max-width:none; }
+    .contact-strip{ grid-template-columns:1fr 1fr; }
+    .site-footer{ padding-top:48px; }
+    .footer-inner{ padding:0 32px; }
+  }
+
+  @media (max-width: 768px){
+    .wrap{ padding:24px 18px 0; }
+    .cta-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:28px 24px;
+    }
+    .cta-actions{ width:100%; }
+    .cta-actions .btn{ flex:1; justify-content:center; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-strip{ grid-template-columns:1fr; }
+    .bottom-bar{ flex-direction:column; align-items:flex-start; }
+    .site-footer{ padding-top:40px; margin-top:28px; }
+    .footer-inner{ padding:0 20px; }
+  }
+
+  @media (max-width: 480px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .cta-text h2{ font-size:1.5rem; }
+    .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+  }
+</style>
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="brand">
+    <img src="/images/favicon.jpg" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#cta" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+   
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#" class="active">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">INSURANCE SOLUTIONS</span>
+        <h1>Smarter Insurance. Simplified Processes.<br><span class="grad">Stronger Relationships.</span></h1>
+        <p>We build digital insurance platforms that streamline policy management, automate claims and enhance customer experience.</p>
+        <div class="hero-badges">
+          <span><i>⚡</i>Faster Claims Processing</span>
+          <span><i>🛡</i>Better Risk Management</span>
+          <span><i>😊</i>Happy Customers</span>
+        </div>
+        <div class="hero-cta">
+          <a href="#" class="btn-primary">Get a Free Demo →</a>
+          <a href="#" class="btn-ghost">Talk to Our Experts</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-nav">
+            <div class="dash-brand"><span class="mark">N</span>NEXSHAM<small>INSURANCE</small></div>
+            <a class="on">📊 Dashboard</a>
+            <a>📋 Policies</a>
+            <a>📎 Claims</a>
+            <a>👤 Customers</a>
+            <a>🧑‍💼 Agents</a>
+            <a>💳 Payments</a>
+            <a>📄 Reports</a>
+            <a>📈 Analytics</a>
+            <a>⚙️ Settings</a>
+          </div>
+          <div class="dash-main">
+            <div class="dash-top">
+              <h4>Dashboard</h4>
+              <div class="dash-icons">
+                <span>May 1 – May 31, 2024 ▾</span>
+                <span class="bell">🔔</span>
+                <div class="dash-user"><div class="dash-avatar"></div><div><span>Rohit Sharma</span><small>Administrator</small></div></div>
+              </div>
+            </div>
+            <div class="stat-row">
+              <div class="stat-card"><div class="lbl">Total Policies</div><div class="val">12,540</div><div class="chg up">↑ 14.0%</div></div>
+              <div class="stat-card"><div class="lbl">Active Policies</div><div class="val">9,856</div><div class="chg up">↑ 12.4%</div></div>
+              <div class="stat-card"><div class="lbl">Claims Registered</div><div class="val">1,248</div><div class="chg up">↑ 18.7%</div></div>
+              <div class="stat-card"><div class="lbl">Claims Settled</div><div class="val">876</div><div class="chg up">↑ 15.3%</div></div>
+            </div>
+            <div class="panel-row">
+              <div class="panel">
+                <div class="ph"><span>Claims Overview</span><span>This Month</span></div>
+                <svg class="sparkline" viewBox="0 0 220 56" preserveAspectRatio="none">
+                  <polyline points="0,44 30,38 60,42 90,20 120,30 150,10 180,24 220,6" fill="none" stroke="#E01B6F" stroke-width="2.5"/>
+                </svg>
+                <div style="display:flex; justify-content:space-between; font-size:9px; color:var(--ink-soft);">
+                  <span>May 1</span><span>May 6</span><span>May 11</span><span>May 16</span><span>May 21</span><span>May 26</span><span>May 31</span>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="ph"><span>Claims Status</span></div>
+                <div class="donut">
+                  <svg width="64" height="64" viewBox="0 0 42 42">
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#E01B6F" stroke-width="6" stroke-dasharray="60 40" stroke-dashoffset="25"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#7A1348" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-35"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#F0A6C6" stroke-width="6" stroke-dasharray="10 90" stroke-dashoffset="-60"/>
+                    <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#3B0F26" stroke-width="6" stroke-dasharray="5 95" stroke-dashoffset="-70"/>
+                  </svg>
+                  <ul>
+                    <li><i style="background:#E01B6F"></i>Settled 60%</li>
+                    <li><i style="background:#7A1348"></i>In Process 25%</li>
+                    <li><i style="background:#F0A6C6"></i>Pending 10%</li>
+                    <li><i style="background:#3B0F26"></i>Rejected 5%</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="two-list">
+              <div class="tx-list">
+                <div class="ph"><span>Recent Claims</span><span>View All</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00125</b>Health Insurance · May 25, 2024</div><span class="tag settled">Settled</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00124</b>Motor Insurance · May 24, 2024</div><span class="tag process">In Process</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00123</b>Travel Insurance · May 23, 2024</div><span class="tag pending">Pending</span></div>
+                <div class="tx-row"><div class="tx-icon">📎</div><div><b>CLM-00122</b>Home Insurance · May 22, 2024</div><span class="tag settled">Settled</span></div>
+              </div>
+              <div class="tx-list">
+                <div class="ph"><span>Top Policies</span><span>View All</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Health Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">4,520</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Motor Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">3,210</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Term Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">2,450</span></div>
+                <div class="tx-row"><div class="tx-icon">👤</div><div><b>Travel Insurance</b></div><span style="margin-left:auto; font-weight:700; color:var(--ink);">1,855</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-hi">Hello, Rohit</div>
+          <div class="phone-mini">Here's your policy overview</div>
+          <div class="phone-stat">
+            <div class="l">Active Policies</div>
+            <div class="v">9,856</div>
+            <div class="c">↑ 12.4% from last month</div>
+          </div>
+          <div class="phone-list-title">Quick Actions</div>
+          <div style="display:flex; gap:6px; margin-bottom:12px;">
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">File Claim</div>
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">Pay Premium</div>
+            <div style="flex:1; background:var(--rose-100); border-radius:8px; padding:6px; text-align:center; font-size:8px; color:var(--pink-700); font-weight:600;">Documents</div>
+          </div>
+          <div class="phone-list-title">Policy Overview</div>
+          <div class="phone-row"><b>Health Insurance</b><span>4,520</span></div>
+          <div class="phone-row"><b>Motor Insurance</b><span>3,210</span></div>
+          <div class="phone-row"><b>Travel Insurance</b><span>1,230</span></div>
+          <div class="phone-row" style="margin-bottom:0;"><b>Term Insurance</b><span>805</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE INSURANCE SOLUTIONS</span>
+      <h2>End-to-End Solutions for Insurance Businesses</h2>
+      <p>From policy issuance to claims settlement, we've got everything covered.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📎</div>
+        <h3>Claims Portal</h3>
+        <p>Simplify claims registration, tracking and settlement.</p>
+        <ul class="feat-list">
+          <li>Online Claim Intimation</li><li>Document Upload</li><li>Claim Tracking</li><li>Settlement &amp; Payout</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Claims Portal →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📋</div>
+        <h3>Policy System</h3>
+        <p>Manage policies, endorsements, renewals and pricing with ease.</p>
+        <ul class="feat-list">
+          <li>Policy Issuance</li><li>Renewals &amp; Endorsements</li><li>Premium Management</li><li>Product Configuration</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Policy System →</a>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👤</div>
+        <h3>Customer Dashboard</h3>
+        <p>360° view of customers, policies, claims and communications.</p>
+        <ul class="feat-list">
+          <li>Customer Profile</li><li>Policy Overview</li><li>Claims History</li><li>Notifications &amp; Alerts</li>
+        </ul>
+        <a class="feat-link" href="#">Explore Customer Dashboard →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL FEATURES</span>
+      <h2>Built for Every Part of Your Insurance Business</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">📋</div><h4>Policy Management</h4><p>Create, manage &amp; renew policies.</p></div>
+      <div class="mod-card"><div class="mod-icon">📎</div><h4>Claims Management</h4><p>End-to-end claims processing.</p></div>
+      <div class="mod-card"><div class="mod-icon">💳</div><h4>Premium Collection</h4><p>Automate invoicing &amp; collections.</p></div>
+      <div class="mod-card"><div class="mod-icon">👥</div><h4>Customer Management</h4><p>Centralized customer database.</p></div>
+      <div class="mod-card"><div class="mod-icon">📈</div><h4>Reports &amp; Analytics</h4><p>Real-time insights &amp; dashboards.</p></div>
+      <div class="mod-card"><div class="mod-icon">🗄️</div><h4>Document Vault</h4><p>Secure document storage.</p></div>
+      <div class="mod-card"><div class="mod-icon">🛡️</div><h4>Compliance &amp; Audit</h4><p>Stay compliant with audit trails.</p></div>
+      <div class="mod-card"><div class="mod-icon">📱</div><h4>Mobile Access</h4><p>Manage on the go, anywhere.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR PROCESS</span>
+      <h2>A Smarter Way to Deliver Insurance</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">🔍</div><span class="n">01</span><h4>Understand</h4><p>Business needs &amp; requirements.</p></div>
+      <div class="step"><div class="num">📝</div><span class="n">02</span><h4>Plan</h4><p>Solution planning &amp; strategy.</p></div>
+      <div class="step"><div class="num">🎨</div><span class="n">03</span><h4>Design</h4><p>Design user-friendly platform.</p></div>
+      <div class="step"><div class="num">💻</div><span class="n">04</span><h4>Develop</h4><p>Build secure &amp; scalable solution.</p></div>
+      <div class="step"><div class="num">✅</div><span class="n">05</span><h4>Test</h4><p>Ensure quality, security &amp; compliance.</p></div>
+      <div class="step"><div class="num">🚀</div><span class="n">06</span><h4>Deploy</h4><p>Go live &amp; migrate seamlessly.</p></div>
+      <div class="step"><div class="num">🎧</div><span class="n">07</span><h4>Support</h4><p>24/7 support &amp; continuous improvement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow" style="display:block; text-align:center; width:fit-content; margin:0 auto 12px;">WHY INSURANCE BUSINESSES CHOOSE NEXSHAM</span>
+    <div class="why-bar">
+      <div class="why-grid">
+        <div class="why-card"><div class="why-icon">⚡</div><div><h4>Faster Claims Settlement</h4><p>Reduce turnaround time &amp; improve satisfaction.</p></div></div>
+        <div class="why-card"><div class="why-icon">⚙️</div><div><h4>Operational Efficiency</h4><p>Automate workflows &amp; reduce manual work.</p></div></div>
+        <div class="why-card"><div class="why-icon">🛡️</div><div><h4>Better Risk Management</h4><p>Data-driven insights to manage risk.</p></div></div>
+        <div class="why-card"><div class="why-icon">📜</div><div><h4>Regulatory Compliance</h4><p>Built-in compliance &amp; audit controls.</p></div></div>
+        <div class="why-card"><div class="why-icon">📶</div><div><h4>Scalable Solutions</h4><p>Grow your business with flexible solutions.</p></div></div>
+        <div class="why-card"><div class="why-icon">🎧</div><div><h4>24/7 Support</h4><p>We're here whenever you need us.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="cta-illustration">🛡️</div>
+    <div>
+      <div class="cta-eyebrow">READY TO TRANSFORM YOUR INSURANCE BUSINESS?</div>
+      <h2>Let's Build a More Secure Tomorrow</h2>
+      <p>Partner with Nexsham to streamline operations, reduce costs and deliver better customer experiences.</p>
+      <div class="cta-btns">
+        <a href="#" class="btn-primary">Get a Free Demo</a>
+        <a href="#" class="btn-ghost">Talk to Our Experts</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our insurance experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your business needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Go live in weeks, not months.</span></div></div>
+      <div class="cta-point"><div class="ic">🎧</div><div><h5>Ongoing Support</h5><span>We're here whenever you need us.</span></div></div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+          <div class="brand-mark">N</div>
+          <span class="brand-name">NEXSHAM</span>
+        </div>
+        <p>We build custom software solutions that help businesses automate, scale and achieve long-term growth.</p>
+
+        <div class="socials">
+          <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>123 Business Park, Sector 62,<br>Noida, Uttar Pradesh 201301, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 98765 43210<br>+91 120 456 7890</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>hello@nexsham.com<br>contact@nexsham.com</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2024 Nexsham Technologies Pvt. Ltd. All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="#">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="#">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+</body>
+</html>

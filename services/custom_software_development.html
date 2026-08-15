@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXSHAM Technologies | Custom Software Development</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#0a1330;
+    --navy-900:#0d1840;
+    --navy-800:#111e4d;
+    --blue-600:#3b5cf5;
+    --blue-500:#4d6bff;
+    --blue-100:#e8edff;
+    --purple-500:#8b5cf6;
+    --green-500:#10b981;
+    --ink-900:#101528;
+    --ink-700:#3a4156;
+    --ink-500:#6b7280;
+    --ink-400:#94a0b8;
+    --bg-soft:#f4f6fb;
+    --white:#ffffff;
+    --border:#e6e9f2;
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --shadow-card: 0 10px 30px -12px rgba(16,24,64,0.12);
+    --shadow-btn: 0 12px 24px -10px rgba(59,92,245,0.45);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink-900);
+    background:var(--white);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Sora', sans-serif;}
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{position:relative;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:15px;
+    padding:13px 24px;
+    border-radius:10px;
+    border:1.5px solid transparent;
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
+  }
+  .btn svg{width:16px; height:16px; flex-shrink:0;}
+  .btn-primary{
+    background:var(--blue-600);
+    color:#fff;
+    box-shadow:var(--shadow-btn);
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 16px 30px -10px rgba(59,92,245,0.55); }
+  .btn-ghost-dark{
+    background:transparent;
+    color:#fff;
+    border-color:rgba(255,255,255,0.28);
+  }
+  .btn-ghost-dark:hover{ background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.5); }
+  .btn-ghost-light{
+    background:transparent;
+    color:#fff;
+    border-color:rgba(255,255,255,0.35);
+  }
+  .btn-ghost-light:hover{ background:rgba(255,255,255,0.1); }
+
+  /* ---------- Navbar ---------- */
+  .navbar{
+    position:sticky; top:0; z-index:100;
+    background:var(--navy-950);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+ .nav-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 16px 32px;
+}
+  
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    white-space:nowrap;
+
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+
+    flex-shrink:0;
+}
+.logo-text{
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+  .logo-img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
+}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    margin-left:40px;
+}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:15px;
+    font-weight:500;
+
+    gap:5px;
+
+    transition:.2s;
+}
+  .nav-links a:hover{ color:#fff; }
+  .nav-links svg{width:13px;height:13px;}
+  .nav-cta{ margin-left:auto; display:flex; align-items:center;  }
+  .nav-toggle{ margin-left:10px;display:none; background:none; border:none; color:#fff; cursor:pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 82% 10%, rgba(77,107,255,0.20), transparent 60%),
+      linear-gradient(180deg, var(--navy-950) 0%, var(--navy-900) 100%);
+    padding:72px 32px 96px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:0.3px;
+    color:#b9c6ff;
+    background:rgba(77,107,255,0.16);
+    border:1px solid rgba(94,120,255,0.35);
+    padding:7px 16px;
+    border-radius:100px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:46px;
+    line-height:1.12;
+    font-weight:700;
+    color:#fff;
+    letter-spacing:-0.5px;
+    margin-bottom:20px;
+  }
+  .hero p{
+    font-size:16.5px;
+    line-height:1.7;
+    color:rgba(255,255,255,0.68);
+    max-width:520px;
+    margin-bottom:30px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    margin-bottom:36px;
+    flex-wrap:wrap;
+  }
+  .hero-trust{
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+  .trust-item{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-size:14px;
+    color:rgba(255,255,255,0.75);
+    font-weight:500;
+  }
+  .trust-check{
+    width:20px;height:20px;
+    border-radius:50%;
+    background:var(--blue-600);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .trust-check svg{width:11px;height:11px;}
+
+  /* Hero visual */
+  .hero-visual{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .laptop{
+    position:relative;
+    width:380px;
+    z-index:2;
+  }
+  .laptop-screen{
+    background:linear-gradient(160deg,#1b2a66,#0d1840);
+    border:6px solid #14204f;
+    border-radius:16px 16px 4px 4px;
+    padding:18px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .laptop-screen-inner{
+    background:rgba(77,107,255,0.12);
+    border-radius:8px;
+    height:200px;
+    padding:16px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+  }
+  .code-line{ height:8px; border-radius:4px; background:rgba(255,255,255,0.18); }
+  .laptop-base{
+    height:16px;
+    background:linear-gradient(160deg,#3a5be0,#2340c9);
+    border-radius:0 0 20px 20px;
+    margin:0 -14px;
+    box-shadow:0 10px 20px -6px rgba(0,0,0,0.4);
+  }
+  .laptop-base:before{
+    content:"";
+    display:block;
+    width:60px;height:6px;
+    background:rgba(255,255,255,0.25);
+    border-radius:0 0 6px 6px;
+    margin:0 auto;
+  }
+  .float-card{
+    position:absolute;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 20px 40px -14px rgba(10,17,50,0.35);
+    padding:14px;
+    z-index:3;
+  }
+  .float-card.card-code{
+    top:2%; right:0%;
+    background:linear-gradient(135deg,#4d6bff,#2a3fb0);
+    width:56px;height:56px;
+    display:flex;align-items:center;justify-content:center;
+    border-radius:14px;
+  }
+  .float-card.card-code svg{ width:26px;height:26px; color:#fff; }
+  .float-card.card-gear{
+    top:20%; left:-4%;
+    width:52px;height:52px;
+    background:linear-gradient(135deg,#1b2a66,#101a45);
+    border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+    border-radius:13px;
+  }
+  .float-card.card-gear svg{ width:24px;height:24px; color:#8fa2ff; }
+  .float-card.card-lines{
+    top:38%; left:-10%;
+    width:120px;
+    background:#122051;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .float-card.card-lines .code-line{ background:rgba(255,255,255,0.22); }
+  .float-card.card-doc{
+    top:44%; right:-10%;
+    width:150px;
+  }
+  .float-card.card-doc .code-line{ background:#e4e8f5; }
+  .float-card.card-chart{
+    bottom:2%; right:-6%;
+    width:104px;
+    display:flex; align-items:flex-end; gap:6px; height:76px;
+  }
+  .bar{ flex:1; background:linear-gradient(180deg,#4d6bff,#2a3fb0); border-radius:4px 4px 0 0; }
+
+  /* ---------- What We Build ---------- */
+  .section-soft{ background:var(--bg-soft); padding:96px 32px; }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head .eyebrow{
+    background:var(--blue-100);
+    color:var(--blue-600);
+    border:none;
+  }
+  .section-head h2{
+    font-size:34px;
+    font-weight:700;
+    color:var(--ink-900);
+    letter-spacing:-0.4px;
+    margin:14px 0 14px;
+  }
+  .section-head p{
+    color:var(--ink-500);
+    font-size:15.5px;
+    line-height:1.65;
+  }
+
+  .card-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .service-card{
+    background:#fff;
+    border-radius:var(--radius-lg);
+    padding:34px 30px;
+    box-shadow:var(--shadow-card);
+    border:1px solid var(--border);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:0 20px 40px -16px rgba(16,24,64,0.18); }
+  .icon-box{
+    width:52px;height:52px;
+    border-radius:13px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .icon-box svg{ width:24px; height:24px; color:#fff; }
+  .icon-blue{ background:linear-gradient(135deg,#4d6bff,#2a3fb0); }
+  .icon-purple{ background:linear-gradient(135deg,#a06bff,#7c3aed); }
+  .icon-green{ background:linear-gradient(135deg,#22d3a8,#0f9d78); }
+  .service-card h3{ font-size:19px; font-weight:700; margin-bottom:10px; color:var(--ink-900); }
+  .service-card p{ font-size:14.5px; color:var(--ink-500); line-height:1.65; margin-bottom:18px; }
+  .learn-more{
+    display:inline-flex; align-items:center; gap:6px;
+    color:var(--blue-600); font-weight:600; font-size:14.5px;
+    transition:gap .15s ease;
+  }
+  .learn-more svg{ width:14px;height:14px; }
+  .learn-more:hover{ gap:10px; }
+
+  /* ---------- Why Choose Us ---------- */
+  .section-white{ background:#fff; padding:96px 32px; }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    row-gap:40px;
+    column-gap:36px;
+  }
+  .feature-item{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+  }
+  .feature-icon{
+    width:46px;height:46px;
+    border-radius:12px;
+    background:var(--blue-100);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .feature-icon svg{ width:21px;height:21px; color:var(--blue-600); }
+  .feature-item h4{ font-size:16px; font-weight:700; margin-bottom:6px; color:var(--ink-900); }
+  .feature-item p{ font-size:14px; color:var(--ink-500); line-height:1.6; }
+
+  /* ---------- Process ---------- */
+  .process-track{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:16px;
+    margin-top:64px;
+  }
+  .process-track:before{
+    content:"";
+    position:absolute;
+    top:34px;
+    left:10%;
+    right:10%;
+    height:2px;
+    background:repeating-linear-gradient(90deg, var(--border) 0 8px, transparent 8px 16px);
+    z-index:0;
+  }
+  .process-step{
+    position:relative;
+    z-index:1;
+    text-align:center;
+    padding:0 8px;
+  }
+  .step-circle{
+    width:68px;height:68px;
+    border-radius:50%;
+    background:linear-gradient(150deg,#4d6bff,#2a3fb0);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 14px;
+    box-shadow:0 14px 24px -10px rgba(59,92,245,0.45);
+  }
+  .step-circle svg{ width:26px;height:26px; color:#fff; }
+  .step-num{
+    font-size:13px;
+    font-weight:700;
+    color:var(--blue-600);
+    margin-bottom:8px;
+    letter-spacing:0.5px;
+  }
+  .process-step h4{ font-size:16px; font-weight:700; margin-bottom:8px; color:var(--ink-900); }
+  .process-step p{ font-size:13.5px; color:var(--ink-500); line-height:1.6; }
+
+  /* ---------- CTA Banner ---------- */
+  .cta-banner{
+    background:linear-gradient(120deg, var(--navy-950), var(--navy-800));
+    margin:0 32px 40px;
+    border-radius:24px;
+    padding:44px 48px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:32px;
+    flex-wrap:wrap;
+  }
+  .cta-left{ display:flex; align-items:center; gap:22px; }
+  .cta-icon{
+    width:64px;height:64px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#4d6bff,#2a3fb0);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .cta-icon svg{ width:28px;height:28px; color:#fff; }
+  .cta-text .eyebrow{
+    background:transparent; border:none; padding:0;
+    color:#8fa2ff;
+    margin-bottom:8px;
+    display:block;
+  }
+  .cta-text h3{ font-size:25px; font-weight:700; color:#fff; margin-bottom:8px; }
+  .cta-text p{ font-size:14.5px; color:rgba(255,255,255,0.65); max-width:460px; line-height:1.6; }
+  .cta-actions{ display:flex; gap:14px; flex-shrink:0; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 980px){
+    .nav-links{ display:none; }
+    .nav-toggle{ display:block; }
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-visual{ height:340px; order:-1; }
+    .card-grid{ grid-template-columns:1fr; }
+    .feature-grid{ grid-template-columns:1fr 1fr; }
+    .process-track{ grid-template-columns:1fr 1fr; row-gap:36px; }
+    .process-track:before{ display:none; }
+    .cta-banner{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width: 560px){
+    .hero h1{ font-size:34px; }
+    .feature-grid{ grid-template-columns:1fr; }
+    .process-track{ grid-template-columns:1fr; }
+    .hero-actions .btn, .cta-actions .btn{ width:100%; justify-content:center; }
+    .hero-actions{ flex-direction:column; }
+    .cta-actions{ flex-direction:column; width:100%; }
+    .cta-banner{ padding:34px 26px; }
+    .float-card{ display:none; }
+  }
+
+  
+
+
+    :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+    .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1.55fr 1fr 1fr 1fr;
+    gap:28px;
+    padding-bottom:2px;
+    align-items:start;
+}
+.footer-contact-col{
+    display:flex;
+    align-items:flex-start;
+    padding-top:18px;
+}
+
+.footer-contact-col .contact-card{
+    width:100%;
+    max-width:370px;
+    min-height:135px;
+    box-sizing:border-box;
+}
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+    margin-top:125px;
+    margin-left:-25px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ---------- RESPONSIVE ---------- */
+@media (max-width: 1199px){
+    .wrap{
+        padding:32px 28px 0;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr 1fr;
+        row-gap:36px;
+    }
+
+    .footer-brand-col{
+        grid-column:auto;
+    }
+
+    .footer-brand-col p,
+    .contact-card{
+        max-width:none;
+    }
+
+    .contact-strip{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .site-footer{
+        padding-top:48px;
+    }
+
+    .footer-inner{
+        padding:0 32px;
+    }
+}
+
+  @media (max-width: 768px){
+    .wrap{ padding:24px 18px 0; }
+    .cta-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:28px 24px;
+    }
+    .cta-actions{ width:100%; }
+    .cta-actions .btn{ flex:1; justify-content:center; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-strip{ grid-template-columns:1fr; }
+    .bottom-bar{ flex-direction:column; align-items:flex-start; }
+    .site-footer{ padding-top:40px; margin-top:28px; }
+    .footer-inner{ padding:0 20px; }
+  }
+
+  @media (max-width: 480px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .cta-text h2{ font-size:1.5rem; }
+    .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+  }
+
+ .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.brand-logo{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.brand-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.brand-name{
+    font-family:var(--font-head);
+    font-size:1.22rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:.6px;
+    line-height:1;
+}
+
+.brand-subname{
+    display:block;
+    margin-top:5px;
+
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:3px;
+
+    color:var(--teal-300);
+}
+.brand-tagline{
+    margin:18px 0 8px;
+
+    font-family:var(--font-head);
+    font-size:.82rem;
+    font-weight:600;
+
+    color:#dce4f7;
+}
+
+.footer-brand-col > p{
+    font-size:0.9rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:310px;
+    margin:0 0 22px;
+}
+
+
+</style>
+
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="https://nexsham.com" class="logo">
+    <!-- Your Logo -->
+    <img src="/images/favicon.png" alt="NexSham Logo" class="logo-img">
+
+    <span class="logo-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html">Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      <a href="/header/our_process.html">Our Process</a>
+      <a href="/header/career.html">Career</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/header/book_consultation.html" class="btn btn-primary">Book Free Consultation <span>→</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<br>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">Custom Software Development</span>
+      <h1>Custom Software Development</h1>
+      <p>We build tailor-made software solutions that streamline your business processes, enhance productivity, and drive growth. From ERP systems to business portals, we create solutions that fit your unique needs.</p>
+      <div class="hero-actions">
+        <a href="/header/book_consultation.html" class="btn btn-primary">Start Your Project
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27d%20like%20to%20talk%20to%20your%20experts%20about%20a%20project."
+    class="btn btn-ghost-dark"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Talk to Our Experts
+    <svg viewBox="0 0 24 24" fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5
+                 8.3 8.3 0 0 1-4.1-1.1L3 20l1.1-5.1
+                 A8.4 8.4 0 1 1 21 11.5z"></path>
+    </svg>
+</a>
+       
+      </div>
+      <div class="hero-trust">
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Scalable Solutions</span>
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Secure &amp; Reliable</span>
+        <span class="trust-item"><span class="trust-check"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>On-time Delivery</span>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="laptop">
+        <div class="laptop-screen">
+          <div class="laptop-screen-inner">
+            <div class="code-line" style="width:70%"></div>
+            <div class="code-line" style="width:45%"></div>
+            <div class="code-line" style="width:85%"></div>
+            <div class="code-line" style="width:30%"></div>
+            <div class="code-line" style="width:60%"></div>
+          </div>
+        </div>
+        <div class="laptop-base"></div>
+      </div>
+
+      <div class="float-card card-code">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="float-card card-gear">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="1.8"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 11-4 0v-.09a1.65 1.65 0 00-1-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 110-4h.09a1.65 1.65 0 001.51-1 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 114 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 110 4h-.09a1.65 1.65 0 00-1.51 1z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="float-card card-lines">
+        <div class="code-line" style="width:100%; margin-bottom:8px;"></div>
+        <div class="code-line" style="width:70%"></div>
+      </div>
+      <div class="float-card card-doc">
+        <div class="code-line" style="width:100%; margin-bottom:8px;"></div>
+        <div class="code-line" style="width:80%; margin-bottom:8px;"></div>
+        <div class="code-line" style="width:60%"></div>
+      </div>
+      <div class="float-card card-chart">
+        <div class="bar" style="height:40%"></div>
+        <div class="bar" style="height:70%"></div>
+        <div class="bar" style="height:55%"></div>
+        <div class="bar" style="height:90%"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What We Build -->
+<section class="section-soft">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHAT WE BUILD</span>
+      <h2>Solutions That Power Your Business</h2>
+      <p>We design and develop custom software solutions that solve real business problems and help you stay ahead of the competition.</p>
+    </div>
+
+    <div class="card-grid">
+      <div class="service-card">
+        <div class="icon-box icon-blue">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>ERP Systems</h3>
+        <p>Streamline operations, automate processes, and manage your entire business from one integrated platform.</p>
+        <!-- <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a> -->
+      </div>
+
+      <div class="service-card">
+        <div class="icon-box icon-purple">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="#fff" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>CRM Systems</h3>
+        <p>Manage leads, customers, sales, and support in one place to build stronger relationships and grow your business.</p>
+        <!-- <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a> -->
+      </div>
+
+      <div class="service-card">
+        <div class="icon-box icon-green">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="#fff" stroke-width="1.8"/><path d="M8 21h8M12 17v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Business Portals</h3>
+        <p>Custom portals for employees, clients, partners, and stakeholders to access information and services seamlessly.</p>
+        <!-- <a href="#" class="learn-more">Learn More
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-white">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">WHY CHOOSE NEXSHAM</span>
+      <h2>Why Businesses Choose Us</h2>
+      <p>We combine technology, creativity, and strategy to deliver software solutions that make a real impact.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></div>
+        <div>
+          <h4>Tailor-Made Solutions</h4>
+          <p>Every solution is custom-built to match your unique business requirements.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Secure &amp; Reliable</h4>
+          <p>We follow best security practices to ensure your data is always protected.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Scalable &amp; Future-Ready</h4>
+          <p>Our solutions grow with your business and adapt to future needs.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 16.5c-2 1.5-2 4-2 4h19s0-2.5-2-4c-2.11-1.62-4.72-2-6.5-2s-4.39.38-6.5 2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 2l1.8 4.2L18 8l-3.6 2.2L13 15l-1-4.8L8 8l4.2-1.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Latest Technologies</h4>
+          <p>We use modern technologies and frameworks to build high-performance applications.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>Expert Team</h4>
+          <p>Our experienced developers, designers, and analysts ensure top-quality delivery.</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div>
+          <h4>On-time Delivery</h4>
+          <p>We value your time and deliver projects within the agreed timeline.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Process -->
+<section class="section-soft">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">OUR DEVELOPMENT PROCESS</span>
+      <h2>Our Proven Development Process</h2>
+      <p>A systematic approach to deliver high-quality software solutions.</p>
+    </div>
+
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 13h6M9 17h6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div class="step-num">01</div>
+        <h4>Requirement Analysis</h4>
+        <p>We understand your business goals and gather all the requirements.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM17 13.5v7M13.5 17h7" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">02</div>
+        <h4>Planning &amp; Design</h4>
+        <p>We plan the architecture and design intuitive and user-friendly interfaces.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">03</div>
+        <h4>Development</h4>
+        <p>Our developers build clean, efficient, and scalable solutions.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">04</div>
+        <h4>Testing &amp; QA</h4>
+        <p>We thoroughly test the software to ensure quality and performance.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><svg viewBox="0 0 24 24" fill="none"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 15l-3-3a22 22 0 012-3.95A15.66 15.66 0 0119 2c1 4 .5 8.5-3 12a22.35 22.35 0 01-4 2z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <div class="step-num">05</div>
+        <h4>Deployment &amp; Support</h4>
+        <p>We deploy the solution and provide ongoing support for continuous success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section id="quote">
+  <div class="cta-banner">
+    <div class="cta-left">
+      <div class="cta-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M3 11l18-7-7 18-2-8-8-2z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="cta-text">
+        <span class="eyebrow">LET'S BUILD SOMETHING GREAT</span>
+        <h3>Have a Project in Mind?</h3>
+        <p>Share your idea with us and our experts will get back to you with the best solution for your business.</p>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="/header/book_consultation.html" class="btn btn-primary">Get a Free Quote
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    
+      <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27m%20interested%20in%20getting%20a%20quote%20for%20a%20software%20project."
+    class="btn btn-ghost-light"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Chat on WhatsApp
+    <span>💬</span>
+</a>
+    </div>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+
+    <img
+        src="/images/favicon.png"
+        alt="NexSham Technologies Logo"
+        class="brand-logo"
+    >
+
+    <div class="brand-info">
+        <span class="brand-name">NEXSHAM </span>
+        <span class="brand-subname"> TECHNOLOGIES</span>
+    </div>
+
+</div>
+
+<div class="brand-tagline">
+    Building technology for what's next.
+</div>
+
+<p>
+    We build custom software solutions that help businesses
+    automate, scale and achieve long-term growth.
+</p>
+        <div class="socials">
+          <!-- facebook -->
+          <!-- <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a> -->
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@nexshamtechnologies" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="/header/our_process.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="/header/career.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="/footer/blog.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="/header/book_consultation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/services/custom_software_development.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <!-- <li><a href="/services/web_application_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li> -->
+          <li><a href="/services/mobile_app_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="/services/cloud_solutions.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="/services/ai_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <!-- <li><a href="/services/qa_and_testing.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li> -->
+          <li><a href="/services/maintanence_and_support.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+          <li><a href="/services/business_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Business Automation</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <!-- <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/industry/healthcare.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="/industry/retail_and_Ecommerce.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="/industry/finance_and_banking.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="/industry/education.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="/industry/manufacturing.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="/industry/logistics_and_supply_chain.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="/industry/realestate.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="/header/industries.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+          
+        </ul>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/case_studies.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="/footer/portfolio.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="/footer/faq.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="/footer/documentation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="/footer/privacy_policy.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="/footer/terms_and_condition.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 88590 01102</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br></p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/footer/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="footer/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+<style>
+  :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink-900);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; margin:0; padding:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:40px 48px 0;
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  
+
+  /* ---------- FOOTER ---------- */
+  .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:44px;
+  }
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1199px){
+    .wrap{ padding:32px 28px 0; }
+    .footer-grid{
+      grid-template-columns:1fr 1fr 1fr;
+      row-gap:36px;
+    }
+    .footer-brand-col{ grid-column:1 / -1; }
+    .footer-brand-col p, .contact-card{ max-width:none; }
+    .contact-strip{ grid-template-columns:1fr 1fr; }
+    .site-footer{ padding-top:48px; }
+    .footer-inner{ padding:0 32px; }
+  }
+
+  @media (max-width: 768px){
+    .wrap{ padding:24px 18px 0; }
+    .cta-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:28px 24px;
+    }
+    .cta-actions{ width:100%; }
+    .cta-actions .btn{ flex:1; justify-content:center; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-strip{ grid-template-columns:1fr; }
+    .bottom-bar{ flex-direction:column; align-items:flex-start; }
+    .site-footer{ padding-top:40px; margin-top:28px; }
+    .footer-inner{ padding:0 20px; }
+  }
+
+  @media (max-width: 480px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .cta-text h2{ font-size:1.5rem; }
+    .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+  }
+</style>
+
+</body>
+</html>

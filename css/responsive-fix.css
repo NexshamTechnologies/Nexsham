@@ -1,0 +1,322 @@
+/* ==========================================================================
+   NEXSHAM TECHNOLOGIES - 4-TIER GLOBAL RESPONSIVE OVERRIDES
+   Phone:   <= 480px
+   Tablet:  481px - 768px
+   Laptop:  769px - 1199px
+   Desktop: >= 1200px (Default theme rules apply)
+   ========================================================================== */
+
+/* ---------- Baseline Helpers ---------- */
+img, svg, video, iframe {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Ensure no horizontal scrollbar */
+html, body {
+  overflow-x: hidden !important;
+  width: 100%;
+}
+
+/* ---------- Global Layout Containers ---------- */
+.wrap, .container, .nav-inner, .footer-inner {
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (max-width: 1199px) {
+  .wrap, .container, .nav-inner, .footer-inner {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap, .container, .nav-inner, .footer-inner {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap, .container, .nav-inner, .footer-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* ---------- 4-Tier Grid and Flex Layout Overrides ---------- */
+
+/* LAPTOP BREAKPOINT (769px to 1199px) */
+@media (max-width: 1199px) {
+  .solutions-grid, .grid-4, .features-grid, .industry-grid, .why-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    row-gap: 32px !important;
+  }
+  .contact-strip {
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 20px !important;
+  }
+  .hero-inner {
+    gap: 32px !important;
+  }
+}
+
+/* TABLET BREAKPOINT (481px to 768px) */
+@media (max-width: 768px) {
+  /* Grids to 2 columns */
+  .solutions-grid, .grid-4, .features-grid, .industry-grid, .tech-grid, .why-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Grids/Flex to stack single column */
+  .grid-2, .grid-two, .life-gallery, .life-stats, .positions-grid, .card-grid, 
+  .process-track, .faq-grid, .contact-shell, .hero-inner, .who-inner, .why-strip {
+    grid-template-columns: 1fr !important;
+  }
+  .process-track::before {
+    display: none !important;
+  }
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .contact-strip {
+    grid-template-columns: 1fr !important;
+  }
+  .hero-stats {
+    flex-wrap: wrap !important;
+    border-left: 2px solid var(--line, #0F0F14) !important;
+  }
+  .hero-stats div {
+    flex: 1 1 45% !important;
+    border-bottom: 2px solid var(--line, #0F0F14) !important;
+  }
+  /* Reset side ordering for media */
+  .who-media, .hero-visual {
+    order: -1 !important;
+  }
+}
+
+/* PHONE BREAKPOINT (<= 480px) */
+@media (max-width: 480px) {
+  /* Force all layouts to single column */
+  .solutions-grid, .grid-4, .features-grid, .industry-grid, .tech-grid, .why-grid, 
+  .grid-2, .grid-two, .life-gallery, .life-stats, .positions-grid, .card-grid, 
+  .process-track, .faq-grid, .footer-grid, .contact-strip, .grid, .why-strip,
+  .foot-grid, .foot-meta, .metric-row, .tech-shell, .faq-shell {
+    grid-template-columns: 1fr !important;
+  }
+  /* Form components */
+  input, select, textarea {
+    width: 100% !important;
+  }
+  /* Spacing */
+  section, .section, .block {
+    padding: 40px 0 !important;
+  }
+  .hero {
+    padding: 40px 0 50px !important;
+  }
+  /* Footer styles */
+  .footer-col, .foot-col {
+    margin-bottom: 16px !important;
+  }
+  .bottom-bar, .foot-bottom {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 12px !important;
+  }
+  .bottom-right {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+
+/* ---------- Typography Scaling ---------- */
+@media (max-width: 768px) {
+  h1, .hero h1 {
+    font-size: clamp(28px, 7.5vw, 36px) !important;
+    line-height: 1.15 !important;
+  }
+  h2, .section-head h2 {
+    font-size: clamp(22px, 5.5vw, 28px) !important;
+    line-height: 1.2 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  h1, .hero h1 {
+    font-size: 26px !important;
+  }
+  h2, .section-head h2 {
+    font-size: 20px !important;
+  }
+}
+
+/* ---------- Responsive Navigation System ---------- */
+
+/* Custom created hamburger toggle styling */
+.nav-toggle, .burger, .menu-btn, .custom-burger, .cloned-mobile-cta {
+  display: none !important;
+}
+
+@media (max-width: 980px) {
+  /* Show hamburger controls on mobile/tablet */
+  .nav-toggle, .burger, .menu-btn, .custom-burger {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    padding: 13px 10px !important;
+    border-radius: 50% !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+    cursor: pointer !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: 1001 !important;
+    color: var(--ink, #12142b) !important;
+    box-sizing: border-box !important;
+  }
+
+  .custom-burger:hover, .custom-burger:focus {
+    background: rgba(0, 0, 0, 0.09) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    transform: scale(1.05) !important;
+  }
+
+  .custom-burger:active {
+    transform: scale(0.95) !important;
+  }
+
+  .custom-burger .line {
+    display: block !important;
+    width: 20px !important;
+    height: 2px !important;
+    background-color: currentColor !important;
+    border-radius: 2px !important;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s, background-color 0.25s !important;
+    margin: 0 !important;
+  }
+
+  /* Morphing hamburger lines into an 'X' */
+  header.nav-open .custom-burger .line-1, .navbar.nav-open .custom-burger .line-1 {
+    transform: translateY(7px) rotate(45deg) !important;
+  }
+  header.nav-open .custom-burger .line-2, .navbar.nav-open .custom-burger .line-2 {
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
+  }
+  header.nav-open .custom-burger .line-3, .navbar.nav-open .custom-burger .line-3 {
+    transform: translateY(-7px) rotate(-45deg) !important;
+  }
+
+  /* Dark Theme Customization for Hamburger */
+  body[style*="background:#0B0714"] .custom-burger,
+  body[style*="background:#0a050f"] .custom-burger,
+  body[style*="background-color:#0b0714"] .custom-burger,
+  body[style*="background-color:#0a050f"] .custom-burger,
+  .dark .custom-burger, header.dark .custom-burger {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+  }
+  body[style*="background:#0B0714"] .custom-burger:hover,
+  body[style*="background:#0a050f"] .custom-burger:hover,
+  .dark .custom-burger:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.25) !important;
+  }
+
+  /* Hide regular desktop link bar */
+  .nav-links {
+    display: none !important;
+  }
+
+  /* Dropdown styling for expanded mobile menu */
+  header.nav-open .nav-links, .navbar.nav-open .nav-links, .nav-links.active, .nav-links.show {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: var(--white, #ffffff) !important;
+    background: inherit !important;
+    border-bottom: 2px solid var(--border, #e7e8f2) !important;
+    padding: 24px 20px !important;
+    box-sizing: border-box !important;
+    gap: 12px !important;
+    z-index: 999 !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    max-height: calc(100vh - 72px) !important;
+    overflow-y: auto !important;
+  }
+
+  /* Overrides for dark background pages (aurora, nexus, redesign, etc.) */
+  body[style*="background:#0B0714"] header.nav-open .nav-links, 
+  body[style*="background:#0a050f"] header.nav-open .nav-links,
+  body[style*="background-color:#0b0714"] header.nav-open .nav-links,
+  body[style*="background-color:#0a050f"] header.nav-open .nav-links,
+  .dark header.nav-open .nav-links, header.dark.nav-open .nav-links {
+    background-color: #0b0714 !important;
+    color: #ffffff !important;
+  }
+
+  /* Ensure text colors match for dark vs light menu links */
+  header.nav-open .nav-links a, .navbar.nav-open .nav-links a, .nav-links.active a, .nav-links.show a {
+    display: block !important;
+    width: 100% !important;
+    padding: 10px 0 !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+    color: inherit !important;
+    text-align: left !important;
+  }
+
+  body[style*="background:#0B0714"] header.nav-open .nav-links a, 
+  body[style*="background:#0a050f"] header.nav-open .nav-links a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #e2e8f0 !important;
+  }
+
+  /* Hide raw inline consultation CTA in header to make room, we clone it into the menu via JS */
+  .nav-right a.btn, .nav-cta a.btn, header .btn-solid, header .btn-outline {
+    display: none !important;
+  }
+
+  /* Enable inline cloned mobile buttons inside links */
+  .nav-links .cloned-mobile-cta {
+    display: inline-flex !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 14px !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* index.html mobileMenu container styling */
+  #mobileMenu.open {
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 72px !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+    border-bottom: 1px solid var(--border, #e7e8f2) !important;
+    padding: 16px 20px 24px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08) !important;
+    z-index: 999 !important;
+    gap: 10px !important;
+  }
+}
+

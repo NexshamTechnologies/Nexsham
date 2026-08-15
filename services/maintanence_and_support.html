@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Maintenance &amp; Support</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  :root{
+    --ink-950:#06110d;
+    --ink-900:#0a1a13;
+    --ink-800:#0f2419;
+    --green-600:#1a9c5c;
+    --green-500:#22b56b;
+    --green-400:#3ecf82;
+    --green-100:#e7f7ee;
+    --paper:#f6f8f6;
+    --paper-2:#ffffff;
+    --line:#e3e8e4;
+    --slate-900:#101815;
+    --slate-600:#5b6b62;
+    --slate-400:#8a978f;
+    --radius-sm:8px;
+    --radius-md:14px;
+    --radius-lg:22px;
+    --shadow-card:0 2px 4px rgba(16,24,21,0.04), 0 12px 24px -12px rgba(16,24,21,0.08);
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--slate-900);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--font-display);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  ul{margin:0;padding:0;list-style:none;}
+  button{font-family:inherit;cursor:pointer;}
+  img,svg{display:block;max-width:100%;}
+
+  :focus-visible{
+    outline:2.5px solid var(--green-500);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+
+  .wrap{
+    max-width:1240px;
+    margin:0 auto;
+    padding:0 20px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--green-500);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:13px 24px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.95rem;
+    border:1.5px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--green-500);
+    color:#fff;
+    box-shadow:0 8px 20px -8px rgba(34,181,107,0.55);
+  }
+  .btn-primary:hover{background:var(--green-400);}
+  .btn-ghost-dark{
+    border-color:rgba(255,255,255,0.28);
+    color:#fff;
+  }
+  .btn-ghost-dark:hover{background:rgba(255,255,255,0.08);}
+  .btn-ghost-light{
+    border-color:var(--line);
+    color:var(--slate-900);
+  }
+  .btn-ghost-light:hover{background:#fff;border-color:var(--slate-900);}
+
+  /* ===== HEADER ===== */
+  .navbar{
+    position:sticky; top:0; z-index:100;
+    background:var(--ink-950);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+ .nav-inner{
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    padding: 16px 32px;
+}
+  
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    white-space:nowrap;
+
+    font-family:'Sora',sans-serif;
+    font-size:20px;
+    font-weight:700;
+    color:#fff;
+
+    flex-shrink:0;
+}
+.logo-text{
+    font-size: 18px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+
+  .logo-img{
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    display:block;
+}
+
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:34px;
+
+    margin-left:40px;
+}
+  .nav-links a{
+    display:flex;
+    align-items:center;
+
+    white-space:nowrap;
+
+    color:rgba(255,255,255,.82);
+
+    font-size:15px;
+    font-weight:500;
+
+    gap:5px;
+
+    transition:.2s;
+}
+  .nav-links a:hover{ color:#fff; }
+  .nav-links svg{width:13px;height:13px;}
+  .nav-cta{ margin-left:auto; display:flex; align-items:center;  }
+  .nav-toggle{ margin-left:10px;display:none; background:none; border:none; color:#fff; cursor:pointer; }
+  .mobile-menu .btn{margin-top:16px;width:100%;}
+
+  /* ===== HERO ===== */
+  .hero{
+    background:
+      radial-gradient(ellipse 900px 500px at 78% 18%, rgba(34,181,107,0.20), transparent 60%),
+      linear-gradient(180deg, var(--ink-950) 0%, var(--ink-900) 100%);
+    padding:64px 0 56px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero-copy .eyebrow{
+    background:rgba(34,181,107,0.12);
+    border:1px solid rgba(34,181,107,0.28);
+    padding:6px 14px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .hero-copy h1{
+    font-size:clamp(2.1rem, 5.6vw, 3.2rem);
+    line-height:1.08;
+    color:#fff;
+    font-weight:700;
+  }
+  .hero-copy h1 span{
+    display:block;
+    color:var(--green-400);
+  }
+  .hero-copy p.lede{
+    margin-top:20px;
+    font-size:1.02rem;
+    line-height:1.65;
+    color:rgba(255,255,255,0.68);
+    max-width:520px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:30px;
+  }
+  .hero-check-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-top:34px;
+  }
+  .hero-check-row span{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.72);
+  }
+  .hero-check-row i{color:var(--green-400);}
+
+  .hero-art{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:280px;
+  }
+  .device{
+    position:relative;
+    width:min(420px, 88vw);
+  }
+  .laptop-screen{
+    background:#0d1a14;
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px 16px 4px 4px;
+    padding:18px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .laptop-base{
+    height:14px;
+    background:linear-gradient(180deg,#111,#050505);
+    border-radius:0 0 10px 10px;
+    margin:0 -6px;
+    position:relative;
+  }
+  .laptop-base::after{
+    content:'';
+    position:absolute;
+    left:50%;top:0;
+    transform:translateX(-50%);
+    width:60px;height:5px;
+    background:#1c1c1c;
+    border-radius:0 0 6px 6px;
+  }
+  .screen-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+  }
+  .screen-row .status{
+    font-size:0.72rem;
+    color:rgba(255,255,255,0.55);
+  }
+  .status-pill{
+    background:rgba(34,181,107,0.18);
+    color:var(--green-400);
+    font-size:0.68rem;
+    font-weight:600;
+    padding:3px 10px;
+    border-radius:999px;
+  }
+  .chart-line{width:100%;height:56px;margin-bottom:10px;}
+  .stat-row{display:flex;justify-content:space-between;margin-top:8px;}
+  .stat-row div{font-size:0.65rem;color:rgba(255,255,255,0.45);}
+  .stat-row strong{display:block;font-size:1.05rem;color:#fff;margin-top:3px;font-family:var(--font-display);}
+  .stat-row strong.green{color:var(--green-400);}
+
+  .float-badge{
+    position:absolute;
+    background:var(--ink-800);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:16px;
+    padding:14px 16px;
+    text-align:center;
+    box-shadow:0 18px 34px -14px rgba(0,0,0,0.55);
+  }
+  .float-badge i{
+    width:38px;height:38px;
+    background:var(--green-500);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    color:#04140b;
+    margin:0 auto 8px;
+    font-size:0.95rem;
+  }
+  .float-badge span{
+    display:block;
+    font-size:0.72rem;
+    font-weight:600;
+    color:rgba(255,255,255,0.8);
+    white-space:nowrap;
+  }
+  .fb-support{top:-6%;left:-9%;}
+  .fb-updates{top:-4%;right:-11%;}
+  .fb-security{bottom:22%;left:-13%;}
+  .fb-maintenance{bottom:-4%;right:-9%;}
+  .fb-gear{
+    position:absolute;
+    bottom:-8%;right:22%;
+    width:70px;height:70px;
+    background:var(--green-500);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:#04140b;
+    font-size:1.6rem;
+    box-shadow:0 16px 30px -10px rgba(34,181,107,0.6);
+    animation:spin 9s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ===== LOGO STRIP ===== */
+  .logo-strip{
+    background:#eef2ef;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .logo-strip .strip-label{
+    text-align:center;
+    font-size:0.8rem;
+    color:var(--slate-400);
+    margin-bottom:20px;
+  }
+  .strip-row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:clamp(20px,4vw,52px);
+    color:var(--slate-600);
+    font-weight:700;
+    font-family:var(--font-display);
+    opacity:0.75;
+  }
+  .strip-row span{display:flex;align-items:center;gap:8px;font-size:1.05rem;}
+
+  /* ===== SECTION HEADS ===== */
+  section{padding:76px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.6rem,3.4vw,2.3rem);
+    margin-top:12px;
+    color:var(--slate-900);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--slate-600);
+    line-height:1.6;
+  }
+
+  /* ===== SERVICE CARDS ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .service-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-lg);
+    padding:32px 28px;
+    box-shadow:var(--shadow-card);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -20px rgba(16,24,21,0.18);
+  }
+  .card-icon{
+    width:48px;height:48px;
+    border-radius:12px;
+    background:var(--green-500);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    margin-bottom:18px;
+  }
+  .service-card h3{font-size:1.15rem;margin-bottom:10px;}
+  .service-card p{color:var(--slate-600);line-height:1.6;font-size:0.94rem;}
+  .check-list{margin:18px 0;}
+  .check-list li{
+    display:flex;align-items:center;gap:9px;
+    font-size:0.88rem;color:var(--slate-600);
+    padding:5px 0;
+  }
+  .check-list i{color:var(--green-500);font-size:0.8rem;}
+  .learn-more{
+    color:var(--green-500);
+    font-weight:600;
+    font-size:0.9rem;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .learn-more i{font-size:0.75rem;transition:transform .18s ease;}
+  .learn-more:hover i{transform:translateX(3px);}
+
+  /* ===== WHY CHOOSE ===== */
+  .why-choose{background:var(--paper-2);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:36px 24px;
+  }
+  .why-item{text-align:center;}
+  .why-icon{
+    width:64px;height:64px;
+    border-radius:50%;
+    background:var(--green-100);
+    color:var(--green-600);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    margin:0 auto 16px;
+  }
+  .why-item h4{font-size:1rem;margin-bottom:8px;}
+  .why-item p{font-size:0.87rem;color:var(--slate-600);line-height:1.55;}
+
+  /* ===== PROCESS ===== */
+  .process{position:relative;}
+  .process-track{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:32px;
+    position:relative;
+  }
+  .process-step{
+    text-align:center;
+    position:relative;
+  }
+  .step-circle{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--paper-2);
+    border:2px solid var(--green-500);
+    color:var(--green-500);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.15rem;
+    margin:0 auto 16px;
+    position:relative;
+    z-index:2;
+  }
+  .step-num{
+    font-family:var(--font-display);
+    font-weight:700;
+    color:var(--green-500);
+    font-size:0.8rem;
+    letter-spacing:0.06em;
+    margin-bottom:6px;
+    display:block;
+  }
+  .process-step h4{font-size:1rem;margin-bottom:6px;}
+  .process-step p{font-size:0.85rem;color:var(--slate-600);line-height:1.5;}
+
+  /* ===== TOOLS STRIP ===== */
+  .tools-strip{
+    background:var(--paper-2);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:38px 0;
+  }
+
+  /* ===== CTA BANNER ===== */
+  .cta-banner{
+    background:linear-gradient(120deg,var(--ink-950), var(--ink-800) 70%);
+    border-radius:var(--radius-lg);
+    margin:0 20px;
+    padding:38px 32px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    max-width:1400px;
+    margin-inline:auto;
+  }
+  .cta-left{display:flex;align-items:center;gap:20px;flex:1 1 320px;}
+  .cta-icon{
+    width:58px;height:58px;
+    border-radius:50%;
+    background:var(--green-500);
+    color:#04140b;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    flex-shrink:0;
+  }
+  .cta-left h3{color:#fff;font-size:1.25rem;margin:6px 0;}
+  .cta-left p{color:rgba(255,255,255,0.6);font-size:0.9rem;}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:14px;}
+
+  /* ===== FAQ ===== */
+  .faq-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+  .faq-item{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:var(--radius-md);
+    overflow:hidden;
+  }
+  .faq-q{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:none;border:none;
+    padding:18px 22px;
+    font-size:0.96rem;
+    font-weight:600;
+    color:var(--slate-900);
+    text-align:left;
+  }
+  .faq-q i{color:var(--green-500);transition:transform .22s ease;flex-shrink:0;margin-left:14px;}
+  .faq-item.open .faq-q i{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .28s ease;
+  }
+  .faq-a p{
+    padding:0 22px 20px;
+    color:var(--slate-600);
+    font-size:0.9rem;
+    line-height:1.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--ink-950);
+    color:rgba(255,255,255,0.6);
+    padding:52px 0 26px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:36px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand p{margin-top:14px;font-size:0.88rem;line-height:1.6;max-width:280px;}
+  .footer-col h5{
+    color:#fff;font-size:0.85rem;font-weight:700;
+    letter-spacing:0.04em;text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .footer-col li{margin-bottom:10px;font-size:0.88rem;}
+  .footer-col a:hover{color:#fff;}
+  .footer-bottom{
+    padding-top:22px;
+    display:flex;flex-wrap:wrap;gap:12px;
+    justify-content:space-between;
+    font-size:0.8rem;
+  }
+  .social-row{display:flex;gap:12px;}
+  .social-row a{
+    width:34px;height:34px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,0.15);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .social-row a:hover{background:var(--green-500);border-color:var(--green-500);color:#04140b;}
+
+  /* =========================================================
+     TIER 2 — TABLET  (min-width: 576px)
+     ========================================================= */
+  @media (min-width:576px){
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .faq-grid{grid-template-columns:1fr 1fr;}
+    .hero-check-row{gap:26px;}
+  }
+
+  /* =========================================================
+     TIER 3 — LAPTOP  (min-width: 992px)
+     ========================================================= */
+  @media (min-width:992px){
+    .nav-links{display:flex;}
+    .hamburger{display:none;}
+    .mobile-menu{display:none !important;}
+
+    .hero-grid{grid-template-columns:1.05fr 0.95fr;gap:40px;}
+    .hero-copy p.lede{max-width:460px;}
+
+    .card-grid{grid-template-columns:repeat(3,1fr);}
+    .why-grid{grid-template-columns:repeat(3,1fr);}
+    .process-track{
+      grid-template-columns:repeat(6,1fr);
+    }
+    .process-track::before{
+      content:'';
+      position:absolute;
+      top:29px;left:8%;right:8%;
+      height:2px;
+      background:repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 16px);
+      z-index:1;
+    }
+    .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;}
+  }
+
+  /* =========================================================
+     TIER 4 — DESKTOP  (min-width: 1200px)
+     ========================================================= */
+  @media (min-width:1200px){
+    .nav-links{gap:40px;}
+    .hero{padding:78px 0 68px;}
+    .hero-copy h1{font-size:3.35rem;}
+    section{padding:96px 0;}
+    .why-grid{grid-template-columns:repeat(6,1fr);}
+    .card-grid{gap:28px;}
+    .cta-banner{padding:44px 48px;}
+  }
+
+  @media (min-width:992px){
+    .device{width:460px;}
+  }
+
+  /* Mobile nav toggle (below 992px) */
+  @media (max-width:991.98px){
+    .nav-links{display:none;}
+    .nav-cta .btn-primary{display:none;}
+    .hamburger{display:flex;}
+  }
+  @media (max-width:480px){
+    .nav-cta .btn-primary{display:none;}
+    .cta-banner{padding:30px 22px;}
+    .hero-art{margin-top:10px;}
+    .fb-support,.fb-updates,.fb-security,.fb-maintenance{
+      padding:10px 10px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+</style>
+<style>
+  :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink-900);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; margin:0; padding:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:40px 48px 0;
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  
+
+
+    :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+    .site-footer{
+    background:var(--navy-900);
+    background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                      radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+    width:100%;
+    margin:40px 0 0;
+    padding:56px 0 0;
+    color:#c9d2ea;
+  }
+
+  .footer-inner{
+    max-width:1440px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1.55fr 1fr 1fr 1fr;
+    gap:28px;
+    padding-bottom:2px;
+    align-items:start;
+}
+.footer-contact-col{
+    display:flex;
+    align-items:flex-start;
+    padding-top:18px;
+}
+
+.footer-contact-col .contact-card{
+    width:100%;
+    max-width:370px;
+    min-height:135px;
+    box-sizing:border-box;
+}
+
+  .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .brand-mark{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--font-head);
+    font-weight:800;
+    color:#fff;
+    font-size:1.15rem;
+  }
+
+  .brand-name{
+    font-family:var(--font-head);
+    font-weight:700;
+    font-size:1.3rem;
+    color:#fff;
+    letter-spacing:0.5px;
+  }
+
+  .footer-brand-col p{
+    font-size:0.92rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:280px;
+    margin:0 0 22px;
+  }
+
+  .socials{
+    display:flex;
+    gap:10px;
+    margin-bottom:26px;
+  }
+
+  .social-btn{
+    width:38px;
+    height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background 0.18s ease, transform 0.18s ease;
+  }
+  .social-btn:hover{
+    background:rgba(255,255,255,0.14);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+  .contact-card{
+    background:rgba(255,255,255,0.05);
+    border:1px solid var(--line-soft-2);
+    border-radius:var(--radius-md);
+    padding:18px 20px;
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    max-width:340px;
+    margin-top:125px;
+    margin-left:-25px;
+  }
+
+  .contact-card .icon-circle{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.09);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+  .contact-card h4{
+    margin:0 0 4px;
+    font-size:0.98rem;
+    font-weight:600;
+    color:#fff;
+    font-family:var(--font-head);
+  }
+
+  .contact-card p{
+    margin:0 0 6px;
+    font-size:0.85rem;
+    color:#9aa5c4;
+  }
+
+  .contact-card .email-link{
+    color:var(--teal-300);
+    font-size:0.9rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+  .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+  .footer-col h3{
+    font-family:var(--font-head);
+    font-size:1.02rem;
+    font-weight:700;
+    color:#fff;
+    margin:0 0 12px;
+  }
+
+  .footer-col .underline{
+    width:28px;
+    height:3px;
+    border-radius:2px;
+    background:var(--teal-400);
+    margin-bottom:18px;
+  }
+
+  .footer-col ul li{ margin-bottom:13px; }
+
+  .footer-col ul li a{
+    font-size:0.9rem;
+    color:#a9b3d1;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:color 0.15s ease, gap 0.15s ease;
+  }
+
+  .footer-col ul li a svg{
+    width:13px;
+    height:13px;
+    stroke:var(--teal-400);
+    flex-shrink:0;
+  }
+
+  .footer-col ul li a:hover{
+    color:#fff;
+  }
+
+  /* ---------- CONTACT STRIP ---------- */
+  .contact-strip{
+    border-top:1px solid var(--line-soft);
+    padding:32px 0;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:32px;
+  }
+
+  .strip-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+
+  .strip-icon{
+    width:44px;
+    height:44px;
+    min-width:44px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.06);
+    border:1px solid var(--line-soft-2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+  .strip-item h5{
+    margin:0 0 6px;
+    font-size:0.88rem;
+    font-weight:700;
+    color:var(--teal-300);
+    font-family:var(--font-head);
+  }
+
+  .strip-item p{
+    margin:0;
+    font-size:0.86rem;
+    line-height:1.55;
+    color:#a9b3d1;
+  }
+
+  /* ---------- BOTTOM BAR ---------- */
+  .bottom-bar{
+    border-top:1px solid var(--line-soft);
+    padding:22px 0;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  .bottom-bar p{
+    margin:0;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    font-size:0.85rem;
+    color:#8b96b8;
+  }
+
+  .bottom-right .heart{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+  .bottom-right a:hover{ color:#fff; }
+
+  .divider-dot{ opacity:0.4; }
+
+  /* ---------- RESPONSIVE ---------- */
+@media (max-width: 1199px){
+    .wrap{
+        padding:32px 28px 0;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr 1fr 1fr;
+        row-gap:36px;
+    }
+
+    .footer-brand-col{
+        grid-column:auto;
+    }
+
+    .footer-brand-col p,
+    .contact-card{
+        max-width:none;
+    }
+
+    .contact-strip{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .site-footer{
+        padding-top:48px;
+    }
+
+    .footer-inner{
+        padding:0 32px;
+    }
+}
+
+  @media (max-width: 768px){
+    .wrap{ padding:24px 18px 0; }
+    .cta-banner{
+      flex-direction:column;
+      align-items:flex-start;
+      padding:28px 24px;
+    }
+    .cta-actions{ width:100%; }
+    .cta-actions .btn{ flex:1; justify-content:center; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .contact-strip{ grid-template-columns:1fr; }
+    .bottom-bar{ flex-direction:column; align-items:flex-start; }
+    .site-footer{ padding-top:40px; margin-top:28px; }
+    .footer-inner{ padding:0 20px; }
+  }
+
+  @media (max-width: 480px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+    .cta-text h2{ font-size:1.5rem; }
+    .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+  }
+
+ .footer-brand-col .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.brand-logo{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    flex-shrink:0;
+}
+
+.brand-info{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.brand-name{
+    font-family:var(--font-head);
+    font-size:1.22rem;
+    font-weight:800;
+    color:#fff;
+    letter-spacing:.6px;
+    line-height:1;
+}
+
+.brand-subname{
+    display:block;
+    margin-top:5px;
+
+    font-size:.82rem;
+    font-weight:700;
+    letter-spacing:3px;
+
+    color:var(--teal-300);
+}
+.brand-tagline{
+    margin:18px 0 8px;
+
+    font-family:var(--font-head);
+    font-size:.82rem;
+    font-weight:600;
+
+    color:#dce4f7;
+}
+
+.footer-brand-col > p{
+    font-size:0.9rem;
+    line-height:1.65;
+    color:#95a1c4;
+    max-width:310px;
+    margin:0 0 22px;
+}
+
+</style>
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="https://nexsham.com" class="logo">
+    <!-- Your Logo -->
+    <img src="/images/favicon.png" alt="NexSham Logo" class="logo-img">
+
+    <span class="logo-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html">Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      <a href="/header/our_process.html">Our Process</a>
+      <a href="/header/career.html">Career</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="/header/book_consultation.html" class="btn btn-primary">Book Free Consultation <span>→</span></a>
+      <button class="nav-toggle" aria-label="Menu">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+<br>
+
+<!-- HERO -->
+<section class="hero" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><i class="fa-solid fa-wrench"></i> Maintenance &amp; Support</span>
+        <h1>Maintenance &amp; Support<span>We've Got You Covered</span></h1>
+        <p class="lede">We provide continuous monitoring, timely updates and reliable support to keep your software secure, stable and performing at its best.</p>
+        <div class="hero-actions">
+          <a href="/header/book_consultation.html" class="btn btn-primary">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
+          <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27d%20like%20to%20talk%20to%20your%20experts%20about%20a%20project."
+    class="btn btn-ghost-dark"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Talk to Our Experts
+    <svg viewBox="0 0 24 24" fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5
+                 8.3 8.3 0 0 1-4.1-1.1L3 20l1.1-5.1
+                 A8.4 8.4 0 1 1 21 11.5z"></path>
+    </svg>
+</a>
+        </div>
+        <div class="hero-check-row">
+          <span><i class="fa-solid fa-circle-check"></i> 24/7 Support</span>
+          <span><i class="fa-solid fa-circle-check"></i> Quick Response</span>
+          <span><i class="fa-solid fa-circle-check"></i> Secure &amp; Reliable</span>
+          <span><i class="fa-solid fa-circle-check"></i> SLA Driven</span>
+        </div>
+      </div>
+
+      <div class="hero-art">
+        <div class="device">
+          <div class="float-badge fb-support">
+            <i class="fa-solid fa-headset"></i>
+            <span>Support</span>
+          </div>
+          <div class="float-badge fb-updates">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <span>Updates</span>
+          </div>
+          <div class="float-badge fb-security">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Security</span>
+          </div>
+          <div class="float-badge fb-maintenance">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+            <span>Maintenance</span>
+          </div>
+          <div class="fb-gear"><i class="fa-solid fa-gear"></i></div>
+
+          <div class="laptop-screen">
+            <div class="screen-row">
+              <span class="status"><i class="fa-solid fa-circle" style="font-size:0.5rem;color:var(--green-400);"></i> System Status</span>
+              <span class="status-pill">Healthy</span>
+            </div>
+            <svg class="chart-line" viewBox="0 0 300 60" preserveAspectRatio="none">
+              <polyline points="0,45 25,38 50,48 75,20 100,35 125,15 150,30 175,10 200,26 225,12 250,22 275,8 300,18"
+                fill="none" stroke="#3ecf82" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="stat-row">
+              <div>Uptime<strong class="green">99.9%</strong></div>
+              <div>Response Time<strong>320ms</strong></div>
+            </div>
+          </div>
+          <div class="laptop-base"></div>
+        </div>
+      </div>
+    </div><br>  
+  </div><br>
+</section>
+
+
+
+<!-- WHAT WE DO -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--green-600);">What We Do</span>
+      <h2>Comprehensive Maintenance &amp; Support Services</h2>
+      <p>End-to-end support solutions to ensure your application runs smoothly and securely.</p>
+    </div>
+    <div class="card-grid">
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-bug"></i></div>
+        <h3>Bug Fixes</h3>
+        <p>We quickly identify, fix and resolve bugs to ensure a seamless user experience.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> Issue Identification</li>
+          <li><i class="fa-solid fa-check"></i> Root Cause Analysis</li>
+          <li><i class="fa-solid fa-check"></i> Quick Resolutions</li>
+        </ul>
+        <!-- <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a> -->
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <h3>Feature Updates</h3>
+        <p>We add improvements and new features to keep your software up-to-date with your business needs.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> New Feature Implementation</li>
+          <li><i class="fa-solid fa-check"></i> Enhancements</li>
+          <li><i class="fa-solid fa-check"></i> Performance Improvements</li>
+        </ul>
+        <!-- <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a> -->
+      </div>
+      <div class="service-card">
+        <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
+        <h3>Technical Support</h3>
+        <p>Our expert support team is always ready to help you with any technical issues or questions.</p>
+        <ul class="check-list">
+          <li><i class="fa-solid fa-check"></i> 24/7 Assistance</li>
+          <li><i class="fa-solid fa-check"></i> Priority Support</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated Team</li>
+        </ul>
+        <!-- <a href="#" class="learn-more">Learn More <i class="fa-solid fa-arrow-right"></i></a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE -->
+<section class="why-choose">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Why Choose Nexsham</span>
+      <h2>Reliable Support. Peace of Mind.</h2>
+      <p>We ensure your software stays secure, updated and always available.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-regular fa-clock"></i></div>
+        <h4>Continuous Monitoring</h4>
+        <p>We monitor your system 24/7 to detect and resolve issues early.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Security First</h4>
+        <p>Regular updates and patches to keep your application secure.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-chart-simple"></i></div>
+        <h4>High Performance</h4>
+        <p>Optimize performance and ensure your application runs smoothly.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-regular fa-comments"></i></div>
+        <h4>Quick Response</h4>
+        <p>Fast response time and effective solutions for minimal downtime.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-regular fa-file-lines"></i></div>
+        <h4>Transparent Reports</h4>
+        <p>Detailed reports and updates to keep you informed at every step.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h4>Dedicated Team</h4>
+        <p>A dedicated team that understands your product and business.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Our Support Process</span>
+      <h2>A Proven Approach to Ongoing Support</h2>
+      <p>A structured process to keep your software reliable and up-to-date.</p>
+    </div>
+    <div class="process-track">
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <span class="step-num">01</span>
+        <h4>Monitor</h4>
+        <p>We continuously monitor your application and infrastructure.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-circle-exclamation"></i></div>
+        <span class="step-num">02</span>
+        <h4>Detect Issues</h4>
+        <p>We identify issues, bugs, or performance bottlenecks.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <span class="step-num">03</span>
+        <h4>Resolve Quickly</h4>
+        <p>Our team fixes issues and deploys solutions promptly.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <span class="step-num">04</span>
+        <h4>Deploy Updates</h4>
+        <p>We release updates and new features with zero hassle.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-circle-check"></i></div>
+        <span class="step-num">05</span>
+        <h4>Test &amp; Verify</h4>
+        <p>We test thoroughly to ensure everything works as expected.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle"><i class="fa-solid fa-chart-column"></i></div>
+        <span class="step-num">06</span>
+        <h4>Report &amp; Optimize</h4>
+        <p>We provide reports and suggest improvements for the future.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS STRIP -->
+<div class="tools-strip">
+  <div class="wrap">
+    <p class="strip-label" style="text-align:center;">Tools &amp; Technologies We Use</p><br>
+    <div class="strip-row" style="color:var(--slate-900);opacity:0.85;">
+      <span><i class="fa-brands fa-jira" style="color:#2684FF;"></i> Jira</span>
+      <span><i class="fa-brands fa-github"></i> GitHub</span>
+      <span><i class="fa-brands fa-docker" style="color:#2496ED;"></i> Docker</span>
+      <span><i class="fa-solid fa-shield-virus" style="color:#e74c3c;"></i> Sentry</span>
+      <span><i class="fa-solid fa-circle-notch" style="color:#009999;"></i> New Relic</span>
+      <span><i class="fa-brands fa-slack" style="color:#611f69;"></i> Slack</span>
+      <span><i class="fa-brands fa-aws" style="color:#FF9900;"></i> AWS</span>
+      <span><i class="fa-brands fa-google" style="color:#4285F4;"></i> Google Cloud</span>
+      <span><i class="fa-solid fa-dharmachakra" style="color:#326CE5;"></i> Kubernetes</span>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BANNER -->
+<section style="padding:60px 0;">
+  <div class="cta-banner">
+    <div class="cta-left">
+      <div class="cta-icon"><i class="fa-solid fa-headset"></i></div>
+      <div>
+        <span class="eyebrow">Need Reliable Support For Your Software?</span>
+        <h3>We're Here to Keep You Running.</h3>
+        <p>Get expert maintenance and support services tailored to your business needs.</p>
+      </div>
+    </div>
+    <div class="cta-actions">
+      <a href="/header/book_consultation.html" class="btn btn-primary">Get a Free Quote <i class="fa-solid fa-arrow-right"></i></a>
+      <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27m%20interested%20in%20getting%20a%20quote%20for%20a%20software%20project."
+    class="btn btn-ghost-dark"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Chat on WhatsApp
+    <span>💬</span>
+</a>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+
+    <img
+        src="/images/favicon.png"
+        alt="NexSham Technologies Logo"
+        class="brand-logo"
+    >
+
+    <div class="brand-info">
+        <span class="brand-name">NEXSHAM </span>
+        <span class="brand-subname"> TECHNOLOGIES</span>
+    </div>
+
+</div>
+
+<div class="brand-tagline">
+    Building technology for what's next.
+</div>
+
+<p>
+    We build custom software solutions that help businesses
+    automate, scale and achieve long-term growth.
+</p>
+        <div class="socials">
+          <!-- facebook -->
+          <!-- <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a> -->
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@nexshamtechnologies" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="/header/our_process.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="/header/career.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="/footer/blog.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="/header/book_consultation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/services/custom_software_development.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <!-- <li><a href="/services/web_application_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li> -->
+          <li><a href="/services/mobile_app_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="/services/cloud_solutions.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="/services/ai_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <!-- <li><a href="/services/qa_and_testing.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li> -->
+          <li><a href="/services/maintanence_and_support.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+          <li><a href="/services/business_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Business Automation</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <!-- <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/industry/healthcare.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="/industry/retail_and_Ecommerce.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="/industry/finance_and_banking.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="/industry/education.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="/industry/manufacturing.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="/industry/logistics_and_supply_chain.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="/industry/realestate.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="/header/industries.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+          
+        </ul>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/case_studies.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="/footer/portfolio.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="/footer/faq.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="/footer/documentation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="/footer/privacy_policy.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="/footer/terms_and_condition.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 88590 01102</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br></p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/footer/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="footer/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+<script>
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+    hamburgerBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburgerBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        if (o !== item) { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = null; }
+      });
+      item.classList.toggle('open', !isOpen);
+      a.style.maxHeight = !isOpen ? a.scrollHeight + 'px' : null;
+    });
+  });
+</script>
+
+</body>
+</html>

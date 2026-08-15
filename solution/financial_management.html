@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nexsham — Financial Management Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1B1240;
+    --ink-soft:#5B5478;
+    --purple-900:#3B1E8C;
+    --purple-700:#5B2FE0;
+    --purple-600:#6E3AF0;
+    --purple-500:#8358F5;
+    --lilac-100:#F1ECFE;
+    --lilac-200:#E6DCFD;
+    --pink-500:#B463E8;
+    --paper:#FBFAFE;
+    --white:#ffffff;
+    --line:#EAE5F7;
+    --green:#1FAE6C;
+    --red:#E24C4C;
+    --shadow: 0 20px 50px -20px rgba(60,30,140,0.25);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Inter', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{ font-family:'Sora', sans-serif; letter-spacing:-0.02em; }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+  .eyebrow{
+    display:inline-block; font-size:12px; font-weight:700; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--purple-700); background:var(--lilac-100);
+    padding:6px 14px; border-radius:99px; margin-bottom:14px;
+  }
+  section h2{ font-size:34px; color:var(--purple-900); font-weight:800; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 52px; }
+  .section-head p{ color:var(--ink-soft); margin-top:12px; font-size:15.5px; line-height:1.6; }
+
+  /* ---------- NAV ---------- */
+eader{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+ .nav{
+    display:flex;
+    align-items:center;
+
+    max-width:1400px;
+    margin:auto;
+
+    height:72px;
+    padding:0 20px;
+}
+  .brand{ display:flex; align-items:center; gap:9px; font-weight:800; font-size:17px; font-family:'Plus Jakarta Sans',sans-serif;}
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    flex-shrink:0;
+
+    white-space:nowrap;
+
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:18px;
+    font-weight:800;
+}
+
+.brand-logo{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.brand-text{
+    white-space:nowrap;
+}
+ .nav-links{
+    display:flex;
+    align-items:center;
+
+    gap:22px;
+
+    margin-left:40px;
+
+    flex:1;
+}
+ .nav-links a{
+    white-space:nowrap;
+
+    position:relative;
+
+    padding:6px 0;
+
+    font-size:15px;
+}
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a.active{ color:var(--indigo); font-weight:600; }
+  .nav-links a.active::after{
+    content:''; position:absolute; left:0; right:0; bottom:-3px; height:2px; background:var(--indigo); border-radius:2px;
+  }
+  .nav-crumb{ font-size:12.5px; color:var(--ink-faint); padding:11px 0; display:flex; gap:6px; align-items:center;}
+  .nav-crumb b{ color:var(--ink); font-weight:600; }
+  .nav-right{
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+.btn-primary{
+    white-space:nowrap;
+}
+  .burger{
+    display:flex; background:none; border:1px solid var(--border); border-radius:8px; width:38px; height:38px;
+    align-items:center; justify-content:center;
+  }
+  .burger span, .burger::before, .burger::after{content:''}
+  .burger-icon{ width:18px; height:12px; position:relative; }
+  .burger-icon i{ position:absolute; left:0; width:100%; height:2px; background:var(--ink); border-radius:2px; transition:.2s;}
+  .burger-icon i:nth-child(1){top:0;}
+  .burger-icon i:nth-child(2){top:5px;}
+  .burger-icon i:nth-child(3){top:10px;}
+  .mobile-menu{
+    display:none; flex-direction:column; gap:2px; background:#fff; border-bottom:1px solid var(--border);
+    padding:8px 20px 16px;
+  }
+  .mobile-menu.open{ display:flex; }
+  .mobile-menu a{ padding:11px 4px; font-size:15px; font-weight:500; color:var(--ink-soft); border-bottom:1px solid var(--bg-alt); }
+  .mobile-menu a.active{ color:var(--indigo); font-weight:600; }
+  .mobile-cta{ display:flex; gap:10px; margin-top:12px; }
+
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:#241259;
+    padding:24px 0 0;
+  }
+  .crumb{ color:#B9AEE0; font-size:13px; margin-bottom:28px; }
+  .crumb span{ color:#7C6FB0; margin:0 6px; }
+  .crumb b{ color:#fff; font-weight:500; }
+  .hero-grid{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:50px; align-items:center;
+  }
+  .hero-copy h1{
+    color:#fff; font-size:34px; line-height:1.12; font-weight:800; margin-bottom:20px;
+  }
+  .hero-copy h1 .grad{
+    background:linear-gradient(90deg,#B79CFB,#F0B4E8);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    display:block;
+  }
+  .hero-copy p{ color:#C7BEE7; font-size:15.5px; line-height:1.7; max-width:440px; margin-bottom:26px;}
+  .hero-badges{ display:flex; gap:22px; flex-wrap:wrap; margin-bottom:32px;}
+  .hero-badges span{ display:flex; align-items:center; gap:8px; color:#E4DDF7; font-size:13.5px; font-weight:500;}
+  .hero-badges i{
+    width:20px; height:20px; border-radius:50%; background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center; color:#C6A6FF; font-size:11px;
+  }
+  .hero-cta{ display:flex; gap:14px; }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+    color:#fff; padding:14px 24px; border-radius:10px; font-weight:600; font-size:14.5px;
+    box-shadow:0 14px 30px -10px rgba(150,60,240,0.7);
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-ghost{
+    border:1.5px solid rgba(255,255,255,0.25); color:#fff; padding:14px 24px;
+    border-radius:10px; font-weight:600; font-size:14.5px;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+
+  /* dashboard mock */
+  .hero-visual{ position:relative; padding-bottom:70px;margin-left:150px;}
+  .dash-card{ 
+    background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:22px;
+    position:relative; z-index:2;
+  }
+  .dash-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:18px;}
+  .dash-brand{ display:flex; align-items:center; gap:8px; font-family:'Sora',sans-serif; font-weight:700; font-size:15px; color:var(--purple-900);}
+  .dash-brand .mark{ width:24px; height:24px; border-radius:6px; background:linear-gradient(135deg,var(--purple-600),var(--pink-500)); }
+  .dash-search{
+    flex:1; margin:0 22px; background:#F5F2FC; border-radius:8px; padding:8px 14px;
+    font-size:12.5px; color:#A199C0;
+  }
+  .dash-user{ width:30px; height:30px; border-radius:50%; background:var(--lilac-200); }
+  .dash-body{ display:grid; grid-template-columns:190px 1fr; gap:16px;}
+  .dash-nav{ display:flex; flex-direction:column; gap:3px; }
+  .dash-nav a{
+    font-size:12.5px; color:var(--ink-soft); padding:9px 12px; border-radius:8px; font-weight:500;
+  }
+  .dash-nav a.on{ background:var(--purple-600); color:#fff; }
+  .stat-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:14px;}
+  .stat-card{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .stat-card .lbl{ font-size:10.5px; color:var(--ink-soft); margin-bottom:6px;}
+  .stat-card .val{ font-size:15px; font-weight:700; color:var(--purple-900);}
+  .stat-card .chg{ font-size:10.5px; font-weight:600; margin-top:4px;}
+  .up{ color:var(--green); } .down{ color:var(--red); }
+  .panel-row{ display:grid; grid-template-columns:1.3fr 1fr; gap:12px; margin-bottom:14px;}
+  .panel{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px; }
+  .panel .ph{ display:flex; justify-content:space-between; font-size:11px; font-weight:600; color:var(--ink-soft); margin-bottom:8px;}
+  .sparkline{ height:44px; }
+  .donut{ display:flex; align-items:center; gap:10px; }
+  .donut svg{ flex-shrink:0; }
+  .donut ul{ list-style:none; font-size:9.5px; color:var(--ink-soft); }
+  .donut li{ display:flex; align-items:center; gap:5px; margin-bottom:3px;}
+  .donut i{ width:6px; height:6px; border-radius:50%; display:inline-block;}
+  .tx-list{ background:#FAF8FE; border:1px solid var(--line); border-radius:12px; padding:12px;}
+  .tx-row{ display:flex; justify-content:space-between; font-size:10.5px; padding:6px 0; border-bottom:1px dashed var(--line); color:var(--ink-soft);}
+  .tx-row:last-child{ border:none; }
+  .tx-row b{ color:var(--ink); font-weight:600; }
+
+  .phone-card{
+    position:absolute; right:-30px; bottom:-40px; width:190px; background:#fff;
+    border-radius:20px; box-shadow:var(--shadow); padding:14px; z-index:3;
+    border:6px solid #1B1240;
+  }
+  .phone-card .val{ font-size:16px; font-weight:800; color:var(--purple-900);}
+  .phone-mini{ font-size:9.5px; color:var(--ink-soft); margin-bottom:2px;}
+  .phone-metric{ margin-bottom:10px; }
+  .phone-metric .chg{ font-size:9px; font-weight:700; }
+
+  /* ---------- LOGOS ---------- */
+  .logos{ background:var(--paper); padding:44px 0 60px; text-align:center; }
+  .logos p{ font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#A199C0; margin-bottom:26px; font-weight:600;}
+  .logo-row{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:26px; opacity:0.55; font-weight:700; font-size:19px; color:var(--ink-soft);}
+
+  /* ---------- FEATURE CARDS ---------- */
+  .features{ padding:20px 0 90px; background:var(--paper); }
+  .feat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .feat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:28px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .feat-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow); }
+  .feat-icon{
+    width:44px; height:44px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; color:#fff; font-size:19px;
+    background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+  }
+  .feat-card h3{ font-size:18px; margin-bottom:8px; color:var(--purple-900); }
+  .feat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.6; margin-bottom:16px; }
+  .feat-list{ list-style:none; margin-bottom:18px; }
+  .feat-list li{ font-size:13.5px; color:var(--ink); padding-left:22px; position:relative; margin-bottom:8px;}
+  .feat-list li::before{
+    content:'✓'; position:absolute; left:0; top:0; color:var(--purple-600); font-weight:700; font-size:12px;
+  }
+  .feat-link{ color:var(--purple-700); font-weight:600; font-size:13.5px; }
+
+  /* ---------- MODULES ---------- */
+  .modules{ padding:80px 0; background:#fff; }
+  .mod-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+  .mod-card{
+    border:1px solid var(--line); border-radius:14px; padding:22px 14px; text-align:center;
+    transition:border-color .2s;
+  }
+  .mod-card:hover{ border-color:var(--purple-500); }
+  .mod-icon{
+    width:42px; height:42px; border-radius:10px; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:18px;
+  }
+  .mod-card h4{ font-size:13.5px; margin-bottom:6px; }
+  .mod-card p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- WHY CHOOSE ---------- */
+  .why{ padding:80px 0; background:var(--paper); }
+  .why-grid{ display:grid; grid-template-columns:repeat(6,1fr); gap:20px; }
+  .why-card{ text-align:center; }
+  .why-icon{
+    width:52px; height:52px; border-radius:14px; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; margin:0 auto 14px; font-size:20px;
+  }
+  .why-card h4{ font-size:14px; margin-bottom:6px; }
+  .why-card p{ font-size:12px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- PROCESS ---------- */
+  .process{ padding:80px 0 90px; background:#fff; }
+  .steps{ display:grid; grid-template-columns:repeat(6,1fr); gap:8px; position:relative; }
+  .steps::before{
+    content:''; position:absolute; top:20px; left:8%; right:8%; height:1.5px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px, transparent 6px 12px); z-index:0;
+  }
+  .step{ text-align:center; position:relative; z-index:1; padding:0 6px;}
+  .step .num{
+    width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--purple-600),var(--pink-500));
+    color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px;
+    margin:0 auto 14px; box-shadow:0 8px 18px -6px rgba(140,60,240,0.5);
+  }
+  .step h4{ font-size:13.5px; margin-bottom:6px; }
+  .step p{ font-size:11.5px; color:var(--ink-soft); line-height:1.5; }
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{ padding:0 32px 90px; }
+  .cta-inner{
+    max-width:1180px; margin:0 auto; background:linear-gradient(120deg,#5B2FE0,#8B3FE8 60%, #C155D8);
+    border-radius:22px; padding:50px 46px; display:grid; grid-template-columns:1.3fr 1fr; gap:30px; align-items:center;
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .cta-inner::after{
+    content:''; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+    border-radius:50%; background:rgba(255,255,255,0.08);
+  }
+  .cta-eyebrow{ font-size:11.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#E6D6FB; margin-bottom:10px;}
+  .cta-inner h2{ color:#fff; font-size:27px; margin-bottom:12px; }
+  .cta-inner p{ font-size:14.5px; color:#E9DEFB; line-height:1.6; margin-bottom:22px; max-width:420px;}
+  .cta-btns{ display:flex; gap:12px; }
+  .cta-btns .btn-primary{ background:#fff; color:var(--purple-700); box-shadow:none; }
+  .cta-btns .btn-ghost{ border-color:rgba(255,255,255,0.4); }
+  .cta-points{ display:flex; flex-direction:column; gap:18px; position:relative; z-index:1;}
+  .cta-point{ display:flex; gap:14px; align-items:flex-start; }
+  .cta-point .ic{
+    width:38px; height:38px; border-radius:10px; background:rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:16px;
+  }
+  .cta-point h5{ font-size:14px; margin-bottom:3px; font-family:'Sora',sans-serif; font-weight:700;}
+  .cta-point span{ font-size:12.5px; color:#E4D6FA; }
+
+  /* ---------- FAQ ---------- */
+  .faq{ padding:10px 0 100px; background:var(--paper); }
+  .faq-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 24px; }
+  .faq-item{
+    border:1px solid var(--line); border-radius:12px; padding:18px 20px; background:#fff;
+    display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer;
+  }
+  .faq-item h5{ font-size:14px; font-weight:600; }
+  .faq-item .plus{
+    width:26px; height:26px; border-radius:50%; background:var(--lilac-100); color:var(--purple-700);
+    display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:#1B0F45; color:#C7BEE7; padding:60px 0 26px; }
+  .foot-grid{ display:grid; grid-template-columns:1.4fr repeat(3,1fr); gap:40px; margin-bottom:40px;}
+  .foot-brand p{ font-size:13.5px; line-height:1.7; margin:14px 0 20px; color:#A79CD1;}
+  footer h5{ color:#fff; font-size:14px; margin-bottom:16px; font-family:'Sora',sans-serif;}
+  footer ul{ list-style:none; }
+  footer li{ margin-bottom:10px; font-size:13.5px; }
+  .foot-bottom{ border-top:1px solid rgba(255,255,255,0.1); padding-top:22px; display:flex; justify-content:space-between; font-size:12.5px; color:#8B7FB5; flex-wrap:wrap; gap:10px;}
+
+  @media(max-width:980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ display:none; }
+    .feat-grid{ grid-template-columns:1fr; }
+    .mod-grid, .why-grid, .steps{ grid-template-columns:repeat(2,1fr); }
+    .foot-grid{ grid-template-columns:1fr 1fr; }
+    .faq-grid{ grid-template-columns:1fr; }
+    .cta-inner{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+  }
+</style>
+<style>
+  :root{
+    --navy-950:#0a1230;
+    --navy-900:#0c1638;
+    --navy-800:#0f1c42;
+    --navy-700:#16234f;
+    --blue-500:#2f6bff;
+    --blue-600:#1d4ed8;
+    --teal-400:#2dd4bf;
+    --teal-300:#5eead4;
+    --ink-900:#0c1638;
+    --ink-700:#38415c;
+    --ink-500:#6b7594;
+    --paper:#f4f7fd;
+    --paper-soft:#eef2fb;
+    --white:#ffffff;
+    --line-soft:rgba(255,255,255,0.09);
+    --line-soft-2:rgba(255,255,255,0.14);
+    --radius-lg:20px;
+    --radius-md:14px;
+    --radius-sm:10px;
+    --font-head:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink-900);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  ul{ list-style:none; margin:0; padding:0; }
+  button{ font-family:inherit; cursor:pointer; }
+
+  .wrap{
+    max-width:1440px;
+    margin:0 auto;
+    padding:40px 48px 0;
+  }
+
+  /* ---------- CTA BANNER ---------- */
+  
+      :root{
+      --navy-950:#0a1230;
+      --navy-900:#0c1638;
+      --navy-800:#0f1c42;
+      --navy-700:#16234f;
+      --blue-500:#2f6bff;
+      --blue-600:#1d4ed8;
+      --teal-400:#2dd4bf;
+      --teal-300:#5eead4;
+      --ink-900:#0c1638;
+      --ink-700:#38415c;
+      --ink-500:#6b7594;
+      --paper:#f4f7fd;
+      --paper-soft:#eef2fb;
+      --white:#ffffff;
+      --line-soft:rgba(255,255,255,0.09);
+      --line-soft-2:rgba(255,255,255,0.14);
+      --radius-lg:20px;
+      --radius-md:14px;
+      --radius-sm:10px;
+      --font-head:'Sora', sans-serif;
+      --font-body:'Inter', sans-serif;
+    }
+      .site-footer{
+      background:var(--navy-900);
+      background-image:radial-gradient(circle at 15% 0%, rgba(47,107,255,0.10), transparent 45%),
+                        radial-gradient(circle at 85% 100%, rgba(45,212,191,0.08), transparent 45%);
+      width:100%;
+      margin:40px 0 0;
+      padding:56px 0 0;
+      color:#c9d2ea;
+    }
+
+    .footer-inner{
+      max-width:1440px;
+      margin:0 auto;
+      padding:0 48px;
+    }
+
+  .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1.55fr 1fr 1fr 1fr;
+      gap:28px;
+      padding-bottom:2px;
+      align-items:start;
+  }
+  .footer-contact-col{
+      display:flex;
+      align-items:flex-start;
+      padding-top:18px;
+  }
+
+  .footer-contact-col .contact-card{
+      width:100%;
+      max-width:370px;
+      min-height:135px;
+      box-sizing:border-box;
+  }
+
+    .footer-brand-col .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .brand-mark{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      background:linear-gradient(135deg, var(--blue-500), var(--teal-400));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:var(--font-head);
+      font-weight:800;
+      color:#fff;
+      font-size:1.15rem;
+    }
+
+    .brand-name{
+      font-family:var(--font-head);
+      font-weight:700;
+      font-size:1.3rem;
+      color:#fff;
+      letter-spacing:0.5px;
+    }
+
+    .footer-brand-col p{
+      font-size:0.92rem;
+      line-height:1.65;
+      color:#95a1c4;
+      max-width:280px;
+      margin:0 0 22px;
+    }
+
+    .socials{
+      display:flex;
+      gap:10px;
+      margin-bottom:26px;
+    }
+
+    .social-btn{
+      width:38px;
+      height:38px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line-soft);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition:background 0.18s ease, transform 0.18s ease;
+    }
+    .social-btn:hover{
+      background:rgba(255,255,255,0.14);
+      transform:translateY(-2px);
+    }
+    .social-btn svg{ width:16px; height:16px; fill:#e7ebf7; }
+
+    .contact-card{
+      background:rgba(255,255,255,0.05);
+      border:1px solid var(--line-soft-2);
+      border-radius:var(--radius-md);
+      padding:18px 20px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      max-width:340px;
+      margin-top:125px;
+      margin-left:-25px;
+    }
+
+    .contact-card .icon-circle{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.09);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .contact-card .icon-circle svg{ width:19px; height:19px; stroke:#fff; }
+
+    .contact-card h4{
+      margin:0 0 4px;
+      font-size:0.98rem;
+      font-weight:600;
+      color:#fff;
+      font-family:var(--font-head);
+    }
+
+    .contact-card p{
+      margin:0 0 6px;
+      font-size:0.85rem;
+      color:#9aa5c4;
+    }
+
+    .contact-card .email-link{
+      color:var(--teal-300);
+      font-size:0.9rem;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .contact-card .email-link svg{ width:13px; height:13px; transition:transform .18s ease; }
+    .contact-card .email-link:hover svg{ transform:translateX(3px); }
+
+    .footer-col h3{
+      font-family:var(--font-head);
+      font-size:1.02rem;
+      font-weight:700;
+      color:#fff;
+      margin:0 0 12px;
+    }
+
+    .footer-col .underline{
+      width:28px;
+      height:3px;
+      border-radius:2px;
+      background:var(--teal-400);
+      margin-bottom:18px;
+    }
+
+    .footer-col ul li{ margin-bottom:13px; }
+
+    .footer-col ul li a{
+      font-size:0.9rem;
+      color:#a9b3d1;
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      transition:color 0.15s ease, gap 0.15s ease;
+    }
+
+    .footer-col ul li a svg{
+      width:13px;
+      height:13px;
+      stroke:var(--teal-400);
+      flex-shrink:0;
+    }
+
+    .footer-col ul li a:hover{
+      color:#fff;
+    }
+
+    /* ---------- CONTACT STRIP ---------- */
+    .contact-strip{
+      border-top:1px solid var(--line-soft);
+      padding:32px 0;
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:32px;
+    }
+
+    .strip-item{
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+    }
+
+    .strip-icon{
+      width:44px;
+      height:44px;
+      min-width:44px;
+      border-radius:12px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--line-soft-2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .strip-icon svg{ width:18px; height:18px; stroke:#fff; }
+
+    .strip-item h5{
+      margin:0 0 6px;
+      font-size:0.88rem;
+      font-weight:700;
+      color:var(--teal-300);
+      font-family:var(--font-head);
+    }
+
+    .strip-item p{
+      margin:0;
+      font-size:0.86rem;
+      line-height:1.55;
+      color:#a9b3d1;
+    }
+
+    /* ---------- BOTTOM BAR ---------- */
+    .bottom-bar{
+      border-top:1px solid var(--line-soft);
+      padding:22px 0;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .bottom-bar p{
+      margin:0;
+      font-size:0.85rem;
+      color:#8b96b8;
+    }
+
+    .bottom-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      font-size:0.85rem;
+      color:#8b96b8;
+    }
+
+    .bottom-right .heart{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+    }
+    .bottom-right .heart svg{ width:14px; height:14px; stroke:#ff6b8b; fill:none; }
+
+    .bottom-right a:hover{ color:#fff; }
+
+    .divider-dot{ opacity:0.4; }
+
+    /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1199px){
+      .wrap{
+          padding:32px 28px 0;
+      }
+
+      .footer-grid{
+          grid-template-columns:1fr 1fr 1fr;
+          row-gap:36px;
+      }
+
+      .footer-brand-col{
+          grid-column:auto;
+      }
+
+      .footer-brand-col p,
+      .contact-card{
+          max-width:none;
+      }
+
+      .contact-strip{
+          grid-template-columns:1fr 1fr;
+      }
+
+      .site-footer{
+          padding-top:48px;
+      }
+
+      .footer-inner{
+          padding:0 32px;
+      }
+  }
+
+    @media (max-width: 768px){
+      .wrap{ padding:24px 18px 0; }
+      .cta-banner{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:28px 24px;
+      }
+      .cta-actions{ width:100%; }
+      .cta-actions .btn{ flex:1; justify-content:center; }
+      .footer-grid{ grid-template-columns:1fr 1fr; }
+      .contact-strip{ grid-template-columns:1fr; }
+      .bottom-bar{ flex-direction:column; align-items:flex-start; }
+      .site-footer{ padding-top:40px; margin-top:28px; }
+      .footer-inner{ padding:0 20px; }
+    }
+
+    @media (max-width: 480px){
+      .footer-grid{ grid-template-columns:1fr; }
+      .cta-left{ flex-direction:column; align-items:flex-start; gap:16px; }
+      .cta-text h2{ font-size:1.5rem; }
+      .bottom-right{ flex-wrap:wrap; gap:10px 16px; }
+    }
+
+  .footer-brand-col .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:14px;
+  }
+
+  .brand-logo{
+      width:48px;
+      height:48px;
+      object-fit:contain;
+      flex-shrink:0;
+  }
+
+  .brand-info{
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+  }
+
+  .brand-name{
+      font-family:var(--font-head);
+      font-size:1.22rem;
+      font-weight:800;
+      color:#fff;
+      letter-spacing:.6px;
+      line-height:1;
+  }
+
+  .brand-subname{
+      display:block;
+      margin-top:5px;
+
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:3px;
+
+      color:var(--teal-300);
+  }
+  .brand-tagline{
+      margin:18px 0 8px;
+
+      font-family:var(--font-head);
+      font-size:.82rem;
+      font-weight:600;
+
+      color:#dce4f7;
+  }
+
+  .footer-brand-col > p{
+      font-size:0.9rem;
+      line-height:1.65;
+      color:#95a1c4;
+      max-width:310px;
+      margin:0 0 22px;
+  }
+
+
+</style>
+  <link rel="stylesheet" href="../css/responsive-fix.css">
+  <script src="../js/responsive-nav.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="https://nexsham.com" class="brand">
+    <img src="/images/favicon.png" alt="NexSham" class="brand-logo">
+    <span class="brand-text">NEXSHAM TECHNOLOGIES</span>
+</a>
+    <nav class="nav-links">
+      <a href="/header/services.html">Services</a>
+      <a href="/header/featured_solutions.html" class="active">Featured Solutions</a>
+      <a href="/header/industries.html">Industries</a>
+      <a href="/header/technologies.html">Technologies</a>
+      
+      <a href="/header/our_process.html">Our process</a>
+      <a href="/header/career.html">Career</a>
+    </nav>
+    <div class="nav-right">
+      <a href="/header/book_consultation.html" class="btn btn-primary" style="padding:10px 18px;">Book Free Consultation <span>→</span></a>
+      
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Featured Solutions</a>
+      <a href="#">Industries</a>
+      <a href="#">Technologies</a>
+      
+      <a href="#">Our process</a>
+      <a href="#">Career</a>
+    <div class="mobile-cta">
+      <a href="#cta" class="btn btn-primary" style="flex:1;">Book Free Consultation <span>→</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.1); color:#D5C4FA;">FINANCIAL MANAGEMENT</span>
+        <h1>Smarter Finance.<span class="grad">Stronger Business.</span></h1>
+        <p>Manage accounting, budgeting, payments and reporting from one unified platform to drive financial accuracy and business growth.</p>
+        <div class="hero-badges">
+          <span><i>⚡</i>Real-time Insights</span>
+          <span><i>🛡</i>Secure &amp; Compliant</span>
+          <span><i>✓</i>Easy to Use</span>
+        </div>
+        <div class="hero-cta">
+          <a href="/header/book_consultation.html" class="btn-primary">Request a Demo →</a>
+          <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27d%20like%20to%20talk%20to%20your%20experts%20about%20a%20project."
+    class="btn btn-ghost"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Talk to Our Experts
+    <svg viewBox="0 0 24 24" fill="none"
+         stroke="currentColor"
+         stroke-width="2"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+        <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5
+                 8.3 8.3 0 0 1-4.1-1.1L3 20l1.1-5.1
+                 A8.4 8.4 0 1 1 21 11.5z"></path>
+    </svg>
+</a>>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="dash-card">
+          <div class="dash-top">
+            <div class="dash-brand"><span class="mark"></span>NEXSHAM</div>
+            <div class="dash-search">Search here...</div>
+            <div class="dash-user"></div>
+          </div>
+          <div class="dash-body">
+            <div class="dash-nav">
+              <a class="on">Dashboard</a>
+              <a>Accounts</a>
+              <a>Transactions</a>
+              <a>Budgeting</a>
+              <a>Invoices</a>
+              <a>Payments</a>
+              <a>Reports</a>
+              <a>Settings</a>
+            </div>
+            <div>
+              <div class="stat-row">
+                <div class="stat-card"><div class="lbl">Total Revenue</div><div class="val">$48,75,230</div><div class="chg up">↑ 12.5%</div></div>
+                <div class="stat-card"><div class="lbl">Total Expenses</div><div class="val">$26,18,340</div><div class="chg up">↑ 8.3%</div></div>
+                <div class="stat-card"><div class="lbl">Net Profit</div><div class="val">$22,56,890</div><div class="chg up">↑ 15.7%</div></div>
+                <div class="stat-card"><div class="lbl">Outstanding Payables</div><div class="val">$7,85,450</div><div class="chg down">↓ 3.2%</div></div>
+              </div>
+              <div class="panel-row">
+                <div class="panel">
+                  <div class="ph"><span>Cash Flow Overview</span><span>This Month</span></div>
+                  <svg class="sparkline" viewBox="0 0 220 50" preserveAspectRatio="none">
+                    <polyline points="0,40 25,28 50,34 75,15 100,25 125,10 150,20 175,8 200,18 220,5" fill="none" stroke="#6E3AF0" stroke-width="2.5"/>
+                    <polyline points="0,45 25,42 50,38 75,40 100,32 125,36 150,28 175,30 200,22 220,26" fill="none" stroke="#F0A6E0" stroke-width="2.5"/>
+                  </svg>
+                  <div style="display:flex; gap:14px; font-size:9.5px; color:var(--ink-soft);">
+                    <span>● Inflow $58,45,600</span><span>● Outflow $35,08,200</span>
+                  </div>
+                </div>
+                <div class="panel">
+                  <div class="ph"><span>Expense Distribution</span></div>
+                  <div class="donut">
+                    <svg width="60" height="60" viewBox="0 0 42 42">
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#6E3AF0" stroke-width="6" stroke-dasharray="40 60" stroke-dashoffset="25"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#B463E8" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-15"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#F0A6E0" stroke-width="6" stroke-dasharray="15 85" stroke-dashoffset="-35"/>
+                      <circle cx="21" cy="21" r="15.9" fill="transparent" stroke="#D8CCF5" stroke-width="6" stroke-dasharray="25 75" stroke-dashoffset="-50"/>
+                    </svg>
+                    <ul>
+                      <li><i style="background:#6E3AF0"></i>Operations 40%</li>
+                      <li><i style="background:#B463E8"></i>Marketing 20%</li>
+                      <li><i style="background:#F0A6E0"></i>HR 15%</li>
+                      <li><i style="background:#D8CCF5"></i>Finance 10%</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="tx-list">
+                <div class="ph"><span>Recent Transactions</span></div>
+                <div class="tx-row"><span><b>INV-2024-1256</b> Invoice to ABC Corp.</span><span>$4,850</span><span>2 mins ago</span></div>
+                <div class="tx-row"><span><b>BILL-2024-0987</b> Office Supplies</span><span>$850</span><span>1 hour ago</span></div>
+                <div class="tx-row"><span><b>PAY-2024-3345</b> Payment to Vendor</span><span>$2,450</span><span>3 hours ago</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="phone-card">
+          <div class="phone-mini" style="font-weight:700; color:var(--purple-900); font-size:12px;">Dashboard</div>
+          <div class="phone-mini">This Month ▾</div>
+          <div class="phone-metric" style="margin-top:10px;">
+            <div class="phone-mini">Total Revenue</div>
+            <div class="val">$48,75,230</div>
+            <div class="chg up">↑ 12.0%</div>
+          </div>
+          <svg width="100%" height="30" viewBox="0 0 150 30" style="margin-bottom:10px;">
+            <polyline points="0,25 20,18 40,22 60,10 80,16 100,6 120,14 150,4" fill="none" stroke="#6E3AF0" stroke-width="2"/>
+          </svg>
+          <div class="phone-metric">
+            <div class="phone-mini">Total Expenses</div>
+            <div class="val" style="font-size:14px;">$26,18,340</div>
+            <div class="chg up">↑ 8.3%</div>
+          </div>
+          <div class="phone-metric" style="margin-bottom:0;">
+            <div class="phone-mini">Net Profit</div>
+            <div class="val" style="font-size:14px;">$22,56,890</div>
+            <div class="chg up">↑ 15.7%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="features">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">COMPLETE FINANCIAL MANAGEMENT</span>
+      <h2>Everything You Need to Manage Your Finances</h2>
+      <p>A comprehensive solution to manage every aspect of your financial operations.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>Accounting Management</h3>
+        <p>Simplify your accounting with automated workflows and real-time tracking.</p>
+        <ul class="feat-list">
+          <li>General Ledger</li><li>Accounts Payable</li><li>Accounts Receivable</li><li>Bank Reconciliation</li>
+        </ul>
+        <!-- <a class="feat-link" href="#">Explore Accounting →</a> -->
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🧾</div>
+        <h3>Billing Management</h3>
+        <p>Create and manage invoices, track payments and automate billing.</p>
+        <ul class="feat-list">
+          <li>Invoice Generation</li><li>Recurring Billing</li><li>Payment Reminders</li><li>Credit Notes</li>
+        </ul>
+        <!-- <a class="feat-link" href="#">Explore Billing →</a> -->
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📈</div>
+        <h3>Reports &amp; Analytics</h3>
+        <p>Generate insightful reports to make smarter financial decisions.</p>
+        <ul class="feat-list">
+          <li>Profit &amp; Loss Statement</li><li>Balance Sheet</li><li>Cash Flow Statement</li><li>Custom Reports</li>
+        </ul>
+        <!-- <a class="feat-link" href="#">Explore Reports →</a> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="modules">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POWERFUL MODULES</span>
+      <h2>All Financial Operations in One Platform</h2>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card"><div class="mod-icon">📅</div><h4>Budgeting</h4><p>Plan and manage budgets effectively.</p></div>
+      <div class="mod-card"><div class="mod-icon">🧮</div><h4>Expense Tracking</h4><p>Track and categorize all your expenses.</p></div>
+      <div class="mod-card"><div class="mod-icon">🏢</div><h4>Fixed Assets</h4><p>Manage and track your company assets.</p></div>
+      <div class="mod-card"><div class="mod-icon">🧾</div><h4>Tax Management</h4><p>Handle taxes and compliance easily.</p></div>
+      <div class="mod-card"><div class="mod-icon">💱</div><h4>Multi-Currency</h4><p>Support for multiple currencies.</p></div>
+      <div class="mod-card"><div class="mod-icon">🔍</div><h4>Audit Trail</h4><p>Track every financial activity and change.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">WHY CHOOSE OUR FINANCIAL MANAGEMENT SYSTEM</span>
+      <h2>Built for Accuracy. Designed for Growth.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⏱</div><h4>Real-time Data</h4><p>Access real-time financial data anytime.</p></div>
+      <div class="why-card"><div class="why-icon">🎯</div><h4>Reduce Errors</h4><p>Automate processes and minimize human errors.</p></div>
+      <div class="why-card"><div class="why-icon">💰</div><h4>Cost Effective</h4><p>Lower operational costs with automation.</p></div>
+      <div class="why-card"><div class="why-icon">🛡</div><h4>Compliance Ready</h4><p>Stay compliant with local and global standards.</p></div>
+      <div class="why-card"><div class="why-icon">📶</div><h4>Scalable Solution</h4><p>Grows with your business needs.</p></div>
+      <div class="why-card"><div class="why-icon">🔒</div><h4>Secure &amp; Reliable</h4><p>Enterprise-grade security for your data.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">OUR IMPLEMENTATION PROCESS</span>
+      <h2>From Setup to Success</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">01</div><h4>Requirement Analysis</h4><p>We understand your business needs and financial goals.</p></div>
+      <div class="step"><div class="num">02</div><h4>Planning</h4><p>We create a tailored implementation plan.</p></div>
+      <div class="step"><div class="num">03</div><h4>Setup &amp; Configuration</h4><p>We configure the system as per your requirements.</p></div>
+      <div class="step"><div class="num">04</div><h4>Data Migration</h4><p>We securely migrate your existing financial data.</p></div>
+      <div class="step"><div class="num">05</div><h4>Training</h4><p>We train your team to use the system effectively.</p></div>
+      <div class="step"><div class="num">06</div><h4>Go Live &amp; Support</h4><p>We go live and provide ongoing support.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div>
+      <div class="cta-eyebrow">READY TO TAKE CONTROL OF YOUR FINANCES?</div>
+      <h2>Let's Simplify Your Financial Management</h2>
+      <p>Get complete visibility, control and insights into your financial operations with Nexsham.</p>
+      <div class="cta-btns">
+        <a href="/header/book_consultation.html" class="btn-primary">Get a Free Demo</a>
+        <a
+    href="https://wa.me/918859001102?text=Hello%20NexSham%20Technologies!%20I%27m%20interested%20in%20getting%20a%20quote%20for%20a%20software%20project."
+    class="btn-ghost"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    Chat on WhatsApp
+    <span>💬</span>
+</a>
+      </div>
+    </div>
+    <div class="cta-points">
+      <div class="cta-point"><div class="ic">💬</div><div><h5>Expert Consultation</h5><span>Get advice from our finance experts.</span></div></div>
+      <div class="cta-point"><div class="ic">🧩</div><div><h5>Custom Solution</h5><span>Tailored to your business needs.</span></div></div>
+      <div class="cta-point"><div class="ic">⚡</div><div><h5>Quick Implementation</h5><span>Get started in days, not months.</span></div></div>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Brand column -->
+      <div class="footer-col footer-brand-col">
+        <div class="brand">
+
+    <img
+        src="/images/favicon.png"
+        alt="NexSham Technologies Logo"
+        class="brand-logo"
+    >
+
+    <div class="brand-info">
+        <span class="brand-name">NEXSHAM </span>
+        <span class="brand-subname"> TECHNOLOGIES</span>
+    </div>
+
+</div>
+
+<div class="brand-tagline">
+    Building technology for what's next.
+</div>
+
+<p>
+    We build custom software solutions that help businesses
+    automate, scale and achieve long-term growth.
+</p>
+        <div class="socials">
+          <!-- facebook -->
+          <!-- <a href="#" class="social-btn" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7H7.9V12h2.6V9.8c0-2.6 1.5-4 4-4 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6V12h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+          </a> -->
+          <a href="https://www.linkedin.com/company/nexsham-technologies" target="_blank" class="social-btn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3.3 8.7h3.28V21H3.3V8.7zM9.4 8.7h3.14v1.68h.05c.44-.82 1.5-1.68 3.1-1.68 3.32 0 3.93 2.18 3.93 5.02V21h-3.28v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.48V21H9.4V8.7z"/></svg>
+          </a>
+          <a href="https://x.com/NexshamTech" target="_blank" class="social-btn" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M22 5.9c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.3 1.7-2.3-.8.5-1.7.8-2.6 1a4.1 4.1 0 0 0-7 3.7A11.6 11.6 0 0 1 3.4 4.6a4.1 4.1 0 0 0 1.3 5.5c-.6 0-1.3-.2-1.8-.5v.1c0 2 1.4 3.6 3.3 4a4.2 4.2 0 0 1-1.8.1 4.1 4.1 0 0 0 3.9 2.9A8.3 8.3 0 0 1 2 18.6a11.6 11.6 0 0 0 6.3 1.9c7.5 0 11.7-6.3 11.7-11.7v-.5c.8-.6 1.5-1.3 2-2.1z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/nexshamtechnologies/" target="_blank" class="social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2c2.7 0 3.1 0 4.1.05 1.1.05 1.8.2 2.4.45.7.27 1.2.6 1.7 1.1.5.5.85 1 1.1 1.7.24.6.4 1.3.45 2.4.05 1 .05 1.4.05 4.1s0 3.1-.05 4.1c-.05 1.1-.2 1.8-.45 2.4-.27.7-.6 1.2-1.1 1.7-.5.5-1 .85-1.7 1.1-.6.24-1.3.4-2.4.45-1 .05-1.4.05-4.1.05s-3.1 0-4.1-.05c-1.1-.05-1.8-.2-2.4-.45-.7-.27-1.2-.6-1.7-1.1-.5-.5-.85-1-1.1-1.7-.24-.6-.4-1.3-.45-2.4C2 15.1 2 14.7 2 12s0-3.1.05-4.1c.05-1.1.2-1.8.45-2.4.27-.7.6-1.2 1.1-1.7.5-.5 1-.85 1.7-1.1.6-.24 1.3-.4 2.4-.45C8.9 2 9.3 2 12 2zm0 1.8c-2.6 0-2.9 0-4 .06-.9.04-1.4.18-1.7.3-.44.17-.75.37-1.08.7-.33.33-.53.64-.7 1.08-.12.3-.26.8-.3 1.7-.06 1-.06 1.3-.06 4s0 2.9.06 4c.04.9.18 1.4.3 1.7.17.44.37.75.7 1.08.33.33.64.53 1.08.7.3.12.8.26 1.7.3 1 .06 1.3.06 4 .06s2.9 0 4-.06c.9-.04 1.4-.18 1.7-.3.44-.17.75-.37 1.08-.7.33-.33.53-.64.7-1.08.12-.3.26-.8.3-1.7.06-1 .06-1.3.06-4s0-2.9-.06-4c-.04-.9-.18-1.4-.3-1.7-.17-.44-.37-.75-.7-1.08-.33-.33-.64-.53-1.08-.7-.3-.12-.8-.26-1.7-.3-1-.06-1.4-.06-4-.06zm0 3.4a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6zm0 1.8a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm5-2.2a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2z"/></svg>
+          </a>
+          <!-- Youtube -->
+          <a href="https://www.youtube.com/@nexshamtechnologies" class="social-btn" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M22.5 6.9a2.8 2.8 0 0 0-2-2C18.7 4.5 12 4.5 12 4.5s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29 29 0 0 0 1 12a29 29 0 0 0 .5 5.1 2.8 2.8 0 0 0 2 2c1.8.4 8.5.4 8.5.4s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29 29 0 0 0 23 12a29 29 0 0 0-.5-5.1zM9.8 15.5v-7l6 3.5-6 3.5z"/></svg>
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="contact-card">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+              <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+            </svg>
+          </div>
+          <div>
+            <h4>Let's Build Something Great</h4>
+            <p>Have a project in mind? Let's talk.</p>
+            <a href="mailto:contact@nexsham.com" class="email-link">
+              contact@nexsham.com
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h3>Company</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/about.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>About Us</a></li>
+          <li><a href="/footer/our_team.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Team</a></li>
+          <li><a href="/header/our_process.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Our Process</a></li>
+          <li><a href="/header/career.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Careers</a></li>
+          <li><a href="/footer/blog.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Blog</a></li>
+          <li><a href="/header/book_consultation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h3>Services</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/services/custom_software_development.html" target="_blank" ><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Custom Software Development</a></li>
+          <!-- <li><a href="/services/web_application_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Web Application Development</a></li> -->
+          <li><a href="/services/mobile_app_development.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Mobile App Development</a></li>
+          <li><a href="/services/cloud_solutions.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Cloud Solutions</a></li>
+          <li><a href="/services/ai_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>AI & Automation</a></li>
+          <!-- <li><a href="/services/qa_and_testing.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>QA & Testing</a></li> -->
+          <li><a href="/services/maintanence_and_support.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Maintenance & Support</a></li>
+          <li><a href="/services/business_automation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Business Automation</a></li>
+        </ul>
+      </div>
+
+      <!-- Industries -->
+      <!-- <div class="footer-col">
+        <h3>Industries</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/industry/healthcare.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Healthcare</a></li>
+          <li><a href="/industry/retail_and_Ecommerce.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>E-Commerce</a></li>
+          <li><a href="/industry/finance_and_banking.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Finance & Banking</a></li>
+          <li><a href="/industry/education.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Education</a></li>
+          <li><a href="/industry/manufacturing.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Manufacturing</a></li>
+          <li><a href="/industry/logistics_and_supply_chain.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Logistics & Transport</a></li>
+          <li><a href="/industry/realestate.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Real Estate</a></li>
+          <li><a href="/header/industries.html"target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>And More</a></li>
+          
+        </ul>
+      </div> -->
+
+      <!-- Resources -->
+      <div class="footer-col">
+        <h3>Resources</h3>
+        <div class="underline"></div>
+        <ul>
+          <li><a href="/footer/case_studies.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Case Studies</a></li>
+          <li><a href="/footer/portfolio.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Portfolio</a></li>
+          <li><a href="/footer/faq.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>FAQs</a></li>
+          <li><a href="/footer/documentation.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Documentation</a></li>
+          <li><a href="/footer/privacy_policy.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Privacy Policy</a></li>
+          <li><a href="/footer/terms_and_condition.html" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>Terms & Conditions</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+
+    <!-- Contact strip -->
+    <div class="contact-strip">
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+        </div>
+        <div>
+          <h5>Our Location</h5>
+          <p>Hariparvat , MG Road <br>Agra , Uttar Pradesh 282001, India</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .3 2 .7 3a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c1 .4 2 .6 3 .7a2 2 0 0 1 1.7 2z"></path>
+          </svg>
+        </div>
+        <div>
+          <h5>Call Us</h5>
+          <p>+91 88590 01102</p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+            <polyline points="22 6 12 13 2 6"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Email Us</h5>
+          <p>support@nexsham.com<br></p>
+        </div>
+      </div>
+
+      <div class="strip-item">
+        <div class="strip-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </div>
+        <div>
+          <h5>Working Hours</h5>
+          <p>Monday - Saturday<br>10:00 AM - 7:00 PM (IST)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="bottom-bar">
+      <p>© 2026 Nexsham Technologies | All rights reserved.</p>
+      <div class="bottom-right">
+        <span class="heart">
+          <svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"></path></svg>
+          Designed with passion in India
+        </span>
+        <span class="divider-dot">|</span>
+        <a href="/footer/privacy_policy.html">Privacy Policy</a>
+        <span class="divider-dot">|</span>
+        <a href="footer/terms_and_condition.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+
+
+</body>
+</html>
