@@ -7,7 +7,7 @@
    ========================================================================== */
 
 /* ---------- Baseline Helpers ---------- */
-img, svg, video, iframe {
+img, video, iframe {
   max-width: 100% !important;
   height: auto !important;
 }
