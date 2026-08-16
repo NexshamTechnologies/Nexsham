@@ -58,7 +58,7 @@ function initMobileNavigation() {
     
     // Find the logo link to use for Home link href
     const logoLink = header.querySelector("a.brand, a.logo");
-    const logoHref = logoLink ? logoLink.getAttribute("href") : "https://nexsham.com";
+    const logoHref = logoLink ? logoLink.getAttribute("href") : "https://www.nexsham.com";
 
     mobileLinks.forEach((mobileLink) => {
       const mobText = mobileLink.textContent.trim().toLowerCase();
